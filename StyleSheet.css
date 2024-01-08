@@ -54,7 +54,7 @@ main section{
        
 }
 main section h1 {
-text-align: center;
+    text-align: center;
 }
 
 .dropButton{
@@ -94,6 +94,16 @@ text-align: center;
 
 } */
 
+.tile {
+    background-color:aliceblue;
+    border-top-style: solid;
+    border-top-color: limegreen;
+    border-top-width: 5px;
+    height: 100%;
+    text-align: center;
+    box-shadow: 0 4px 8px -6px #181818;
+}
+
 .navSec{
     width: 40%;
     display: inline;
@@ -107,16 +117,6 @@ text-align: center;
     box-sizing: border-box;
 }
 
-#tile1{
-    padding-top: 15px;
-    background-color:aliceblue;
-    border-top-style: solid;
-    border-top-color: limegreen;
-    border-top-width: 5px;
-    height: 100%;
-    text-align: center;
-}
-
 #tile1 a{
     padding-bottom: 5px;
     margin-bottom: 20px;
@@ -127,6 +127,10 @@ text-align: center;
     border-bottom-style: solid;
     border-bottom-color: limegreen;
     border-bottom-width: 2px;
+}
+
+#tile3 {
+    height: 100%
 }
 
 @media only screen and (max-width: 800px) {
