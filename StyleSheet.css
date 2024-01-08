@@ -129,8 +129,14 @@ text-align: center;
     border-bottom-width: 2px;
 }
 
-@media only screen and (max-width: 768px) {
-    [tile*="tile-"] {
-        width: 100%;
+@media only screen and (max-width: 800px) {
+    #tile1 {
+        display: none;
+    }
+    #tile3 {
+        display: none;
+    }
+    #tile2 {
+        width: 98%;
     }
 }
