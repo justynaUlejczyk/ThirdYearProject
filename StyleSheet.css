@@ -9,7 +9,6 @@ body{
 
 nav {
     padding: 10px;
-    text-align: center;
     background-color: darkgrey;
   }
 
@@ -96,16 +95,19 @@ text-align: center;
 } */
 
 .navSec{
-    width: 100%;
+    width: 40%;
     display: inline;
 }
- 
-#mainHome{
+
+#linksBar{float: right;}
+#search{float: left;}
+
+#tile2{
     width:48%;
     box-sizing: border-box;
 }
 
-#profileTile{
+#tile1{
     padding-top: 15px;
     background-color:aliceblue;
     border-top-style: solid;
@@ -115,7 +117,7 @@ text-align: center;
     text-align: center;
 }
 
-#profileTile a{
+#tile1 a{
     padding-top: 10px;
     display: block;
     height: 40px;
@@ -126,3 +128,8 @@ text-align: center;
     padding: 5px;
 }
 
+@media only screen and (max-width: 768px) {
+    [tile*="tile-"] {
+        width: 100%;
+    }
+}
