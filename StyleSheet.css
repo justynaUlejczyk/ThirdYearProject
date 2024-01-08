@@ -118,14 +118,15 @@ text-align: center;
 }
 
 #tile1 a{
-    padding-top: 10px;
-    display: block;
-    height: 40px;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
     color:black;
-    border-top-style: solid;
-    border-top-color: limegreen;
-    border-top-width: 2px;
-    padding: 5px;
+    border-bottom-style: solid;
+    border-bottom-color: limegreen;
+    border-bottom-width: 2px;
 }
 
 @media only screen and (max-width: 768px) {
