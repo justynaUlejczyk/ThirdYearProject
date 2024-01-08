@@ -1,7 +1,7 @@
 body{    
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: darkgrey;
+    background-color: lightgrey;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -10,7 +10,7 @@ body{
 nav {
     padding: 10px;
     text-align: center;
-    background-color: grey;
+    background-color: darkgrey;
   }
 
 nav ul{
@@ -91,10 +91,33 @@ text-align: center;
     color: black;
 }
 
+/* .tile {
+
+} */
+
  
 #mainHome{
     width:48%;
     box-sizing: border-box;
 }
 
+#profileTile{
+    background-color:aliceblue;
+    border-top-style: solid;
+    border-top-color: coral;
+    border-top-width: 5px;
+    height: 100%;
+    text-align: center;
+}
+
+#profileTile a{
+    display: block;
+    height: 40px;
+    color:black;
+    border-top-style: solid;
+    border-top-color: coral;
+    border-top-width: 2px;
+    padding: 5px;
+    width: 40px;
+}
 
