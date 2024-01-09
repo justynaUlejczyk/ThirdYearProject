@@ -60,7 +60,7 @@ main section h1 {
 .dropButton{
     border: none;
     cursor: pointer;
-    background-color: grey;
+    background-color: darkgrey;
 }
 
 .dropdown {
@@ -104,6 +104,24 @@ main section h1 {
     box-shadow: 0 4px 8px -6px #181818;
 }
 
+.groupLink{
+    margin-right: auto;
+    margin-left: auto;
+    width: 150px;
+    background-color: antiquewhite;
+}
+.groupLink a{
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    display: table;
+    color: black;
+    border-bottom-style: solid;
+    border-bottom-color: limegreen;
+    border-bottom-width: 2px;
+}
+
 .navSec{
     width: 40%;
     display: inline;
@@ -118,7 +136,7 @@ main section h1 {
 }
 
 #tile1 a{
-    padding-bottom: 5px;
+    padding: 5px;
     margin-bottom: 20px;
     display: table;
     margin-left: auto;
@@ -130,9 +148,10 @@ main section h1 {
 }
 
 #tile3 {
-    height: 100%
+    height: 100%;
 }
 
+/* hides profile and group sections on home page for smaller screen sizes */
 @media only screen and (max-width: 800px) {
     #tile1 {
         display: none;
