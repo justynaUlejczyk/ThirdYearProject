@@ -115,11 +115,11 @@ main section h1 {
     margin-left: auto;
     margin-bottom: 20px;
     width: 80%;
-    height: 50px;
+    height: 40px;
     /* background-color: antiquewhite; */
 }
 
-.tileLink{
+.tileLink1{
     padding: 5px;
     /* margin-top: auto;
     margin-bottom: auto; */
@@ -136,6 +136,13 @@ main section h1 {
     border-bottom-color: limegreen;
     border-bottom-width: 2px;
     /* background-color: aquamarine; */
+}
+.tileLink2 {
+    color: black;
+}
+
+#viewMore{
+    margin-bottom: 10px;
 }
 
 .navSec{
