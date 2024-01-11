@@ -181,16 +181,16 @@ main section h1 {
 }
 @media only screen and (min-width: 1250px) {
     #tile1 {
-        width: 280px;
+        width: 300px;
         margin-left: auto;
-        margin-right: 20px;
+        margin-right: 12px;
     }
     /* #tile2 {
         
     } */
     #tile3 {
-        width: 280px;
-        margin-left: 20px;
+        width: 300px;
+        margin-left: 12px;
         margin-right: auto;
     }
 }
