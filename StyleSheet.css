@@ -90,10 +90,6 @@ main section h1 {
     color: black;
 }
 
-/* .tile {
-
-} */
-
 .tile {
     background-color:aliceblue;
     border-top-style: solid;
@@ -145,9 +141,6 @@ main section h1 {
     margin-bottom: 10px;
 }
 
-.navSec{
-    display: inline;
-}
 
 #linksBar{float: right;}
 #search{float: left;}
@@ -155,22 +148,6 @@ main section h1 {
 #tile2{
     width:48%;
     box-sizing: border-box;
-}
-
-/* #tile1 a{
-    padding: 5px;
-    margin-bottom: 20px;
-    display: table;
-    margin-left: auto;
-    margin-right: auto;
-    color:black;
-    border-bottom-style: solid;
-    border-bottom-color: limegreen;
-    border-bottom-width: 2px;
-} */
-
-#tile3 {
-    height: 100%;
 }
 
 /* hides profile and group sections on home page for smaller screen sizes */
@@ -186,6 +163,7 @@ main section h1 {
     }
     
 }
+/* left and right side tiles have a fixed width after a certain minimum window size and stick close to main section */
 @media only screen and (min-width: 1250px) {
     #tile1 {
         width: 300px;
