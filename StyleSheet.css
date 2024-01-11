@@ -10,6 +10,8 @@ body{
 nav {
     padding: 10px;
     background-color: darkgrey;
+    display: flex;
+    /* flex: 1; */
   }
 
 nav ul{
@@ -18,6 +20,7 @@ nav ul{
 }
 nav ul li{
     margin: 20px;
+    /* float: right; */
 }
 
 nav img{
@@ -100,6 +103,23 @@ main section h1 {
     box-shadow: 0 4px 8px -6px #181818;
 }
 
+.navBuffer {
+    /* display: inline; */
+    /* background-color: red; */
+    flex-shrink: 15;
+    /* flex-grow: 5; */
+    /* flex: auto; */
+    width: 360px;
+    /* height: 15px; */
+    /* padding: 10px; */
+}
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+
 .big{
     font-size: large;
 }
@@ -141,9 +161,24 @@ main section h1 {
     margin-bottom: 10px;
 }
 
-
-#linksBar{float: right;}
-#search{float: left;}
+#linksBar{
+    /* float: right; */
+    /* position: relative; */
+    
+    /* background-color: blueviolet; */
+    /* flex-grow: 5; */
+    width: 100%;
+}
+#search{
+    /* position: relative; */
+    /* float: left; */
+    /* flex-grow: 5; */
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    /* background-color: aliceblue; */
+    /* padding: 0px; */
+    width: 100px;
+}
 
 #tile2{
     width:48%;
@@ -177,5 +212,16 @@ main section h1 {
         width: 300px;
         margin-left: 12px;
         margin-right: auto;
+    }
+}
+
+@media only screen and (min-width: 920px) {
+    .navBuffer{
+        /* background-color: aquamarine; */
+        flex-grow: 60;
+    }
+    .sideBuffer{
+        /* background-color: blue; */
+        flex-grow: 20;
     }
 }
