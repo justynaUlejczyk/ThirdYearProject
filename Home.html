@@ -13,38 +13,35 @@
 
 <body>
    
-    
+  
     <nav>
-        <section class="sideBuffer left"></section>
-        <section>
-            <ul id="search">
-                <img src ="icons/Group.png" alt="search" width = "35">
-            </ul>
-        </section>
-        <section class="navBuffer"></section>
-        <section>
-            <ul id="linksBar">
-                <a href="Home.html"> <img src ="icons/Home.png" alt="home" width = "35"> </a>
-                <a href="Group.html"> <img src ="icons/Group.png" alt="groups" width = "35"> </a>
-                <a href="Messages.html"> <img src ="icons/Message.png" alt="messages" width = "35"></a>
-                <div class="dropdown">
-                    <button class="dropButton"><img src = "icons/Bell.png" alt="notifications" width="35"></button>
-                    <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
-                    </div>
 
+
+
+        <div class="navbar">
+        
+            <img src="icons/search.svg" alt="Search" >
+
+
+            <a href="Profile.html"> <img src ="icons/User.svg" alt="profile" > </a>
+            <a href="Group.html"> <img src ="icons/Group.svg" alt="groups" > </a>
+            <a href="Messages.html"> <img src ="icons/comment.svg" alt="messages" ></a>
+            <div class="dropdown">
+                <button class="dropbtn"><img src ="icons/Bell.svg" alt="Notifications" >
+                
+                </button>
+                <div class="dropdown-content">
+                  <a href="#">Link 1</a>
+                  <a href="#">Link 2</a>
+                  <a href="#">Link 3</a>
                 </div>
-                <a href="Profile.html"> <img src ="icons/Profile.png" alt="profile" width = "35"> </a>
-            </ul>
-        </section>
-        <section class="sideBuffer right"></section>
+              </div> 
+            <a href="Home.html"> <img src ="icons/Home.svg" alt="home" > </a>
+            </div>
     </nav>
-    
 
+    
     <main>
-       
         <!-- profile tile -->
         <section id="tile1" class="tile">
             <img class ="pfp" src = "icons/cat.jpg" alt="pfp" width = "100" height="100">
@@ -57,13 +54,28 @@
 
         <!-- Home/main feed tile -->
         <section id="tile2" class="tile">
-            <h1>HomePage</h1>
-            <p>A home page (or homepage) is the main web page of a website. The term may also refer to the start page shown in a web browser when the application first opens. Usually, the home page is located at the root of the website's domain or subdomain. For example, if the domain is example.com, the home page is likely located at "www.example.com/".</p>
-        </section>
+            <section class ="post">
+            <p>hello</p>
+            </section>
+
+            <section class ="post">
+                <p>hello</p>
+            </section>
+            
+            <section class ="post">
+            <p>hello</p>
+            </section>
+
+            <section class ="post">
+            <p>hello</p>
+            </section>
+
+   
+         </section>
 
         <!-- Collab group tile -->
-        <section id="tile3" class="tile">
-            <!-- group containers have a link for a specific group a user is a member of. -->
+        <!-- <section id="tile3" class="tile">
+            group containers have a link for a specific group a user is a member of.
             <div class="groupContainer">
                     <a class="tileLink1 big" href="#">Small name 1</a>
             </div >
@@ -73,11 +85,29 @@
             <div class="groupContainer">
                     <a class="tileLink1 big" href="#">Even larger name 3</a>
             </div>
-            <!-- view more send the user to the groups page -->
+            view more send the user to the groups page
             <div id="viewMore">
                 <a class="tileLink2" href="Group.html">View More</a>
             </div>
             
+        </section> -->
+
+        <section id = "tile3">
+            <div class="groupButton">
+                <button type="button"></button> 
+                <p>Group 1</p>
+            </div>
+            <div class="groupButton">
+                <button type="button"></button> 
+                <p>Group 1</p>
+            </div>
+            <div class="groupButton">
+                <button type="button"></button> 
+                <p>Group 1</p>
+            </div>
+            <div id="viewMore">
+                <a class="tileLink2" href="Group.html">View More</a>
+            </div>
         </section>
     </main>     
        
