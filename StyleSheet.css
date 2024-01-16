@@ -12,12 +12,10 @@ body {
 
 nav {
     margin: 0;
-    padding: 0px 200px;
     width: 100%;
     background-color: var(--white);
     display: flex;
     height: 50px;
-    justify-content: space-between;
 }
 
 nav > section {
@@ -26,23 +24,21 @@ nav > section {
     align-items: center;
 }
 
-nav > section.linksBar {
-    width: 55%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+nav > section:first-child {
+    margin-left: 200px;
+    flex-basis: 1;
 }
 
-nav > section > ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+nav > section:nth-child(2) {
+    margin-right: 200px;
+    flex-basis: 2;
+    justify-content: end;
 }
 
 nav > section > ul > li {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
     font-size: 14px;
     color: black;
