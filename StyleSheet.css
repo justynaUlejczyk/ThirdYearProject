@@ -177,6 +177,7 @@ input[type="text"] {
 
 .inline {
     display: flex;
+    gap: 10px;
 }
 #post-options {
     justify-content: center;
@@ -192,7 +193,7 @@ input[type="text"] {
 
 #post-line {
     justify-content: center;
-    margin: 20px auto 0px auto;
+    margin: 15px auto 0px auto;
     align-items: center;
 }
 #Banner {
