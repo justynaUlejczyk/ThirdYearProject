@@ -163,8 +163,9 @@ input[type="text"] {
 .feed {
     margin: 0 100px;
     width: 40%;
-    height: 120px;
     background-color: red;
+    display: flex;
+    flex-direction: column;
 }
 
 .avatar {
@@ -175,9 +176,38 @@ input[type="text"] {
     background-size: cover;
 }
 
+.post-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+}
+
+.posts {
+    margin-top: 80px;
+    background-color: blue;
+    width: 100%;
+    height: 540px;
+}
+
+.user-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
 .inline {
     display: flex;
     gap: 10px;
+}
+
+.start-post {
+    height: 120px;
+    width: 100%;
+    background-color: orange;
+}
+
+.rounded {
+    border-radius: 25px;
 }
 #post-options {
     justify-content: center;
