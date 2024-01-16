@@ -7,6 +7,9 @@ body{
     min-height: 100vh;
 }
 
+a {
+    text-decoration: none;
+}
 
 main{
     flex: 1;
@@ -183,7 +186,6 @@ main section{
     color: black;
     text-align: center;
     padding: 14px 14px;
-    text-decoration: none;
 }
 .topNav a button{
     float: right;
