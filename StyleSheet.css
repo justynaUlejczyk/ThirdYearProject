@@ -163,7 +163,6 @@ input[type="text"] {
 .feed {
     margin: 0 100px;
     width: 40%;
-    background-color: red;
     display: flex;
     flex-direction: column;
 }
@@ -184,15 +183,22 @@ input[type="text"] {
 
 .posts {
     margin-top: 80px;
-    background-color: blue;
+    background-color: #ebebeb;
     width: 100%;
-    height: 540px;
+    height: 520px;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px -6px #181818;
+}
+
+.post-image {
+    width: 100%;
 }
 
 .user-container {
     width: 100%;
     display: flex;
     align-items: center;
+    margin: 12px;
 }
 
 .inline {
@@ -203,12 +209,35 @@ input[type="text"] {
 .start-post {
     height: 120px;
     width: 100%;
-    background-color: orange;
+    background-color: #ebebeb;
+    box-shadow: 0 4px 8px -6px #181818;
 }
 
 .rounded {
     border-radius: 25px;
 }
+
+.choices {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+}
+.post-options {
+    display: flex;
+    gap: 25px;
+    margin-left: 10px;
+}
+
+.pin {
+    margin-right: 10px;
+}
+
+.icons {
+    width: 32px;
+    height: 32px;
+}
+
 #post-options {
     justify-content: center;
     gap: 50px;
@@ -219,6 +248,7 @@ input[type="text"] {
     width: 60%;
     height: 40px;
     border-radius: 25px;
+    outline: none;
 }
 
 #post-line {
