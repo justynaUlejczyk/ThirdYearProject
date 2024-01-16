@@ -31,6 +31,7 @@ a {
 .navbar {
     overflow: hidden;
     background-color: darkgray;
+    height: 50px;
 }
   
 .navbar a {
@@ -56,7 +57,7 @@ a {
 
 .dropdown-content {
     display: none;
-    margin-top:10px ;
+    margin-top:50px ; 
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
