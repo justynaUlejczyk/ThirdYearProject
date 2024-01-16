@@ -7,6 +7,20 @@ body{
     min-height: 100vh;
 }
 
+
+nav a {
+    padding: 10px;
+    background-color: darkgrey;
+    display: flex;
+    float: right;
+}
+nav button {
+    padding: 10px;
+    background-color: darkgrey;
+
+    float: right;
+}
+
 a {
     text-decoration: none;
 }
@@ -39,6 +53,7 @@ a {
 
 .dropdown-content {
     display: none;
+    margin-top: ;
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
@@ -102,7 +117,7 @@ main section{
     border: 0.5px solid;
     border-color: grey;
 }
-
+    
 
 .left {
     float: left;
@@ -160,21 +175,6 @@ main section{
     /* flex-grow: 5; */
     width: 100%;
 }
-#searchBar{
-    width: 100px;
-    background-color: darkgray;
-}
-
-#search:hover {
-        width: 300px;
-        background-color: white;
-}
-
-#searchInput{
-    display: none;
-}
-
-
 
 
 #tile2{
