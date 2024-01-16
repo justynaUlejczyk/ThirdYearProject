@@ -7,10 +7,10 @@ body {
 }
 
 nav {
-    padding: 10px;
     background-color: #ebebeb;
     display: flex;
     /* flex: 1; */
+    height: 60px;
 }
 
 nav ul {
@@ -236,6 +236,11 @@ input[type="text"] {
 .icons {
     width: 32px;
     height: 32px;
+}
+
+.like {
+    filter: invert(25%) sepia(49%) saturate(7446%) hue-rotate(352deg)
+        brightness(95%) contrast(131%);
 }
 
 #post-options {
