@@ -398,11 +398,12 @@ input[type="text"] {
 
     #tile3 {
         width: 200px;
-        height: 200px;
+        height: 250px;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         align-items: end;
+        gap: 20px;
     }
 }
 
