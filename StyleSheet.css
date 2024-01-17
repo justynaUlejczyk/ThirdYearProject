@@ -18,28 +18,28 @@ nav {
     height: 50px;
 }
 
-nav > section {
-    flex-grow: 1;
+nav > section:first-child {
     display: flex;
     align-items: center;
-}
-
-nav > section:first-child {
-    background-color: red;
-    max-width: 376px;
+    max-width: 564px;
     flex: 1;
     margin-left: auto;
 }
 
 nav > section:nth-child(2) {
-    background-color: yellow;
-    max-width: 752px;
-    display: flex;
-    flex-direction: row;
-    flex: 2;
     margin-right: auto;
+    display: flex;
+    align-items: center;
+    max-width: 564px;
+    flex: 3;
     justify-content: end;
     align-items: center;
+}
+
+nav > section:nth-child(2) > ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 nav > section > ul > li {
@@ -76,19 +76,42 @@ main {
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
-    flex: 1;
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;
 }
 
-main section {
+main profile {
+    max-width: 225px;
+    width: 25%;
+    min-height: 300px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    flex: 1;
+}
+
+main groups {
+    max-width: 225px;
+    min-height: 275px;
+    max-height: 300px;
+    height: 100%;
     width: 25%;
     box-sizing: border-box;
     border-radius: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
 }
-main section h1 {
-    text-align: center;
+
+#tile3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
 }
 
 button {
@@ -157,11 +180,6 @@ button {
     box-shadow: 0 4px 8px -6px #181818;
 }
 
-#tile3 {
-    width: 200px;
-    height: 200px;
-}
-
 .navBuffer {
     /* display: inline; */
     /* background-color: red; */
@@ -224,7 +242,8 @@ button {
 }
 
 .feed {
-    margin: 0 100px;
+    flex: 4;
+    margin: 0 50px;
     width: 60%;
     display: flex;
     flex-direction: column;
@@ -311,6 +330,16 @@ button {
         brightness(95%) contrast(131%);
 }
 
+.groupButton {
+    display: flex;
+    gap: 10px;
+}
+.groupButton button {
+    background-color: grey;
+    height: 50px;
+    width: 50px;
+}
+
 #post-options {
     justify-content: center;
 }
@@ -359,71 +388,39 @@ input[type="text"] {
     width: 100%;
 }
 #search {
-    /* position: relative; */
-    /* float: left; */
-    /* flex-grow: 5; */
-    /* margin-left: auto; */
-    /* margin-right: auto; */
-    /* background-color: aliceblue; */
-    /* padding: 0px; */
     width: 100px;
 }
 
-#tile2 {
-    width: 48%;
-    box-sizing: border-box;
-}
-
-/* hides profile and group sections on home page for smaller screen sizes */
-@media only screen and (max-width: 800px) {
-    #tile1 {
-        display: none;
-    }
-    #tile2 {
-        width: 98%;
-    }
-    #tile3 {
-        display: none;
+@media only screen and (max-width: 1200px) {
+    main {
+        max-width: 960px;
     }
 }
-/* left and right side tiles have a fixed width after a certain minimum window size and stick close to main section */
-@media only screen and (min-width: 960px) {
-    #tile1 {
-        width: 200px;
-        border-radius: 10px;
-    }
-    /* #tile2 {
-        
-    } */
 
-    #tile3 {
-        width: 200px;
-        height: 250px;
+@media only screen and (max-width: 1150px) {
+    nav > section:first-child {
+        padding-left: 5%;
+    }
+
+    nav > section:nth-child(2) {
+        padding-right: 5%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    main groups {
+        display: none;
+    }
+
+    main profile {
+        display: none;
+    }
+
+    .feed {
+        flex: 4;
+        margin: 0 5%;
+        width: 60%;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
-        align-items: end;
-        gap: 20px;
     }
-}
-
-@media only screen and (min-width: 920px) {
-    .navBuffer {
-        /* background-color: aquamarine; */
-        flex-grow: 60;
-    }
-    .sideBuffer {
-        /* background-color: blue; */
-        flex-grow: 20;
-    }
-}
-
-.groupButton {
-    display: flex;
-    gap: 10px;
-}
-.groupButton button {
-    background-color: grey;
-    height: 50px;
-    width: 50px;
 }
