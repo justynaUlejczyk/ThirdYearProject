@@ -351,9 +351,10 @@ input[type="text"] {
     margin: -80px auto 0px auto;
 }
 
-#viewMore {
-    margin-bottom: 10px;
+#viewMore{
+    margin: 6px 0px 10px 40px;
 }
+
 
 #linksBar {
     width: 100%;
