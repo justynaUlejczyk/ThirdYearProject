@@ -225,7 +225,7 @@ button {
 
 .feed {
     margin: 0 100px;
-    width: 40%;
+    width: 60%;
     display: flex;
     flex-direction: column;
 }
@@ -387,7 +387,7 @@ input[type="text"] {
     }
 }
 /* left and right side tiles have a fixed width after a certain minimum window size and stick close to main section */
-@media only screen and (min-width: 1250px) {
+@media only screen and (min-width: 960px) {
     #tile1 {
         width: 200px;
         border-radius: 10px;
