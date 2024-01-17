@@ -409,3 +409,16 @@ input[type="text"] {
         flex-grow: 20;
     }
 }
+
+.groupButton{
+    display: flex;
+}
+.groupButton button{
+    background-color: grey;
+    height: 50px;
+    width: 50px;
+    margin: 10px 15px 10px 15px;
+}
+.groupButton p{
+    margin-top: 23px;
+}
