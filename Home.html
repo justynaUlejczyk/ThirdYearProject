@@ -1,10 +1,10 @@
-
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Homepage</title>
-    <link rel="stylesheet" href = "StyleSheet.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="StyleSheet.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <!-- test commit -->
@@ -12,84 +12,123 @@
 <!-- test commit - branch demo -->
 
 <body>
-   
-  
     <nav>
+        <section>
+            <img src="icons/magnifer-svgrepo-com.svg" alt="search" width="35" />
+        </section>
+        <section>
+            <ul class="linksBar">
+                <li>
+                    <a href="Home.html">
+                        <img src="icons/home-svgrepo-com.svg" alt="home" width="35" />Home</a>
+                </li>
+                <li>
+                    <a href="Group.html">
+                        <img src="icons/users-group-two-rounded-svgrepo-com.svg" alt="groups" width="35" />Groups</a>
+                </li>
+                <li>
+                    <a href="Messages.html">
+                        <img src="icons/chat-round-line-svgrepo-com.svg" alt="messages" width="35" />Messages</a>
+                </li>
+                <li>
+                    <div class="dropdown">
+                        <button class="dropButton">
+                            <img src="icons/bell-svgrepo-com.svg" alt="notifications" width="35" />
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                        </div>
+                    </div>
+                    Notifications
+                </li>
 
+                <a>
+                    <img class="nav-profile" src="icons/cat.jpg" />
+                </a>
 
-
-        <div class="navbar">
-        
-            <img src="icons/search.svg" alt="Search" >
-
-
-            <a href="Profile.html"> <img src ="icons/User.svg" alt="profile" > </a>
-            <a href="Group.html"> <img src ="icons/Group.svg" alt="groups" > </a>
-            <a href="Messages.html"> <img src ="icons/comment.svg" alt="messages" ></a>
-            <div class="dropdown">
-                <button class="dropbtn"><img src ="icons/Bell.svg" alt="Notifications" >
-                
-                </button>
-                <div class="dropdown-content">
-                  <a href="#">Link 1</a>
-                  <a href="#">Link 2</a>
-                  <a href="#">Link 3</a>
-                </div>
-              </div> 
-            <a href="Home.html"> <img src ="icons/Home.svg" alt="home" > </a>
-            </div>
+            </ul>
+        </section>
     </nav>
 
     
     <main>
         <!-- profile tile -->
         <section id="tile1" class="tile">
-            <img class ="pfp" src = "icons/cat.jpg" alt="pfp" width = "100" height="100">
+            <div id="Banner"></div>
+            <img class="pfp" src="icons/cat.jpg" alt="pfp" width="100" height="100" />
+            <div id="pfp-outline"></div>
             <p>Alex Alexandra</p>
             <a class="tileLink1" href="Group.html"> Groups</a>
             <a class="tileLink1" href="Messages.html"> Messages</a>
             <a class="tileLink1" href="notifs.html"> Notifications</a>
-
-        </section>   
+        </section>
 
         <!-- Home/main feed tile -->
-        <section id="tile2" class="tile">
-            <section class ="post">
-            <p>hello</p>
+        <feed class="feed">
+            <section class="rounded start-post">
+                <div id="post-line" class="inline">
+                    <div class="avatar" style="
+                                background-image: url('icons/cat.jpg');
+                            "></div>
+                    <input type="text" id="make-post" placeholder="Start a Post" />
+                </div>
+                <div class="create-post-options">
+                    <div class="inline">
+                        <img src="icons/Img_out-box_Fill.svg" />
+                        <h4>Media</h4>
+                    </div>
+                    <div class="inline">
+                        <img src="icons/Order.svg" />
+                        <h4>Article</h4>
+                    </div>
+                </div>
             </section>
 
-            <section class ="post">
-                <p>hello</p>
-            </section>
-            
-            <section class ="post">
-            <p>hello</p>
-            </section>
+            <!-- Posts-->
 
-            <section class ="post">
-            <p>hello</p>
-            </section>
-
-   
-         </section>
+            <post class="posts">
+                <div class="user-container">
+                    <img src="icons/cat.jpg" class="post-avatar" />
+                    <div class="user-post-name">Michael Schumacher</div>
+                </div>
+                <img class="post-image" src="icons/Rectangle 4164.png" />
+                <div class="choices">
+                    <div class="post-options">
+                        <button>
+                            <img src="icons/heart-svgrepo-com.svg" alt="" class="like icons" />
+                        </button>
+                        <button>
+                            <img src="icons/chat-round-line-svgrepo-com.svg" alt="" class="comment icons" />
+                        </button>
+                        <button>
+                            <img src="icons/plain-svgrepo-com.svg" alt="" class="send icons" />
+                        </button>
+                    </div>
+                    <button>
+                        <img src="icons/pin-svgrepo-com.svg" alt="" class="pin icons" />
+                    </button>
+                </div>
+            </post>
+        </feed>
 
         <!-- Collab group tile -->
         <!-- <section id="tile3" class="tile">
             group containers have a link for a specific group a user is a member of.
             <div class="groupContainer">
-                    <a class="tileLink1 big" href="#">Small name 1</a>
-            </div >
-            <div class="groupContainer">
-                    <a class="tileLink1 big" href="#">Larger name 2</a>
+                <a class="tileLink1 big" href="#">Small name 1</a>
             </div>
             <div class="groupContainer">
-                    <a class="tileLink1 big" href="#">Even larger name 3</a>
+                <a class="tileLink1 big" href="#">Larger name 2</a>
+            </div>
+            <div class="groupContainer">
+                <a class="tileLink1 big" href="#">Even larger name 3</a>
             </div>
             view more send the user to the groups page
             <div id="viewMore">
                 <a class="tileLink2" href="Group.html">View More</a>
-            </div>
-            
+            </div>        
         </section> -->
 
         <section id = "tile3">
@@ -109,12 +148,7 @@
                 <a class="tileLink2" href="Group.html">View More</a>
             </div>
         </section>
-    </main>     
-       
- 
-  
- 
+    </main>
 </body>
-
 
 </html>
