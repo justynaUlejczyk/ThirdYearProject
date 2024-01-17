@@ -1,10 +1,14 @@
-<?php # CONNECT TO MySQL DATABASE.
-# Connect on 'localhost' for user to database 'site_db'
-$link = mysqli_connect('localhost','user-NAME','password',
-'site_database'); 
-if (!$link) { 
+<?php # CONNECT TO PostgreSQL DATABASE.
+$host = "host";
+$port = "port";
+$dbname = "dbname";
+$user = "user";
+$password = "password";
+
+$conn = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
+if (!$conn) { 
 # Display error masseage, if fail 
-die('Could not connect to MySQL: ' . mysqli_error()); 
+die('Could not connect to MySQL: ' . pg_last_error()); 
 } 
 #testing connection, after connection esatblished - delete; 
 echo 'Connection OK'; 
