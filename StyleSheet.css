@@ -34,6 +34,9 @@ nav > section:nth-child(2) {
     flex-basis: 2;
     justify-content: end;
 }
+nav button {
+    padding: 10px;
+    background-color: darkgrey;
 
 nav > section > ul > li {
     display: flex;
@@ -77,8 +80,10 @@ main section {
     box-sizing: border-box;
     border-radius: 10px;
 }
-main section h1 {
-    text-align: center;
+
+.dropdown {
+    float: right;
+    overflow: hidden;
 }
 
 button {
@@ -119,11 +124,26 @@ button {
 
 .dropdown-content {
     display: none;
+    margin-top:50px ; 
     position: absolute;
     margin-top: 20px;
     margin-left: -100px;
     width: 200px;
     z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+
+.dropdown-content a:hover {
+    background-color: darkgray;
 }
 
 .dropdown:hover .dropdown-content {
@@ -132,13 +152,25 @@ button {
     color: white;
 }
 
-.dropdown-content a {
-    padding: 16px;
+a {
     text-decoration: none;
-    text-align: left;
-    display: block;
-    color: black;
 }
+
+main{
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+
+}
+
+main section{
+    width: 25%;
+    box-sizing: border-box;
+    border-radius: 10px;      
+}
+
 
 .tile {
     background-color: var(--white);
@@ -147,16 +179,20 @@ button {
     box-shadow: 0 4px 8px -6px #181818;
 }
 
-.navBuffer {
-    /* display: inline; */
-    /* background-color: red; */
-    flex-shrink: 15;
-    /* flex-grow: 5; */
-    /* flex: auto; */
-    width: 360px;
-    /* height: 15px; */
-    /* padding: 10px; */
+    /*homepage posts*/
+.post{
+    display: flex;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 20px;
+    width: 95%;
+    height: 150px;
+    border: 0.5px solid;
+    border-color: grey;
 }
+    
+
 .left {
     float: left;
 }
@@ -193,7 +229,7 @@ button {
     display: table;
     color: black;
     border-bottom-style: solid;
-    border-bottom-color: limegreen;
+    border-bottom-color: grey;
     border-bottom-width: 2px;
     /* background-color: aquamarine; */
 }
@@ -344,6 +380,7 @@ input[type="text"] {
 #linksBar {
     width: 100%;
 }
+
 #search {
     /* position: relative; */
     /* float: left; */
@@ -358,8 +395,15 @@ input[type="text"] {
 #tile2 {
     width: 48%;
     box-sizing: border-box;
+    height: auto;
+
+}
+#tile3{
+    width: 200px;
+    height: 200px;
 }
 
+ 
 /* hides profile and group sections on home page for smaller screen sizes */
 @media only screen and (max-width: 800px) {
     #tile1 {
@@ -372,6 +416,7 @@ input[type="text"] {
         display: none;
     }
 }
+
 /* left and right side tiles have a fixed width after a certain minimum window size and stick close to main section */
 @media only screen and (min-width: 1250px) {
     #tile1 {
@@ -399,4 +444,48 @@ input[type="text"] {
         /* background-color: blue; */
         flex-grow: 20;
     }
+}
+
+
+.topNav{
+    overflow: hidden;
+    background-color: darkgrey;
+}
+
+.topNav a{
+    float: right;
+    display: flex;
+    color: black;
+    text-align: center;
+    padding: 14px 14px;
+}
+.topNav a button{
+    float: right;
+    display: flex;
+    color: black;
+    text-align: center;
+    padding: 14px 14px;
+    text-decoration: none;
+}
+
+.topnav input[type=text] {
+    float: left;
+    padding: 6px;
+    margin-top: 8px;
+    margin-right: 16px;
+    border: none;
+    font-size: 17px;
+  }
+
+.groupButton{
+    display: flex;
+}
+.groupButton button{
+    background-color: grey;
+    height: 50px;
+    width: 50px;
+    margin: 10px 15px 10px 15px;
+}
+.groupButton p{
+    margin-top: 23px;
 }
