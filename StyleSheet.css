@@ -423,6 +423,16 @@ input[type="text"] {
         display: flex;
         flex-direction: column;
     }
+
+    nav > section > ul > li > a > span,
+    nav > section > ul > li > span {
+        display: none;
+    }
+
+    nav img {
+        width: 24px;
+        height: 24px;
+    }
 }
 
 @media only screen and (max-width: 800px) {
