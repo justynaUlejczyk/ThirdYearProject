@@ -346,10 +346,6 @@ input[type="text"] {
     margin: -80px auto 0px auto;
 }
 
-#viewMore {
-    margin-bottom: 10px;
-}
-
 #linksBar {
     width: 100%;
 }
@@ -385,17 +381,19 @@ input[type="text"] {
 @media only screen and (min-width: 1250px) {
     #tile1 {
         width: 200px;
-        margin-left: auto;
-        margin-right: 12px;
         border-radius: 10px;
     }
     /* #tile2 {
         
     } */
+
     #tile3 {
         width: 200px;
-        margin-left: 12px;
-        margin-right: auto;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: end;
     }
 }
 
@@ -410,15 +408,15 @@ input[type="text"] {
     }
 }
 
-.groupButton{
+.groupButton {
     display: flex;
+    gap: 10px;
 }
-.groupButton button{
+.groupButton button {
     background-color: grey;
     height: 50px;
     width: 50px;
-    margin: 10px 15px 10px 15px;
 }
-.groupButton p{
-    margin-top: 23px;
+
+#viewMore {
 }
