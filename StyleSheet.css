@@ -157,6 +157,11 @@ button {
     box-shadow: 0 4px 8px -6px #181818;
 }
 
+#tile3 {
+    width: 200px;
+    height: 200px;
+}
+
 .navBuffer {
     /* display: inline; */
     /* background-color: red; */
@@ -344,6 +349,10 @@ input[type="text"] {
     border-radius: 100px;
     overflow: 1;
     margin: -80px auto 0px auto;
+}
+
+#viewMore {
+    margin-bottom: 10px;
 }
 
 #linksBar {
