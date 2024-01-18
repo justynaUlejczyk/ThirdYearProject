@@ -125,7 +125,7 @@ nav .fa{
 
 nav form:hover,
 form:valid{
-    width:180px;
+    width:80%;
     cursor: pointer;
 }
 
