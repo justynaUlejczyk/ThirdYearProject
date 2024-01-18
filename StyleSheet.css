@@ -4,7 +4,7 @@
     --offwhite: #ebebeb;
     --white: white;
 }
-
+/* general */
 body {
     margin: 0px;
     font-family: Arial, sans-serif;
@@ -12,6 +12,11 @@ body {
     min-height: 100vh;
 }
 
+a {
+    text-decoration: none;
+}
+
+/* Nav Bar */
 nav {
     margin: 0;
     width: 100%;
@@ -71,6 +76,7 @@ nav img {
 
 
 
+/*search Bar */
 nav form{
     position: relative;
     top: 50%;
@@ -97,7 +103,7 @@ nav input{
     outline: 0;
     border: 0;
     display: none;
-    font-size: 1em;
+    font-size: 15px;
     border-radius: 20px;
     padding: 0 20px;
 }
@@ -119,7 +125,7 @@ nav .fa{
 
 nav form:hover,
 form:valid{
-    width: 200px;
+    width:180px;
     cursor: pointer;
 }
 
@@ -134,10 +140,8 @@ form:valid .fa{
     color: white;
 }
 
-a {
-    text-decoration: none;
-}
 
+/* main */
 main {
     max-width: 1128px;
     margin-top: 20px;
