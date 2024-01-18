@@ -6,6 +6,8 @@
     --gray: #c2c2c2;
 }
 
+/* general use */
+
 body {
     margin: 0px;
     font-family: Arial, sans-serif;
@@ -14,6 +16,45 @@ body {
     overflow-x: hidden;
 }
 
+a {
+    text-decoration: none;
+}
+
+button {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    text-align: inherit;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    outline: none;
+}
+
+.tile {
+    background-color: var(--white);
+    height: 100%;
+    text-align: center;
+    box-shadow: 0 4px 8px -6px #181818;
+}
+
+.inline {
+    display: flex;
+    gap: 10px;
+}
+
+.rounded {
+    border-radius: 10px;
+}
+
+input[type="text"] {
+    padding-left: 15px;
+    font-size: 16px;
+    border: 1px solid var(--gray);
+}
+
+/* nav */
 nav {
     position: fixed;
     margin: 0;
@@ -142,91 +183,6 @@ form:valid .fa {
     color: white;
 }
 
-subnav {
-    top: 0;
-    background-color: var(--white);
-    padding: 10px;
-    width: 100%;
-    height: 32px;
-    display: none;
-}
-
-subnav ul {
-    padding: 0;
-    margin: 0px 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    list-style-type: none;
-}
-
-a {
-    text-decoration: none;
-}
-
-main {
-    max-width: 1128px;
-    margin-top: 75px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: space-between;
-    box-sizing: border-box;
-}
-
-main profile {
-    max-width: 225px;
-    width: 25%;
-    min-height: 300px;
-    box-sizing: border-box;
-    border-radius: 10px;
-    flex: 1;
-}
-
-profile > div {
-    gap: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-}
-
-main groups {
-    max-width: 225px;
-    min-height: 275px;
-    max-height: 300px;
-    height: 100%;
-    width: 25%;
-    box-sizing: border-box;
-    border-radius: 10px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 10px;
-}
-
-#tile3 {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    gap: 20px;
-}
-
-button {
-    background: none;
-    border: none;
-    color: inherit;
-    font: inherit;
-    text-align: inherit;
-    cursor: pointer;
-    padding: 0;
-    margin: 0;
-    outline: none;
-}
-
 .nav-profile {
     width: 35px;
     height: 35px;
@@ -272,11 +228,107 @@ button {
     color: black;
 }
 
-.tile {
+/* secondary nav for mobile use mainly */
+subnav {
+    top: 0;
     background-color: var(--white);
+    padding: 10px;
+    width: 100%;
+    height: 32px;
+    display: none;
+}
+
+subnav ul {
+    padding: 0;
+    margin: 0px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none;
+}
+
+/* main */
+
+main {
+    max-width: 1128px;
+    margin-top: 75px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+/* main profile */
+main profile {
+    max-width: 225px;
+    width: 25%;
+    min-height: 300px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    flex: 1;
+}
+
+profile > div {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.pfp {
+    margin-top: -37.5px;
+    width: 75px;
+    height: 75px;
+    border-radius: 100%;
+}
+
+#occupation {
+    font-size: 14px;
+    margin-top: 0;
+}
+
+#Banner {
+    height: 60px;
+    width: 100%;
+    background-color: black;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+}
+
+#pfp-outline {
+    height: 80px;
+    width: 80px;
+    background-color: var(--white);
+    border-radius: 100px;
+    overflow: 1;
+    margin: -80px auto 0px auto;
+}
+
+/* main group */
+main groups {
+    max-width: 225px;
+    min-height: 275px;
+    max-height: 300px;
     height: 100%;
-    text-align: center;
-    box-shadow: 0 4px 8px -6px #181818;
+    width: 25%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
+}
+
+#tile3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
 }
 
 .groupContainer {
@@ -287,16 +339,19 @@ button {
     margin-bottom: 20px;
     width: 80%;
     height: 40px;
-    /* background-color: antiquewhite; */
 }
 
-.pfp {
-    margin-top: -37.5px;
-    width: 75px;
-    height: 75px;
-    border-radius: 100%;
+.groupButton {
+    display: flex;
+    gap: 10px;
+}
+.groupButton button {
+    background-color: grey;
+    height: 50px;
+    width: 50px;
 }
 
+/* main feed */
 .feed {
     flex: 4;
     margin: 0 50px;
@@ -312,6 +367,7 @@ button {
     background-size: cover;
 }
 
+/* main feed posts */
 .post-avatar {
     width: 40px;
     height: 40px;
@@ -339,20 +395,11 @@ button {
     margin: 12px 20px;
 }
 
-.inline {
-    display: flex;
-    gap: 10px;
-}
-
 .start-post {
     height: 120px;
     width: 100%;
     background-color: var(--white);
     box-shadow: 0 4px 8px -6px #181818;
-}
-
-.rounded {
-    border-radius: 10px;
 }
 
 .choices {
@@ -386,24 +433,8 @@ button {
         brightness(95%) contrast(131%);
 }
 
-.groupButton {
-    display: flex;
-    gap: 10px;
-}
-.groupButton button {
-    background-color: grey;
-    height: 50px;
-    width: 50px;
-}
-
 #post-options {
     justify-content: center;
-}
-
-input[type="text"] {
-    padding-left: 15px;
-    font-size: 16px;
-    border: 1px solid var(--gray);
 }
 
 #make-post {
@@ -418,42 +449,15 @@ input[type="text"] {
     margin: 15px auto 0px auto;
     align-items: center;
 }
-#Banner {
-    height: 60px;
-    width: 100%;
-    background-color: black;
-    border-radius: 10px 10px 0 0;
-    overflow: hidden;
-}
 
-#pfp-outline {
-    height: 80px;
-    width: 80px;
-    background-color: var(--white);
-    border-radius: 100px;
-    overflow: 1;
-    margin: -80px auto 0px auto;
-}
-
-#viewMore {
-    margin-bottom: 10px;
-}
-
-#search {
-    width: 100%;
-}
-
-#occupation {
-    font-size: 14px;
-    margin-top: 0;
-}
-
+/* Screen sizes between 1150 and 1200 */
 @media only screen and (max-width: 1200px) {
     main {
         max-width: 960px;
     }
 }
 
+/* Screen sizes between 1000 and 1150 */
 @media only screen and (max-width: 1150px) {
     nav > section:first-child {
         padding-left: 5%;
@@ -464,6 +468,7 @@ input[type="text"] {
     }
 }
 
+/* Screen sizes between 800 and 1000 */
 @media only screen and (max-width: 1000px) {
     main groups {
         margin: 0 5% 0 2%;
@@ -492,6 +497,7 @@ input[type="text"] {
     }
 }
 
+/* Screen sizes 800 and down */
 @media only screen and (max-width: 800px) {
     main {
         margin-top: 25px;
@@ -502,7 +508,7 @@ input[type="text"] {
     }
 
     nav {
-        border-top: solid 1px var(--gra);
+        border-top: solid 1px var(--gray);
         z-index: 999;
         top: auto;
         bottom: 0;
@@ -534,13 +540,6 @@ input[type="text"] {
 
     nav > section:nth-child(2) {
         padding: none;
-    }
-
-    .linksBar {
-        justify-content: space-between;
-        align-items: center;
-        margin: 0;
-        padding: 0;
     }
 
     subnav {
