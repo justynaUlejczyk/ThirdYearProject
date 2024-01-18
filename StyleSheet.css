@@ -501,6 +501,26 @@ input[type="text"] {
     }
 }
 
+
+
+.groupContainer {
+    display: grid;
+    grid-template-columns: auto auto auto ;
+    padding: 10px;
+  }
+  .group {
+    background-color: white;
+    padding: 80px;
+    margin: 20px;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .groupName{
+    text-align: center;
+  }
+
+
 .groupButton {
     display: flex;
     gap: 10px;

@@ -1,87 +1,96 @@
-
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Homepage</title>
-    <link rel="stylesheet" href = "StyleSheet.css">
+    <link rel="stylesheet" href="StyleSheet.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 
 <!-- test commit -->
 
-<body>
-   
-    
-    <nav>
-        <section class="sideBuffer left"></section>
-        <section>
-            <ul id="search">
-                <img src ="icons/Group.png" alt="search" width = "35">
-            </ul>
-        </section>
-        <section class="navBuffer"></section>
-        <section>
-            <ul id="linksBar">
-                <a href="Home.html"> <img src ="icons/Home.png" alt="home" width = "35"> </a>
-                <a href="Group.html"> <img src ="icons/Group.png" alt="groups" width = "35"> </a>
-                <a href="Messages.html"> <img src ="icons/Message.png" alt="messages" width = "35"></a>
-                <div class="dropdown">
-                    <button class="dropButton"><img src = "icons/Bell.png" alt="notifications" width="35"></button>
-                    <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
-                    </div>
+<!-- test commit - branch demo -->
 
-                </div>
-                <a href="Profile.html"> <img src ="icons/Profile.png" alt="profile" width = "35"> </a>
+<body>
+
+    <nav>
+
+
+        <section>
+            <form id ="searchForm" action="">
+                <input id ="searchInput" type="search" required>
+                <i class="fa fa-search"></i>
+              </form>     
+        </section>
+
+        <section>
+            <ul class="linksBar">
+                <li>
+                    <a href="Home.html">
+                        <img src="icons/home-svgrepo-com.svg" alt="home" width="35" />Home</a>
+                </li>
+                <li>
+                    <a href="Group.html">
+                        <img src="icons/users-group-two-rounded-svgrepo-com.svg" alt="groups" width="35" />Groups</a>
+                </li>
+                <li>
+                    <a href="Messages.html">
+                        <img src="icons/chat-round-line-svgrepo-com.svg" alt="messages" width="35" />Messages</a>
+                </li>
+                <li>
+                    <div class="dropdown">
+                        <button class="dropButton">
+                            <img src="icons/bell-svgrepo-com.svg" alt="notifications" width="35" />
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                        </div>
+                    </div>
+                    Notifications
+                </li>
+
+                <a>
+                    <img class="nav-profile" src="icons/cat.jpg" />
+                </a>
+
             </ul>
         </section>
-        <section class="sideBuffer right"></section>
     </nav>
-    
+
 
     <main>
-       
         <!-- profile tile -->
-        <section id="tile1" class="tile">
-            <img class ="pfp" src = "cat.jpg" alt="pfp" width = "100" height="100">
-            <p>Alex Alexandra</p>
-            <a class="tileLink1" href="Group.html"> Groups</a>
-            <a class="tileLink1" href="Messages.html"> Messages</a>
-            <a class="tileLink1" href="notifs.html"> Notifications</a>
+        <section class="groupContainer">
 
-        </section>   
-
-        <!-- Home/main feed tile -->
-        <section id="tile2" class="tile">
-            <h1>Group page</h1>
-            <p>A home page (or homepage) is the main web page of a website. The term may also refer to the start page shown in a web browser when the application first opens. Usually, the home page is located at the root of the website's domain or subdomain. For example, if the domain is example.com, the home page is likely located at "www.example.com/".</p>
-        </section>
-
-        <!-- Collab group tile -->
-        <section id="tile3" class="tile">
-            <!-- group containers have a link for a specific group a user is a member of. -->
-            <div class="groupContainer">
-                    <a class="tileLink1 big" href="#">Small name 1</a>
-            </div >
-            <div class="groupContainer">
-                    <a class="tileLink1 big" href="#">Larger name 2</a>
-            </div>
-            <div class="groupContainer">
-                    <a class="tileLink1 big" href="#">Even larger name 3</a>
-            </div>
-            <!-- view more send the user to the groups page -->
-            <div id="viewMore">
-                <a class="tileLink2" href="Group.html">View More</a>
-            </div>
+            <section class="group">
+            </section>
+            <section class="group">
+            </section>
             
+            <section class="group">
+            </section>
+            <section class="group">
+            </section>
+            <section class="group">
+            </section>
+            <section class="group">
+            </section>
+            
+
+
+
         </section>
-    </main>     
-       
- 
-  
- 
+
+
+
+
+     </main>
+
+
+
 </body>
 
 
