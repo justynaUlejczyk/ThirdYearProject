@@ -13,6 +13,29 @@
 
 <body>
 
+    <subnav>
+        <ul>
+            <li>
+                <a>
+                    <img src="icons/cat.jpg" class="nav-profile">
+                </a>
+            </li>
+
+            <li>
+                <div class="dropdown">
+                    <button class="dropButton">
+                        <img class="noti" src="icons/bell-svgrepo-com.svg" alt="notifications" width="35" />
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </subnav>
+
     <nav>
         <section>
             <img src="icons/magnifer-svgrepo-com.svg" alt="search" width="35" />
@@ -23,6 +46,16 @@
                     <a href="Home.html">
                         <img src="icons/home-svgrepo-com.svg" alt="home" width="35" />
                         <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <img src="icons/magnifer-svgrepo-com.svg">
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <img src="icons/add-square-svgrepo-com.svg">
                     </a>
                 </li>
                 <li>
@@ -60,6 +93,8 @@
     </nav>
 
 
+
+
     <main>
         <!-- profile tile -->
         <profile class="tile">
@@ -95,6 +130,30 @@
             </section>
 
             <!-- Posts-->
+
+            <post class="posts">
+                <div class="user-container">
+                    <img src="icons/cat.jpg" class="post-avatar" />
+                    <div class="user-post-name">Michael Schumacher</div>
+                </div>
+                <img class="post-image" src="icons/Rectangle 4164.png" />
+                <div class="choices">
+                    <div class="post-options">
+                        <button>
+                            <img src="icons/heart-svgrepo-com.svg" alt="" class="like icons" />
+                        </button>
+                        <button>
+                            <img src="icons/chat-round-line-svgrepo-com.svg" alt="" class="comment icons" />
+                        </button>
+                        <button>
+                            <img src="icons/plain-svgrepo-com.svg" alt="" class="send icons" />
+                        </button>
+                    </div>
+                    <button>
+                        <img src="icons/pin-svgrepo-com.svg" alt="" class="pin icons" />
+                    </button>
+                </div>
+            </post>
 
             <post class="posts">
                 <div class="user-container">

@@ -1,6 +1,7 @@
 :root {
     --offwhite: #ebebeb;
     --white: white;
+    --gray: #c2c2c2;
 }
 
 body {
@@ -8,10 +9,13 @@ body {
     font-family: Arial, sans-serif;
     background-color: var(--offwhite);
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 nav {
+    position: fixed;
     margin: 0;
+    top: 0;
     width: 100%;
     background-color: var(--white);
     display: flex;
@@ -53,6 +57,11 @@ nav > section > ul > li {
         contrast(102%);
 }
 
+nav > section > ul > li:nth-child(2),
+nav > section > ul > li:nth-child(3) {
+    display: none;
+}
+
 nav > section > ul > li > a {
     display: flex;
     flex-direction: column;
@@ -67,13 +76,31 @@ nav img {
     width: 20px;
 }
 
+subnav {
+    top: 0;
+    background-color: var(--white);
+    padding: 10px;
+    width: 100%;
+    height: 32px;
+    display: none;
+}
+
+subnav ul {
+    padding: 0;
+    margin: 0px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none;
+}
+
 a {
     text-decoration: none;
 }
 
 main {
     max-width: 1128px;
-    margin-top: 20px;
+    margin-top: 75px;
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -134,8 +161,6 @@ button {
 }
 
 .linksBar {
-    width: 55%;
-    display: flex;
     justify-content: space-between;
     align-items: center;
 }
@@ -180,27 +205,6 @@ button {
     box-shadow: 0 4px 8px -6px #181818;
 }
 
-.navBuffer {
-    /* display: inline; */
-    /* background-color: red; */
-    flex-shrink: 15;
-    /* flex-grow: 5; */
-    /* flex: auto; */
-    width: 360px;
-    /* height: 15px; */
-    /* padding: 10px; */
-}
-.left {
-    float: left;
-}
-.right {
-    float: right;
-}
-
-.big {
-    font-size: large;
-}
-
 .groupContainer {
     display: block;
     margin-top: 20px;
@@ -210,28 +214,6 @@ button {
     width: 80%;
     height: 40px;
     /* background-color: antiquewhite; */
-}
-
-.tileLink1 {
-    padding: 5px;
-    /* margin-top: auto;
-    margin-bottom: auto; */
-    /* background-color: blue; */
-    margin-left: auto;
-    margin-right: auto;
-    /* margin-bottom: 20px; */
-    /* padding-top: 20px; */
-    /* padding-bottom: ; */
-    margin-bottom: 20px;
-    display: table;
-    color: black;
-    border-bottom-style: solid;
-    border-bottom-color: limegreen;
-    border-bottom-width: 2px;
-    /* background-color: aquamarine; */
-}
-.tileLink2 {
-    color: black;
 }
 
 .pfp {
@@ -347,8 +329,7 @@ button {
 input[type="text"] {
     padding-left: 15px;
     font-size: 16px;
-    outline: none;
-    border: 1px solid black;
+    border: 1px solid var(--gray);
 }
 
 #make-post {
@@ -384,11 +365,8 @@ input[type="text"] {
     margin-bottom: 10px;
 }
 
-#linksBar {
-    width: 100%;
-}
 #search {
-    width: 100px;
+    width: 100%;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -436,7 +414,87 @@ input[type="text"] {
 }
 
 @media only screen and (max-width: 800px) {
+    main {
+        margin-top: 25px;
+    }
+
     main groups {
         display: none;
+    }
+
+    nav {
+        border-top: solid 1px var(--gra);
+        z-index: 999;
+        top: auto;
+        bottom: 0;
+    }
+
+    nav > section:nth-child(2) {
+        max-width: 100%;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    nav > section:first-child,
+    nav > section:nth-child(2) > ul > li:nth-child(6),
+    nav > section:nth-child(2) > ul > li:nth-child(7),
+    nav > section:nth-child(2) > ul > a {
+        display: none;
+    }
+
+    nav > section:nth-child(2) > ul {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    nav > section > ul > li:nth-child(2),
+    nav > section > ul > li:nth-child(3) {
+        display: block;
+    }
+
+    nav > section:nth-child(2) {
+        padding: none;
+    }
+
+    .linksBar {
+        justify-content: space-between;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    subnav {
+        display: block;
+        position: fixed;
+        top: 0;
+        z-index: 999;
+    }
+
+    feed > section {
+        display: none;
+    }
+
+    .posts {
+        margin-top: 40px;
+    }
+
+    .noti {
+        width: 24px;
+        height: 24px;
+    }
+
+    subnav > ul > li:first-child,
+    subnav > ul > li:nth-child(2) {
+        width: 32px;
+    }
+
+    #subnav-search {
+        width: 100%;
+    }
+
+    subnav > ul > li > input {
+        height: 24px;
+        border-radius: 10px;
     }
 }
