@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap");
 
+
 :root {
     --offwhite: #ebebeb;
     --white: white;
@@ -29,6 +30,7 @@ button {
     text-align: inherit;
     cursor: pointer;
     padding: 0;
+
     margin: 0;
     outline: none;
 }
@@ -126,6 +128,7 @@ nav img {
     width: 20px;
 }
 
+
 /*search Bar */
 nav form {
     position: relative;
@@ -155,6 +158,66 @@ nav input {
     font-size: 16px;
     padding: 0 15px;
     border-bottom: 1px solid black;
+}
+
+nav input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;;
+    height: 42.5px;
+    line-height: 30px;
+    outline: 0;
+    border: 0;
+    display: none;
+    font-size: 15px;
+    border-radius: 20px;
+    padding: 0 20px;
+}
+
+nav .fa{
+    box-sizing: border-box;
+    padding: 10px;
+    width: 42.5px;
+    height: 42.5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    color: #07051a;
+    text-align: center;
+    font-size: 1.2em;
+    transition: all 1s;
+}
+
+nav form:hover,
+form:valid{
+    width:80%;
+    cursor: pointer;
+}
+
+nav form:hover input,
+form:valid input{
+    display: block;
+}
+
+nav form:hover .fa,
+form:valid .fa{
+    background: #07051a;
+    color: white;
+}
+
+
+/* main */
+main {
+    max-width: 1128px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
 }
 
 nav .fa {
@@ -366,6 +429,7 @@ main groups {
 }
 
 /* main feed */
+
 .feed {
     flex: 4;
     margin: 0 50px;
@@ -589,4 +653,5 @@ main groups {
         height: 24px;
         border-radius: 10px;
     }
+
 }
