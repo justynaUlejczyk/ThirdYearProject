@@ -3,12 +3,9 @@
 
 <head>
     <title>Homepage</title>
-    <link rel="stylesheet" href="../css/StyleSheet.css">
-    <link rel="stylesheet" href="../css/Home.css">
+    <link rel="stylesheet" href="StyleSheet.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 
 <!-- test commit -->
@@ -17,77 +14,34 @@
 
 <body>
 
-    <subnav>
-        <ul>
-            <li>
-                <a>
-                    <img src="../images/cat.jpg" class="nav-profile">
-                </a>
-            </li>
-
-            <li>
-                <div class="dropdown">
-                    <button class="dropButton">
-                        <img class="noti" src="../images/icons/nav-icons/bell-svgrepo-com.svg" alt="notifications"
-                            width="35" />
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </subnav>
-
     <nav>
 
 
         <section>
-            <form id="searchForm" action="">
-                <input id="searchInput" type="search" required>
+            <form id ="searchForm" action="">
+                <input id ="searchInput" type="search" required>
                 <i class="fa fa-search"></i>
-            </form>
-
+              </form>     
         </section>
 
         <section>
             <ul class="linksBar">
                 <li>
-                    <a href="../html/Home.html">
-                        <img src="../images/icons/nav-icons/home-svgrepo-com.svg" alt="home" width="35" />
-                        <span>Home</span>
-                    </a>
+                    <a href="Home.html">
+                        <img src="icons/home-svgrepo-com.svg" alt="home" width="35" />Home</a>
                 </li>
                 <li>
-                    <a>
-                        <img src="../images/icons/nav-icons/magnifer-svgrepo-com.svg">
-                    </a>
+                    <a href="Group.html">
+                        <img src="icons/users-group-two-rounded-svgrepo-com.svg" alt="groups" width="35" />Groups</a>
                 </li>
                 <li>
-                    <a>
-                        <img src="../images/icons/nav-icons/add-square-svgrepo-com.svg">
-                    </a>
-                </li>
-                <li>
-                    <a href="../html/Group.html">
-                        <img src="../images/icons/nav-icons/users-group-two-rounded-svgrepo-com.svg" alt="groups"
-                            width="35" />
-                        <span>Groups</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="../html/Messages.html">
-                        <img src="../images/icons/nav-icons/chat-round-line-svgrepo-com.svg" alt="messages"
-                            width="35" />
-                        <span>Messages</span>
-                    </a>
+                    <a href="Messages.html">
+                        <img src="icons/chat-round-line-svgrepo-com.svg" alt="messages" width="35" />Messages</a>
                 </li>
                 <li>
                     <div class="dropdown">
                         <button class="dropButton">
-                            <img src="../images/icons/nav-icons/bell-svgrepo-com.svg" alt="notifications" width="35" />
+                            <img src="icons/bell-svgrepo-com.svg" alt="notifications" width="35" />
                         </button>
                         <div class="dropdown-content">
                             <a href="#">Link 1</a>
@@ -95,141 +49,48 @@
                             <a href="#">Link 3</a>
                         </div>
                     </div>
-                    <span>Notifications</span>
+                    Notifications
                 </li>
 
                 <a href="../html/Profile.html">
-                    <img class="nav-profile" src="../images/cat.jpg" />
+                    <img class="nav-profile" src="icons/cat.jpg" />
                 </a>
 
             </ul>
         </section>
     </nav>
 
-
-
+    <section class = "pageHeading">
+        <h1>Messages</h1>
+    </section> 
 
     <main>
         <!-- profile tile -->
-        <profile class="tile">
-            <div>
-                <div>
-                    <div id="Banner"></div>
-                    <img class="pfp" src="../images/cat.jpg" alt="pfp" width="100" height="100" />
-                    <div id="pfp-outline"></div>
-                </div>
+        <section class="groupContainer">
 
-                <div>
-                    <div>
-                        <h3>Alex Alexandra</h3>
-                        <h4 id="occupation">Student at Heriot Watt</h4>
-                    </div>
-                    <div id="divider"></div>
-                </div>
-            </div>
-
-            <div>
-                <a href="../html/Group.html"> Groups</a>
-                <a href="../html/Messages.html"> Messages</a>
-                <a href="../html/notifs.html"> Notifications</a>
-            </div>
-        </profile>
-
-        <!-- Home/main feed tile -->
-
-        <feed class="feed">
-            <section class="rounded start-post">
-                <div id="post-line" class="inline">
-                    <div class="avatar" style="
-                                background-image: url('../images/cat.jpg');
-                            "></div>
-                    <input type="text" id="make-post" placeholder="Start a Post" />
-                </div>
-                <div class="create-post-options">
-                    <div class="inline">
-                        <img src="../images/icons/post-icons/Img_out-box_Fill.svg" />
-                        <h4>Media</h4>
-                    </div>
-                    <div class="inline">
-                        <img src="../images/icons/post-icons/Order.svg" />
-                        <h4>Article</h4>
-                    </div>
-                </div>
+            <section class="group">
             </section>
+            <section class="group">
+            </section>
+            
+            <section class="group">
+            </section>
+            <section class="group">
+            </section>
+            <section class="group">
+            </section>
+            <section class="group">
+            </section>
+            
 
-            <!-- Posts-->
-            <post class="posts">
-                <div class="user-container">
-                    <img src="../images/cat.jpg" class="post-avatar" />
-                    <div class="user-post-name">Michael Schumacher</div>
-                </div>
-                <img class="post-image" src="../images/Rectangle 4164.png" />
-                <div class="choices">
-                    <div class="post-options">
-                        <button>
-                            <img src="../images/icons/post-icons/heart-svgrepo-com.svg" alt="" class="like icons" />
-                        </button>
-                        <button>
-                            <img src="../images/icons/post-icons/chat-round-line-svgrepo-com.svg" alt=""
-                                class="comment icons" />
-                        </button>
-                        <button>
-                            <img src="../images/icons/post-icons/plain-svgrepo-com.svg" alt="" class="send icons" />
-                        </button>
-                    </div>
-                    <button>
-                        <img src="../images/icons/post-icons/pin-svgrepo-com.svg" alt="" class="pin icons" />
-                    </button>
-                </div>
-            </post>
 
-            <post class="posts">
-                <div class="user-container">
-                    <img src="../images/cat.jpg" class="post-avatar" />
-                    <div class="user-post-name">Michael Schumacher</div>
-                </div>
-                <img class="post-image" src="../images/Rectangle 4164.png" />
-                <div class="choices">
-                    <div class="post-options">
-                        <button>
-                            <img src="../images/icons/post-icons/heart-svgrepo-com.svg" alt="" class="like icons" />
-                        </button>
-                        <button>
-                            <img src="../images/icons/post-icons/chat-round-line-svgrepo-com.svg" alt=""
-                                class="comment icons" />
-                        </button>
-                        <button>
-                            <img src="../images/icons/post-icons/plain-svgrepo-com.svg" alt="" class="send icons" />
-                        </button>
-                    </div>
-                    <button>
-                        <img src="../images/icons/post-icons/pin-svgrepo-com.svg" alt="" class="pin icons" />
-                    </button>
-                </div>
-            </post>
-        </feed>
 
-        <groups class="tile">
-            <div id="tile3">
-                <div class="groupButton">
-                    <button type="button"></button>
-                    <p>Group 1</p>
-                </div>
-                <div class="groupButton">
-                    <button type="button"></button>
-                    <p>Group 1</p>
-                </div>
-                <div class="groupButton">
-                    <button type="button"></button>
-                    <p>Group 1</p>
-                </div>
-            </div>
-            <div id="viewMore">
-                <a class="tileLink2" href="../html/Group.html">View More</a>
-            </div>
-        </groups>
-    </main>
+        </section>
 
+
+
+
+     </main>
 
 
 
