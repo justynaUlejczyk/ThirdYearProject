@@ -5,7 +5,9 @@
     <title>Homepage</title>
     <link rel="stylesheet" href="StyleSheet.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
 </head>
 
 <!-- test commit -->
@@ -14,29 +16,69 @@
 
 <body>
 
+    <subnav>
+        <ul>
+            <li>
+                <a>
+                    <img src="icons/cat.jpg" class="nav-profile">
+                </a>
+            </li>
+
+            <li>
+                <div class="dropdown">
+                    <button class="dropButton">
+                        <img class="noti" src="icons/bell-svgrepo-com.svg" alt="notifications" width="35" />
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </subnav>
+
     <nav>
 
 
         <section>
-            <form id ="searchForm" action="">
-                <input id ="searchInput" type="search" required>
+            <form id="searchForm" action="">
+                <input id="searchInput" type="search" required>
                 <i class="fa fa-search"></i>
-              </form>     
+            </form>
+
         </section>
 
         <section>
             <ul class="linksBar">
                 <li>
                     <a href="Home.html">
-                        <img src="icons/home-svgrepo-com.svg" alt="home" width="35" />Home</a>
+                        <img src="icons/home-svgrepo-com.svg" alt="home" width="35" />
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <img src="icons/magnifer-svgrepo-com.svg">
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <img src="icons/add-square-svgrepo-com.svg">
+                    </a>
                 </li>
                 <li>
                     <a href="Group.html">
-                        <img src="icons/users-group-two-rounded-svgrepo-com.svg" alt="groups" width="35" />Groups</a>
+                        <img src="icons/users-group-two-rounded-svgrepo-com.svg" alt="groups" width="35" />
+                        <span>Groups</span>
+                    </a>
                 </li>
                 <li>
                     <a href="Messages.html">
-                        <img src="icons/chat-round-line-svgrepo-com.svg" alt="messages" width="35" />Messages</a>
+                        <img src="icons/chat-round-line-svgrepo-com.svg" alt="messages" width="35" />
+                        <span>Messages</span>
+                    </a>
                 </li>
                 <li>
                     <div class="dropdown">
@@ -49,7 +91,7 @@
                             <a href="#">Link 3</a>
                         </div>
                     </div>
-                    Notifications
+                    <span>Notifications</span>
                 </li>
 
                 <a>
@@ -61,17 +103,33 @@
     </nav>
 
 
+
+
     <main>
         <!-- profile tile -->
-        <section id="tile1" class="tile">
-            <div id="Banner"></div>
-            <img class="pfp" src="icons/cat.jpg" alt="pfp" width="100" height="100" />
-            <div id="pfp-outline"></div>
-            <p>Alex Alexandra</p>
-            <a class="tileLink1" href="Group.html"> Groups</a>
-            <a class="tileLink1" href="Messages.html"> Messages</a>
-            <a class="tileLink1" href="notifs.html"> Notifications</a>
-        </section>
+        <profile class="tile">
+            <div>
+                <div>
+                    <div id="Banner"></div>
+                    <img class="pfp" src="icons/cat.jpg" alt="pfp" width="100" height="100" />
+                    <div id="pfp-outline"></div>
+                </div>
+
+                <div>
+                    <div>
+                        <h3>Alex Alexandra</h3>
+                        <h4 id="occupation">Student at Heriot Watt</h4>
+                    </div>
+                    <div id="divider"></div>
+                </div>
+            </div>
+
+            <div>
+                <a href="Group.html"> Groups</a>
+                <a href="Messages.html"> Messages</a>
+                <a href="notifs.html"> Notifications</a>
+            </div>
+        </profile>
 
         <!-- Home/main feed tile -->
 
@@ -120,25 +178,51 @@
                     </button>
                 </div>
             </post>
+
+            <post class="posts">
+                <div class="user-container">
+                    <img src="icons/cat.jpg" class="post-avatar" />
+                    <div class="user-post-name">Michael Schumacher</div>
+                </div>
+                <img class="post-image" src="icons/Rectangle 4164.png" />
+                <div class="choices">
+                    <div class="post-options">
+                        <button>
+                            <img src="icons/heart-svgrepo-com.svg" alt="" class="like icons" />
+                        </button>
+                        <button>
+                            <img src="icons/chat-round-line-svgrepo-com.svg" alt="" class="comment icons" />
+                        </button>
+                        <button>
+                            <img src="icons/plain-svgrepo-com.svg" alt="" class="send icons" />
+                        </button>
+                    </div>
+                    <button>
+                        <img src="icons/pin-svgrepo-com.svg" alt="" class="pin icons" />
+                    </button>
+                </div>
+            </post>
         </feed>
 
-        <section id="tile3">
-            <div class="groupButton">
-                <button type="button"></button>
-                <p>Group 1</p>
-            </div>
-            <div class="groupButton">
-                <button type="button"></button>
-                <p>Group 1</p>
-            </div>
-            <div class="groupButton">
-                <button type="button"></button>
-                <p>Group 1</p>
+        <groups class="tile">
+            <div id="tile3">
+                <div class="groupButton">
+                    <button type="button"></button>
+                    <p>Group 1</p>
+                </div>
+                <div class="groupButton">
+                    <button type="button"></button>
+                    <p>Group 1</p>
+                </div>
+                <div class="groupButton">
+                    <button type="button"></button>
+                    <p>Group 1</p>
+                </div>
             </div>
             <div id="viewMore">
                 <a class="tileLink2" href="Group.html">View More</a>
             </div>
-        </section>
+        </groups>
     </main>
 
 

@@ -1,52 +1,101 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap");
+
 
 :root {
     --offwhite: #ebebeb;
     --white: white;
+    --gray: #c2c2c2;
 }
-/* general */
+
+/* general use */
+
 body {
     margin: 0px;
-    font-family: Arial, sans-serif;
+    font-family: "Josefin Sans", sans-serif;
     background-color: var(--offwhite);
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 a {
     text-decoration: none;
 }
 
-/* Nav Bar */
-nav {
+button {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    text-align: inherit;
+    cursor: pointer;
+    padding: 0;
+
     margin: 0;
+    outline: none;
+}
+
+.tile {
+    background-color: var(--white);
+    height: 100%;
+    text-align: center;
+    box-shadow: 0 4px 8px -6px #181818;
+}
+
+.inline {
+    display: flex;
+    gap: 10px;
+}
+
+.rounded {
+    border-radius: 10px;
+}
+
+input[type="text"] {
+    padding-left: 15px;
+    font-size: 16px;
+    border: 1px solid var(--gray);
+}
+
+#divider {
+    background-color: var(--gray);
+    width: 100%;
+    height: 1px;
+}
+
+/* nav */
+nav {
+    position: fixed;
+    margin: 0;
+    top: 0;
     width: 100%;
     background-color: var(--white);
     display: flex;
-    height: 50px;
-}
-
-nav > section {
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
+    height: 60px;
 }
 
 nav > section:first-child {
-    background-color: red;
-    max-width: 376px;
+    display: flex;
+    align-items: center;
+    max-width: 564px;
     flex: 1;
     margin-left: auto;
 }
 
 nav > section:nth-child(2) {
-    background-color: yellow;
-    max-width: 752px;
-    display: flex;
-    flex-direction: row;
-    flex: 2;
     margin-right: auto;
+    display: flex;
+    align-items: center;
+    max-width: 564px;
+    flex: 2;
     justify-content: end;
     align-items: center;
+}
+
+nav > section:nth-child(2) > ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 nav > section > ul > li {
@@ -58,6 +107,11 @@ nav > section > ul > li {
     color: black;
     filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(22deg) brightness(97%)
         contrast(102%);
+}
+
+nav > section > ul > li:nth-child(2),
+nav > section > ul > li:nth-child(3) {
+    display: none;
 }
 
 nav > section > ul > li > a {
@@ -75,14 +129,12 @@ nav img {
 }
 
 
-
 /*search Bar */
-nav form{
+nav form {
     position: relative;
     top: 50%;
     display: inline;
-    left:5%;
-    transform: translate(0%,-50%);
+    transform: translate(0%, -50%);
     transition: all 1s;
     width: 50px;
     height: 50px;
@@ -91,6 +143,21 @@ nav form{
     border-radius: 25px;
     border: 4px solid white;
     padding: 5px;
+}
+
+nav input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 92%;
+    height: 42.5px;
+    line-height: 30px;
+    outline: 0;
+    border: 0;
+    display: none;
+    font-size: 16px;
+    padding: 0 15px;
+    border-bottom: 1px solid black;
 }
 
 nav input{
@@ -153,25 +220,36 @@ main {
     box-sizing: border-box;
 }
 
-main section {
-    width: 25%;
+nav .fa {
     box-sizing: border-box;
-    border-radius: 10px;
-}
-main section h1 {
+    padding: 10px;
+    width: 42.5px;
+    height: 42.5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    color: #07051a;
     text-align: center;
+    font-size: 1.2em;
+    transition: all 1s;
 }
 
-button {
-    background: none;
-    border: none;
-    color: inherit;
-    font: inherit;
-    text-align: inherit;
+nav form:hover,
+form:valid {
+    width: 80%;
     cursor: pointer;
-    padding: 0;
-    margin: 0;
-    outline: none;
+}
+
+nav form:hover input,
+form:valid input {
+    display: block;
+}
+
+nav form:hover .fa,
+form:valid .fa {
+    background: #07051a;
+    color: white;
 }
 
 .nav-profile {
@@ -182,8 +260,6 @@ button {
 }
 
 .linksBar {
-    width: 55%;
-    display: flex;
     justify-content: space-between;
     align-items: center;
 }
@@ -221,37 +297,115 @@ button {
     color: black;
 }
 
-.tile {
+/* secondary nav for mobile use mainly */
+subnav {
+    top: 0;
     background-color: var(--white);
+    padding: 10px;
+    width: 100%;
+    height: 32px;
+    display: none;
+}
+
+subnav ul {
+    padding: 0;
+    margin: 0px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none;
+}
+
+/* main */
+
+main {
+    max-width: 1128px;
+    margin-top: 75px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+/* main profile */
+main profile {
+    max-width: 225px;
+    width: 25%;
+    min-height: 300px;
+    border-radius: 10px;
+    flex: 1;
+}
+
+main > profile > div:first-child > div:nth-child(2) > div > h3 {
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+main profile h4 {
+    font-weight: 500;
+}
+
+main > profile > div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.pfp {
+    margin-top: -37.5px;
+    width: 75px;
+    height: 75px;
+    border-radius: 100%;
+}
+
+#occupation {
+    font-size: 14px;
+    margin-top: 0;
+}
+
+#Banner {
+    height: 60px;
+    width: 100%;
+    background-color: black;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+}
+
+#pfp-outline {
+    height: 80px;
+    width: 80px;
+    background-color: var(--white);
+    border-radius: 100px;
+    overflow: 1;
+    margin: -80px auto 0px auto;
+}
+
+/* main group */
+main groups {
+    max-width: 225px;
+    min-height: 275px;
+    max-height: 300px;
     height: 100%;
-    text-align: center;
-    box-shadow: 0 4px 8px -6px #181818;
+    width: 25%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
 }
 
 #tile3 {
-    width: 200px;
-    height: 200px;
-}
-
-.navBuffer {
-    /* display: inline; */
-    /* background-color: red; */
-    flex-shrink: 15;
-    /* flex-grow: 5; */
-    /* flex: auto; */
-    width: 360px;
-    /* height: 15px; */
-    /* padding: 10px; */
-}
-.left {
-    float: left;
-}
-.right {
-    float: right;
-}
-
-.big {
-    font-size: large;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
 }
 
 .groupContainer {
@@ -262,45 +416,23 @@ button {
     margin-bottom: 20px;
     width: 80%;
     height: 40px;
-    /* background-color: antiquewhite; */
 }
 
-.tileLink1 {
-    padding: 5px;
-    /* margin-top: auto;
-    margin-bottom: auto; */
-    /* background-color: blue; */
-    margin-left: auto;
-    margin-right: auto;
-    /* margin-bottom: 20px; */
-    /* padding-top: 20px; */
-    /* padding-bottom: ; */
-    margin-bottom: 20px;
-    display: table;
-    color: black;
-    border-bottom-style: solid;
-    border-bottom-color: limegreen;
-    border-bottom-width: 2px;
-    /* background-color: aquamarine; */
+.groupButton {
+    display: flex;
+    gap: 10px;
 }
-.tileLink2 {
-    color: black;
+.groupButton button {
+    background-color: grey;
+    height: 50px;
+    width: 50px;
 }
 
-
-.pfp {
-    margin-top: -37.5px;
-    width: 75px;
-    height: 75px;
-    border-radius: 100%;
-}
-
-.pageHeading h1{
-    text-align: center;    
-}
+/* main feed */
 
 .feed {
-    margin: 0 100px;
+    flex: 4;
+    margin: 0 50px;
     width: 60%;
     display: flex;
     flex-direction: column;
@@ -313,6 +445,7 @@ button {
     background-size: cover;
 }
 
+/* main feed posts */
 .post-avatar {
     width: 40px;
     height: 40px;
@@ -340,20 +473,11 @@ button {
     margin: 12px 20px;
 }
 
-.inline {
-    display: flex;
-    gap: 10px;
-}
-
 .start-post {
     height: 120px;
     width: 100%;
     background-color: var(--white);
     box-shadow: 0 4px 8px -6px #181818;
-}
-
-.rounded {
-    border-radius: 10px;
 }
 
 .choices {
@@ -391,13 +515,6 @@ button {
     justify-content: center;
 }
 
-input[type="text"] {
-    padding-left: 15px;
-    font-size: 16px;
-    outline: none;
-    border: 1px solid black;
-}
-
 #make-post {
     width: 75%;
     height: 40px;
@@ -410,123 +527,131 @@ input[type="text"] {
     margin: 15px auto 0px auto;
     align-items: center;
 }
-#Banner {
-    height: 60px;
-    width: 100%;
-    background-color: black;
-    border-radius: 10px 10px 0 0;
-    overflow: hidden;
+
+/* Screen sizes between 1150 and 1200 */
+@media only screen and (max-width: 1200px) {
+    main {
+        max-width: 960px;
+    }
 }
 
-#pfp-outline {
-    height: 80px;
-    width: 80px;
-    background-color: var(--white);
-    border-radius: 100px;
-    overflow: 1;
-    margin: -80px auto 0px auto;
+/* Screen sizes between 1000 and 1150 */
+@media only screen and (max-width: 1150px) {
+    nav > section:first-child {
+        padding-left: 5%;
+    }
+
+    nav > section:nth-child(2) {
+        padding-right: 5%;
+    }
 }
 
-#viewMore {
-    margin-bottom: 10px;
-}
+/* Screen sizes between 800 and 1000 */
+@media only screen and (max-width: 1000px) {
+    main groups {
+        margin: 0 5% 0 2%;
+    }
 
-#linksBar {
-    width: 100%;
-}
-#search {
-    /* position: relative; */
-    /* float: left; */
-    /* flex-grow: 5; */
-    /* margin-left: auto; */
-    /* margin-right: auto; */
-    /* background-color: aliceblue; */
-    /* padding: 0px; */
-    width: 100px;
-}
-
-#tile2 {
-    width: 48%;
-    box-sizing: border-box;
-}
-
-#messageArea{
-    width: 100%;
-    height: 400px;
-    background-color: white;
-    box-shadow: 0 4px 8px -6px #181818;
-}
-
-/* hides profile and group sections on home page for smaller screen sizes */
-@media only screen and (max-width: 800px) {
-    #tile1 {
+    main profile {
         display: none;
     }
-    #tile2 {
-        width: 98%;
-    }
-    #tile3 {
-        display: none;
-    }
-}
-/* left and right side tiles have a fixed width after a certain minimum window size and stick close to main section */
-@media only screen and (min-width: 960px) {
-    #tile1 {
-        width: 200px;
-        border-radius: 10px;
-    }
-    /* #tile2 {
-        
-    } */
 
-    #tile3 {
-        width: 200px;
-        height: 250px;
+    .feed {
+        flex: 4;
+        margin: 0 5%;
+        width: 60%;
         display: flex;
         flex-direction: column;
+    }
+
+    nav > section > ul > li > a > span,
+    nav > section > ul > li > span {
+        display: none;
+    }
+
+    nav img {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* Screen sizes 800 and down */
+@media only screen and (max-width: 800px) {
+    main {
+        margin-top: 25px;
+    }
+
+    main groups {
+        display: none;
+    }
+
+    nav {
+        border-top: solid 1px var(--gray);
+        z-index: 999;
+        top: auto;
+        bottom: 0;
+    }
+
+    nav > section:nth-child(2) {
+        max-width: 100%;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    nav > section:first-child,
+    nav > section:nth-child(2) > ul > li:nth-child(6),
+    nav > section:nth-child(2) > ul > li:nth-child(7),
+    nav > section:nth-child(2) > ul > a {
+        display: none;
+    }
+
+    nav > section:nth-child(2) > ul {
+        display: flex;
         justify-content: space-around;
-        align-items: end;
-        gap: 20px;
     }
-}
 
-@media only screen and (min-width: 920px) {
-    .navBuffer {
-        /* background-color: aquamarine; */
-        flex-grow: 60;
+    nav > section > ul > li:nth-child(2),
+    nav > section > ul > li:nth-child(3) {
+        display: block;
     }
-    .sideBuffer {
-        /* background-color: blue; */
-        flex-grow: 20;
+
+    nav > section:nth-child(2) {
+        padding: none;
     }
-}
 
+    subnav {
+        display: block;
+        position: fixed;
+        top: 0;
+        z-index: 999;
+    }
 
+    feed > section {
+        display: none;
+    }
 
-.groupContainer {
-    display: grid;
-    grid-template-columns: auto auto auto ;
-    padding: 10px;
-  }
-  .group {
-    background-color: white;
-    padding: 80px;
-    margin: 20px;
-    font-size: 30px;
-    text-align: center;
-  }
+    .posts {
+        margin-top: 40px;
+    }
 
-  .groupName{
-    text-align: center;
-  }
+    .noti {
+        width: 24px;
+        height: 24px;
+    }
 
+    subnav > ul > li:first-child,
+    subnav > ul > li:nth-child(2) {
+        width: 32px;
+    }
 
-.groupButton {
-    display: flex;
-    gap: 10px;
-}
-.groupButton button {
-    background-color: grey;
-    height: 50px;
-    width: 50px;
+    #subnav-search {
+        width: 100%;
+    }
+
+    subnav > ul > li > input {
+        height: 24px;
+        border-radius: 10px;
+    }
+
 }
