@@ -406,6 +406,16 @@ main groups {
     margin: 12px 20px;
 }
 
+.user-post-name {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.user-post-name > span:nth-child(2) {
+    font-size: 12px;
+}
+
 .start-post {
     height: 120px;
     width: 100%;
