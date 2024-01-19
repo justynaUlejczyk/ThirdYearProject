@@ -1,7 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap");
 
-
 :root {
     --offwhite: #ebebeb;
     --white: white;
@@ -128,7 +127,6 @@ nav img {
     width: 20px;
 }
 
-
 /*search Bar */
 nav form {
     position: relative;
@@ -160,22 +158,22 @@ nav input {
     border-bottom: 1px solid black;
 }
 
-nav input{
+nav input {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;;
+    width: 90%;
     height: 42.5px;
     line-height: 30px;
     outline: 0;
     border: 0;
     display: none;
     font-size: 15px;
-    border-radius: 20px;
+    border-bottom: 1px solid var(--gray);
     padding: 0 20px;
 }
 
-nav .fa{
+nav .fa {
     box-sizing: border-box;
     padding: 10px;
     width: 42.5px;
@@ -191,22 +189,21 @@ nav .fa{
 }
 
 nav form:hover,
-form:valid{
-    width:80%;
+form:valid {
+    width: 80%;
     cursor: pointer;
 }
 
 nav form:hover input,
-form:valid input{
+form:valid input {
     display: block;
 }
 
 nav form:hover .fa,
-form:valid .fa{
+form:valid .fa {
     background: #07051a;
     color: white;
 }
-
 
 /* main */
 main {
@@ -653,5 +650,4 @@ main groups {
         height: 24px;
         border-radius: 10px;
     }
-
 }
