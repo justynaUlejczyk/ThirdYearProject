@@ -170,7 +170,7 @@ nav input {
     display: none;
     font-size: 15px;
     border-bottom: 1px solid var(--gray);
-    padding: 0 20px;
+    padding: 0 15px;
 }
 
 nav .fa {
