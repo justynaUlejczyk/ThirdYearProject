@@ -50,12 +50,6 @@ button {
     border-radius: 10px;
 }
 
-input[type="text"] {
-    padding-left: 15px;
-    font-size: 16px;
-    border: 1px solid var(--gray);
-}
-
 #divider {
     background-color: var(--gray);
     width: 100%;

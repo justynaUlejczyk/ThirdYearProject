@@ -24,11 +24,21 @@
 
         <form name="login" action="" method="post" id="form">
             <div>
-                <input type="text" name="username" placeholder="Username" required=""> <br>
-                <input type="password" name="password" placeholder="Password" required=""> <br>
+                <div>
+                    <div class="login-inputs">
+                        <img src="../images/icons/login/user-svgrepo-com.svg" alt="">
+                        <input type="text" name="username" placeholder="Username" required="">
+                    </div>
+                    <div class="login-inputs">
+                        <img src="../images/icons/login/lock-keyhole-minimalistic-svgrepo-com.svg" alt="">
+                        <input type="password" name="password" placeholder="Password" required="">
+                    </div>
+                </div>
                 <div>
                     <a href="update_password.php">Forgot password?</a>
-                    New to this website?<a href="registration.php">Sign Up</a>
+                    <span>
+                        New to this website? <a href="registration.php">Sign Up</a>
+                    </span>
                 </div>
             </div>
             <div>

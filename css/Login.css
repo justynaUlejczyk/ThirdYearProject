@@ -9,7 +9,7 @@ section {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    background-color: red;
+    background-color: var(--white);
     aspect-ratio: 2/3;
     width: 100%;
     height: 100%;
@@ -23,7 +23,6 @@ section > div {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: blue;
     width: 100%;
     height: 100%;
     aspect-ratio: 1;
@@ -35,9 +34,68 @@ section > form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: yellow;
+    align-items: center;
     width: 100%;
     height: 100%;
     max-width: 350px;
     max-height: 300px;
+}
+
+section > form > div:first-child {
+    height: 100px;
+}
+
+a {
+    color: black;
+}
+
+section > form > div:first-child > div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    height: 100px;
+}
+
+section > form > div:nth-child(2) {
+    background-color: black;
+    width: 100%;
+}
+
+input[type="submit"] {
+    width: 100%;
+    height: 50px;
+    background: none;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+section > form > div:first-child > div:first-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+section > form > div:first-child > div:first-child > div {
+    display: flex;
+    gap: 10px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    margin-bottom: 20px;
+    height: 32px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+}
+
+img {
+    width: 32px;
+    height: 32px;
 }
