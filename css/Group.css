@@ -57,19 +57,22 @@
     height: auto;
     padding: 10px;
     border-radius: 5px;
-    background-color: black;
+    background-color: lightgrey;
+    box-shadow: 0 4px 8px -6px #181818;
+
 }
 
 
 .viewMore{
     text-align: center;
     text-decoration: none;
+    color: black;
 }
 friend{
-    background-color: blue;
+    box-shadow: 0 4px 8px -6px #181818;
     display: block;
     margin: 10px;
+    background-color: white;
     padding: 10px;
     border-radius: 5px;
-
 }
