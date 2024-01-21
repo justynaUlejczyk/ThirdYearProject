@@ -2,26 +2,31 @@
     display: grid;
     grid-template-columns: auto auto auto auto;
     padding: 10px;
-    
+    background-color: black;
+    margin-right: 60%;
+    height: auto;
 }
 
 .group{
     background-color: white;
     padding: 20px;
     margin: 20px;
+    width: 256px;
+    height: 150px;
     font-size: 30px;
     text-align: center;
 }
 
 
 .addGroup{
-    background-color: white;
+    background-color: black;
     padding: 20px;
     margin: 20px;
+    width: 256px;
+    height: 150px;
     font-size: 30px;
-    text-align: center;
-}
-
-.plusIcon{
 
 }
+
+
+.friends 
