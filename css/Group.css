@@ -46,21 +46,30 @@
 }
 
 .friendBox{
-    background-color: black;
     width: 200px;
     float: right;
-    height: auto;
+    height: auto;    
 }
 
 .friendList{
     display: block;
     width:300px;
+    height: auto;
+    padding: 10px;
     border-radius: 5px;
     background-color: black;
 }
 
+
+.viewMore{
+    text-align: center;
+    text-decoration: none;
+}
 friend{
     background-color: blue;
     display: block;
-    width: ;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+
 }
