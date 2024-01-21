@@ -1,34 +1,55 @@
 
 .groupSection{
     width: 80%;
-}
-
-.groupContainer{
-    display: grid;
     background-color: yellow;
-    grid-template-columns: auto auto auto ;
+}
+
+.groupDisplay{
+    display: grid;
+    height: 400px;
+    align-content: space-evenly;
+    grid-template-columns: 200px 200px 200px 200px;
+    gap :10px;
+    
     padding: 10px;
-    height: auto;
+    border-right: 1px grey solid ;
 }
 
-.group{
-    background-color: white;
-    padding: 20px;
-    margin: 20px;
-    width: 256px;
-    height: 150px;
-    font-size: 30px;
+.groupDisplay > div{
+    background-color: rgba(255, 255, 255, 0.8);
     text-align: center;
+    padding: 20px 0;
+    height: 150px;
+    border-radius: 15px;
+    font-size: 30px;
+}
+.groupDisplay > a{
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    border-radius: 15px;
+    padding: 20px 0;
+    font-size: 20px;
+    position: relative;
+}
+
+.groupIcon{
+    height:80px;
+    width: 80px;
 }
 
 
-.addGroup{
-    background-color: white;
-    padding: 20px;
-    margin: 20px;
-    width: 256px;
-    height: 150px;
-    font-size: 30px;
+#plusButton{
+    width: auto;
+    height: auto;
+    text-align: center;
+    object-fit:fill;
+}
 
+.heading{
+    text-align: center;
+    left: 50%;
+    font-size: 30px;
+    display: block;
+    background-color: black;
 }
 
