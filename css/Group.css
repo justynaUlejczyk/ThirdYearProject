@@ -1,9 +1,13 @@
+
+.groupSection{
+    width: 80%;
+}
+
 .groupContainer{
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    background-color: yellow;
+    grid-template-columns: auto auto auto ;
     padding: 10px;
-    background-color: black;
-    margin-right: 60%;
     height: auto;
 }
 
@@ -19,7 +23,7 @@
 
 
 .addGroup{
-    background-color: black;
+    background-color: white;
     padding: 20px;
     margin: 20px;
     width: 256px;
@@ -28,5 +32,3 @@
 
 }
 
-
-.friends 

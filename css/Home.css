@@ -518,6 +518,13 @@ main groups {
         brightness(95%) contrast(131%);
 }
 
+.pageHeader {
+    background-color: #07051a;
+    display: block;
+    text-align: center;
+}
+
+
 #post-options {
     justify-content: center;
 }
