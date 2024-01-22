@@ -512,17 +512,22 @@ main groups {
     margin-right: 10px;
 }
 
-.icons {
-    width: 24px;
-    height: 24px;
-}
-
-object {
+svg.like > path:active {
     fill: red;
+    stroke: none;
 }
 
-svg.like {
-    fill: black !important;
+svg {
+    padding: 0px 5px;
+    height: 24px;
+    width: 24px;
+}
+
+path {
+    fill: none;
+    stroke: #646464;
+    stroke-width: 2px;
+    stroke-linejoin: round;
 }
 
 .pageHeader {
