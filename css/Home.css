@@ -211,6 +211,7 @@ form:valid .fa {
 /* main */
 main {
     max-width: 1128px;
+    width: 100%;
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
@@ -717,15 +718,13 @@ postpre {
     nav > section:nth-child(2) > ul {
         display: flex;
         justify-content: space-around;
+        margin: 0;
+        padding: 0;
     }
 
     nav > section > ul > li:nth-child(2),
     nav > section > ul > li:nth-child(3) {
         display: block;
-    }
-
-    nav > section:nth-child(2) {
-        padding: none;
     }
 
     subnav {
