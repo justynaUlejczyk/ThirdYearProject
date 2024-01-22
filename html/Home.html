@@ -5,7 +5,8 @@
     <title>Homepage</title>
     <link rel="stylesheet" href="../css/Home.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 
 <!-- test commit -->
@@ -111,7 +112,8 @@
             <div>
                 <div>
                     <div id="Banner"></div>
-                    <a href="Profile.html"><img class="pfp" src="../images/cat.jpg" alt="pfp" width="100" height="100" /></a>
+                    <a href="Profile.html"><img class="pfp" src="../images/cat.jpg" alt="pfp" width="100"
+                            height="100" /></a>
                     <div id="pfp-outline"></div>
                 </div>
 
@@ -120,7 +122,7 @@
                         <h3>Alex Alexandra</h3>
                         <h4 id="occupation">Student at Heriot Watt</h4>
                     </div>
-                    <div id="divider"></div>
+                    <div class="divider"></div>
                 </div>
             </div>
 
@@ -136,9 +138,11 @@
         <feed class="feed">
             <section class="rounded start-post">
                 <div id="post-line" class="inline">
-                    <a href="Profile.html"><div class="avatar" style="
+                    <a href="Profile.html">
+                        <div class="avatar" style="
                                 background-image: url('../images/cat.jpg');
-                            "></div></a>
+                            "></div>
+                    </a>
                     <input type="text" id="make-post" placeholder="Start a Post" />
                 </div>
                 <div class="create-post-options">
@@ -156,6 +160,86 @@
             <!-- Posts-->
 
             <post class="posts">
+
+                <postpre>
+                    <div id="post-column">
+                        <div class="expanded-post">
+                            <img src="../images/Rectangle 4164.png">
+                        </div>
+                        <div id="caption">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam laborum obcaecati soluta.
+                            Dolore
+                            eos iste consequatur dicta aut reprehenderit sed eveniet quibusdam alias a iure maiores
+                            illum
+                            impedit laboriosam minus, praesentium commodi beatae eius adipisci?
+                        </div>
+                    </div>
+                    <div class="comments">
+                        <div class="post-info">
+                            <div class="user-container">
+                                <a href="Profile.html"><img src="../images/cat.jpg" class="post-avatar" /></a>
+                                <div class="user-post-name">
+                                    <span>Michael Schumacher</span>
+                                    <span>@MikeS</span>
+                                </div>
+                            </div>
+                            <div class="choices">
+                                <div class="post-options">
+                                    <button>
+                                        <img src="../images/icons/post-icons/heart-svgrepo-com.svg" alt=""
+                                            class="like icons" />
+                                        <span>4213</span>
+                                    </button>
+                                    <button>
+                                        <img src="../images/icons/post-icons/chat-round-line-svgrepo-com.svg" alt=""
+                                            class="comment icons" />
+                                        <span>Comment</span>
+                                    </button>
+                                    <button>
+                                        <img src="../images/icons/post-icons/plain-svgrepo-com.svg" alt=""
+                                            class="send icons" />
+                                        <span>Share</span>
+                                    </button>
+                                </div>
+                                <button>
+                                    <img src="../images/icons/post-icons/pin-svgrepo-com.svg" alt=""
+                                        class="pin icons" />
+                                </button>
+                            </div>
+                            <div>
+
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4>Comments</h4>
+                            <div class="divider"></div>
+                        </div>
+
+                        <div class="commented">
+                            <div class="user-container">
+                                <a href="Profile.html"><img src="../images/cat.jpg" class="post-avatar" /></a>
+                                <div class="user-post-name">
+                                    <span>Michael Schumacher</span>
+                                    <span>Comment - 22/01/23</span>
+                                </div>
+                            </div>
+                            <div class="comment-text">
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt animi obcaecati
+                                quidem
+                                nostrum commodi tenetur?
+                            </div>
+                            <div class="comment-like">
+                                <button>
+                                    <img src="../images/icons/post-icons/heart-svgrepo-com.svg" alt=""
+                                        class="like icons" />
+                                    <span>1</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </postpre>
+
                 <div class="user-container">
                     <a href="Profile.html"><img src="../images/cat.jpg" class="post-avatar" /></a>
                     <div class="user-post-name">
@@ -182,6 +266,11 @@
                     </button>
                 </div>
             </post>
+
+
+
+
+
         </feed>
 
         <groups class="tile">

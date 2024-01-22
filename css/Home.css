@@ -15,6 +15,8 @@ body {
     background-color: var(--offwhite);
     min-height: 100vh;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 a {
@@ -64,6 +66,7 @@ input[type="text"] {
 
 /* nav */
 nav {
+    z-index: 1;
     position: fixed;
     margin: 0;
     top: 0;
@@ -524,7 +527,6 @@ main groups {
     text-align: center;
 }
 
-
 #post-options {
     justify-content: center;
 }
@@ -540,6 +542,98 @@ main groups {
     justify-content: center;
     margin: 15px auto 0px auto;
     align-items: center;
+}
+
+/* Pre-viewing the post */
+
+postpre {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white);
+    border-radius: 25px;
+    width: 90%;
+    height: 90%;
+    z-index: 999;
+    display: none;
+}
+
+.comments {
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid var(--gray);
+    margin-left: 2.5%;
+    width: 35%;
+    height: 100%;
+}
+
+.comments > div > h4 {
+    margin-left: 2.5%;
+}
+
+.comment-text {
+    margin: 0 2.5%;
+}
+
+.comment-like > button {
+    margin-left: 2.5%;
+    margin-top: 5px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.expanded-post {
+    background-color: green;
+    aspect-ratio: 16/9;
+    height: auto;
+}
+
+.expanded-post > img {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--gray);
+}
+
+.user-comment {
+    display: flex;
+    margin: 10px 20px;
+    height: auto;
+    width: 100%;
+}
+
+.post-options > button {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#caption {
+    width: 100%;
+    height: auto;
+    min-height: 50px;
+    max-height: 150px;
+    margin-top: 25px;
+    font-size: 20px;
+}
+
+#post-column {
+    margin-left: 2.5%;
+    max-width: 900px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 /* Screen sizes between 1150 and 1200 */
