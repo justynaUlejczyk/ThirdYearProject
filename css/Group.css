@@ -1,0 +1,78 @@
+.heading{
+    text-align: center;
+    left: 50%;
+    font-size: 30px;
+    display: block;
+
+}
+
+.groupSection{
+    width: 80%;
+    background-color: yellow;
+}
+
+.groupDisplay{
+    display: grid;
+    height: 400px;
+    align-content: space-evenly;
+    grid-template-columns: 200px 200px 200px 200px;
+    gap :10px;
+    
+    padding: 10px;
+    border-right: 1px grey solid ;
+}
+
+.groupDisplay > div{
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 20px 0;
+    height: 150px;
+    border-radius: 15px;
+    font-size: 30px;
+}
+.groupDisplay > a{
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 20px 0;
+    height: 150px;
+    border-radius: 15px;
+    font-size: 25px;
+    color: black;
+}
+
+.groupIcon{
+    height:80px;
+    width: 80px;
+}
+
+.friendBox{
+    width: 200px;
+    float: right;
+    height: auto;    
+}
+
+.friendList{
+    display: block;
+    width:300px;
+    height: auto;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: lightgrey;
+    box-shadow: 0 4px 8px -6px #181818;
+
+}
+
+
+.viewMore{
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+friend{
+    box-shadow: 0 4px 8px -6px #181818;
+    display: block;
+    margin: 10px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
