@@ -1,1 +1,27 @@
+.messageContainer{
+    display: inline-block;
+    width: 30%;
+    display: block;
+}
 
+.message{
+ 
+    border-radius: 20px;
+    background-color: grey;
+    height: 100px;
+}
+
+.name{
+    background-color: aquamarine;
+}
+
+.lastMessage{
+    background-color: brown;
+}
+
+.profilePic{
+    width: 50px;
+    margin: 20px;
+    height: 50px;
+    border-radius: 25px;
+}
