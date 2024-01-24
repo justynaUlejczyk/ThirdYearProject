@@ -1,3 +1,6 @@
+
+
+
 function toggleHeart(button) {
     button.classList.toggle("active");
 }
@@ -6,11 +9,20 @@ function toggleHeart(button) {
 function exitButton() {
     var postPreElement = document.querySelector('prepost');
     var dimmedElement = document.querySelector('.dimmed');
+    var createPost = document.querySelector('.feed-create-post-container')
 
     dimmedElement.classList.remove('active');
     postPreElement.style.display = 'none';
+    createPost.style.display = 'none';
 }
 
+function createPost(){
+    var createPost = document.querySelector('.feed-create-post-container')
+    var dimmedElement = document.querySelector('.dimmed');
+
+    dimmedElement.classList.add('active');
+    createPost.style.display = 'flex';
+}
 
 
 function openPost(clickedElement) {
@@ -54,3 +66,4 @@ function toggleMore() {
     moreText.style.display = "inline";
     }
 }
+
