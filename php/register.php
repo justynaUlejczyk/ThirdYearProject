@@ -13,7 +13,7 @@ if (isset($_POST['register'])) {
     $password = $_POST['password'];
 
     // Hash the password
-    $password = password_hash($password, PASSWORD_DEFAULT);
+    $password = password_hash($password, PASSWORD_BCRYPT);
 
     // Execute the SQL statement
     $result = pg_execute($conn, "insert_user", array($username, $email, $password));
