@@ -58,7 +58,7 @@ button {
     height: 1px;
 }
 
-input[type="text"] {
+.feed > input[type="text"] {
     padding-left: 15px;
     font-size: 16px;
     border: 1px solid var(--gray);
@@ -476,9 +476,7 @@ main groups {
 .user-container {
     width: 100%;
     display: flex;
-    gap: 10px;
     align-items: center;
-    margin: 12px 20px;
 }
 
 .user-post-name {
@@ -509,6 +507,13 @@ main groups {
     gap: 30px;
     margin-left: 20px;
 }
+
+.comment-post-options {
+    display: flex;
+    gap: 30px;
+    margin-left: 0px;
+}
+
 .create-post-options {
     display: flex;
     gap: 100px;
@@ -609,26 +614,84 @@ prepost {
     align-items: center;
 }
 
-.comments {
+.comment-user-container {
+    display: flex;
+}
+
+.comments-column {
     display: flex;
     flex-direction: column;
-    background-color: var(--white);
-    border-radius: 0 25px 25px 0;
     border-left: 1px solid var(--gray);
     width: 35%;
     height: 100%;
+    margin-right: 1.5%;
+    padding-left: 1.5%;
 }
 
-.comments > div > h4 {
+.comments-column > div > h4 {
     margin-left: 2.5%;
 }
 
-.comment-container {
-    margin: 0 2.5%;
+.comment-replies-container {
+    width: 100%;
+    padding: 0;
 }
 
-.comment-text {
+.comment-container {
     display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0 1%;
+    padding: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.comment-container::-webkit-scrollbar {
+    display: none;
+}
+
+.comment-container > div:nth-child(4) {
+    margin-top: auto;
+}
+
+.comment-create-container {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 20px;
+    height: 50px;
+}
+
+.comment-create-container > form {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+.comment-create-container > form > input {
+    box-sizing: border-box;
+    padding: 0;
+    border: 1px solid var(--gray);
+    margin: 0;
+    padding: 0 15px;
+}
+
+.comment-create {
+    border-radius: 25px;
+    width: 100%;
+    height: 100%;
+    max-height: 48px;
+}
+
+.comment-text > p {
+    font-size: 16px;
+}
+
+#more {
+    display: none;
 }
 
 .comment-user-comment {
@@ -687,16 +750,9 @@ prepost {
 }
 
 .comment-replies {
-    width: 100%;
-    margin-left: 5%;
-}
-
-.comment-replies > .comment-user-comment {
-    margin-right: 5%;
-}
-
-.comment-replies > .comment-container {
-    margin-right: 5%;
+    width: 90%;
+    right: 0;
+    margin-left: auto;
 }
 
 .expanded-post > img {
@@ -720,6 +776,12 @@ prepost {
 }
 
 .post-options > button {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.comment-post-options > button {
     display: flex;
     gap: 10px;
     align-items: center;
