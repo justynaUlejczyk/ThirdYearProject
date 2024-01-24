@@ -16,6 +16,7 @@ if (isset($_POST['login'])) {
     }
 
     $stored_password = pg_fetch_result($result, 0, 'password');
+    $user_id = pg_fetch_result($result, 0, 'user_id');
 
     if (! password_verify($user_entered_password, $stored_password)) {
         echo "Incorrect password";
@@ -26,7 +27,7 @@ if (isset($_POST['login'])) {
     
     pg_close($conn);
     session_start();
-    //$_SESSION['user_id'] = $user_id;
+    $_SESSION['user_id'] = $user_id;
     $_SESSION['username'] = $username;
     header('Location: '."../html/Home.html");
 }
