@@ -3,84 +3,62 @@ function toggleHeart(button) {
 }
 
 
-function exitButton(clickedElement) {
-    // Find the closest post element by using querySelector
-    var postElement = clickedElement.closest('.posts');
+function exitButton() {
+    var postPreElement = document.querySelector('prepost');
+    var dimmedElement = document.querySelector('.dimmed');
 
-    // Log the clicked element and the found post element
-    console.log('Clicked Element:', clickedElement);
-    console.log('Post Element:', postElement);
-
-    // Check if a post element was found
-    if (postElement) {
-        // Get the ID attribute of the post element
-        var postId = postElement.getAttribute('id');
-
-        // Log it to the console
-        console.log('Clicked on exit button for post with ID:', postId);
-
-        // Find the postpre element within the same post
-        var postPreElement = postElement.querySelector('postpre');
-
-        // Check if the postpre element was found
-        if (postPreElement) {
-            // Set the display property of .postpre to none
-            postPreElement.style.display = 'none';
-        }
-
-        // Remove the .active class from the .dimmed element
-        var dimmedElement = document.querySelector('.dimmed');
-        if (dimmedElement) {
-            dimmedElement.classList.remove('active');
-        }
-    } else {
-        console.log('No post element found.');
-    }
+    dimmedElement.classList.remove('active');
+    postPreElement.style.display = 'none';
 }
+
 
 
 function openPost(clickedElement) {
     // Find the closest post element by using querySelector
     var postElement = clickedElement.closest('.posts');
+    var postPreElement = document.querySelector('prepost');
+    var dimmedElement = document.querySelector('.dimmed');
 
-    // Log the clicked element and the found post element
-    console.log('Clicked Element:', clickedElement);
-    console.log('Post Element:', postElement);
+    dimmedElement.classList.add('active');
+    postPreElement.style.display = 'flex';
+        
 
     // Check if a post element was found
     if (postElement) {
         // Get the ID attribute of the post element
         var postId = postElement.getAttribute('id');
 
-        // Log it to the console
-        console.log('Opened post with ID:', postId);
+        // Display the information for the opened post
+        displayPostInfo(postId);
 
-        // Find the postpre element within the same post
-        var postPreElement = postElement.querySelector('postpre');
-
-        // Check if the postpre element was found
-        if (postPreElement) {
-            // Set the display property of postpre to flex
-            postPreElement.style.display = 'flex';
-        }
-
-        // Add the 'active' class to the .dimmed element
-        var dimmedElement = document.querySelector('.dimmed');
-        if (dimmedElement) {
-            dimmedElement.classList.add('active');
-        }
+        // Additional logic for handling the opening of the post can go here
     } else {
         console.log('No post element found.');
     }
 }
 
+function displayPostInfo(postId) {
+    // Find the post element by ID
+    var postElement = document.getElementById('id' + postId);
 
-// function exitButton(clickedElement) {
-//     var buttonId = clickedElement.getAttribute('button-post-id');
+    // Check if a post element with the specified ID exists
+    if (postElement) {
+        // Get information from the post (you can customize this based on your data structure)
+        var imgSrc = postElement.querySelector('.expanded-post img').getAttribute('src');
+        var captionText = postElement.querySelector('.caption').textContent;
 
-//     var postpreElement = document.querySelector('postpre[id="' + buttonId + '"]');
-//     var dimming = document.querySelector(".dimmed");
+        // Display the information (you can customize this based on your needs)
+        console.log('Post ID:', postId);
+        console.log('Image Source:', imgSrc);
+        console.log('Caption:', captionText);
 
-//     postpreElement.style.display = "none";
-//     dimming.classList.remove("active");
-// }
+
+        // Additional logic for displaying the information in your UI can go here
+    } else {
+        console.log('Post with ID ' + postId + ' not found.');
+    }
+}
+
+// Example usage
+var postIdToDisplay = 2; // You can replace this with the actual post ID
+openPost(document.getElementById(postIdToDisplay));
