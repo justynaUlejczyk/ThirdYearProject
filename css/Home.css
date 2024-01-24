@@ -517,6 +517,7 @@ main groups {
     width: 100%;
     display: flex;
     align-items: center;
+    padding: 10px 10px 0px 5px;
 }
 
 .user-post-name {
@@ -678,6 +679,7 @@ prepost {
 }
 
 .comment-container {
+    font-size: 14px;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -727,7 +729,7 @@ prepost {
 }
 
 .comment-text > p {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 #more {
