@@ -16,6 +16,14 @@ function exitButton() {
     createPost.style.display = 'none';
 }
 
+function finishPost() {
+    var dimmedElement = document.querySelector('.dimmed');
+    var createPost = document.querySelector('.feed-create-post-container')
+
+    dimmedElement.classList.remove('active');
+    createPost.style.display = 'none';
+}
+
 function createPost(){
     var createPost = document.querySelector('.feed-create-post-container')
     var dimmedElement = document.querySelector('.dimmed');
