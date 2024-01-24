@@ -37,44 +37,20 @@ function openPost(clickedElement) {
     }
 }
 
-function displayPostInfo(postId) {
-    // Find the post element by ID
-    var postElement = document.getElementById('id' + postId);
 
-    // Check if a post element with the specified ID exists
-    if (postElement) {
-        // Get information from the post (you can customize this based on your data structure)
-        var imgSrc = postElement.querySelector('.expanded-post img').getAttribute('src');
-        var captionText = postElement.querySelector('.caption').textContent;
-
-        // Display the information (you can customize this based on your needs)
-        console.log('Post ID:', postId);
-        console.log('Image Source:', imgSrc);
-        console.log('Caption:', captionText);
-
-
-        // Additional logic for displaying the information in your UI can go here
-    } else {
-        console.log('Post with ID ' + postId + ' not found.');
-    }
-}
-
-// Example usage
-var postIdToDisplay = 2; // You can replace this with the actual post ID
-openPost(document.getElementById(postIdToDisplay));
 
 function toggleMore() {
     var dots = document.getElementById("dots");
     var moreText = document.getElementById("more");
     var btnText = document.getElementById("myBtn");
-  
+
     if (dots.style.display === "none") {
-      dots.style.display = "inline";
-      btnText.innerHTML = "Read more";
-      moreText.style.display = "none";
+    dots.style.display = "inline";
+    btnText.innerHTML = "Read more";
+    moreText.style.display = "none";
     } else {
-      dots.style.display = "none";
-      btnText.innerHTML = "Read less";
-      moreText.style.display = "inline";
+    dots.style.display = "none";
+    btnText.innerHTML = "Read less";
+    moreText.style.display = "inline";
     }
-  }
+}
