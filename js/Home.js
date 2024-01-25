@@ -1,3 +1,22 @@
+document.addEventListener('DOMContentLoaded', function () {
+    // Get all elements with the class "group"
+    const groupElements = document.querySelectorAll('.group');
+
+    // Add event listeners to each "group" element
+    groupElements.forEach(groupElement => {
+        groupElement.addEventListener('mouseenter', () => {
+            // Add the "active" class when the mouse enters
+            groupElement.classList.add('active');
+        });
+
+        groupElement.addEventListener('mouseleave', () => {
+            // Remove the "active" class when the mouse leaves
+            groupElement.classList.remove('active');
+        });
+    });
+});
+
+
 function toggleDropdown() {
     var dropdownContent = document.getElementById("dropdownContent");
     dropdownContent.classList.toggle("active");

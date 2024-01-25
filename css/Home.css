@@ -393,12 +393,21 @@ main > profile > div:nth-child(2) {
 }
 
 /* main group */
-main groups {
-    max-width: 225px;
+
+@keyframes slideaway {
+    from {
+        opacity: 0;
+    }
+    to {
+        display: block;
+    }
+}
+
+.group {
+    max-width: 100px;
     min-height: 275px;
     max-height: 300px;
     height: 100%;
-    width: 25%;
     box-sizing: border-box;
     border-radius: 10px;
     flex: 1;
@@ -406,35 +415,43 @@ main groups {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    transition: all 500ms linear;
+    p {
+        display: none;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+.group.active {
+    transition: all 500ms linear;
+    max-width: 225px;
+    p {
+        animation: slideaway 500ms;
+        display: block;
+        opacity: 1;
+    }
+}
+
+.placeholder-img {
+    transition: all 500ms linear;
+    background-color: var(--gray);
+    aspect-ratio: 1;
+    width: 50px;
+    height: 100%;
+}
+
+.groupButton {
+    display: flex;
+    align-items: center;
     gap: 10px;
+    height: 100%;
 }
 
 #tile3 {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    gap: 20px;
-}
-
-.groupContainer {
-    display: block;
-    margin-top: 20px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-bottom: 20px;
-    width: 80%;
-    height: 40px;
-}
-
-.groupButton {
-    display: flex;
     gap: 10px;
-}
-.groupButton button {
-    background-color: grey;
-    height: 50px;
-    width: 50px;
 }
 
 /* main feed */
@@ -635,6 +652,7 @@ path {
 
 .dimmed.active:after {
     display: block;
+    animation: slideaway 200ms;
 }
 
 prepost {
@@ -653,6 +671,7 @@ prepost {
     height: 90%;
     z-index: 999;
     display: none;
+    animation: slideaway 100ms;
 }
 
 .comment-header {
