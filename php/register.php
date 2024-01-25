@@ -4,10 +4,10 @@ if (isset($_POST['register'])) {
   require_once "connect_db.php";
 
     // Prepare and execute the SQL statement
-    $stmt = pg_prepare($conn, "insert_user", "INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING user_id");
+    $stmt = pg_prepare($conn, "insert_user", "INSERT INTO users (full_name, username, email, password) VALUES ($1, $2, $3, $4) RETURNING user_id");
     
     // Get the form data
-    //$name = $_POST["name"];
+    $full_name = $_POST["full_name"];
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -16,7 +16,7 @@ if (isset($_POST['register'])) {
     $password = password_hash($password, PASSWORD_BCRYPT);
 
     // Execute the SQL statement
-    $result = pg_execute($conn, "insert_user", array($username, $email, $password));
+    $result = pg_execute($conn, "insert_user", array($full_name, $username, $email, $password));
 
     // Check the result
     if ($result) {
