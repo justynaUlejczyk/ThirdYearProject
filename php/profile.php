@@ -1,7 +1,7 @@
 <?php
     session_start();
     if (!isset($_SESSION["user_id"])) {
-        header('Location: ' . "./register.php"); // Redirect the user to the register page if they have not already logged in
+        header('Location: ' . "register.php"); // Redirect the user to the register page if they have not already logged in
     }
 
     // Assuming you have a database connection
