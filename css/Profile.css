@@ -1,7 +1,6 @@
 .profileBanner{
     display: block;
     width: 100%;
-    background-color: blue;
 }
 .profileBanner div{
     align-items: center;
