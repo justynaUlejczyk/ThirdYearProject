@@ -199,8 +199,8 @@
             <div>
                 <div class="feed-create-post-container">
                     <a href="#" class="close" onclick="exitButton(this)"></a>
-                    <form action="">
-                        <input type="file" class="feed-create-post-img">
+                    <form action="../php/create_post.php" enctype="multipart/form-data">
+                        <input type="file" class="feed-create-post-img" accept="png, jpg, jpeg">
                         <div>
                             <h3>Caption</h3>
                             <input type="text" class="feed-create-post-captions">
