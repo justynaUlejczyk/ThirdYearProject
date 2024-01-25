@@ -1,9 +1,9 @@
-.profileBanner{
+.profileBanner {
     display: block;
     width: 100%;
 }
 
-.profileBanner div{
+.profileBanner div {
     align-items: center;
     width: 100%;
     height: 200px;
@@ -11,11 +11,9 @@
     border-radius: 20px;
 }
 
-
-
-.name  {
+.name {
     float: left;
-    padding: 20px;;
+    padding: 20px;
     display: inline;
     color: white;
     text-align: left;
@@ -23,7 +21,7 @@
     font-size: 30px;
 }
 
-.username{
+.username {
     float: left;
     padding-left: 20px;
     display: inline;
@@ -32,20 +30,30 @@
     font-size: 20px;
 }
 
-.profilePic img{
+.profilePic img {
     width: 130px;
     height: 130px;
-    margin-left: 40px; 
+    margin-left: 40px;
     margin-top: 10px;
     border-radius: 25px;
     float: inline-start;
 }
 
-
 .bio {
     text-align: left;
-    height:100px;
+    height: 100px;
     width: 100%;
-    float:left;
+    float: left;
     margin: 10px;
+}
+
+main {
+    max-width: 1128px;
+    width: 100%;
+    margin-top: 75px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
 }

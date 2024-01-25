@@ -52,8 +52,6 @@
 
     <!-- Start of Nav -->
     <nav>
-
-
         <section>
             <form id="searchForm" action="">
                 <input id="searchInput" type="search" required>
@@ -61,7 +59,6 @@
             </form>
 
         </section>
-
         <section>
             <ul class="linksBar">
                 <li>
