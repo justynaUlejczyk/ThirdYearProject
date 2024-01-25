@@ -10,11 +10,19 @@
 }
 
 .banner-profile > div:first-child {
-    align-items: center;
+    display: flex;
+    justify-content: end;
     width: 100%;
     height: 300px;
     background-color: grey;
     border-radius: 20px 20px 0 0;
+}
+
+.banner-profile-edit {
+    margin-top: 24px;
+    margin-right: 5%;
+    width: 24px;
+    height: 24px;
 }
 
 div.banner-profile-info {
