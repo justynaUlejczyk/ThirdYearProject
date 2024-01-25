@@ -532,6 +532,7 @@
 
             <!-- Start Post -->
             <!-- Start Post 1 -->
+
             <post class="posts" id="1">
                 <div class="feed-post">
                     <div class="user-container">
@@ -585,7 +586,6 @@
                         </button>
                     </div>
                 </div>
-
 
             </post>
             <!-- End of Post 1 -->
