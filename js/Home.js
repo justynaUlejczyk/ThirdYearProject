@@ -1,4 +1,7 @@
-
+function toggleDropdown() {
+    var dropdownContent = document.getElementById("dropdownContent");
+    dropdownContent.classList.toggle("active");
+}
 
 
 function toggleHeart(button) {
@@ -24,7 +27,7 @@ function finishPost() {
     createPost.style.display = 'none';
 }
 
-function createPost(){
+function createPost() {
     var createPost = document.querySelector('.feed-create-post-container')
     var dimmedElement = document.querySelector('.dimmed');
 
@@ -41,7 +44,7 @@ function openPost(clickedElement) {
 
     dimmedElement.classList.add('active');
     postPreElement.style.display = 'flex';
-        
+
 
     // Check if a post element was found
     if (postElement) {
@@ -65,13 +68,13 @@ function toggleMore() {
     var btnText = document.getElementById("myBtn");
 
     if (dots.style.display === "none") {
-    dots.style.display = "inline";
-    btnText.innerHTML = "Read more";
-    moreText.style.display = "none";
+        dots.style.display = "inline";
+        btnText.innerHTML = "Read more";
+        moreText.style.display = "none";
     } else {
-    dots.style.display = "none";
-    btnText.innerHTML = "Read less";
-    moreText.style.display = "inline";
+        dots.style.display = "none";
+        btnText.innerHTML = "Read less";
+        moreText.style.display = "inline";
     }
 }
 

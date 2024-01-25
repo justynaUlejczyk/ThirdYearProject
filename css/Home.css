@@ -276,21 +276,28 @@ form:valid .fa {
 }
 
 .dropdown-content {
-    display: none;
     position: absolute;
-    margin-top: 20px;
-    margin-left: -100px;
+    margin-top: 60px;
+    margin-left: -80px;
     width: 200px;
-    z-index: 1;
+    transition: opacity 0.3s ease;
+    background-color: var(--white);
+    color: black;
+    visibility: hidden;
+    opacity: 0;
+    border-top: none;
+    box-shadow: 0 4px 8px -6px #181818;
 }
 
-.dropdown:hover .dropdown-content {
-    display: block;
-    background-color: var(--white);
-    color: white;
+.dropdown-content.active {
+    visibility: visible;
+    opacity: 1;
+    transition: all 300ms linear;
+    transform: translateY(-40px);
 }
 
 .dropdown-content a {
+    cursor: pointer;
     padding: 16px;
     text-decoration: none;
     text-align: left;
