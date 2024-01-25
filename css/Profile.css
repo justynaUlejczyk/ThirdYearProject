@@ -1,50 +1,94 @@
-.profileBanner {
+:root {
+    --offwhite: #ebebeb;
+    --white: white;
+    --gray: #c2c2c2;
+}
+
+.banner-profile {
     display: block;
     width: 100%;
 }
 
-.profileBanner div {
+.banner-profile > div:first-child {
     align-items: center;
     width: 100%;
-    height: 200px;
+    height: 300px;
     background-color: grey;
-    border-radius: 20px;
+    border-radius: 20px 20px 0 0;
 }
 
-.name {
-    float: left;
-    padding: 20px;
-    display: inline;
-    color: white;
-    text-align: left;
-    width: 80%;
-    font-size: 30px;
-}
-
-.username {
-    float: left;
-    padding-left: 20px;
-    display: inline;
-    color: black;
-    text-align: left;
-    font-size: 20px;
+div.banner-profile-info {
+    background-color: var(--white);
+    width: 100%;
+    height: 100%;
+    max-height: 200px;
+    border-radius: 0 0 25px 25px;
+    display: flex;
+    flex-direction: column;
+    div:nth-child(5) {
+        max-height: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: auto;
+        margin-top: auto;
+    }
 }
 
 .profilePic img {
-    width: 130px;
-    height: 130px;
-    margin-left: 40px;
-    margin-top: 10px;
-    border-radius: 25px;
-    float: inline-start;
+    max-width: 155px;
+    max-height: 155px;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1;
+    border-radius: 100px;
+    margin-top: -77.5px;
+    margin-left: 25px;
+    z-index: 1;
+    position: absolute;
 }
 
-.bio {
-    text-align: left;
-    height: 100px;
+.profilePicBorder {
+    background-color: var(--white);
+    max-width: 170px;
+    max-height: 170px;
     width: 100%;
-    float: left;
-    margin: 10px;
+    height: 100%;
+    border-radius: 100px;
+    margin-top: -85px;
+    margin-left: 18px;
+    z-index: 0;
+    position: absolute;
+}
+
+.banner-profile-person {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    margin-left: 200px;
+}
+
+.banner-profile-name {
+    font-size: 28px;
+}
+
+.banner-profile-user {
+    font-size: 20px;
+    color: var(--gray);
+}
+
+.divider {
+    margin-top: 50px;
+}
+
+.banner-profile-options {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+    div:first-child {
+        display: flex;
+        gap: 100px;
+    }
 }
 
 main {
