@@ -23,7 +23,7 @@
     // Check if there are any groups
     if (pg_num_rows($result) > 0) {
         while ($row = pg_fetch_assoc($result)) {
-            $name = $row["name"]; //check for database names!!!
+            $name = $row["username"]; //check for database names!!!
             echo "<div>";
             echo "<h2>{$name}</h2>";
             echo "</div>";

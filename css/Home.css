@@ -31,7 +31,6 @@ button {
     text-align: inherit;
     cursor: pointer;
     padding: 0;
-
     margin: 0;
     outline: none;
 }
@@ -206,19 +205,6 @@ nav form:hover .fa,
 form:valid .fa {
     background: #07051a;
     color: white;
-}
-
-/* main */
-main {
-    max-width: 1128px;
-    width: 100%;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    flex: 1;
-    display: flex;
-    justify-content: space-between;
-    box-sizing: border-box;
 }
 
 nav .fa {
