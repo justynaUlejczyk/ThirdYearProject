@@ -1,3 +1,17 @@
+?php
+session_start();
+    if (!isset($_SESSION["username"])) {
+        header('Location: ' . "./login.php");
+    }
+
+    require_once "../php/connect_db.php";
+
+    $username = $_SESSION["username"];
+
+    $userDataSTMT = pg_prepare($conn, "user_data", "SELECT * FROM accounts where username = $1");
+    $userDataRESULT = pg_execute($conn, "user_data", array($username));
+    $name = pg_fetch_result($userDataRESULT, 0, "name");
+?>
 <!DOCTYPE html>
 <html class="dimmed">
 
@@ -477,8 +491,14 @@
                 <span class="profilePic"><img src="../images/cat.jpg"></span>
                 <div class="profilePicBorder"></div>
                 <div class="banner-profile-person">
-                    <span class="banner-profile-name">Username</span>
-                    <span class="banner-profile-user">@User</span>
+                  <span class="banner-profile-name"><?php
+                        echo "<h3>$name</h3>";
+                        echo "<h4 id='occupation'>@$username</h4>";
+                        ?></span>
+                    <span class="banner-profile-user">@<?php
+                        echo "<h3>$name</h3>";
+                        echo "<h4 id=''occupation'>@$username</h4>";
+                        ?></span>
                 </div>
                 <div class="divider"></div>
                 <div class="banner-profile-options">
