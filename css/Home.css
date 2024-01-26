@@ -863,8 +863,7 @@ prepost {
 .caption {
     width: 100%;
     height: auto;
-    min-height: 50px;
-    padding-top: 20px;
+    padding-top: 10px;
     font-size: 14px;
     margin-left: auto;
     margin-right: auto;
