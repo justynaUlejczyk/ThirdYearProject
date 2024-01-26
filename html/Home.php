@@ -255,7 +255,6 @@ session_start();
 
 
             <div class='comments-column'>
-                <!--- Poster Info-->
                 <div class='post-info'>
                     <div class=' comment-header'>
                         <div class='user-container'>
@@ -279,7 +278,6 @@ session_start();
                                 </svg>
                                 <span>4213</span>
                             </button>
-                            <!-- Comment Button -->
                             <button>
                                 <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
                                     xmlns='http://www.w3.org/2000/svg'>
@@ -289,7 +287,6 @@ session_start();
                                 </svg>
                                 <span>Comment</span>
                             </button>
-                            <!-- Send  -->
                             <button>
                                 <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
                                     xmlns='http://www.w3.org/2000/svg'>
@@ -300,7 +297,6 @@ session_start();
                                 <span>Share</span>
                             </button>
                         </div>
-                        <!-- Pin -->
                         <button>
                             <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
                                 xmlns='http://www.w3.org/2000/svg'>
@@ -311,16 +307,10 @@ session_start();
                         </button>
                     </div>
                 </div>
-
-                <!--- End of Poster -->
-
                 <div>
                     <h4>Comments</h4>
                     <div class='divider'></div>
                 </div>
-
-
-                <!-- Comment -->
                 <div class='comment-container'>
                     <div class='comment-user-comment'>
                         <div class='user-container'>
@@ -353,7 +343,66 @@ session_start();
                             <span>1 Like</span>
                             <a>Reply</a>
                         </div>
-
+                    </div>
+                    <div class='comment-user-comment'>
+                        <div class='user-container'>
+                            <a href='Profile.php'><img src='../images/cat.jpg' class='post-avatar' /></a>
+                            <div class='user-post-name'>
+                                <span>Michael Schumacher</span>
+                                <span>Comment - 22/01/23</span>
+                            </div>
+                        </div>
+                        <div class='comment-like'>
+                            <button class='like icons' onclick='toggleHeart(this)'>
+                                <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
+                                    xmlns='http://www.w3.org/2000/svg'>
+                                    <path
+                                        d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z'
+                                        fill='red' />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <div class='comment-text'>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt animi obcaecati
+                            quidem
+                            nostrum commodi tenetur?
+                        </div>
+                        <div class='comment-options'>
+                            <span>1 Like</span>
+                            <a>Reply</a>
+                        </div>
+                    </div>
+                    <div class='comment-user-comment'>
+                        <div class='user-container'>
+                            <a href='Profile.php'><img src='../images/cat.jpg' class='post-avatar' /></a>
+                            <div class='user-post-name'>
+                                <span>Michael Schumacher</span>
+                                <span>Comment - 22/01/23</span>
+                            </div>
+                        </div>
+                        <div class='comment-like'>
+                            <button class='like icons' onclick='toggleHeart(this)'>
+                                <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
+                                    xmlns='http://www.w3.org/2000/svg'>
+                                    <path
+                                        d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z'
+                                        fill='red' />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <div class='comment-text'>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt animi obcaecati
+                            quidem
+                            nostrum commodi tenetur?
+                        </div>
+                        <div class='comment-options'>
+                            <span>1 Like</span>
+                            <a>Reply</a>
+                        </div>
                     </div>
                     <div class='comment-user-comment'>
                         <div class='user-container'>
@@ -375,7 +424,6 @@ session_start();
                             </button>
                         </div>
                     </div>
-
                     <div>
                         <div class='comment-text'>
                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt animi obcaecati
@@ -386,7 +434,6 @@ session_start();
                             <span>1 Like</span>
                             <a>Reply</a>
                         </div>
-
                     </div>
                     <div class='comment-user-comment'>
                         <div class='user-container'>
@@ -397,7 +444,6 @@ session_start();
                             </div>
                         </div>
                         <div class='comment-like'>
-                            <!-- Likes -->
                             <button class='like icons' onclick='toggleHeart(this)'>
                                 <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
                                     xmlns='http://www.w3.org/2000/svg'>
@@ -408,7 +454,6 @@ session_start();
                             </button>
                         </div>
                     </div>
-
                     <div>
                         <div class='comment-text'>
                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt animi obcaecati
@@ -419,77 +464,7 @@ session_start();
                             <span>1 Like</span>
                             <a>Reply</a>
                         </div>
-
                     </div>
-                    <div class='comment-user-comment'>
-                        <div class='user-container'>
-                            <a href='Profile.php'><img src='../images/cat.jpg' class='post-avatar' /></a>
-                            <div class='user-post-name'>
-                                <span>Michael Schumacher</span>
-                                <span>Comment - 22/01/23</span>
-                            </div>
-                        </div>
-                        <div class='comment-like'>
-                            <!-- Likes -->
-                            <button class='like icons' onclick='toggleHeart(this)'>
-                                <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
-                                    xmlns='http://www.w3.org/2000/svg'>
-                                    <path
-                                        d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z'
-                                        fill='red' />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class='comment-text'>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt animi obcaecati
-                            quidem
-                            nostrum commodi tenetur?
-                        </div>
-                        <div class='comment-options'>
-                            <span>1 Like</span>
-                            <a>Reply</a>
-                        </div>
-
-                    </div>
-                    <div class='comment-user-comment'>
-                        <div class='user-container'>
-                            <a href='Profile.php'><img src='../images/cat.jpg' class='post-avatar' /></a>
-                            <div class='user-post-name'>
-                                <span>Michael Schumacher</span>
-                                <span>Comment - 22/01/23</span>
-                            </div>
-                        </div>
-                        <div class='comment-like'>
-                            <!-- Likes -->
-                            <button class='like icons' onclick='toggleHeart(this)'>
-                                <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
-                                    xmlns='http://www.w3.org/2000/svg'>
-                                    <path
-                                        d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z'
-                                        fill='red' />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class='comment-text'>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt animi obcaecati
-                            quidem
-                            nostrum commodi tenetur?
-                        </div>
-                        <div class='comment-options'>
-                            <span>1 Like</span>
-                            <a>Reply</a>
-                        </div>
-
-                    </div>
-                    <!--- End of Comment -->
-
-                    <!-- Replies -->
                     <div class='comment-replies'>
                         <div class='comment-user-comment'>
                             <div class='user-container'>
@@ -500,7 +475,6 @@ session_start();
                                 </div>
                             </div>
                             <div class='comment-like'>
-                                <!-- Likes -->
                                 <button class='like icons' onclick='toggleHeart(this)'>
                                     <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
                                         xmlns='http://www.w3.org/2000/svg'>
@@ -531,12 +505,7 @@ session_start();
                             </div>
                         </div>
                     </div>
-
-                    <!-- End of Replies -->
-
-
                 </div>
-                <!-- Comment Input -->
                 <div class='comment-create-container'>
                     <form>
                         <input class='comment-create' type='text'>
