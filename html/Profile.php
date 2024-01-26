@@ -493,10 +493,10 @@ session_start();
                 <div class="banner-profile-person">
                   <span class="banner-profile-name"><?php
                         echo "<h3>$name</h3>";
-                        echo "<h4 id='occupation'>@$username</h4>";
+                    
                         ?></span>
-                    <span class="banner-profile-user">@<?php
-                        echo "<h3>$name</h3>";
+                    <span class="banner-profile-user"><?php
+            
                         echo "<h4 id=''occupation'>@$username</h4>";
                         ?></span>
                 </div>
