@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="dimmed">
 
 <head>
     <title>Homepage</title>
@@ -16,7 +16,7 @@
 
 <!-- test commit - branch demo -->
 
-<body class="dimmed">
+<body>
 
     <!-- Start of SubNav -->
     <subnav>

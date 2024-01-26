@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="dimmed">
 
 <head>
     <title>Homepage</title>
@@ -16,7 +16,7 @@
 
 <!-- test commit - branch demo -->
 
-<body class="dimmed">
+<body>
 
     <!-- Start of SubNav -->
     <subnav>
@@ -198,10 +198,11 @@
                 <div class="feed-create-post-container">
                     <a href="#" class="close" onclick="exitButton(this)"></a>
                     <form action="../php/create_post.php" method="post" enctype="multipart/form-data">
-                        <input type="file" class="feed-create-post-img" name ="post_image" accept=".png, .jpg, .jpeg">
+                        <input type="file" class="feed-create-post-img" name="post_image" accept=".png, .jpg, .jpeg">
                         <div>
                             <h3>Caption</h3>
-                            <textarea id="text" name="text" rows="4" cols="50" maxlength="3000" class="feed-create-post-captions"></textarea> 
+                            <textarea id="text" name="text" rows="4" cols="50" maxlength="3000"
+                                class="feed-create-post-captions"></textarea>
                         </div>
                         <div>
                             <h3>tags will go here</h3>
@@ -235,7 +236,7 @@
                     <!--- Poster Info-->
                     <div class="post-info">
                         <div class=" comment-header">
-                            <div class="user-container">
+                            <div class="comment-user-container">
                                 <a href="Profile.html"><img src="../images/cat.jpg" class="post-avatar" /></a>
                                 <div class="user-post-name">
                                     <span>Michael Schumacher</span>
