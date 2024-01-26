@@ -466,7 +466,7 @@
         <!-- End of Post Preview -->
 
         <!-- Banner Profile -->
-<?php include('php/profilephp.php')?>
+<?php include('../php/profilephp.php')?>
 
         <section class="banner-profile">
             <div>
