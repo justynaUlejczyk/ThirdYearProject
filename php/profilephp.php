@@ -23,9 +23,9 @@
     if (pg_num_rows($result) > 0) {
         
             $name = $row["username"]; // Check for correct database field name
-            //echo "<div>";
-           // echo "<h2>{$name}</h2>";
-           // echo "</div>";
+            
+         echo "<h2>{$name}</h2>";
+        
         
     } else {
         echo "No groups yet...";
