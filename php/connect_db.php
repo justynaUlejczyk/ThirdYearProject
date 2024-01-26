@@ -1,9 +1,9 @@
 <?php # CONNECT TO PostgreSQL DATABASE.
-$host = "localhost";
+$host = "kandula.db.elephantsql.com";
 $port = "5432";
-$dbname = "projectdb";
-$user = "postgres";
-$password = "RuKhTB3wn6&Y%z3yD9";
+$dbname = "vfqjpwel";
+$user = "vfqjpwel";
+$password = "cFs0XFyubfNelPRIoab5EJcJX6XGA1Y5";
 
 $conn = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
 if (!$conn) { 

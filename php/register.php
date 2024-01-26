@@ -4,10 +4,10 @@ if (isset($_POST['register'])) {
   require_once "connect_db.php";
 
     // Prepare and execute the SQL statement
-    $stmt = pg_prepare($conn, "insert_user", "INSERT INTO users (full_name, username, email, password) VALUES ($1, $2, $3, $4) RETURNING user_id");
+    $stmt = pg_prepare($conn, "insert_account", "INSERT INTO accounts (name, username, email, password) VALUES ($1, $2, $3, $4) RETURNING username");
     
     // Get the form data
-    $full_name = $_POST["full_name"];
+    $name = $_POST["name"];
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -16,16 +16,15 @@ if (isset($_POST['register'])) {
     $password = password_hash($password, PASSWORD_BCRYPT);
 
     // Execute the SQL statement
-    $result = pg_execute($conn, "insert_user", array($full_name, $username, $email, $password));
+    $result = pg_execute($conn, "insert_account", array($name, $username, $email, $password));
 
     // Check the result
     if ($result) {
         echo "New account created successfully!";
-        $user_id = pg_fetch_result($result, 0, 'user_id');
+        $user_id = pg_fetch_result($result, 0, 'username');
         session_start();
-        $_SESSION['user_id'] = $user_id;
         $_SESSION['username'] = $username;
-        header('Location: '."../html/Home.html");
+        header('Location: '."../html/Home.php");
     } else {
         echo "Error: " . pg_last_error($conn);
     }

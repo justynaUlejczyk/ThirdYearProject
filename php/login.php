@@ -3,7 +3,7 @@ if (isset($_POST['login'])) {
     // Connect to the database
   require_once "connect_db.php";
 
-    $stmt = pg_prepare($conn, "find_user", "SELECT * FROM users WHERE username = $1");
+    $stmt = pg_prepare($conn, "find_user", "SELECT * FROM accounts WHERE username = $1");
 
     $username = $_POST['username'];
     $user_entered_password = $_POST['password'];
@@ -16,7 +16,6 @@ if (isset($_POST['login'])) {
     }
 
     $stored_password = pg_fetch_result($result, 0, 'password');
-    $user_id = pg_fetch_result($result, 0, 'user_id');
 
     if (! password_verify($user_entered_password, $stored_password)) {
         echo "Incorrect password";
@@ -27,7 +26,6 @@ if (isset($_POST['login'])) {
     
     pg_close($conn);
     session_start();
-    $_SESSION['user_id'] = $user_id;
     $_SESSION['username'] = $username;
-    header('Location: '."../html/Home.html");
+    header('Location: '."../html/Home.php");
 }
