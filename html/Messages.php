@@ -2,11 +2,10 @@
 <html>
 
 <head>
-    <title>Groups</title>
-    <link rel="stylesheet" href="../css/Home.css">
-    <link rel="stylesheet" href="../css/Group.css">
+    <title>Messages</title>
+    <link rel="stylesheet" href="../css/Messages.css">
     <link rel="stylesheet" href="../css/StyleSheet.css">
-
+    <link rel="stylesheet" href="../css/Home.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
     integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
@@ -17,7 +16,6 @@
 <!-- test commit - branch demo -->
 
 <body>
-
     <nav>
         <subnav>
             <ul>
@@ -73,14 +71,14 @@
                         </a>
                     </li>
                     <li>
-                        <a href="../html/Group.html">
+                        <a href="../html/Group.php">
                             <img src="../images/icons/nav-icons/users-group-two-rounded-svgrepo-com.svg" alt="groups"
                                 width="35" />
                             <span>Groups</span>
                         </a>
                     </li>
                     <li>
-                        <a href="../html/Messages.html">
+                        <a href="../html/Messages.php">
                             <img src="../images/icons/nav-icons/chat-round-line-svgrepo-com.svg" alt="messages"
                                 width="35" />
                             <span>Messages</span>
@@ -100,7 +98,7 @@
                         <span>Notifications</span>
                     </li>
     
-                    <a href="../html/Profile.html">
+                    <a href="../html/Profile.php">
                         <img class="nav-profile" src="../images/cat.jpg" />
                     </a>
     
@@ -113,64 +111,34 @@
 
     
     <main>
-     <!-- Group tile -->
 
+    
+        <main>
 
-    <section class="groupSection"> 
-        <h1 class="heading">Your Groups</h1>
-        <section class="groupDisplay">
-            <div> 
-                <img src="../images/cat.jpg" class="groupIcon">
-                <h1>Group 1</h1>
-            </div>
-            <div> 
-                <img src="../images/cat.jpg" class="groupIcon">
-                <h1>Group 1</h1>
-            </div>
-            <div> 
-                <img src="../images/cat.jpg" class="groupIcon">
-                <h1>Group 1</h1>
-            </div>
-            <div> 
-                <img src="../images/cat.jpg" class="groupIcon">
-                <h1>Group 1</h1>
-            </div>
-
-
-            <a href="../html/createGroup.html" style="text-decoration: none;">
-            <div class="group" class ="groupIcon">
-                <img src="../images/icons/group/plus-svgrepo-com.svg">
-                <h1>Create New Group</h1>
-            </div>
-            </a>
-
-    </section>
-    </section>
-
-
-
-
-
-    <section class="friendBox"> 
-        <h1 class="heading">Friends List</h1>
-        <section class="friendList">
-            <friend>
-                <img src="../images/cat.jpg" class="friendIcon">
-                <h1 style=" display: inline;">Name</h1>
-            </friend>
-            <friend>
-                <img src="../images/cat.jpg" class="friendIcon">
-                <h1 style=" display: inline;">Name</h1>
-            </friend>   
-            <friend>
-                <img src="../images/cat.jpg" class="friendIcon">
-                <h1 style=" display: inline;">Name</h1>
-            </friend>
-            <a href ="../html/friends.html"> <h1 class="viewMore" >View All</h1></a>
-        </section>
-    </section>
-
-
+            <div class="wrapper">
+                <section class="chat-area">
+                    <header>
+                        <div class="details">
+                        </div>
+                    </header>
+    
+                    <div class="chat-box">
+                    </div>
+    
+                    <form action="#" class="typing-area">
+                        <input type="text" class="incoming_id" name="incoming_id" hidden>
+                        <input type="text" name="message" class="input-field" placeholder="Type a message here..." autocomplete="off">
+                    </form>
+                    <button><i class="fab fa-telegram-plane"></i></button>
+    
+                </section>
+              </div>
+            
+              <script src="javascript/chat.js"></script>
+            
+    
+    
+         </main>
 
      </main>
 

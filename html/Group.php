@@ -2,9 +2,9 @@
 <html>
 
 <head>
-    <title>Messages</title>
+    <title>Groups</title>
     <link rel="stylesheet" href="../css/Home.css">
-    <link rel="stylesheet" href="../css/Messages.css">
+    <link rel="stylesheet" href="../css/Group.css">
     <link rel="stylesheet" href="../css/StyleSheet.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +17,6 @@
 <!-- test commit - branch demo -->
 
 <body>
-
     <nav>
         <subnav>
             <ul>
@@ -26,7 +25,6 @@
                         <img src="../images/cat.jpg" class="nav-profile">
                     </a>
                 </li>
-    
                 <li>
                     <div class="dropdown">
                         <button class="dropButton">
@@ -73,14 +71,14 @@
                         </a>
                     </li>
                     <li>
-                        <a href="../html/Group.html">
+                        <a href="../html/Group.php">
                             <img src="../images/icons/nav-icons/users-group-two-rounded-svgrepo-com.svg" alt="groups"
                                 width="35" />
                             <span>Groups</span>
                         </a>
                     </li>
                     <li>
-                        <a href="../html/Messages.html">
+                        <a href="../html/Messages.php">
                             <img src="../images/icons/nav-icons/chat-round-line-svgrepo-com.svg" alt="messages"
                                 width="35" />
                             <span>Messages</span>
@@ -100,7 +98,7 @@
                         <span>Notifications</span>
                     </li>
     
-                    <a href="../html/Profile.html">
+                    <a href="../html/Profile.php">
                         <img class="nav-profile" src="../images/cat.jpg" />
                     </a>
     
@@ -113,22 +111,63 @@
 
     
     <main>
-
-        <section  class="messageContainer">
-
+     <!-- Group tile -->
 
 
-            <section class="messagePreview">
-                <section class="message">
-                    <img src="../images/cat.jpg" class="profilePic"/>
-                    <p class="name">John </p>
-                    <p class="lastMessage">Hello, Hope you are well </p>
-                </section>
-            </section>
+    <section class="groupSection"> 
+        <h1 class="heading">Your Groups</h1>
+        <section class="groupDisplay">
+            <div> 
+                <img src="../images/cat.jpg" class="groupIcon">
+                <h1>Group 1</h1>
+            </div>
+            <div> 
+                <img src="../images/cat.jpg" class="groupIcon">
+                <h1>Group 1</h1>
+            </div>
+            <div> 
+                <img src="../images/cat.jpg" class="groupIcon">
+                <h1>Group 1</h1>
+            </div>
+            <div> 
+                <img src="../images/cat.jpg" class="groupIcon">
+                <h1>Group 1</h1>
+            </div>
+
+
+            <a href="../html/createGroup.php" style="text-decoration: none;">
+            <div class="group" class ="groupIcon">
+                <img src="../images/icons/group/plus-svgrepo-com.svg">
+                <h1>Create New Group</h1>
+            </div>
+            </a>
+
+    </section>
+    </section>
 
 
 
+
+
+    <section class="friendBox"> 
+        <h1 class="heading">Friends List</h1>
+        <section class="friendList">
+            <friend>
+                <img src="../images/cat.jpg" class="friendIcon">
+                <h1 style=" display: inline;">Name</h1>
+            </friend>
+            <friend>
+                <img src="../images/cat.jpg" class="friendIcon">
+                <h1 style=" display: inline;">Name</h1>
+            </friend>   
+            <friend>
+                <img src="../images/cat.jpg" class="friendIcon">
+                <h1 style=" display: inline;">Name</h1>
+            </friend>
+            <a href ="../html/friends.php"> <h1 class="viewMore" >View All</h1></a>
         </section>
+    </section>
+
 
 
      </main>
@@ -138,4 +177,4 @@
 </body>
 
 
-</html>
+</php>

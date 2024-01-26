@@ -21,7 +21,7 @@
     <subnav>
         <ul>
             <li>
-                <a href="Profile.html">
+                <a href="Profile.php">
                     <img src="../images/cat.jpg" class="nav-profile">
                 </a>
             </li>
@@ -86,7 +86,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="../html/Group.html">
+                    <a href="../html/Group.php">
                         <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -112,7 +112,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="../html/Messages.html">
+                    <a href="../html/Messages.php">
                         <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -140,13 +140,13 @@
                             <a href="#">Link 1</a>
                             <a href="#">Link 2</a>
                             <a href="#">Link 3</a>
-                            <a href="../html/Group.html">See More</a>
+                            <a href="../html/Group.php">See More</a>
                         </div>
                     </div>
                     <span>Notifications</span>
                 </li>
 
-                <a href="../html/Profile.html">
+                <a href="../html/Profile.php">
                     <img class="nav-profile" src="../images/cat.jpg" />
                 </a>
 
@@ -514,7 +514,7 @@
                     <div class="posts" id="1">
                         <div class="feed-post">
                             <div class="user-container">
-                                <a href="Profile.html"><img src="../images/cat.jpg" class="post-avatar" /></a>
+                                <a href="Profile.php"><img src="../images/cat.jpg" class="post-avatar" /></a>
                                 <div class="user-post-name">
                                     <span>Michael Schumacher</span>
                                     <span>@MikeS</span>
