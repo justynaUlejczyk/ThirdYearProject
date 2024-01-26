@@ -9,35 +9,46 @@ function toggleHeart(button) {
 }
 
 
-function exitButton() {
-    var postPreElement = document.querySelector('prepost');
+function exitButton(clickedElement) {
     var dimmedElement = document.querySelector('.dimmed');
     var createPost = document.querySelector('.feed-create-post-container')
+    var postElement = clickedElement.closest('.posts');
 
     dimmedElement.classList.remove('active');
-    postPreElement.style.display = 'none';
     createPost.style.display = 'none';
+
+    console.log('Clicked Element:', clickedElement);
+    console.log('Post Element:', postElement);
+
+    if (postElement) {
+        var postId = postElement.getAttribute('data-postid');
+
+        console.log('Opened post with ID:', postId);
+
+        var postPreElement = postElement.querySelector('prepost');
+        if (postPreElement) {
+            postPreElement.style.display = 'none';
+        }
+    } else {
+        console.log('No post element found.');
+    }
 }
 
 function openPost(clickedElement) {
-    // Find the closest post element by using querySelector
     var postElement = clickedElement.closest('.posts');
-    var postPreElement = document.querySelector('prepost');
-    var dimmedElement = document.querySelector('.dimmed');
 
-    dimmedElement.classList.add('active');
-    postPreElement.style.display = 'flex';
-
-
-    // Check if a post element was found
     if (postElement) {
-        // Get the ID attribute of the post element
-        var postId = postElement.getAttribute('id');
+        var postId = postElement.getAttribute('data-postid');
+        var postPreElement = postElement.querySelector('prepost');
 
-        // Display the information for the opened post
-        displayPostInfo(postId);
+        if (postPreElement) {
+            postPreElement.style.display = 'flex';
+        }
 
-        // Additional logic for handling the opening of the post can go here
+        var dimmedElement = document.querySelector('.dimmed');
+        if (dimmedElement) {
+            dimmedElement.classList.add('active');
+        }
     } else {
         console.log('No post element found.');
     }

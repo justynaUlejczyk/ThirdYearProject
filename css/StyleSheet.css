@@ -372,6 +372,8 @@ button.like.active > svg > path {
 .post-image {
     width: 100%;
     cursor: pointer;
+    background-size: contain;
+    max-height: 600px;
 }
 
 .post-comment-button > svg > path {
