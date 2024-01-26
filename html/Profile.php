@@ -466,6 +466,8 @@
         <!-- End of Post Preview -->
 
         <!-- Banner Profile -->
+<?php include('php/profilephp.php')?>
+
         <section class="banner-profile">
             <div>
                 <button class="banner-profile-edit">
@@ -476,7 +478,7 @@
                 <span class="profilePic"><img src="../images/cat.jpg"></span>
                 <div class="profilePicBorder"></div>
                 <div class="banner-profile-person">
-                    <span class="banner-profile-name">Firstname Surname</span>
+                    <span class="banner-profile-name"><?php echo "$name" ?></span>
                     <span class="banner-profile-user">@User</span>
                 </div>
                 <div class="divider"></div>
