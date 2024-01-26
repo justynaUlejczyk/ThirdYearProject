@@ -1,7 +1,7 @@
 <?php
 session_start();
     if (!isset($_SESSION["username"])) {
-        header('Location: ' . "./register.php");
+        header('Location: ' . "../register/register.php");
     }
 
     require_once "../php/connect_db.php";
