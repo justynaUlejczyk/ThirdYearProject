@@ -306,6 +306,9 @@ session_start();
                             </svg>
                         </button>
                     </div>
+                    <p class='caption'>
+                    $text
+                    </p>
                 </div>
                 <div>
                     <h4>Comments</h4>
@@ -321,7 +324,6 @@ session_start();
                             </div>
                         </div>
                         <div class='comment-like'>
-                            <!-- Likes -->
                             <button class='like icons' onclick='toggleHeart(this)'>
                                 <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
                                     xmlns='http://www.w3.org/2000/svg'>

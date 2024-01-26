@@ -694,12 +694,11 @@ prepost {
     display: flex;
     flex-direction: column;
     border-left: 1px solid var(--gray);
+    width: auto;
+    max-width: 40%;
     height: 100%;
     padding-left: 1.5%;
-}
-
-.comments-column > div > h4 {
-    margin-left: 2.5%;
+    padding-right: 1.5%;
 }
 
 .comment-replies-container {
@@ -862,11 +861,11 @@ prepost {
 }
 
 .caption {
-    width: 90%;
+    width: 100%;
     height: auto;
     min-height: 50px;
-    margin-top: 25px;
-    font-size: 20px;
+    padding-top: 20px;
+    font-size: 14px;
     margin-left: auto;
     margin-right: auto;
 }
