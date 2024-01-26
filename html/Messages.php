@@ -3,10 +3,9 @@
 
 <head>
     <title>Messages</title>
-    <link rel="stylesheet" href="../css/Home.css">
     <link rel="stylesheet" href="../css/Messages.css">
     <link rel="stylesheet" href="../css/StyleSheet.css">
-
+    <link rel="stylesheet" href="../css/Home.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
     integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
@@ -17,7 +16,6 @@
 <!-- test commit - branch demo -->
 
 <body>
-
     <nav>
         <subnav>
             <ul>
@@ -57,7 +55,7 @@
             <section>
                 <ul class="linksBar">
                     <li>
-                        <a href="../html/Home.html">
+                        <a href="../html/Home.php">
                             <img src="../images/icons/nav-icons/home-svgrepo-com.svg" alt="home" width="35" />
                             <span>Home</span>
                         </a>
@@ -73,14 +71,14 @@
                         </a>
                     </li>
                     <li>
-                        <a href="../html/Group.html">
+                        <a href="../html/Group.php">
                             <img src="../images/icons/nav-icons/users-group-two-rounded-svgrepo-com.svg" alt="groups"
                                 width="35" />
                             <span>Groups</span>
                         </a>
                     </li>
                     <li>
-                        <a href="../html/Messages.html">
+                        <a href="../html/Messages.php">
                             <img src="../images/icons/nav-icons/chat-round-line-svgrepo-com.svg" alt="messages"
                                 width="35" />
                             <span>Messages</span>
@@ -100,7 +98,7 @@
                         <span>Notifications</span>
                     </li>
     
-                    <a href="../html/Profile.html">
+                    <a href="../html/Profile.php">
                         <img class="nav-profile" src="../images/cat.jpg" />
                     </a>
     
@@ -114,22 +112,33 @@
     
     <main>
 
-        <section  class="messageContainer">
+    
+        <main>
 
-
-
-            <section class="messagePreview">
-                <section class="message">
-                    <img src="../images/cat.jpg" class="profilePic"/>
-                    <p class="name">John </p>
-                    <p class="lastMessage">Hello, Hope you are well </p>
+            <div class="wrapper">
+                <section class="chat-area">
+                    <header>
+                        <div class="details">
+                        </div>
+                    </header>
+    
+                    <div class="chat-box">
+                    </div>
+    
+                    <form action="#" class="typing-area">
+                        <input type="text" class="incoming_id" name="incoming_id" hidden>
+                        <input type="text" name="message" class="input-field" placeholder="Type a message here..." autocomplete="off">
+                    </form>
+                    <button><i class="fab fa-telegram-plane"></i></button>
+    
                 </section>
-            </section>
-
-
-
-        </section>
-
+              </div>
+            
+              <script src="javascript/chat.js"></script>
+            
+    
+    
+         </main>
 
      </main>
 

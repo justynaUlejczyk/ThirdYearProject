@@ -31,7 +31,7 @@ session_start();
     <subnav>
         <ul>
             <li>
-                <a href="Profile.html">
+                <a href="Profile.php">
                     <img src="../images/cat.jpg" class="nav-profile">
                 </a>
             </li>
@@ -72,7 +72,7 @@ session_start();
         <section>
             <ul class="linksBar">
                 <li>
-                    <a href="../html/Home.html">
+                    <a href="../html/Home.php">
                         <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -93,7 +93,7 @@ session_start();
                     </a>
                 </li>
                 <li>
-                    <a href="../html/Group.html">
+                    <a href="../html/Group.php">
                         <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -119,7 +119,7 @@ session_start();
                     </a>
                 </li>
                 <li>
-                    <a href="../html/Messages.html">
+                    <a href="../html/Messages.php">
                         <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -147,13 +147,13 @@ session_start();
                             <a href="#">Link 1</a>
                             <a href="#">Link 2</a>
                             <a href="#">Link 3</a>
-                            <a href="../html/Group.html">See More</a>
+                            <a href="../html/Group.php">See More</a>
                         </div>
                     </div>
                     <span>Notifications</span>
                 </li>
 
-                <a href="../html/Profile.html">
+                <a href="../html/Profile.php">
                     <img class="nav-profile" src="../images/cat.jpg" />
                 </a>
 
@@ -171,7 +171,7 @@ session_start();
             <div>
                 <div>
                     <div id="Banner"></div>
-                    <a href="Profile.html"><img class="pfp" src="../images/cat.jpg" alt="pfp" width="100"
+                    <a href="Profile.php"><img class="pfp" src="../images/cat.jpg" alt="pfp" width="100"
                             height="100" /></a>
                     <div id="pfp-outline"></div>
                 </div>
@@ -186,9 +186,9 @@ session_start();
             </div>
 
             <div>
-                <a href="../html/Group.html"> Collabs</a>
-                <a href="../html/Messages.html"> Messages</a>
-                <a href="../html/notifs.html"> Notifications</a>
+                <a href="../html/Group.php"> Collabs</a>
+                <a href="../html/Messages.php"> Messages</a>
+                <a href="../html/notifs.php"> Notifications</a>
             </div>
         </profile>
         <!-- End of Profile -->
@@ -245,7 +245,7 @@ session_start();
                     <div class="post-info">
                         <div class=" comment-header">
                             <div class="user-container">
-                                <a href="Profile.html"><img src="../images/cat.jpg" class="post-avatar" /></a>
+                                <a href="Profile.php"><img src="../images/cat.jpg" class="post-avatar" /></a>
                                 <div class="user-post-name">
                                     <span>Michael Schumacher</span>
                                     <span>@MikeS</span>
@@ -310,7 +310,7 @@ session_start();
                     <div class="comment-container">
                         <div class="comment-user-comment">
                             <div class="user-container">
-                                <a href="Profile.html"><img src="../images/cat.jpg" class="post-avatar" /></a>
+                                <a href="Profile.php"><img src="../images/cat.jpg" class="post-avatar" /></a>
                                 <div class="user-post-name">
                                     <span>Michael Schumacher</span>
                                     <span>Comment - 22/01/23</span>
@@ -343,7 +343,7 @@ session_start();
                         </div>
                         <div class="comment-user-comment">
                             <div class="user-container">
-                                <a href="Profile.html"><img src="../images/cat.jpg" class="post-avatar" /></a>
+                                <a href="Profile.php"><img src="../images/cat.jpg" class="post-avatar" /></a>
                                 <div class="user-post-name">
                                     <span>Michael Schumacher</span>
                                     <span>Comment - 22/01/23</span>
@@ -376,7 +376,7 @@ session_start();
                         </div>
                         <div class="comment-user-comment">
                             <div class="user-container">
-                                <a href="Profile.html"><img src="../images/cat.jpg" class="post-avatar" /></a>
+                                <a href="Profile.php"><img src="../images/cat.jpg" class="post-avatar" /></a>
                                 <div class="user-post-name">
                                     <span>Michael Schumacher</span>
                                     <span>Comment - 22/01/23</span>
@@ -409,7 +409,7 @@ session_start();
                         </div>
                         <div class="comment-user-comment">
                             <div class="user-container">
-                                <a href="Profile.html"><img src="../images/cat.jpg" class="post-avatar" /></a>
+                                <a href="Profile.php"><img src="../images/cat.jpg" class="post-avatar" /></a>
                                 <div class="user-post-name">
                                     <span>Michael Schumacher</span>
                                     <span>Comment - 22/01/23</span>
@@ -442,7 +442,7 @@ session_start();
                         </div>
                         <div class="comment-user-comment">
                             <div class="user-container">
-                                <a href="Profile.html"><img src="../images/cat.jpg" class="post-avatar" /></a>
+                                <a href="Profile.php"><img src="../images/cat.jpg" class="post-avatar" /></a>
                                 <div class="user-post-name">
                                     <span>Michael Schumacher</span>
                                     <span>Comment - 22/01/23</span>
@@ -479,7 +479,7 @@ session_start();
                         <div class="comment-replies">
                             <div class="comment-user-comment">
                                 <div class="user-container">
-                                    <a href="Profile.html"><img src="../images/cat.jpg" class="post-avatar" /></a>
+                                    <a href="Profile.php"><img src="../images/cat.jpg" class="post-avatar" /></a>
                                     <div class="user-post-name">
                                         <span>Michael Schumacher</span>
                                         <span>Comment - 22/01/23</span>
@@ -555,7 +555,7 @@ session_start();
             echo "<post class='posts' id=$postid>";
             echo    "<div class='feed-post'>";
             echo        "<div class='user-container'>";
-            echo            "<a href='Profile.html'><img src='../images/cat.jpg' class='post-avatar' /></a>";
+            echo            "<a href='Profile.php'><img src='../images/cat.jpg' class='post-avatar' /></a>";
             echo            "<div class='user-post-name'>";
             echo                "<span>$name</span>";
             echo                "<span>@$username</span>";
@@ -622,7 +622,7 @@ session_start();
             <post class="posts" id="2">
                 <div class="feed-post">
                     <div class="user-container">
-                        <a href="Profile.html"><img src="../images/cat.jpg" class="post-avatar" /></a>
+                        <a href="Profile.php"><img src="../images/cat.jpg" class="post-avatar" /></a>
                         <div class="user-post-name">
                             <span>Michael Schumacher</span>
                             <span>@MikeS</span>
@@ -699,7 +699,7 @@ session_start();
                 </button>
             </div>
             <div id="viewMore">
-                <a href="../html/Notificaitons.html">View More</a>
+                <a href="../html/Notificaitons.php">View More</a>
             </div>
         </groups>
         <!-- End of Gorups -->
