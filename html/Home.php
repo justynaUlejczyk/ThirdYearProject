@@ -1,7 +1,7 @@
 <?php
 session_start();
     if (!isset($_SESSION["username"])) {
-        header('Location: ' . "../register/register.php");
+        header('Location: ' . "./login.php");
     }
 
     require_once "../php/connect_db.php";
@@ -561,6 +561,7 @@ session_start();
                     $post_image_path = "../post_images/post_image" . $postid . ".png";
 
             echo "<post class='posts' id=$postid>";
+
             echo    "<div class='feed-post'>";
             echo        "<div class='user-container'>";
             echo            "<a href='Profile.php'><img src='../images/cat.jpg' class='post-avatar' /></a>";
