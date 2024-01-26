@@ -477,7 +477,7 @@
                 <span class="profilePic"><img src="../images/cat.jpg"></span>
                 <div class="profilePicBorder"></div>
                 <div class="banner-profile-person">
-                    <span class="banner-profile-name"><?php include('../php/profilephp.php'); ?></span>
+                    <span class="banner-profile-name">Username</span>
                     <span class="banner-profile-user">@User</span>
                 </div>
                 <div class="divider"></div>

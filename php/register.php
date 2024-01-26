@@ -21,7 +21,7 @@ if (isset($_POST['register'])) {
     // Check the result
     if ($result) {
         echo "New account created successfully!";
-        $user_id = pg_fetch_result($result, 0, 'username');
+        $username = pg_fetch_result($result, 0, 'username');
         session_start();
         $_SESSION['username'] = $username;
         header('Location: '."../html/Home.php");
