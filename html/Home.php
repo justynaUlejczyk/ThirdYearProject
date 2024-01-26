@@ -5,6 +5,12 @@ session_start();
     }
 
     require_once "../php/connect_db.php";
+
+    $username = $_SESSION["username"];
+
+    $userDataSTMT = pg_prepare($conn, "user_data", "SELECT * FROM accounts where username = $1");
+    $userDataRESULT = pg_execute($conn, "user_data", array($username));
+    $name = pg_fetch_result($userDataRESULT, 0, "name");
 ?>
 
 <!DOCTYPE html>
@@ -178,8 +184,10 @@ session_start();
 
                 <div>
                     <div>
-                        <h3>Alex Alexandra</h3>
-                        <h4 id="occupation">Student at Heriot Watt</h4>
+                        <?php
+                        echo "<h3>$name</h3>";
+                        echo "<h4 id='occupation'>@$username</h4>";
+                        ?>
                     </div>
                     <div class="divider"></div>
                 </div>
