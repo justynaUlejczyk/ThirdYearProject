@@ -602,11 +602,11 @@ session_start();
                     $name = $row["name"];
                     $postid = $row["postid"];
                     $post_image_path = "../post_images/post_image" . $postid . ".png";
-
-            echo "<post class='posts' id=$postid>";
+                    echo "<post class='posts' id=$postid>";
                     echo " <prepost>
             <div class='post-column'>
                 <div class='expanded-post'>
+                
                     <img src=$post_image_path>
                 </div>
             </div>
