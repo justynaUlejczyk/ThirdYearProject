@@ -708,7 +708,7 @@ session_start();
                         <div class='user-container'>
                             <a href='Profile.php'><img src='../images/cat.jpg' class='post-avatar' /></a>
                             <div class='user-post-name'>
-                                <span>Michael Schumacher</span>
+                                <span>$username</span>
                                 <span>Comment - 22/01/23</span>
                             </div>
                         </div>
@@ -880,7 +880,7 @@ session_start();
             <span>$name</span>
             <span>@$username</span>
             </div>";
-            echo        "</div>";
+            echo      "</div>";
             echo        "<button class='post-image' onclick='openPost(this)' data-postid=$postid>";
             echo            "<img class='post-image' src=$post_image_path />";
             echo        "</button>";
