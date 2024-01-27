@@ -37,8 +37,6 @@ session_start();
 
 
 <body class="dimmed">
-
-
     <!-- Start of SubNav -->
     <subnav>
         <ul>
