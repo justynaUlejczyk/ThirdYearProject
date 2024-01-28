@@ -72,3 +72,20 @@ function toggleMore() {
     }
 }
 
+function hasClass(element, className) {
+    return (' ' + element.className + ' ').indexOf(' ' + className + ' ') > -1;
+}
+
+function incrementLikes() {
+    var likeCounter = document.getElementById('likeCounter');
+    var currentLikes = parseInt(likeCounter.innerText);
+    if (hasClass(likeCounter, "liked")) {
+        likeCounter.innerText = currentLikes - 1;
+    } else {
+        likeCounter.innerText = currentLikes + 1;        
+    }
+    likeCounter.classList.toggle("liked");
+}
+
+
+
