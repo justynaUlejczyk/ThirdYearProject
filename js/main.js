@@ -87,5 +87,32 @@ function incrementLikes() {
     likeCounter.classList.toggle("liked");
 }
 
+function handleLikeButtonClick(postid) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '../php/update_likes.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                document.getElementsByClassName('likeCounter '+postid)[0].textContent = response.likesCount;
+                console.log(document.getElementsByClassName('likeCounter '+ postid));
+                console.log(response.likesCount);
+            } else {
+                console.error('Error:', xhr.statusText);
+            }
+        }
+    };
+
+    xhr.onerror = function() {
+        console.error('Request failed');
+    };
+
+    xhr.send(JSON.stringify({
+        postid: postid
+    }));
+}
+
 
 

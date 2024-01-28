@@ -236,7 +236,7 @@ session_start();
             <?php
             $postsListQuery = "SELECT postid, text, post.username, name  FROM post INNER JOIN accounts ON accounts.username = post.username ORDER BY postid DESC";
             $postsListRESULT = pg_query($conn, $postsListQuery);
-            $postLikesSTMT = pg_prepare($conn, "postLikes", "SELECT * FROM usertolikes where postid = $1 AND username = $2");
+            $postLikesSTMT = pg_prepare($conn, "postLikes", "SELECT * FROM usertolikes where postid = $1");
 
 
             if ($postsListRESULT) {
@@ -247,7 +247,7 @@ session_start();
                     $name = $row["name"];
                     $postid = $row["postid"];
                     $post_image_path = "../post_images/post_image" . $postid . ".png";
-                    $postLikesRESULT = pg_execute($conn, "postLikes", array($postid, $username));
+                    $postLikesRESULT = pg_execute($conn, "postLikes", array($postid));
                     $likesCount = pg_num_rows($postLikesRESULT);
 
             echo "<post class='posts' id=$postid>";
@@ -274,14 +274,14 @@ session_start();
                     <div class='choices'>
                         <div class='comment-post-options'>
                             <!-- Likes -->
-                            <button class='like icons' onclick='toggleHeart(this);incrementLikes(this);' >
+                            <button id='likePostButton' class='like icons $postid' onclick='toggleHeart(this);handleLikeButtonClick($postid);' >
                                 <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
                                     xmlns='http://www.w3.org/2000/svg'>
                                     <path
                                         d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z'
                                         fill='red' />
                                 </svg>
-                                <span id='likeCounter'>$likesCount</span>
+                                <span class='likeCounter $postid'>$likesCount</span>
                             </button>
                             <button>
                                 <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
