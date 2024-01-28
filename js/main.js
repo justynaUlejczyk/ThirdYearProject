@@ -76,17 +76,6 @@ function hasClass(element, className) {
     return (' ' + element.className + ' ').indexOf(' ' + className + ' ') > -1;
 }
 
-function incrementLikes() {
-    var likeCounter = document.getElementById('likeCounter');
-    var currentLikes = parseInt(likeCounter.innerText);
-    if (hasClass(likeCounter, "liked")) {
-        likeCounter.innerText = currentLikes - 1;
-    } else {
-        likeCounter.innerText = currentLikes + 1;        
-    }
-    likeCounter.classList.toggle("liked");
-}
-
 function handleLikeButtonClick(postid) {
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '../php/update_likes.php', true);
@@ -97,8 +86,6 @@ function handleLikeButtonClick(postid) {
             if (xhr.status === 200) {
                 var response = JSON.parse(xhr.responseText);
                 document.getElementsByClassName('likeCounter '+postid)[0].textContent = response.likesCount;
-                console.log(document.getElementsByClassName('likeCounter '+ postid));
-                console.log(response.likesCount);
             } else {
                 console.error('Error:', xhr.statusText);
             }

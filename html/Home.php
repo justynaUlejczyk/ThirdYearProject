@@ -237,18 +237,22 @@ session_start();
             $postsListQuery = "SELECT postid, text, post.username, name  FROM post INNER JOIN accounts ON accounts.username = post.username ORDER BY postid DESC";
             $postsListRESULT = pg_query($conn, $postsListQuery);
             $postLikesSTMT = pg_prepare($conn, "postLikes", "SELECT * FROM usertolikes where postid = $1");
+            $postLikedByUserSTMT = pg_prepare($conn, "postLikedByUser", "SELECT * FROM usertolikes where postid = $1 AND username = $2");
 
 
             if ($postsListRESULT) {
                 // Output data of each row
                 while ($row = pg_fetch_assoc($postsListRESULT)) {
                     $text = $row["text"];
-                    $username = $row["username"];
+                    $poster_username = $row["username"];
                     $name = $row["name"];
                     $postid = $row["postid"];
                     $post_image_path = "../post_images/post_image" . $postid . ".png";
                     $postLikesRESULT = pg_execute($conn, "postLikes", array($postid));
                     $likesCount = pg_num_rows($postLikesRESULT);
+
+                    $postLikedByUserRESULT = pg_execute($conn, "postLikedByUser", array($postid, $username));
+                    $postLikedByUser = pg_num_rows($postLikedByUserRESULT) != 0;
 
             echo "<post class='posts' id=$postid>";
                     echo " <prepost>
@@ -266,16 +270,20 @@ session_start();
                             <a href='Profile.php'><img src='../images/cat.jpg' class='post-avatar' /></a>
                             <div class='user-post-name'>
                                 <span>$name</span>
-                                <span>@$username</span>
+                                <span>@$poster_username</span>
                             </div>
                         </div>
                         <a href='#' class='close' onclick='exitButton(this)'></a>
                     </div>
                     <div class='choices'>
                         <div class='comment-post-options'>
-                            <!-- Likes -->
-                            <button id='likePostButton' class='like icons $postid' onclick='toggleHeart(this);handleLikeButtonClick($postid);' >
-                                <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
+                            <!-- Likes -->";
+                    if ($postLikedByUser) {
+                        echo "<button id='likePostButton' class='like icons $postid active' onclick='toggleHeart(this);handleLikeButtonClick($postid);' >";
+                    } else{
+                        echo "<button id='likePostButton' class='like icons $postid' onclick='toggleHeart(this);handleLikeButtonClick($postid);' >";
+                    }
+                            echo   "<svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
                                     xmlns='http://www.w3.org/2000/svg'>
                                     <path
                                         d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z'
