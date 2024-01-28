@@ -878,18 +878,45 @@ session_start();
                         echo "No posts found.";
                     }
         
-                    // Close the database connection
-                    pg_close($conn);
+                   
                     ?>
                     <!-- End of Post 1 -->
                     <!-- End of Posts -->
                
-                </bside>
+                
                 <!-- End of Displaying Posts -->
+                </div>
+                <!-- Start of Groups-->
+        <groups class="tile group">
+            <div id="tile3">
+                <button class="groupButton">
+                    <div class="placeholder-img"></div>
+                    <p>Group 1</p>
+                </button>
+                <button class="groupButton">
+                    <div class="placeholder-img"></div>
+                    <p>Group 1</p>
+                </button>
+                <button class="groupButton">
+                    <div class="placeholder-img"></div>
+                    <p>Group 1</p>
+                </button>
             </div>
+            <div id="viewMore">
+                <a href="../html/Notificaitons.php">View More</a>
+            </div>
+        </groups>
+        </bside>
+        <!-- End of Gorups -->
+           
         </section>
         <!-- Profile Display -->
 
+        <!-- Include this script in your HTML -->
+<?php
+ // Close the database connection
+ pg_close($conn);
+?>
     </main>
 
 
