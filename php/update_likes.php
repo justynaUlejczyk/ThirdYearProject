@@ -11,10 +11,14 @@ $data = json_decode($json_data, true);
 $postid = $data['postid'];
 $username = $_SESSION['username'];
 
-$postLikesSTMT = pg_prepare($conn, "postLikes", "SELECT * FROM usertolikes WHERE postid = $1 AND username = $2");
-$postLikesRESULT = pg_execute($conn, "postLikes", array($postid, $username));
+$postLikesFromUserSTMT = pg_prepare($conn, "postLikesFromUser", "SELECT * FROM usertolikes WHERE postid = $1 AND username = $2");
+$postLikesFromUserRESULT = pg_execute($conn, "postLikesFromUser", array($postid, $username));
+
+$postLikesSTMT = pg_prepare($conn, "postLikes", "SELECT * FROM usertolikes WHERE postid = $1");
+$postLikesRESULT = pg_execute($conn, "postLikes", array($postid));
+
 $numOfLikes = pg_num_rows($postLikesRESULT);
-$isLiked = $numOfLikes != 0;
+$isLiked = pg_num_rows($postLikesFromUserRESULT) != 0;
 
 if($isLiked){
     $removeLikeSTMT = pg_prepare($conn, "removeLike", "DELETE FROM usertolikes WHERE postid = $1 AND username = $2");

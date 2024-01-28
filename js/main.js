@@ -55,6 +55,7 @@ function hasClass(element, className) {
     return (' ' + element.className + ' ').indexOf(' ' + className + ' ') > -1;
 }
 
+<<<<<<< HEAD
 function incrementLikes() {
     var likeCounter = document.getElementById('likeCounter');
     var currentLikes = parseInt(likeCounter.innerText);
@@ -66,6 +67,8 @@ function incrementLikes() {
     likeCounter.classList.toggle("liked");
 }
 
+=======
+>>>>>>> 80189a78ce07e4f8c0b0c00cddace7946d4ad6cf
 function handleLikeButtonClick(postid) {
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '../php/update_likes.php', true);
@@ -75,9 +78,13 @@ function handleLikeButtonClick(postid) {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
                 var response = JSON.parse(xhr.responseText);
+<<<<<<< HEAD
                 document.getElementsByClassName('likeCounter ' + postid)[0].textContent = response.likesCount;
                 console.log(document.getElementsByClassName('likeCounter ' + postid));
                 console.log(response.likesCount);
+=======
+                document.getElementsByClassName('likeCounter '+postid)[0].textContent = response.likesCount;
+>>>>>>> 80189a78ce07e4f8c0b0c00cddace7946d4ad6cf
             } else {
                 console.error('Error:', xhr.statusText);
             }
