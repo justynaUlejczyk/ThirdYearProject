@@ -9,33 +9,12 @@ function toggleHeart(button) {
 }
 
 
-function exitButton(clickedElement) {
-    var dimmedElement = document.querySelector('.dimmed');
-    var createPost = document.querySelector('.feed-create-post-container')
-    var postElement = clickedElement.closest('.posts');
-
-    dimmedElement.classList.remove('active');
-    createPost.style.display = 'none';
-
-    console.log('Clicked Element:', clickedElement);
-    console.log('Post Element:', postElement);
-
-    if (postElement) {
-        var postId = postElement.getAttribute('data-postid');
-
-        console.log('Opened post with ID:', postId);
-
-        var postPreElement = postElement.querySelector('prepost');
-        if (postPreElement) {
-            postPreElement.style.display = 'none';
-        }
-    } else {
-        console.log('No post element found.');
-    }
-}
 
 function openPost(clickedElement) {
     var postElement = clickedElement.closest('.posts');
+
+    console.log('Clicked Element:', clickedElement);
+    console.log('Post Element:', postElement);
 
     if (postElement) {
         var postId = postElement.getAttribute('data-postid');
@@ -82,7 +61,7 @@ function incrementLikes() {
     if (hasClass(likeCounter, "liked")) {
         likeCounter.innerText = currentLikes - 1;
     } else {
-        likeCounter.innerText = currentLikes + 1;        
+        likeCounter.innerText = currentLikes + 1;
     }
     likeCounter.classList.toggle("liked");
 }
@@ -92,12 +71,12 @@ function handleLikeButtonClick(postid) {
     xhr.open('POST', '../php/update_likes.php', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
 
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
                 var response = JSON.parse(xhr.responseText);
-                document.getElementsByClassName('likeCounter '+postid)[0].textContent = response.likesCount;
-                console.log(document.getElementsByClassName('likeCounter '+ postid));
+                document.getElementsByClassName('likeCounter ' + postid)[0].textContent = response.likesCount;
+                console.log(document.getElementsByClassName('likeCounter ' + postid));
                 console.log(response.likesCount);
             } else {
                 console.error('Error:', xhr.statusText);
@@ -105,7 +84,7 @@ function handleLikeButtonClick(postid) {
         }
     };
 
-    xhr.onerror = function() {
+    xhr.onerror = function () {
         console.error('Request failed');
     };
 

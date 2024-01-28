@@ -33,6 +33,8 @@ session_start();
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <script src="../js/main.js"></script>
+    <script src="../js/Profile.js"></script>
+    
 </head>
 
 
@@ -880,12 +882,10 @@ session_start();
         
                    
                     ?>
-                    <!-- End of Post 1 -->
-                    <!-- End of Posts -->
-               
-                
-                <!-- End of Displaying Posts -->
+                    </side>
                 </div>
+                </section>
+                
                 <!-- Start of Groups-->
         <groups class="tile group">
             <div id="tile3">
