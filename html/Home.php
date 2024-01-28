@@ -533,7 +533,7 @@ session_start();
             echo            "<a href='Profile.php'><img src='../images/cat.jpg' class='post-avatar' /></a>";
             echo            "<div class='user-post-name'>";
             echo                "<span>$name</span>";
-            echo                "<span>@$username</span>";
+            echo                "<span>@$poster_username</span>";
             echo            "</div>";
             echo        "</div>";
             echo        "<button class='post-image' onclick='openPost(this)' data-postid=$postid>";
