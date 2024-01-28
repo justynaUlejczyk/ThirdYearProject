@@ -78,7 +78,9 @@ div.banner-profile-info {
 }
 
 .banner-profile-name {
-    font-size: 14px;
+    font-size: 24px;
+    padding: 0;
+    margin: 0;
 }
 
 .banner-profile-name h3 {
@@ -87,15 +89,17 @@ div.banner-profile-info {
     margin: 0;
 }
 
-#occupation {
+.banner-profile-user {
+    padding: 0;
     margin: 0;
-    margin-top: 10px;
-    font-size: 18px;
+    font-size: 20px;
     color: var(--gray);
 }
 
-.banner-profile-user {
-    font-size: 20px;
+.banner-profile-user h4 {
+    padding: 10px 0px;
+    margin: 0;
+    font-size: 18px;
     color: var(--gray);
 }
 
@@ -104,7 +108,7 @@ div.banner-profile-info {
 }
 
 .banner-profile-options {
-    padding: 16px 0;
+    padding: 16px 10px;
     display: flex;
     width: 90%;
     justify-content: space-between;
