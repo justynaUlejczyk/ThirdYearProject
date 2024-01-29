@@ -1,6 +1,5 @@
 function exitButton(clickedElement) {
     var dimmedElement = document.querySelector('.dimmed');
-    var createPost = document.querySelector('.feed-create-post-container')
     var postElement = clickedElement.closest('.posts');
 
     dimmedElement.classList.remove('active');
@@ -23,3 +22,35 @@ function exitButton(clickedElement) {
     }
 }
 
+function showGroupsTab() {
+    var profileTab = document.querySelector('.profile-info-display');
+    var groupTab = document.querySelector('.profile-info-groups');
+    var aboutTab = document.querySelector('.profile-info-about');
+
+    groupTab.style.display = 'block';
+    profileTab.style.display = 'none'
+    aboutTab.style.display = 'none';
+
+}
+
+function showPostsTab() {
+    var profileTab = document.querySelector('.profile-info-display');
+    var groupTab = document.querySelector('.profile-info-groups');
+    var aboutTab = document.querySelector('.profile-info-about');
+
+    groupTab.style.display = 'none';
+    profileTab.style.display = 'flex'
+    aboutTab.style.display = 'none';
+
+}
+
+function showAboutTab() {
+    var profileTab = document.querySelector('.profile-info-display');
+    var groupTab = document.querySelector('.profile-info-groups');
+    var aboutTab = document.querySelector('.profile-info-about');
+
+    groupTab.style.display = 'none';
+    profileTab.style.display = 'none'
+    aboutTab.style.display = 'block';
+
+}

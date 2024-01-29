@@ -204,9 +204,9 @@ $result = pg_query($conn, $query);
                 <div class="divider"></div>
                 <div class="banner-profile-options">
                     <div>
-                        <button>Posts</button>
-                        <button>Groups</button>
-                        <button>About</button>
+                        <button onclick="showPostsTab()">Posts</button>
+                        <button onclick="showGroupsTab()">Groups</button>
+                        <button onclick="showAboutTab()">About</button>
                     </div>
                     <div>
                         <button>Edit</button>
@@ -596,8 +596,8 @@ $result = pg_query($conn, $query);
             </div>
         </section>
 
+        <!-- Displaying About -->
         <section class="profile-info-about">
-
         </section>
     </main>
 
