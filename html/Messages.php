@@ -261,7 +261,8 @@ $username = $_SESSION["username"];
                     <label for="text">message:</label><br>
                     <input type="text" id="text" name="text">
 
-                    <input type="text" class="username" name="username" value="<?php echo $username; ?>" hidden>
+                    <input type="text" class="username" name="username" value="<?php echo $username; ?>" hidden
+                        style="display:none;">
                     <button type="submit"><i class="fab fa-telegram-plane"></i></button>
                 </form>
             </div>
