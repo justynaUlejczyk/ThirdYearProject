@@ -9,8 +9,12 @@ function toggleDropdownProfile() {
 }
 
 
-function toggleHeart(button) {
-    button.classList.toggle("active");
+function toggleHeart(postid) {
+    postidnum = String(postid);
+    var icons = document.querySelectorAll(".like.icons.post-"+postid);
+    icons.forEach(element => {
+        element.classList.toggle("active");
+    });
 }
 
 
