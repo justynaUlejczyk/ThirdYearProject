@@ -684,6 +684,60 @@ prepost {
     margin-right: auto;
 }
 
+.dropdown-content-profile {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    position: absolute;
+    margin-top: 50px;
+    height: auto;
+    width: 175px;
+    transition: opacity 0.3s ease;
+    background-color: var(--white);
+    color: black;
+    visibility: hidden;
+    opacity: 0;
+    border-top: none;
+    box-shadow: 0 4px 8px -6px #181818;
+}
+
+.view-profile {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    width: 100%;
+}
+
+.settings {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    width: 100%;
+}
+
+.display {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    width: 100%;
+}
+
+.logout {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    width: 100%;
+}
+
+.dropdown-content-profile.active {
+    visibility: visible;
+    opacity: 1;
+    transition: all 300ms linear;
+    transform: translateY(-40px);
+}
+
 /* Screen sizes between 1000 and 1150 */
 @media only screen and (max-width: 1150px) {
     nav > section:first-child {
