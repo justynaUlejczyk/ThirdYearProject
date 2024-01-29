@@ -205,13 +205,8 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                                     <span>Display</span>
                                 </button>
                             </a>
-<<<<<<< HEAD
                             <a href="../html/Login.php">
-                                <buttonclass="logout">
-=======
-                            <a href="../php/logout_php.php">
                                 <button class="logout">
->>>>>>> 98448d43f2e3ab1350cd22fea44e79f727fba41f
                                     <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -219,7 +214,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                                             fill="#1C274C" />
                                     </svg>
                                     <span>Logout</span>
-                                    </buttonclass=>
+                                </button>
                             </a>
                         </div>
                     </div>
