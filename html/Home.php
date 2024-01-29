@@ -328,9 +328,9 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                         <div class='comment-post-options'>
                             <!-- Likes -->";
                     if ($postLikedByUser) {
-                        echo "<button id='likePostButton' class='like icons $postid active' onclick='toggleHeart(this);handleLikeButtonClick($postid);' >";
+                        echo "<button id='likePostButton' class='like icons post-$postid active' onclick='toggleHeart($postid);handleLikeButtonClick($postid);' >";
                     } else {
-                        echo "<button id='likePostButton' class='like icons $postid' onclick='toggleHeart(this);handleLikeButtonClick($postid);' >";
+                        echo "<button id='likePostButton' class='like icons post-$postid' onclick='toggleHeart($postid);handleLikeButtonClick($postid);' >";
                     }
                     echo "<svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
                                     xmlns='http://www.w3.org/2000/svg'>
