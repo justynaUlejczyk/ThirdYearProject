@@ -1,5 +1,10 @@
-function toggleDropdown() {
+function toggleDropdownNav() {
     var dropdownContent = document.getElementById("dropdownContent");
+    dropdownContent.classList.toggle("active");
+}
+
+function toggleDropdownProfile() {
+    var dropdownContent = document.getElementById("dropdownContentProfile");
     dropdownContent.classList.toggle("active");
 }
 
