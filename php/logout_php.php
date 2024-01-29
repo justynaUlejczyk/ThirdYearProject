@@ -23,7 +23,7 @@ echo '<br> <div class="container text-center">
 	<div class="text-center">
 	<div class = "card-header"> <h5> GOOD BYE!</h5><br>
     <h4 class="card-subtitle mb-2 text-muted">You are now logged out.</h4>
-    <p class="card-text">Thank you for using Webflix<br> <h4>See you soon !</h4> </p>
+   
     <a href="../html/Login.php">Login</a>
     </div>
 	</div>
