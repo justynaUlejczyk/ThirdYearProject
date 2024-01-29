@@ -557,7 +557,7 @@ main > profile > div:nth-child(2) {
         margin-top: 25px;
     }
 
-    main groups {
+    main .group {
         display: none;
     }
 
@@ -625,5 +625,9 @@ main > profile > div:nth-child(2) {
     subnav > ul > li > input {
         height: 24px;
         border-radius: 10px;
+    }
+
+    .feed-create-post-button {
+        display: none;
     }
 }
