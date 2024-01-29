@@ -464,11 +464,15 @@ button.like.active > svg > path {
 
 /* Pre-viewing the post */
 /* Dimming Background */
+.dimmed {
+    position: relative;
+}
 
 .dimmed:after {
     position: relative;
     content: " ";
     z-index: 10;
+    display: block;
     position: absolute;
     height: 100%;
     top: 0;

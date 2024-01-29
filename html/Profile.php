@@ -211,7 +211,6 @@ $result = pg_query($conn, $query);
                     <div>
                         <button>Edit</button>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -586,8 +585,19 @@ $result = pg_query($conn, $query);
                 </bside>
             </div>
         </section>
+
+        <!-- Displaying part of groups -->
         <section class="profile-info-groups">
-            hello
+            <div class="profile-info-groups-container">
+                <div class="profile-info-groups-group-container">
+                    <img class="profile-info-groups-group" src="../images/f1.png">
+                    <a class="profile-info-groups-name">Group Name</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="profile-info-about">
+
         </section>
     </main>
 
