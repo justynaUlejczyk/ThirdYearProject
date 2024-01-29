@@ -14,21 +14,6 @@ $username = $_SESSION["username"];
 <html>
 
 <head>
-    <div class="container">
-
-        <form id="messages" action="../php/send_message.php" method="post">
-
-            <label for="recipient">Sent to:</label><br>
-            <input type="text" id="recipient" name="recipient"><br>
-
-            <label for="text">message:</label><br>
-            <input type="text" id="text" name="text">
-
-            <input type="text" class="username" name="username" value="<?php echo $username; ?>" hidden>
-            <button type="submit"><i class="fab fa-telegram-plane"></i></button>
-        </form>
-    </div>
-
     <title>Messages</title>
     <link rel="stylesheet" href="../css/Messages.css">
     <link rel="stylesheet" href="../css/StyleSheet.css">
@@ -263,6 +248,22 @@ $username = $_SESSION["username"];
 
             </div>
 
+            </div>
+
+
+            <div class="container">
+
+                <form id="messages" action="../php/send_message.php" method="post">
+
+                    <label for="recipient">Sent to:</label><br>
+                    <input type="text" id="recipient" name="recipient"><br>
+
+                    <label for="text">message:</label><br>
+                    <input type="text" id="text" name="text">
+
+                    <input type="text" class="username" name="username" value="<?php echo $username; ?>" hidden>
+                    <button type="submit"><i class="fab fa-telegram-plane"></i></button>
+                </form>
             </div>
     </main>
 
