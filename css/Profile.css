@@ -180,6 +180,7 @@ section.profile-info-groups {
     height: auto;
     box-shadow: 0 4px 8px -6px #181818;
     border-radius: 10px;
+    display: none;
 }
 
 section.profile-info-display {
