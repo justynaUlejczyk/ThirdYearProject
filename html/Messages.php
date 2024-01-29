@@ -1,14 +1,43 @@
+<?php
+session_start();
+    if (!isset($_SESSION["username"])) {
+        header('Location: ' . "./login.php");
+    }
+
+    require_once "../php/connect_db.php";
+
+    $username = $_SESSION["username"];
+    
+
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
+<div class="container">
+
+<form id ="messages" action="../php/send_message.php" method="post">
+
+<label for="recipient">Sent to:</label><br>
+  <input type="text" id="recipient" name="recipient"><br>
+ 
+  <label for="text">message:</label><br>
+  <input type="text" id="text" name="text">
+
+  <input type="text" class="username" name="username" value="<?php echo $username; ?>" hidden>
+  <button type="submit"><i class="fab fa-telegram-plane"></i></button>
+</form>
+</div>
+
     <title>Messages</title>
     <link rel="stylesheet" href="../css/Messages.css">
     <link rel="stylesheet" href="../css/StyleSheet.css">
     <link rel="stylesheet" href="../css/Home.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
-    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="../js/Home.js"></script>
+    <script src="../js/main.js"></script>
 </head>
 
 <!-- test commit -->
@@ -105,42 +134,42 @@
                 </ul>
             </section>
         </nav>
-       
-       
-
-
-    
+  
     <main>
 
     <body>
-        <div class="wrapper">
-            <section class="chat-area">
+        <div>
             <header>
-                <?php 
-                $user_id = mysqli_real_escape_string($conn, $_GET['user_id']);
-                $sql = mysqli_query($conn, "SELECT * FROM users WHERE username = {$username}");
-                if(mysqli_num_rows($sql) > 0){
-                    $row = mysqli_fetch_assoc($sql);
-                }else{
-                    header("location: users.php");
-                }
-                ?>
-                <a href="users.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
-                <img src="php/images/<?php echo $row['img']; ?>" alt="">
-                <div class="details">
-                <span><?php echo $row['fname']. " " . $row['lname'] ?></span>
-                <p><?php echo $row['status']; ?></p>
-                </div>
-            </header>
-            <div class="chat-box">
+            <?php
 
-            </div>
-            <form action="#" class="typing-area">
-                <input type="text" class="incoming_id" name="incoming_id" value="<?php echo $user_id; ?>" hidden>
-                <input type="text" name="message" class="input-field" placeholder="Type a message here..." autocomplete="off">
-                <button><i class="fab fa-telegram-plane"></i></button>
-            </form>
-            </section>
+// Read messages
+$stmt = pg_prepare($conn, "read_message", "SELECT * FROM messages WHERE username = $1 OR recipient = $1");
+$result = pg_execute($conn, "read_message", array($username));
+
+if (pg_num_rows($result) > 0) {
+    echo "<p>New message!</p><br>"; // Display this only once
+
+    while ($row = pg_fetch_assoc($result)) {
+        $text = $row["text"];
+        $sender = $row["username"];
+        $recipient = $row["recipient"];
+
+        echo "<br>Recipient: $recipient<br>
+              Sender: $sender<br>
+              Message: $text<br>";
+    }
+} else {
+    echo "No messages";
+}
+
+// Close the PostgreSQL connection
+pg_close($conn);
+?>
+</div>
+
+
+
+            
         </div>
      </main>
 
