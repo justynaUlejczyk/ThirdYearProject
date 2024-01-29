@@ -548,7 +548,12 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                     echo "<div class='choices'>";
                     echo "<div class='post-options'>";
                     echo "<!-- Likes -->";
-                    echo "<button class='like icons' onclick='toggleHeart(this)'>";
+                    if ($postLikedByUser) {
+                        echo "<button class='like icons active' onclick='toggleHeart(this);handleLikeButtonClick($postid);'>";
+                    }
+                    else{
+                        echo "<button class='like icons' onclick='toggleHeart(this);handleLikeButtonClick($postid);'>";
+                    }
                     echo "<svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'";
                     echo "xmlns='http://www.w3.org/2000/svg'>";
                     echo "<path";

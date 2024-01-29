@@ -56,17 +56,6 @@ function hasClass(element, className) {
 }
 
 
-function incrementLikes() {
-    var likeCounter = document.getElementById('likeCounter');
-    var currentLikes = parseInt(likeCounter.innerText);
-    if (hasClass(likeCounter, "liked")) {
-        likeCounter.innerText = currentLikes - 1;
-    } else {
-        likeCounter.innerText = currentLikes + 1;
-    }
-    likeCounter.classList.toggle("liked");
-}
-
 function handleLikeButtonClick(postid) {
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '../php/update_likes.php', true);
