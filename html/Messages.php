@@ -138,15 +138,17 @@ session_start();
     <main>
 
     <body>
-        <div>
-            <header>
+        <div class = "chat-container">
+        
             <?php
 
-// Read messages
-$stmt = pg_prepare($conn, "read_message", "SELECT * FROM messages WHERE username = $1 OR recipient = $1");
+$stmt = pg_prepare($conn, "read_message", "SELECT * FROM messages WHERE username = $1 OR recipient = $1 ORDER BY messageID DESC");
 $result = pg_execute($conn, "read_message", array($username));
 
-if (pg_num_rows($result) > 0) {
+$numRows = pg_num_rows($result);
+echo "<p>Total Messages: $numRows</p><br>"; // Display total number of messages
+
+if ($numRows > 0) {
     echo "<p>New message!</p><br>"; // Display this only once
 
     while ($row = pg_fetch_assoc($result)) {
@@ -165,11 +167,9 @@ if (pg_num_rows($result) > 0) {
 // Close the PostgreSQL connection
 pg_close($conn);
 ?>
+
 </div>
-
-
-
-            
+     
         </div>
      </main>
 
