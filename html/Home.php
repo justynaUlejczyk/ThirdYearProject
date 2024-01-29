@@ -144,7 +144,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
 
                 <li>
                     <div class="dropdown">
-                        <button class="dropButton" onclick="toggleDropdown()">
+                        <button class="dropButton" onclick="toggleDropdownNav()">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -165,9 +165,19 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                     <span>Notifications</span>
                 </li>
 
-                <a href="../html/Profile.php">
-                    <img class="nav-profile" src="../images/icons/Unknown_person.jpg" />
-                </a>
+                <li>
+                    <div class="dropdown">
+                        <img class="nav-profile" onclick="toggleDropdownProfile()"
+                            src="../images/icons/Unknown_person.jpg">
+                        </img>
+                        <div class="dropdown-content-profile" id="dropdownContentProfile">
+                            <a href="../html/Profile.php" class="">View Profile</a>
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <button href="#" class="logout">Logout</button>
+                        </div>
+                    </div>
+                </li>
 
             </ul>
         </section>
