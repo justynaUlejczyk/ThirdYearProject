@@ -205,7 +205,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                                     <span>Display</span>
                                 </button>
                             </a>
-                            <a href="../html/Login.php">
+                            <a href="../php/logout_php.php">
                                 <button class="logout">
                                     <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -223,7 +223,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
             </ul>
         </section>
     </nav>
-    <!-- End of SubNav -->
+    <!-- End of Nav -->
 
 
 
