@@ -246,7 +246,6 @@ $username = $_SESSION["username"];
                 pg_close($conn);
                 ?>
 
-            </div>
 
             </div>
 
