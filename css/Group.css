@@ -1,3 +1,51 @@
+:root {
+    --light-bg: #ebebeb;
+    --light-bg-s: white;
+    --light-text: black;
+
+    --dark-gray: #646464;
+
+    --dark-bg: #1a1a1a;
+    --dark-bg-s: #292929;
+    --dark-text: #ffffff;
+
+    --gray: #c2c2c2;
+    --accent: #f64c72;
+    --stroke: 2px;
+
+    --background: var(--light-bg);
+    --foreground: var(--light-bg-s);
+    --text: var(--light-text);
+    --svg: var(--dark-gray);
+    --svg-stroke: var(--stroke);
+
+    --box-shadow: 0 4px 8px -6px #181818;
+}
+
+.darkmode {
+    --light-bg: #ebebeb;
+    --light-bg-s: white;
+    --light-text: black;
+
+    --dark-gray: #646464;
+
+    --dark-bg: #1a1a1a;
+    --dark-bg-s: #292929;
+    --dark-text: #ffffff;
+
+    --gray: #c2c2c2;
+    --accent: #f64c72;
+    --stroke: 1px;
+
+    --background: var(--dark-bg);
+    --foreground: var(--dark-bg-s);
+    --text: var(--dark-text);
+    --svg: var(--light-bg-s);
+    --svg-stroke: var(--stroke);
+
+    --box-shadow: none;
+}
+
 main {
     max-width: 1128px;
     width: 100%;
@@ -17,13 +65,13 @@ main {
 }
 
 .groupSection {
-    background-color: var(--white);
+    background-color: var(--foreground);
     height: 100%;
     width: 80%;
     margin-left: auto;
     margin-right: auto;
     border-radius: 15px;
-    box-shadow: 0 4px 8px -6px #181818;
+    box-shadow: var(--box-shadow);
 }
 
 .groupDisplay {
@@ -42,7 +90,7 @@ main {
 }
 
 button.group > svg > path {
-    fill: black;
+    fill: var(--text);
     stroke: none;
 }
 
@@ -60,13 +108,13 @@ button.group > svg {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: var(--white);
+    background-color: var(--foreground);
     width: 20%;
     height: 100%;
     margin-left: auto;
     margin-right: auto;
     border-radius: 15px;
-    box-shadow: 0 4px 8px -6px #181818;
+    box-shadow: var(--box-shadow);
 }
 
 .friendList {
@@ -94,5 +142,5 @@ friend img {
 .viewMore {
     text-align: center;
     text-decoration: none;
-    color: black;
+    color: var(--text);
 }

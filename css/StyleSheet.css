@@ -350,6 +350,12 @@ path {
     stroke-width: var(--svg-stroke);
 }
 
+circle {
+    fill: none;
+    stroke: var(--svg);
+    stroke-width: var(--svg-stroke);
+}
+
 svg {
     padding: 0px 5px;
     height: 24px;
