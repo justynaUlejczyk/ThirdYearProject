@@ -57,3 +57,4 @@ function exitButton(clickedElement) {
         console.log('No post element found.');
     }
 }
+

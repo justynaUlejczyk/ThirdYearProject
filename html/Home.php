@@ -25,6 +25,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <script src="../js/Home.js"></script>
+    <script src="../js/darkmode.js"></script>
     <script src="../js/main.js"></script>
 </head>
 
@@ -32,7 +33,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
 
 <!-- test commit - branch demo -->
 
-<body>
+<body id="theme-switcher">
 
     <!-- Start of SubNav -->
     <subnav>
@@ -171,6 +172,12 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                             src="../images/icons/Unknown_person.jpg">
                         </img>
                         <div class="dropdown-content-profile" id="dropdownContentProfile">
+                            <div class="dropdown-profile-icon">
+                                <a href="">
+                                    <img src="../images/icons/Unknown_person.jpg" alt="">
+                                    <p>Name Surname</p>
+                                </a>
+                            </div>
                             <a href="../html/Profile.php">
                                 <button class="view-profile">
                                     <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none"
@@ -180,11 +187,11 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                                             d="M20 17.5C20 19.9853 20 22 12 22C4 22 4 19.9853 4 17.5C4 15.0147 7.58172 13 12 13C16.4183 13 20 15.0147 20 17.5Z"
                                             fill="#1C274C" />
                                     </svg>
-                                    <span>View Profile</span>
+                                    <span>My Profile</span>
                                 </button>
                             </a>
                             <a href="">
-                                <button href="#" class="settings">
+                                <button class="settings">
                                     <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -194,16 +201,19 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                                     <span>Settings</span>
                                 </button>
                             </a>
-                            <a href="">
-                                <button href="#" class="display">
-                                    <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M12 22C17.5228 22 22 17.5228 22 12C22 11.5373 21.3065 11.4608 21.0672 11.8568C19.9289 13.7406 17.8615 15 15.5 15C11.9101 15 9 12.0899 9 8.5C9 6.13845 10.2594 4.07105 12.1432 2.93276C12.5392 2.69347 12.4627 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-                                            fill="#1C274C" />
-                                    </svg>
-                                    <span>Display</span>
-                                </button>
+                            <a>
+                                <div class="display">
+                                    <div>
+                                        <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M12 22C17.5228 22 22 17.5228 22 12C22 11.5373 21.3065 11.4608 21.0672 11.8568C19.9289 13.7406 17.8615 15 15.5 15C11.9101 15 9 12.0899 9 8.5C9 6.13845 10.2594 4.07105 12.1432 2.93276C12.5392 2.69347 12.4627 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                                                fill="#1C274C" />
+                                        </svg>
+                                        <span>Switch to Dark</span>
+                                    </div>
+                                    <input type="checkbox" onclick="toggleDarkMode(this)">
+                                </div>
                             </a>
                             <a href="../php/logout_php.php">
                                 <button class="logout">
@@ -230,7 +240,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
 
     <main>
         <!-- Start of Profile -->
-        <profile class="tile">
+        <profile class="tile ">
             <div>
                 <div>
                     <div id="Banner"></div>
