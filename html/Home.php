@@ -27,6 +27,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
     <script src="../js/Home.js"></script>
     <script src="../js/darkmode.js"></script>
     <script src="../js/main.js"></script>
+    <script src="../js/navbar.js"></script>
 </head>
 
 <!-- test commit -->
@@ -79,8 +80,8 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
         </section>
         <section>
             <ul class="linksBar">
-                <li>
-                    <a href="../html/Home.php">
+                <li class="active">
+                    <a href="../html/Home.php" class="active">
                         <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"

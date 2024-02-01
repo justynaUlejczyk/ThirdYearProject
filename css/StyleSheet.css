@@ -144,6 +144,26 @@ nav > section > ul > li {
     color: var(--text);
 }
 
+nav > section > ul > li.active::after {
+    position: relative;
+    content: "";
+    height: 3px;
+    left: 0;
+    width: 100%;
+    background-color: var(--accent);
+    bottom: 0;
+    animation: appear 250ms linear;
+}
+
+@keyframes appear {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
 nav > section > ul > li:nth-child(2),
 nav > section > ul > li:nth-child(3) {
     display: none;
@@ -300,7 +320,7 @@ form:valid .fa {
     width: 200px;
     transition: opacity 0.3s ease;
     background-color: var(--foreground);
-    color: black;
+    color: var(--text);
     visibility: hidden;
     opacity: 0;
     border-top: none;
@@ -320,7 +340,7 @@ form:valid .fa {
     text-decoration: none;
     text-align: left;
     display: block;
-    color: black;
+    color: var(--text);
 }
 
 /* secondary nav for mobile use mainly */

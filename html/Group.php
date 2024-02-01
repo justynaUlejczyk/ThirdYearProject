@@ -12,6 +12,7 @@
 
     <script src="../js/main.js"></script>
     <script src="../js/darkmode.js"></script>
+    <script src="../js/navbar.js"></script>
 </head>
 
 <!-- test commit -->
@@ -89,7 +90,7 @@
                         <img src="../images/icons/nav-icons/add-square-svgrepo-com.svg">
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="../html/Group.php">
                         <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
