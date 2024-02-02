@@ -24,6 +24,7 @@ $username = $_SESSION["username"];
     <script src="../js/Home.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/darkmode.js"></script>
+    <script src="../js/Message.js"></script>
 </head>
 
 <!-- test commit -->
@@ -233,56 +234,137 @@ $username = $_SESSION["username"];
 
     <main>
 
-        <body>
-            <div class="chat-container">
-
-                <?php
-
-                $stmt = pg_prepare($conn, "read_message", "SELECT * FROM messages WHERE username = $1 OR recipient = $1 ORDER BY messageID DESC");
-                $result = pg_execute($conn, "read_message", array($username));
-
-                $numRows = pg_num_rows($result);
-                echo "<p>Total Messages: $numRows</p><br>"; // Display total number of messages
-                
-                if ($numRows > 0) {
-                    echo "<p>New message!</p><br>"; // Display this only once
-                
-                    while ($row = pg_fetch_assoc($result)) {
-                        $text = $row["text"];
-                        $sender = $row["username"];
-                        $recipient = $row["recipient"];
-
-                        echo "<br>Recipient: $recipient<br>
-              Sender: $sender<br>
-              Message: $text<br>";
-                    }
-                } else {
-                    echo "No messages";
-                }
-
-                // Close the PostgreSQL connection
-                pg_close($conn);
-                ?>
-
-
+        <div class="chatter-container">
+            <div class="chatter-list">
+                <button class="chatter-list-user" onclick="changeChat(this)" userid="1">
+                    <img src='../images/icons/Unknown_person.jpg'>
+                    <p>Name Surname</p>
+                </button>
+                <button class="chatter-list-user" onclick="changeChat(this)" userid="2">
+                    <img src='../images/icons/Unknown_person.jpg'>
+                    <p>Name Surname2</p>
+                </button>
             </div>
 
 
-            <div class="container">
 
-                <form id="messages" action="../php/send_message.php" method="post">
+            <div class="chatter-box">
 
-                    <label for="recipient">Sent to:</label><br>
-                    <input type="text" id="recipient" name="recipient"><br>
+                <!-- Chat 1 -->
+                <div class="chatter-box-chat-containers" chatid="1">
+                    <div class="chatter-chat">
+                        <div class="chatter-chat-sender">
+                            <div class='chatter-sender'>
+                                <div class='chatter-chat-info'>
+                                    <img src='../images/icons/Unknown_person.jpg'>
+                                    <p>sender 1</p>
+                                </div>
+                                <chat>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro consequuntur iure
+                                    magnam
+                                    reiciendis itaque corrupti est explicabo eaque nisi, cum animi, repellat facere,
+                                    quod
+                                    voluptas? Eligendi vel quisquam quasi sit.
+                                </chat>
+                            </div>
+                        </div>
 
-                    <label for="text">message:</label><br>
-                    <input type="text" id="text" name="text">
+                        <div class="chatter-chat-reciever">
+                            <div class='chatter-reciever'>
+                                <div class='chatter-chat-info'>
+                                    <p>reciever</p>
+                                    <img src='../images/icons/Unknown_person.jpg'>
+                                </div>
+                                <chat>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro consequuntur iure
+                                    magnam
+                                    reiciendis itaque corrupti est explicabo eaque nisi, cum animi, repellat facere,
+                                    quod
+                                    voluptas? Eligendi vel quisquam quasi sit.
+                                </chat>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chatter-send-message">
+                        <input type="text" id="text" name="text">
+                        <button type="submit">
+                            <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M18.6357 15.6701L20.3521 10.5208C21.8516 6.02242 22.6013 3.77322 21.414 2.58595C20.2268 1.39869 17.9776 2.14842 13.4792 3.64788L8.32987 5.36432C4.69923 6.57453 2.88392 7.17964 2.36806 8.06698C1.87731 8.91112 1.87731 9.95369 2.36806 10.7978C2.88392 11.6852 4.69923 12.2903 8.32987 13.5005C8.77981 13.6505 9.28601 13.5434 9.62294 13.2096L15.1286 7.75495C15.4383 7.44808 15.9382 7.45041 16.245 7.76015C16.5519 8.06989 16.5496 8.56975 16.2398 8.87662L10.8231 14.2432C10.4518 14.6111 10.3342 15.1742 10.4995 15.6701C11.7097 19.3007 12.3148 21.1161 13.2022 21.6319C14.0463 22.1227 15.0889 22.1227 15.933 21.6319C16.8204 21.1161 17.4255 19.3008 18.6357 15.6701Z"
+                                    fill="#1C274C" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
 
-                    <input type="text" class="username" name="username" value="<?php echo $username; ?>" hidden
-                        style="display:none;">
-                    <button type="submit"><i class="fab fa-telegram-plane"></i></button>
-                </form>
+                <!-- Chat 2 -->
+                <div class="chatter-box-chat-containers" chatid="2">
+                    <div class="chatter-chat">
+                        <div class="chatter-chat-sender">
+                            <div class='chatter-sender'>
+                                <div class='chatter-chat-info'>
+                                    <img src='../images/icons/Unknown_person.jpg'>
+                                    <p>sender 2</p>
+                                </div>
+                                <chat>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro consequuntur iure
+                                    magnam
+                                    reiciendis itaque corrupti est explicabo eaque nisi, cum animi, repellat facere,
+                                    quod
+                                    voluptas? Eligendi vel quisquam quasi sit.
+                                </chat>
+                            </div>
+                        </div>
+
+                        <div class="chatter-chat-reciever">
+                            <div class='chatter-reciever'>
+                                <div class='chatter-chat-info'>
+                                    <p>reciever</p>
+                                    <img src='../images/icons/Unknown_person.jpg'>
+                                </div>
+                                <chat>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro consequuntur iure
+                                    magnam
+                                    reiciendis itaque corrupti est explicabo eaque nisi, cum animi, repellat facere,
+                                    quod
+                                    voluptas? Eligendi vel quisquam quasi sit.
+                                </chat>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chatter-send-message">
+                        <input type="text" id="text" name="text">
+                        <button type="submit">
+                            <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M18.6357 15.6701L20.3521 10.5208C21.8516 6.02242 22.6013 3.77322 21.414 2.58595C20.2268 1.39869 17.9776 2.14842 13.4792 3.64788L8.32987 5.36432C4.69923 6.57453 2.88392 7.17964 2.36806 8.06698C1.87731 8.91112 1.87731 9.95369 2.36806 10.7978C2.88392 11.6852 4.69923 12.2903 8.32987 13.5005C8.77981 13.6505 9.28601 13.5434 9.62294 13.2096L15.1286 7.75495C15.4383 7.44808 15.9382 7.45041 16.245 7.76015C16.5519 8.06989 16.5496 8.56975 16.2398 8.87662L10.8231 14.2432C10.4518 14.6111 10.3342 15.1742 10.4995 15.6701C11.7097 19.3007 12.3148 21.1161 13.2022 21.6319C14.0463 22.1227 15.0889 22.1227 15.933 21.6319C16.8204 21.1161 17.4255 19.3008 18.6357 15.6701Z"
+                                    fill="#1C274C" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
             </div>
+
+
+
+            <div class="chatter-info"></div>
+        </div>
+
+
+        <div class="container">
+
+            <form id="messages" action="../php/send_message.php" method="post">
+
+                <label for="recipient">Sent to:</label><br>
+                <input type="text" id="recipient" name="recipient"><br>
+
+                <label for="text">message:</label><br>
+                <input type="text" id="text" name="text">
+                <button type="submit"><i class="fab fa-telegram-plane"></i></button>
+            </form>
+        </div>
     </main>
 
 
