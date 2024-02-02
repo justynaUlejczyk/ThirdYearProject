@@ -174,7 +174,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                         </img>
                         <div class="dropdown-content-profile" id="dropdownContentProfile">
                             <div class="dropdown-profile-icon">
-                                <a href="">
+                                <a href="../html/Profile.php">
                                     <img src="../images/icons/Unknown_person.jpg" alt="">
                                     <p>Name Surname</p>
                                 </a>

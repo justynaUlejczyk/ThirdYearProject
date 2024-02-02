@@ -46,7 +46,7 @@
     --svg: var(--light-bg-s);
     --svg-stroke: var(--stroke);
 
-    --box-shadow: none;
+    --box-shadow: 11px 11px 22px #171717, -11px -11px 22px #1d1d1d;
 }
 
 /* general use */
@@ -202,21 +202,6 @@ nav input {
     position: absolute;
     top: 0;
     left: 0;
-    width: 92%;
-    height: 42.5px;
-    line-height: 30px;
-    outline: 0;
-    border: 0;
-    display: none;
-    font-size: 16px;
-    padding: 0 15px;
-    border-bottom: 1px solid var(--text);
-}
-
-nav input {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 90%;
     height: 42.5px;
     line-height: 30px;
@@ -269,7 +254,7 @@ nav .fa {
     top: 0;
     right: 0;
     border-radius: 50%;
-    color: #07051a;
+    color: var(--text);
     text-align: center;
     font-size: 1.2em;
     transition: all 1s;
