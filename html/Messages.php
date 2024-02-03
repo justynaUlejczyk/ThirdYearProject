@@ -250,11 +250,12 @@ $usersListQuery = "SELECT username FROM accounts ORDER BY username DESC";
 $usersListRESULT = pg_query($conn, $usersListQuery);
 if ($usersListRESULT) {
     while ($row = pg_fetch_assoc($usersListRESULT)) {
+        if ($row["username"] != $login_username) {
         $user = $row["username"];
         echo '<button class="chatter-list-user" onclick="changeChat(this)" userid=' . $row['username'] . '>
                 <img src="../images/icons/Unknown_person.jpg">
                 <p><a href="Messages.php?id=' . $row['username'] . '" role="button">' . $row['username'] . '</a></p>
-            </button>';}
+            </button>';}}
             echo "</div>";
         }
             else{echo "Error in fetching user list.";}
