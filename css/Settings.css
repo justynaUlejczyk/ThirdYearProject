@@ -1,0 +1,28 @@
+
+main section{
+    height: auto;
+}
+
+.settingsLinks {
+    display: inline-block;
+    float: left;
+    height: auto;
+    width: 20%;
+    margin: 20px;
+   
+}
+
+.settingsContent {
+    border-left:1px solid black;
+    display: inline-block;
+    margin: 20px;
+    padding-left: 10px;
+    width: 70%;
+    float: left;
+
+}
+
+#updateEmail{
+    color: blue;
+
+}
