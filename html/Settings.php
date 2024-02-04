@@ -229,8 +229,8 @@
                 
 
 
-            <h2>Account</h2>
-            <h3 onclick="myFunction()">Update Email</h3>
+            <h1 onclick="account()":>Account</h2>
+            <h3 onclick="updateEmail()">Update Email</h3>
             <h3>Update Name</h3>
             <h3>Reset Password</h3>
             <h3>Delete Account</h3>
@@ -253,7 +253,7 @@
 
 
     </section>
-    <section class="settingsContent" >
+    <section class="settingsContent">
             <div id="updateEmail">
                 <h1>Update Email</h1>
                 <form action="">
@@ -266,10 +266,13 @@
 
 
 
-
-
+            <div id = "general">
+                <h1>General Settings</h1>
             </div>
-
+            
+            <div id = "account">
+                <h1>Account Settings</h1>
+            </div>
 
     </section>
 

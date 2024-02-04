@@ -9,11 +9,12 @@ main section{
     height: auto;
     width: 20%;
     margin: 20px;
+    border-right:1px solid black;
    
 }
 
 .settingsContent {
-    border-left:1px solid black;
+
     display: inline-block;
     margin: 20px;
     padding-left: 10px;
@@ -21,7 +22,22 @@ main section{
     float: left;
 }
 
+
+
+#general{
+    color: black;
+}
+
+
+#account{
+    color: black;
+    display: none;
+}
 #updateEmail{
     color: blue;
-
+    display: none;
+}
+#updatePassword{
+    color: blue;
+    display: none;
 }
