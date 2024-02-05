@@ -7,33 +7,45 @@ function general(clickedElement){
 
 function account(clickedElement){
     hideAll();
-    var General = document.getElementById("account");
-    General.style.display = "inline-block";
+    var Account = document.getElementById("account");
+    Account.style.display = "inline-block";
 }
-function updateEmail(clickedElement){
-    hideAll();
-    var updateEmail = document.getElementById("updateEmail");
-    updateEmail.style.display = "inline-block";
-}
-
-function updateName(clickedElement){
-    hideAll();
-    var updateName = document.getElementById("updateName");
-    updateName.style.display = "inline-block";
-}
+    function updateEmail(clickedElement){
+        hideAll();
+        var updateEmail = document.getElementById("updateEmail");
+        updateEmail.style.display = "inline-block";
+    }
 
 
-function updatePassword(clickedElement){
-    hideAll();
-    var updatePassword = document.getElementById("updatePassword");
-    updatePassword.style.display = "inline-block";
-}
+    function updateName(clickedElement){
+        hideAll();
+        var updateName = document.getElementById("updateName");
+        updateName.style.display = "inline-block";
+    }
+
+
+    function updatePassword(clickedElement){
+        hideAll();
+        var updatePassword = document.getElementById("updatePassword");
+        updatePassword.style.display = "inline-block";
+    }
 
 function privacy(clickedElement){
     hideAll();
     var privacy = document.getElementById("privacy");
     privacy.style.display = "inline-block";
 }
+
+    function privacyPolicy(clickedElement){
+        hideAll();
+        var privacyPolicy = document.getElementById("privacyPolicy");
+        privacyPolicy.style.display = "inline-block";
+    }
+    function accountPrivacy(clickedElement){
+        hideAll();
+        var accountPrivacy = document.getElementById("accountPrivacy");
+        accountPrivacy.style.display = "inline-block";
+    }
 
 function accessibility(clickedElement){
     hideAll();
@@ -49,23 +61,31 @@ function accessibility(clickedElement){
 function hideAll(){
     var General = document.getElementById("general");
 
-
     var Account = document.getElementById("account");
         var updatePassword = document.getElementById("updatePassword");
         var updateEmail = document.getElementById("updateEmail");
-    
-
+        var updateName = document.getElementById("updateName");
 
     var Privacy = document.getElementById("privacy");
+        var privacyPolicy = document.getElementById("privacyPolicy");
+        var accountPrivacy = document.getElementById("accountPrivacy");
+
     var Accessibility = document.getElementById("accessibility")
-    var updateName = document.getElementById("updateName");
+
+
+    General.style.display = "none";
+
+    Account.style.display = "none";
+        updateName.style.display = "none";
+        updateEmail.style.display = "none";
+        updatePassword.style.display = "none";
+
 
     Privacy.style.display = "none";
-    General.style.display = "none";
-    Account.style.display = "none";
+        privacyPolicy.style.display = "none";
+        accountPrivacy.style.display = "none";
+
+
     Accessibility.style.display = "none";
-    updateName.style.display = "none";
-    updateEmail.style.display = "none";
-    updatePassword.style.display = "none";
-    
+
 }

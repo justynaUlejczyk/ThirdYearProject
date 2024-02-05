@@ -4,7 +4,7 @@
 <head>
     <title>Profile</title>
     <link rel="stylesheet" href="../css/StyleSheet.css">
-    <link rel="stylesheet" href="../css/settings.css">
+    <link rel="stylesheet" href="../css/Settings.css">
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -94,7 +94,7 @@
                         <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
-                                d="M15.5 7.5C15.5 9.433 13.933 11 12 11C10.067 11 8.5 9.433 8.5 7.5C8.5 5.567 10.067 4 12 4C13.933 4 15.5 5.567 15.5 7.5Z"
+                 30px;          d="M15.5 7.5C15.5 9.433 13.933 11 12 11C10.067 11 8.5 9.433 8.5 7.5C8.5 5.567 10.067 4 12 4C13.933 4 15.5 5.567 15.5 7.5Z"
                                 fill="#1C274C" />
                             <path
                                 d="M18 16.5C18 18.433 15.3137 20 12 20C8.68629 20 6 18.433 6 16.5C6 14.567 8.68629 13 12 13C15.3137 13 18 14.567 18 16.5Z"
@@ -229,86 +229,115 @@
                 
 
 
-            <h1  onclick="account()">Account</h2>
+            <h1 onclick="account()">Account</h2>
             <h3 onclick="updateEmail()">Update Email</h3>
             <h3 onclick="updateName()">Update Name</h3>
             <h3 onclick="updatePassword()">Reset Password</h3>
-            <h3>Delete Account</h3>
-
-
-            <h3></h3>
+    
             
             <h1 onclick="privacy()">Privacy & security</h2>
-            <h3>private account/public account</h3>
-            <h3>Privacy Policy</h3>
-
+            <h3 onclick="accountPrivacy()">Account Privacy</h3>
+            <h3 onclick="privacyPolicy()">  Privacy Policy</h3>
+            <h3>Delete Account</h3>
 
             <h1 onclick="accessibility()">Accessability</h2>
             <h3>darkmode</h3>
-
-
-
-
             </div>
 
 
     </section>
     <section class="settingsContent">
 
-
-
-
-
-
-            <div id = "general">
-                <h1>General Settings</h1>
+            <div id="general">
+                <h1  class="updateTitle">General Settings</h1>
+                <h3>Idk what to put here any ideas would be great </h1>
             </div>
-            
+
             <div id = "account">
-                <h1>Account Settings</h1>
+                <h1 class="updateTitle">Account Settings</h1>
+                <h1>Username</h1>
+                <p><?php echo 'display userName here ' ?></p>
+                <h1>E-mail</h1>
+                <p><?php echo 'display email here ' ?></p>
+                <h1>Account Type</h1>
+                <p><?php echo 'display accout type here ' ?></p>
+                <!-- link to profile -->
+                <a><h1>Personal info</h1></a>
+                <p><?php echo 'display bio type here ' ?></p>
+                <p id="profileLink">Edit Profile</p>
             </div>
 
             <div id = "privacy">
-                <h1>Privacy Settings</h1>
+                <h1 class="updateTitle">Privacy Settings</h1>
             </div>
             <div id = "accessibility">
-                <h1>Accessibility Settings</h1>
+                <h1 class="updateTitle">Accessibility Settings</h1>
             </div>
-
-
-
 
 
 
             <div id="updateEmail">
-                <h1>Update Email</h1>
+                <h1 class="updateTitle">Update Email</h1>
             <form action="">
-                    <p>Current email</p> <?php echo "getUser email?"?>
-                    <p>New email</p><input>
-                    <p>Confirm New Email</p><input >
+                    <p>Current email</p> <p><?php echo "getUser email?"?></p>
+                    <p>New email</p>
+                        <input type="text" required>
+
+                    <p>Confirm New Email</p>
+                        <input  type="text" required>
+                    
                     <button class="confirmButton">Comfirm Update</button>
-                </form>
+                </form> 
             </div>
 
 
 
             <div id="updateName">
-                <h1>Update Name</h1>
-                <form action="">
-                    <p>Current Name</p> <?php echo "getUser name?"?>
-                    <p>New Display Name</p><input>
+                <h1 class="updateTitle">Update Name</h1>
+                <form action="" >
+                    <p>Current Name</p> <p><?php echo "getUser name?"?></p>
+                    <p>New Display Name</p>
+                        <input type="text" required>
                     <button class="confirmButton">Comfirm New Name </button>
                 </form>
             </div>
 
 
             <div id="updatePassword">
-                <h1>Reset Password</h1>
+                <h1 class="updateTitle">Reset Password</h1>
                 <form action="">
-                    <p>Enter Email </p><input>
+                    <p>Enter Email </p><input type="text" required>
                     <button class="confirmButton">Comfirm Password Reset</button>
                 </form>
             </div>
+
+
+            <div id="privacyPolicy">
+                <h1 class="updateTitle">
+                Privacy Policy
+                </h1>
+                <p>Our Privacy Policy... </p>
+            </div>
+
+
+            <div id = "accountPrivacy">
+                <h1 class="updateTitle">
+                Account Privacy
+                </h1>
+
+                <h1 >Account status</h1>
+                <p><?php echo 'input user type'?></p>
+
+                
+                <h1>Profile Visibility</h1>
+                <p class="inline">public</p>
+                <label class="profileSwitch" class="round">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+                <p class="inline">private</p>
+            </div>
+            
 
     </section>
 
