@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
 } else {
     // Handle the case when 'id' is not set
     $id = 1;
-    
+
 }
 
 ?>
@@ -241,102 +241,128 @@ if (isset($_GET['id'])) {
 
     <main>
 
-    <div class="chatter-container">
- <div class="chatter-list">
-            <?php
-            
-        // displaying list of users
-$usersListQuery = "SELECT username FROM accounts ORDER BY username DESC";
-$usersListRESULT = pg_query($conn, $usersListQuery);
-if ($usersListRESULT) {
-    while ($row = pg_fetch_assoc($usersListRESULT)) {
-        if ($row["username"] != $login_username) {
-        $user = $row["username"];
-        echo '<button class="chatter-list-user" onclick="changeChat(this)" userid=' . $row['username'] . '>
+        <div class="chatter-container">
+            <div class="chatter-list">
+
+                <button class="chatter-list-user" onclick="changeChat(this)" userid="1">
+                    <img src='../images/icons/Unknown_person.jpg'>
+                    <p>This is not a user its html test 1</p>
+                </button>
+                <button class="chatter-list-user" onclick="changeChat(this)" userid="2">
+                    <img src='../images/icons/Unknown_person.jpg'>
+                    <p>This is not a user its html test 2</p>
+                </button>
+
+
+                <?php
+
+                // displaying list of users
+                $usersListQuery = "SELECT username FROM accounts ORDER BY username DESC";
+                $usersListRESULT = pg_query($conn, $usersListQuery);
+                if ($usersListRESULT) {
+                    while ($row = pg_fetch_assoc($usersListRESULT)) {
+                        if ($row["username"] != $login_username) {
+                            $user = $row["username"];
+                            echo '<button class="chatter-list-user" onclick="changeChat(this)" userid=' . $row['username'] . '>
                 <img src="../images/icons/Unknown_person.jpg">
                 <p><a href="Messages.php?id=' . $row['username'] . '" role="button">' . $row['username'] . '</a></p>
-            </button>';}}
-            echo "</div>";
-        }
-            else{echo "Error in fetching user list.";}
-            ?>
+            </button>';
+                        }
+                    }
+                    echo "</div>";
+                } else {
+                    echo "Error in fetching user list.";
+                }
+                ?>
 
-       
-<div class="chatter-box">
-<!-- Chat box -->
-<?php
-
-$stmt = pg_prepare($conn, "read_message", "SELECT * FROM messages WHERE (username = $1 AND recipient = $2) OR (username = $2 AND recipient = $1) ORDER BY messageID ASC");
-$result = pg_execute($conn, "read_message", array($login_username, $id));
-$numRows = pg_num_rows($result);
+                <div class="chatter-box">
 
 
-if ($numRows > 0) {
-    
-    echo "<p>Total Messages: $numRows</p><br>"; // Display total number of messages
-    echo ' <div class="chatter-chat">';
-while ($row = pg_fetch_assoc($result)) {
-    $text = $row["text"];
-    $sender = $row["username"];
-    $recipient = $row["recipient"];
-//echo $row["username"] ;
-if ($text){
-if ($sender == $login_username){
-    
-                    echo' <div class="chatter-chat-sender">
-                            <div class="chatter-sender">
-                                <div class="chatter-chat-info">
-                                    <img src="../images/icons/Unknown_person.jpg">';
-             echo "                       <p> $sender </p>";
-                             echo " </div>
-                                <chat>
-                                   $text 
-                                <br></chat>";
-                                echo '  </div>
-                        </div>';
-}else {if ($sender == $id){
-                       echo' <div class="chatter-chat-reciever">
-                            <div class="chatter-reciever">
-                                <div class="chatter-chat-info">';
-                         echo "         <p>$sender</p>";
-                            echo "        <img src='../images/icons/Unknown_person.jpg'>
+                    <!-- This thing below has to be changed for each user youve spoke to -->
+                    <!-- chatid should equal the username of the person youre talking to -->
+                    <div class="chatter-box-chat-containers" chatid="1">
+                        <div class="chatter-chat">
+                            <div class="chatter-chat-sender">
+                                <div class='chatter-sender'>
+                                    <div class='chatter-chat-info'>
+                                        <img src='../images/icons/Unknown_person.jpg'>
+                                        <p>Person youre talking to</p>
+                                    </div>
+                                    <chat>
+                                        Person youre talking to chat
+                                    </chat>
                                 </div>
-                                <chat>
-                                    $text
-                                </chat>
-                            </div></div>
-                        ";}}
-                          }} } else {echo 'no messages yet'; }
-                         
-                         
-                        ?>
+                            </div>
 
-                  <div class="chatter-send-message">
-                 
+                            <div class="chatter-chat-reciever">
+                                <div class='chatter-reciever'>
+                                    <div class='chatter-chat-info'>
+                                        <p>YOU</p>
+                                        <img src='../images/icons/Unknown_person.jpg'>
+                                    </div>
+                                    <chat>
+                                        YOUR MESSAGE
+                                    </chat>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-<form id="messages" action="../php/send_message.php" method="post">
+                    <!-- This chat below only exists to show js is working -->
+
+                    <div class="chatter-box-chat-containers" chatid="2">
+                        <div class="chatter-chat">
+                            <div class="chatter-chat-sender">
+                                <div class='chatter-sender'>
+                                    <div class='chatter-chat-info'>
+                                        <img src='../images/icons/Unknown_person.jpg'>
+                                        <p>Person youre talking to 2</p>
+                                    </div>
+                                    <chat>
+                                        Person youre talking to chat 2
+                                    </chat>
+                                </div>
+                            </div>
+
+                            <div class="chatter-chat-reciever">
+                                <div class='chatter-reciever'>
+                                    <div class='chatter-chat-info'>
+                                        <p>YOU 2 </p>
+                                        <img src='../images/icons/Unknown_person.jpg'>
+                                    </div>
+                                    <chat>
+                                        YOUR MESSAGE 2
+                                    </chat>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
-    <input type="text" id="recipient" name="recipient"value="<?php echo $id; ?>" hidden
-        style="display:none;">
-
-    <input type="text" id="text" name="text">
-
-    <input type="text" class="username" name="username" value="<?php echo $login_username; ?>" hidden
-        style="display:none;">
-    <button type="submit"><i class="fab fa-telegram-plane"></i></button>
-</form>
-</div>
-                
+                    <!-- Dont touch this for now as it shouldnt be required at the moment -->
+                    <form class="chatter-send-message" id="messages" action="../php/send_message.php" method="post">
+                        <input type="text" id="text" name="text">
+                        <button type="submit">
+                            <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M18.6357 15.6701L20.3521 10.5208C21.8516 6.02242 22.6013 3.77322 21.414 2.58595C20.2268 1.39869 17.9776 2.14842 13.4792 3.64788L8.32987 5.36432C4.69923 6.57453 2.88392 7.17964 2.36806 8.06698C1.87731 8.91112 1.87731 9.95369 2.36806 10.7978C2.88392 11.6852 4.69923 12.2903 8.32987 13.5005C8.77981 13.6505 9.28601 13.5434 9.62294 13.2096L15.1286 7.75495C15.4383 7.44808 15.9382 7.45041 16.245 7.76015C16.5519 8.06989 16.5496 8.56975 16.2398 8.87662L10.8231 14.2432C10.4518 14.6111 10.3342 15.1742 10.4995 15.6701C11.7097 19.3007 12.3148 21.1161 13.2022 21.6319C14.0463 22.1227 15.0889 22.1227 15.933 21.6319C16.8204 21.1161 17.4255 19.3008 18.6357 15.6701Z"
+                                    fill="#1C274C" />
+                            </svg>
+                        </button>
+                    </form>
                 </div>
 
-        <div class="chatter-info"></div>
+
+            </div>
+
+            <div class="chatter-info"></div>
         </div>
 
 
-        
-                
-            </div>
+
+
+        </div>
 
 
     </main>

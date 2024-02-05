@@ -15,17 +15,8 @@ function changeChat(element) {
 
     // Show the chat container with the corresponding id
     var selectedChat = document.querySelector(".chatter-box-chat-containers[chatid='" + userId + "']");
-    console.log('twoj stary');
+    console.log(userId);
+    console.log(selectedChat);
     selectedChat.style.display = "flex";
 }
 
-// Retrieve the last selected user ID from localStorage
-document.addEventListener('DOMContentLoaded', function () {
-    var lastSelectedUserId = localStorage.getItem("lastSelectedUserId");
-
-    if (lastSelectedUserId) {
-        // Show the chat container for the last selected user
-        var selectedChat = document.querySelector(".chatter-box-chat-containers[chatid='" + lastSelectedUserId + "']");
-        selectedChat.style.display = "flex";
-    }
-});
