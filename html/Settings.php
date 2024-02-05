@@ -1,42 +1,30 @@
-<?php
-session_start();
-if (!isset($_SESSION["username"])) {
-    header('Location: ' . "./login.php");
-}
-
-require_once "../php/connect_db.php";
-
-$username = $_SESSION["username"];
-
-
-?>
 <!DOCTYPE html>
-<html>
+<html class="dimmed">
 
 <head>
-    <title>Messages</title>
-    <link rel="stylesheet" href="../css/Messages.css">
+    <title>Profile</title>
     <link rel="stylesheet" href="../css/StyleSheet.css">
-    <link rel="stylesheet" href="../css/Home.css">
+    <link rel="stylesheet" href="../css/Settings.css">
+
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <script src="../js/Home.js"></script>
+
     <script src="../js/main.js"></script>
+    <script src="../js/Profile.js"></script>
     <script src="../js/darkmode.js"></script>
+    <script src="../js/Settings.js"></script>
 </head>
 
-<!-- test commit -->
-
-<!-- test commit - branch demo -->
-
-<body>
+<main>
+<body class="dimmed">
     <!-- Start of SubNav -->
     <subnav>
         <ul>
             <li>
                 <a href="Profile.php">
-                    <img src="../images/cat.jpg" class="nav-profile">
+                    <img src="../images/icons/Unknown_person.jpg" class="nav-profile">
                 </a>
             </li>
 
@@ -75,8 +63,8 @@ $username = $_SESSION["username"];
         </section>
         <section>
             <ul class="linksBar">
-                <li>
-                    <a href="../html/Home.php">
+                <li class="active">
+                    <a href="../html/Home.php" class="active">
                         <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -106,7 +94,7 @@ $username = $_SESSION["username"];
                         <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
-                                d="M15.5 7.5C15.5 9.433 13.933 11 12 11C10.067 11 8.5 9.433 8.5 7.5C8.5 5.567 10.067 4 12 4C13.933 4 15.5 5.567 15.5 7.5Z"
+                 30px;          d="M15.5 7.5C15.5 9.433 13.933 11 12 11C10.067 11 8.5 9.433 8.5 7.5C8.5 5.567 10.067 4 12 4C13.933 4 15.5 5.567 15.5 7.5Z"
                                 fill="#1C274C" />
                             <path
                                 d="M18 16.5C18 18.433 15.3137 20 12 20C8.68629 20 6 18.433 6 16.5C6 14.567 8.68629 13 12 13C15.3137 13 18 14.567 18 16.5Z"
@@ -127,7 +115,7 @@ $username = $_SESSION["username"];
                         <span>Collabs</span>
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="../html/Messages.php">
                         <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -186,7 +174,7 @@ $username = $_SESSION["username"];
                                     <span>My Profile</span>
                                 </button>
                             </a>
-                            <a href="Settings.php">
+                            <a href="../html/Settings.php">
                                 <button class="settings">
                                     <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -230,64 +218,135 @@ $username = $_SESSION["username"];
         </section>
     </nav>
     <!-- End of Nav -->
+</main>
 
-    <main>
 
-        <body>
-            <div class="chat-container">
 
-                <?php
-
-                $stmt = pg_prepare($conn, "read_message", "SELECT * FROM messages WHERE username = $1 OR recipient = $1 ORDER BY messageID DESC");
-                $result = pg_execute($conn, "read_message", array($username));
-
-                $numRows = pg_num_rows($result);
-                echo "<p>Total Messages: $numRows</p><br>"; // Display total number of messages
+<main>
+    <h1 id="settingsHeading"  onclick="general()" >Settings</h1>
+    <section class="settingsLinks">
+            <div>
                 
-                if ($numRows > 0) {
-                    echo "<p>New message!</p><br>"; // Display this only once
-                
-                    while ($row = pg_fetch_assoc($result)) {
-                        $text = $row["text"];
-                        $sender = $row["username"];
-                        $recipient = $row["recipient"];
-
-                        echo "<br>Recipient: $recipient<br>
-              Sender: $sender<br>
-              Message: $text<br>";
-                    }
-                } else {
-                    echo "No messages";
-                }
-
-                // Close the PostgreSQL connection
-                pg_close($conn);
-                ?>
 
 
+            <h1 onclick="account()">Account</h2>
+            <h3 onclick="updateEmail()">Update Email</h3>
+            <h3 onclick="updateName()">Update Name</h3>
+            <h3 onclick="updatePassword()">Reset Password</h3>
+    
+            
+            <h1 onclick="privacy()">Privacy & security</h2>
+            <h3 onclick="accountPrivacy()">Account Privacy</h3>
+            <h3 onclick="privacyPolicy()">  Privacy Policy</h3>
+            <h3>Delete Account</h3>
+
+            <h1 onclick="accessibility()">Accessability</h2>
+            <h3>darkmode</h3>
             </div>
 
 
-            <div class="container">
+    </section>
+    <section class="settingsContent">
 
-                <form id="messages" action="../php/send_message.php" method="post">
+            <div id="general">
+                <h1  class="updateTitle">General Settings</h1>
+                <h3>Idk what to put here any ideas would be great </h1>
+            </div>
 
-                    <label for="recipient">Sent to:</label><br>
-                    <input type="text" id="recipient" name="recipient"><br>
+            <div id = "account">
+                <h1 class="updateTitle">Account Settings</h1>
+                <h1>Username</h1>
+                <p><?php echo 'display userName here ' ?></p>
+                <h1>E-mail</h1>
+                <p><?php echo 'display email here ' ?></p>
+                <h1>Account Type</h1>
+                <p><?php echo 'display accout type here ' ?></p>
+                <!-- link to profile -->
+                <a><h1>Personal info</h1></a>
+                <p><?php echo 'display bio type here ' ?></p>
+                <p id="profileLink">Edit Profile</p>
+            </div>
 
-                    <label for="text">message:</label><br>
-                    <input type="text" id="text" name="text">
+            <div id = "privacy">
+                <h1 class="updateTitle">Privacy Settings</h1>
+            </div>
+            <div id = "accessibility">
+                <h1 class="updateTitle">Accessibility Settings</h1>
+            </div>
 
-                    <input type="text" class="username" name="username" value="<?php echo $username; ?>" hidden
-                        style="display:none;">
-                    <button type="submit"><i class="fab fa-telegram-plane"></i></button>
+
+
+            <div id="updateEmail">
+                <h1 class="updateTitle">Update Email</h1>
+            <form action="">
+                    <p>Current email</p> <p><?php echo "getUser email?"?></p>
+                    <p>New email</p>
+                        <input type="text" required>
+
+                    <p>Confirm New Email</p>
+                        <input  type="text" required>
+                    
+                    <button class="confirmButton">Comfirm Update</button>
+                </form> 
+            </div>
+
+
+
+            <div id="updateName">
+                <h1 class="updateTitle">Update Name</h1>
+                <form action="" >
+                    <p>Current Name</p> <p><?php echo "getUser name?"?></p>
+                    <p>New Display Name</p>
+                        <input type="text" required>
+                    <button class="confirmButton">Comfirm New Name </button>
                 </form>
             </div>
-    </main>
+
+
+            <div id="updatePassword">
+                <h1 class="updateTitle">Reset Password</h1>
+                <form action="">
+                    <p>Enter Email </p><input type="text" required>
+                    <button class="confirmButton">Comfirm Password Reset</button>
+                </form>
+            </div>
+
+
+            <div id="privacyPolicy">
+                <h1 class="updateTitle">
+                Privacy Policy
+                </h1>
+                <p>Our Privacy Policy... </p>
+            </div>
+
+
+            <div id = "accountPrivacy">
+                <h1 class="updateTitle">
+                Account Privacy
+                </h1>
+
+                <h1 >Account status</h1>
+                <p><?php echo 'input user type'?></p>
+
+                
+                <h1>Profile Visibility</h1>
+                <p class="inline">public</p>
+                <label class="profileSwitch" class="round">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+                <p class="inline">private</p>
+            </div>
+            
+
+    </section>
+
+
+</main>
 
 
 
 </body>
-
-
 </html>
+
+

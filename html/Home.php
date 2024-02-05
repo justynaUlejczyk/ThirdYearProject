@@ -174,7 +174,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                         </img>
                         <div class="dropdown-content-profile" id="dropdownContentProfile">
                             <div class="dropdown-profile-icon">
-                                <a href="../html/Profile.php">
+                                <a href="">
                                     <img src="../images/icons/Unknown_person.jpg" alt="">
                                     <p>Name Surname</p>
                                 </a>
@@ -191,7 +191,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                                     <span>My Profile</span>
                                 </button>
                             </a>
-                            <a href="">
+                            <a href="../html/Settings.php">
                                 <button class="settings">
                                     <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
