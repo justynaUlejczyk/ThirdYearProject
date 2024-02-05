@@ -223,27 +223,27 @@
 
 
 <main>
-    <h1 style="margin-top:80px" onclick="general()" >Settings</h1>
+    <h1 id="settingsHeading"  onclick="general()" >Settings</h1>
     <section class="settingsLinks">
-            <div >
+            <div>
                 
 
 
-            <h1 onclick="account()":>Account</h2>
+            <h1  onclick="account()">Account</h2>
             <h3 onclick="updateEmail()">Update Email</h3>
-            <h3>Update Name</h3>
-            <h3>Reset Password</h3>
+            <h3 onclick="updateName()">Update Name</h3>
+            <h3 onclick="updatePassword()">Reset Password</h3>
             <h3>Delete Account</h3>
 
 
             <h3></h3>
             
-            <h2 onclick="privacy()">Privacy & security</h2>
+            <h1 onclick="privacy()">Privacy & security</h2>
             <h3>private account/public account</h3>
             <h3>Privacy Policy</h3>
 
 
-            <h2>Accessability</h2>
+            <h1 onclick="accessibility()">Accessability</h2>
             <h3>darkmode</h3>
 
 
@@ -254,15 +254,11 @@
 
     </section>
     <section class="settingsContent">
-            <div id="updateEmail">
-                <h1>Update Email</h1>
-            <form action="">
-                    <p>Current email</p> <?php echo "getUser email?"?>
-                    <p>New email</p><input>
-                    <p>Confirm New Email</p><input>
-                    <button class="confirmButton">Comfirm Email Update</button>
-                </form>
-            </div>
+
+
+
+
+
 
             <div id = "general">
                 <h1>General Settings</h1>
@@ -275,6 +271,45 @@
             <div id = "privacy">
                 <h1>Privacy Settings</h1>
             </div>
+            <div id = "accessibility">
+                <h1>Accessibility Settings</h1>
+            </div>
+
+
+
+
+
+
+            <div id="updateEmail">
+                <h1>Update Email</h1>
+            <form action="">
+                    <p>Current email</p> <?php echo "getUser email?"?>
+                    <p>New email</p><input>
+                    <p>Confirm New Email</p><input >
+                    <button class="confirmButton">Comfirm Update</button>
+                </form>
+            </div>
+
+
+
+            <div id="updateName">
+                <h1>Update Name</h1>
+                <form action="">
+                    <p>Current Name</p> <?php echo "getUser name?"?>
+                    <p>New Display Name</p><input>
+                    <button class="confirmButton">Comfirm New Name </button>
+                </form>
+            </div>
+
+
+            <div id="updatePassword">
+                <h1>Reset Password</h1>
+                <form action="">
+                    <p>Enter Email </p><input>
+                    <button class="confirmButton">Comfirm Password Reset</button>
+                </form>
+            </div>
+
     </section>
 
 

@@ -3,12 +3,19 @@ main section{
     height: auto;
 }
 
+#settingsHeading{
+    margin-top:70px;
+    padding: 20px;
+    padding-bottom: 0px;
+    cursor:pointer;
+}
 .settingsLinks {
     display: inline-block;
     float: left;
     height: auto;
     width: 20%;
     margin: 20px;
+    padding: 5px;
     border-right:1px solid black;
    
 }
@@ -16,12 +23,27 @@ main section{
 .settingsContent {
     display: inline-block;
     margin: 20px;
-    padding-left: 10px;
     width: 70%;
-    float: left;
+    height: auto;
+    padding: 5px;
 }
+.settingsLinks h1:hover{
+    background-color: hotpink;
+    border-radius: 10px;
+    margin-right: 5px;
+    padding: 5px;
 
+    cursor: pointer;
+} 
 
+.settingsLinks h3:hover{
+    background-color: hotpink;
+    border-radius: 10px;
+    margin-right: 5px;
+    padding: 5px;   
+
+    cursor: pointer;
+} 
 
 #general{
     color: black;
@@ -35,11 +57,52 @@ main section{
 #account{
     color: black;
     display: none;
+
 }
+
+#accessibility{
+    display: none;
+
+}
+
+
 #updateEmail{
-    color: blue;
     display: none;
 }
+
+#updateEmail{
+    display: none;
+}
+#updateEmail button{
+    background-color: bisque;
+    margin: 10px;
+    width: auto;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+
+}
+
+#updateEmail input{
+    background-color: grey;
+    display: inline;
+    border-style: 0px;
+    height: 20px;
+    border-radius: 10px;
+}
+
+#updateEmail input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    size: 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+
+#updateName{
+    display: none;
+}
+
 #updatePassword{
     color: blue;
     display: none;
