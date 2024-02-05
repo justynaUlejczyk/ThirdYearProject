@@ -28,6 +28,8 @@ if ($result) {
 // Close the connection
 pg_close($conn);
 
-header('Location: ../html/Messages.php');
+header("Location: ../html/Messages.php?id=$recipient");
 exit();
+
+
 ?>

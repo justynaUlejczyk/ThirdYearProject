@@ -12,7 +12,7 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 } else {
     // Handle the case when 'id' is not set
-    $id = $login_username;
+    $id = 1;
     
 }
 
@@ -270,6 +270,7 @@ $stmt = pg_prepare($conn, "read_message", "SELECT * FROM messages WHERE (usernam
 $result = pg_execute($conn, "read_message", array($login_username, $id));
 $numRows = pg_num_rows($result);
 
+
 if ($numRows > 0) {
     
     echo "<p>Total Messages: $numRows</p><br>"; // Display total number of messages
@@ -279,7 +280,7 @@ while ($row = pg_fetch_assoc($result)) {
     $sender = $row["username"];
     $recipient = $row["recipient"];
 //echo $row["username"] ;
-
+if ($text){
 if ($sender == $login_username){
     
                     echo' <div class="chatter-chat-sender">
@@ -290,7 +291,7 @@ if ($sender == $login_username){
                              echo " </div>
                                 <chat>
                                    $text 
-                                </chat>";
+                                <br></chat>";
                                 echo '  </div>
                         </div>';
 }else {if ($sender == $id){
@@ -303,9 +304,12 @@ if ($sender == $login_username){
                                 <chat>
                                     $text
                                 </chat>
-                            </div>
+                            </div></div>
                         ";}}
-                          }} ?>
+                          }} } else {echo 'no messages yet'; }
+                         
+                         
+                        ?>
 
                   <div class="chatter-send-message">
                  
