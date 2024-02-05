@@ -223,7 +223,7 @@
 
 
 <main>
-    <h1 style="margin-top:80px">Settings</h1>
+    <h1 style="margin-top:80px" onclick="general()" >Settings</h1>
     <section class="settingsLinks">
             <div >
                 
@@ -238,7 +238,7 @@
 
             <h3></h3>
             
-            <h2>Privacy & security</h2>
+            <h2 onclick="privacy()">Privacy & security</h2>
             <h3>private account/public account</h3>
             <h3>Privacy Policy</h3>
 
@@ -256,15 +256,13 @@
     <section class="settingsContent">
             <div id="updateEmail">
                 <h1>Update Email</h1>
-                <form action="">
+            <form action="">
                     <p>Current email</p> <?php echo "getUser email?"?>
                     <p>New email</p><input>
                     <p>Confirm New Email</p><input>
                     <button class="confirmButton">Comfirm Email Update</button>
                 </form>
             </div>
-
-
 
             <div id = "general">
                 <h1>General Settings</h1>
@@ -274,6 +272,9 @@
                 <h1>Account Settings</h1>
             </div>
 
+            <div id = "privacy">
+                <h1>Privacy Settings</h1>
+            </div>
     </section>
 
 
