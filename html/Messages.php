@@ -280,13 +280,18 @@ if (isset($_GET['id'])) {
 
                     <!-- This thing below has to be changed for each user youve spoke to -->
                     <!-- chatid should equal the username of the person youre talking to -->
-                    <div class="chatter-box-chat-containers" chatid="1">
+                    
+                    <?php
+                    echo "<div class='chatter-box-chat-containers' chatid='$id'>"
+                    ?>
                         <div class="chatter-chat">
                             <div class="chatter-chat-sender">
                                 <div class='chatter-sender'>
                                     <div class='chatter-chat-info'>
                                         <img src='../images/icons/Unknown_person.jpg'>
-                                        <p>Person youre talking to</p>
+                                        <?php
+                                        echo "<p>$id</p>"
+                                        ?>
                                     </div>
                                     <chat>
                                         Person youre talking to chat
