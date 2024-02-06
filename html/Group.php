@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html class="dimmed">
 
 <head>
     <title>Groups</title>
     <link rel="stylesheet" href="../css/Group.css">
     <link rel="stylesheet" href="../css/StyleSheet.css">
+    <link rel="stylesheet" href="../css/Group-create.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
@@ -13,6 +14,7 @@
     <script src="../js/main.js"></script>
     <script src="../js/darkmode.js"></script>
     <script src="../js/navbar.js"></script>
+    <script src="../js/createGroup.js"></script>
 </head>
 
 <!-- test commit -->
@@ -223,6 +225,27 @@
 
 
     <main>
+
+        <section class="create-container">
+            <div class="create-title">
+                <p>Welcome to the Collaboration Creation Menu – Your Gateway to Team Synergy!</p>
+            </div>
+            <div class="create-information">
+                <div id="name">
+                    <p>Name</p>
+                    <input type="text">
+                </div>
+                <div id="desc">
+                    <p>Description</p>
+                    <textarea name="textarea"></textarea>
+                </div>
+            </div>
+            <div class="create-options">
+                <button onclick=closeCreate()>Cancel</button>
+                <button>Create</button>
+            </div>
+        </section>
+
         <!-- Group tile -->
 
 
@@ -248,7 +271,7 @@
 
 
                 <div>
-                    <button class="group" class="groupIcon">
+                    <button class="group" class="groupIcon" onclick=createGroup()>
                         <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -257,7 +280,6 @@
                         </svg>
                     </button>
                 </div>
-                </a>
 
             </section>
         </aside>

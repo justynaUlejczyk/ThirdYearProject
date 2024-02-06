@@ -519,7 +519,6 @@ button.like.active > svg > path {
 }
 
 .dimmed:after {
-    position: relative;
     content: " ";
     z-index: 10;
     display: block;
