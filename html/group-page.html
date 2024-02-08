@@ -5,7 +5,7 @@
     <title>Groups</title>
     <link rel="stylesheet" href="../css/Group.css">
     <link rel="stylesheet" href="../css/StyleSheet.css">
-    <link rel="stylesheet" href="../css/Group-create.css">
+    <link rel="stylesheet" href="../css/Group-page.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
@@ -222,104 +222,66 @@
     </nav>
     <!-- End of Nav -->
 
-
-
-    <main>
-
-        <section class="create-container">
-            <div class="create-title">
-                <p>Welcome to the Collaboration Creation Menu – Your Gateway to Team Synergy!</p>
-            </div>
-            <div class="create-information">
-                <div id="name">
-                    <p>Name</p>
-                    <input type="text">
-                </div>
-                <div id="desc">
-                    <p>Description</p>
-                    <textarea name="textarea"></textarea>
-                </div>
-            </div>
-            <div class="create-options">
-                <button onclick=closeCreate()>Cancel</button>
-                <button>Create</button>
-            </div>
-        </section>
-
-        <!-- Group tile -->
-
-
-        <aside class="groupSection">
-            <h1 class="heading">Your Groups</h1>
-            <section class="groupDisplay">
-                <div>
-                    <a href="group-page.html">
-                        <img src="../images/cat.jpg" class="groupIcon">
-                        <h1>Group 1</h1>
-                    </a>
-                </div>
-                <div>
-                    <img src="../images/cat.jpg" class="groupIcon">
-                    <h1>Group 1</h1>
-                </div>
-                <div>
-                    <img src="../images/cat.jpg" class="groupIcon">
-                    <h1>Group 1</h1>
-                </div>
-                <div>
-                    <img src="../images/cat.jpg" class="groupIcon">
-                    <h1>Group 1</h1>
-                </div>
-
-
-                <div>
-                    <button class="group" class="groupIcon" onclick=createGroup()>
-                        <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22ZM12 8.25C12.4142 8.25 12.75 8.58579 12.75 9V11.25H15C15.4142 11.25 15.75 11.5858 15.75 12C15.75 12.4142 15.4142 12.75 15 12.75H12.75L12.75 15C12.75 15.4142 12.4142 15.75 12 15.75C11.5858 15.75 11.25 15.4142 11.25 15V12.75H9C8.58579 12.75 8.25 12.4142 8.25 12C8.25 11.5858 8.58579 11.25 9 11.25H11.25L11.25 9C11.25 8.58579 11.5858 8.25 12 8.25Z"
-                                fill="#1C274C" />
-                        </svg>
-                    </button>
-                </div>
-
-            </section>
+    <!-- Left Side Bar for Options of what to do -->
+    <section class="body">
+        <aside class="left-bar">
+            <ul>
+                <li><button>Home</button></li>
+                <li><button>Files</button></li>
+                <li><button>Meetings</button></li>
+            </ul>
         </aside>
 
 
 
+        <!-- Feed -->
+        <feed>
+
+            <!-- Home -->
+            <div class="home">
+                <div class="feed">
+                    <div class="post-container">
+                        <div class="user-posting">
+                            <img src="../images/icons/Unknown_person.jpg" alt="">
+                            <span>Name</span>
+                        </div>
+                        <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam modi tenetur nihil odit
+                            eveniet quidem atque dolorum, voluptatibus officiis reiciendis quo, ut unde ducimus, error
+                            possimus nemo nostrum rerum quam inventore ratione voluptas commodi.</div>
+                    </div>
+
+                </div>
+                <div class="send">
+                    <form action="" method="post" id="newPostForm">
+                        <input type="text" placeholder="Message" />
+                        <input type="submit" value="send" />
+                    </form>
+                </div>
+            </div>
+
+            <!-- Files System -->
+            <div class="files"></div>
+
+            <!-- Meetings -->
+            <div class="meetings"></div>
+        </feed>
 
 
-        <bside class="friendBox">
-            <h1 class="heading">Friends List</h1>
-            <section class="friendList">
-                <friend>
-                    <img src="../images/cat.jpg" class="friendIcon">
+
+        <!--  Right Side Bar for Members -->
+        <aside class="right-bar">
+            <p>Members</p>
+            <div class="user-list">
+                <div class="members">
+                    <img src="../images/icons/Unknown_person.jpg" alt="">
                     <span>Name</span>
-                </friend>
-                <friend>
-                    <img src="../images/cat.jpg" class="friendIcon">
-                    <span>Name</span>
-                </friend>
-                <friend>
-                    <img src="../images/cat.jpg" class="friendIcon">
-                    <span>Name</span>
-                </friend>
-
-
-                <a href="../html/friends.php">
-                    <h1 class="viewMore">View All</h1>
-                </a>
-            </section>
-        </bside>
-
-
-
-    </main>
+                </div>
+            </div>
+        </aside>
+    </section>
 
 
 
 </body>
 
-
-</php>
+</html>
