@@ -13,11 +13,11 @@ $username = $_SESSION["username"];
 $errors = array();
 
 // Check if name is set in the POST data
-if (!isset($_POST['name']) ) {
+if (!isset($_POST["name"]) ) {
     $errors[] = 'Name is required.';
 } else {
     // Trim and sanitize the name input
-    $name = trim($_POST['name']);
+    $name = trim($_POST["name"]);
   
     //  check if the name contains only letters and spaces
     if (!preg_match("/^[a-zA-Z ]*$/", $name)) {

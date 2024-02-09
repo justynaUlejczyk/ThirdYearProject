@@ -281,9 +281,9 @@ if ($settingsResult) {
             <div id = "account">
                 <h1 class="updateTitle">Account Settings</h1>
                 <h1>Username</h1>
-                <p><?php echo "$username " ?></p>
+                <p><?php echo  $username  ?></p>
                 <h1>E-mail</h1>
-                <p><?php echo " $email " ?></p>
+                <p><?php echo $email ?></p>
                 <h1>Account Type</h1>
                 <p><?php echo "Name changed in database?" ?></p>
                 <!-- link to profile -->
@@ -322,7 +322,7 @@ if ($settingsResult) {
                 <form action="../php/update_name.php" method="post">
                     <p>Current Name</p> <p><?php echo "$name"?></p>
                     <p>New Display Name</p>
-                        <input type="text" id ="name" name="name" required>
+                        <input type="text" id ="name" name="name" required/>
                     <button class="confirmButton">Comfirm New Name </button>
                 </form>
             </div>
