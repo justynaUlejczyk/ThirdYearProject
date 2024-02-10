@@ -17,7 +17,7 @@ if (!isset($_POST["name"]) ) {
     $errors[] = 'Name is required.';
 } else {
     // Trim and sanitize the name input
-    $name = trim($_POST["name"]);
+    $name = $_POST["name"];
   
     //  check if the name contains only letters and spaces
     if (!preg_match("/^[a-zA-Z ]*$/", $name)) {
@@ -27,12 +27,12 @@ if (!isset($_POST["name"]) ) {
 
 // Proceed only if there are no errors
 if (empty($errors)) {
-    // Escape the name for use in the SQL query
-    $name = pg_escape_literal($conn, $name);
+    
     
     // Update the name in the database
-    $query = "UPDATE accounts SET name = $1 WHERE username = $2";
-$result = pg_query_params($conn, $query, array($name, $username));
+    $query = pg_prepare($conn, "update_name", "UPDATE accounts SET name= $1 WHERE username = $2");
+    $result = pg_execute($conn, "update_name", array($name, $username));
+    
     if ($result) {
         header('Location: ../html/settings.php');
         exit();

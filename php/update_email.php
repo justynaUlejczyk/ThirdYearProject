@@ -26,7 +26,7 @@ if (!empty($_POST['email1']) && !empty($_POST['email2'])) {
         $errors[] = 'Enter correct email.';
     } else {
         
-        $email = pg_escape_literal($conn, $email1);
+        $email =  $_POST['email1'];
         
     }
 } else {
@@ -39,8 +39,9 @@ if (!empty($_POST['email1']) && !empty($_POST['email2'])) {
 
 # On success update email in 'accounts' database table.
 if (empty($errors)) {
-    $query = "UPDATE accounts SET email = $1 WHERE username = $2";
-    $result = pg_query_params($conn, $query, array($email, $username));
+    $query = pg_prepare($conn, "update_email", "UPDATE accounts SET email = $1 WHERE username = $2");
+    $result = pg_execute($conn, "update_email", array($email, $username));
+    
     if ($result) {
         header('Location: ../html/settings.php');
         exit();
