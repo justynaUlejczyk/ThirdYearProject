@@ -1,0 +1,112 @@
+:root {
+    --light-bg: #ebebeb;
+    --light-bg-s: white;
+    --light-text: black;
+
+    --dark-gray: #646464;
+
+    --dark-bg: #1a1a1a;
+    --dark-bg-s: #292929;
+    --dark-text: #ffffff;
+
+    --gray: #c2c2c2;
+    --accent: #f64c72;
+    --stroke: 2px;
+
+    --background: var(--light-bg);
+    --foreground: var(--light-bg-s);
+    --text: var(--light-text);
+    --svg: var(--dark-gray);
+    --svg-stroke: var(--stroke);
+
+    --border: 1px solid var(--gray);
+    --box-shadow: 0 4px 8px -6px #181818;
+}
+
+.darkmode {
+    --light-bg: #ebebeb;
+    --light-bg-s: white;
+    --light-text: black;
+
+    --dark-gray: #646464;
+
+    --dark-bg: #1a1a1a;
+    --dark-bg-s: #292929;
+    --dark-text: #ffffff;
+
+    --gray: #c2c2c2;
+    --accent: #f64c72;
+    --stroke: 1px;
+
+    --background: var(--dark-bg);
+    --foreground: var(--dark-bg-s);
+    --text: var(--dark-text);
+    --svg: var(--light-bg-s);
+    --svg-stroke: var(--stroke);
+
+    --box-shadow: none;
+    --border: none;
+}
+
+/* Group Files */
+
+feed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-file {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 80%;
+    min-height: 500px;
+    height: auto;
+}
+
+.file-directory {
+    box-sizing: border-box;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--foreground);
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+    width: 100%;
+    min-height: 50px;
+    height: auto;
+}
+
+.file-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    background-color: var(--foreground);
+    box-shadow: var(--box-shadow);
+    width: 100%;
+    min-height: 300px;
+    max-height: 600px;
+    height: auto;
+    overflow-y: auto;
+}
+
+.folder-container {
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: 1;
+    width: 75px;
+    height: 75px;
+}
+
+.fa-folder {
+    font-size: 56px;
+}
