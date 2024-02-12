@@ -3,6 +3,7 @@
 
 <head>
     <title>Login</title>
+    <script src="../js/login.js"></script>
     <link rel="stylesheet" href="../css/Login.css">
     <link rel="stylesheet" href="../css/StyleSheet.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +22,7 @@
 
         <!-- Login Part -->
 
-        <form action="../php/login.php" method="post" id="form">
+        <form action="../php/login.php" method="post" id="loginForm">
             <div>
                 <div class="login-inputs">
                     <div>
@@ -52,7 +53,7 @@
             <h1>ShareSync</h1>
             <h1>Register</h1>
         </div>
-        <form action="../php/register.php" method="post">
+        <form action="../php/register.php" method="post" id="registrationForm">
             <div>
                 <label for="name">Full name:</label>
                 <input id="name" name="name" type="text" />
@@ -68,7 +69,7 @@
                 </div>
             </div>
             <div>
-                <input name="register" type="submit" value="Register" />
+                <input name="register" type="submit" value="Register" onload="" />
             </div>
         </form>
     </section>
