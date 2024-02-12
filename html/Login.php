@@ -12,7 +12,7 @@
 
 <body>
 
-    <section>
+    <section id="loginSection">
         <!-- Title/Logo -->
         <div>
             <h1>ShareSync</h1>
@@ -77,13 +77,20 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const registerSection = document.querySelector("section:nth-child(2)");
+            const loginSection =document.querySelector("#loginSection");
+            registerSection.style.visibility = "hidden";
+            loginSection.style.visibility = "visible";
 
             document.querySelector(".to-login-change-screen").addEventListener("click", function () {
                 registerSection.style.zIndex = "0";
+                registerSection.style.visibility = "hidden";
+                loginSection.style.visibility = "visible";
             });
 
             document.querySelector(".to-signup-change-screen").addEventListener("click", function () {
                 registerSection.style.zIndex = "2";
+                registerSection.style.visibility = "visible";
+                loginSection.style.visibility = "hidden";
             });
         });
     </script>
