@@ -14,7 +14,6 @@
 
     <script src="../js/main.js"></script>
     <script src="../js/darkmode.js"></script>
-    <script src="../js/navbar.js"></script>
     <script src="../js/createGroup.js"></script>
     <script src="../js/GroupMemberBar.js"></script>
     <script src="../js/group-file.js"></script>
@@ -253,20 +252,30 @@
         <!-- Feed -->
         <feed>
             <section class="container-file">
-                <section class="file-directory" id="directorySection">
-                    <h4>/</h4>
-                    <button onclick="goBack()"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+                <section class="files-options">
+                    <button class="new-file option-button">
+                        New File
+                    </button>
+                    <button class="delete-file option-button">
+                        Delete File
+                    </button>
                 </section>
                 <section class="file-container" id="fileContainer">
                     <div class="folder-container" onclick="openFolder(this)" folderid="Bid1">
                         <i class="fa fa-folder" aria-hidden="true"></i>
-                        <span id="Bid1">Bid1</span>
+                        <span id="Bid1">Files</span>
                     </div>
-                    <!-- Add more folders as needed -->
-                    <div class="folder-container" onclick="openFolder(this)" folderid="Bid2">
-                        <i class="fa fa-folder" aria-hidden="true"></i>
-                        <span id="Bid2">Bid2</span>
+                    <!-- Add more Files as needed -->
+                    <div class="folder-container" onclick="openFolder(this)" folderid="main.txt">
+                        <i class="fa fa-file" aria-hidden="true"></i>
+                        <span id="main.txt">main.txt</span>
                     </div>
+                    <!-- Add more Files as needed -->
+                    <div class="folder-container" onclick="openFolder(this)" folderid="art">
+                        <i class="fa fa-paint-brush" aria-hidden="true"></i>
+                        <span id="art">art</span>
+                    </div>
+
                 </section>
             </section>
         </feed>

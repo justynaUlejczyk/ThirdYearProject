@@ -66,18 +66,11 @@ feed {
     height: auto;
 }
 
-.file-directory {
+.files-options {
     box-sizing: border-box;
-    padding: 10px 20px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--foreground);
-    border-radius: 15px;
-    box-shadow: var(--box-shadow);
     width: 100%;
-    min-height: 50px;
-    height: auto;
+    gap: 20px;
 }
 
 .file-container {
@@ -103,10 +96,20 @@ feed {
     display: flex;
     flex-direction: column;
     aspect-ratio: 1;
-    width: 75px;
-    height: 75px;
+    gap: 10px;
+    width: 100px;
+    height: auto;
 }
 
-.fa-folder {
+.fa-folder,
+.fa-file,
+.fa-paint-brush {
     font-size: 56px;
+}
+
+.option-button {
+    background-color: var(--foreground);
+    box-shadow: var(--box-shadow);
+    padding: 14px 24px;
+    border-radius: 15px;
 }
