@@ -58,7 +58,8 @@
                 <label for="name">Full name:</label>
                 <input id="name" name="name" type="text" />
                 <label for="username">Username:</label>
-                <input id="username" name="username" required="" type="text" />
+                <input id="username" name="username" required="" type="text" oninput="checkUsernameAvailability(this.value)"/>
+                <span id="usernameAvailability"></span><br><br>
                 <label for="email">Email:</label>
                 <input id="email" name="email" required="" type="email" />
                 <label for="password">Password:</label>
@@ -69,7 +70,7 @@
                 </div>
             </div>
             <div>
-                <input name="register" type="submit" value="Register" onload="" />
+                <input id="registerSubmit"£name="register" type="submit" value="Register" onload="" />
             </div>
         </form>
     </section>

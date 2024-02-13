@@ -26,3 +26,20 @@ document.addEventListener("DOMContentLoaded", function () {
 function showPopupMessage(message) {
     alert(message);
 }
+
+function checkUsernameAvailability(username) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "../php/check_username.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            document.getElementById("usernameAvailability").innerHTML = xhr.responseText;
+            if (xhr.responseText == "Username already taken") {
+                document.getElementById("registerSubmit").setAttribute("disabled", "disabled");
+            } else {
+                document.getElementById("registerSubmit").removeAttribute("disabled");
+            }
+        }
+    };
+    xhr.send("username=" + username);
+}

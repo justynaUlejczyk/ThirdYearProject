@@ -74,11 +74,6 @@ function handleLikeButtonClick(postid) {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
                 var response = JSON.parse(xhr.responseText);
-
-                document.getElementsByClassName('likeCounter ' + postid)[0].textContent = response.likesCount;
-                console.log(document.getElementsByClassName('likeCounter ' + postid));
-                console.log(response.likesCount);
-
                 document.getElementsByClassName('likeCounter ' + postid)[0].textContent = response.likesCount;
             } else {
                 console.error('Error:', xhr.statusText);
