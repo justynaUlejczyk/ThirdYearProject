@@ -1,5 +1,4 @@
 <?php
-if (isset($_POST['login'])) {
     // Connect to the database
   require_once "connect_db.php";
 
@@ -19,13 +18,9 @@ if (isset($_POST['login'])) {
 
     if (! password_verify($user_entered_password, $stored_password)) {
         echo "Incorrect password";
-        die();
         
+    } else{
+        echo ("success");
+        session_start();
+        $_SESSION['username'] = $username;
     }
-
-    
-    pg_close($conn);
-    session_start();
-    $_SESSION['username'] = $username;
-    header('Location: '."../html/Home.php");
-}

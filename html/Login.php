@@ -27,11 +27,11 @@
                 <div class="login-inputs">
                     <div>
                         <img src="../images/icons/login/user-svgrepo-com.svg" alt="">
-                        <input type="text" name="username" placeholder="Username" required="">
+                        <input id = "loginUsername" type="text" name="username" placeholder="Username" required="">
                     </div>
                     <div>
                         <img src="../images/icons/login/lock-keyhole-minimalistic-svgrepo-com.svg" alt="">
-                        <input type="password" name="password" placeholder="Password" required="">
+                        <input id="loginPassword" type="password" name="password" placeholder="Password" required="">
                     </div>
                 </div>
                 <div>
@@ -43,7 +43,8 @@
                 </div>
             </div>
             <div>
-                <input type="submit" name="login" value="Login">
+                <span id="loginMessage"></span><br><br>
+                <input id="loginSubmit"type="button" name="login" value="Login" onclick="loginProcess()">
             </div>
         </form>
     </section>
@@ -70,7 +71,7 @@
                 </div>
             </div>
             <div>
-                <input id="registerSubmit"£name="register" type="submit" value="Register" onload="" />
+                <input id="registerSubmit" name="register" type="submit" value="register" onload="" />
             </div>
         </form>
     </section>
