@@ -54,3 +54,33 @@ function showAboutTab() {
     aboutTab.style.display = 'block';
 
 }
+
+function hideAllAbout()  {
+    var overview = document.getElementById("overview");
+    var contact = document.getElementById("contact");
+    var info = document.getElementById("profileInfo")
+    overview.style.display ='none';
+    contact.style.display = 'none';
+    info.style.display = 'none'
+
+}
+
+function overview(clickedElement){
+    hideAllAbout();
+    var overview = document.getElementById("overview");
+    overview.style.display= 'block';
+}
+
+function contact(clickedElement){
+    hideAllAbout();
+    var contact = document.getElementById("contact");
+    contact.style.display = 'block';
+}
+
+
+function profileInfo(clickedElement){
+    hideAllAbout();
+    var info = document.getElementById("profileInfo")
+    info.style.display = 'block';
+
+}

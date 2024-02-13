@@ -14,3 +14,4 @@ function closeCreate(clickedElement) {
     createGroup.style.display = 'none';
 
 }
+
