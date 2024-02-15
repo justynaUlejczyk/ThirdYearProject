@@ -27,7 +27,7 @@
                 <div class="login-inputs">
                     <div>
                         <img src="../images/icons/login/user-svgrepo-com.svg" alt="">
-                        <input id = "loginUsername" type="text" name="username" placeholder="Username" required="">
+                        <input id="loginUsername" type="text" name="username" placeholder="Username" required="">
                     </div>
                     <div>
                         <img src="../images/icons/login/lock-keyhole-minimalistic-svgrepo-com.svg" alt="">
@@ -43,8 +43,8 @@
                 </div>
             </div>
             <div>
-                <span id="loginMessage"></span><br><br>
-                <input id="loginSubmit"type="button" name="login" value="Login" onclick="loginProcess()">
+                <span id="loginMessage"></span>
+                <input id="loginSubmit" type="submit" name="login" value="Login" onclick="loginProcess()">
             </div>
         </form>
     </section>
@@ -59,7 +59,8 @@
                 <label for="name">Full name:</label>
                 <input id="name" name="name" type="text" />
                 <label for="username">Username:</label>
-                <input id="username" name="username" required="" type="text" oninput="checkUsernameAvailability(this.value)"/>
+                <input id="username" name="username" required="" type="text"
+                    oninput="checkUsernameAvailability(this.value)" />
                 <span id="usernameAvailability"></span><br><br>
                 <label for="email">Email:</label>
                 <input id="email" name="email" required="" type="email" />
@@ -80,7 +81,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const registerSection = document.querySelector("section:nth-child(2)");
-            const loginSection =document.querySelector("#loginSection");
+            const loginSection = document.querySelector("#loginSection");
             registerSection.style.visibility = "hidden";
             loginSection.style.visibility = "visible";
 
