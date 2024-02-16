@@ -40,8 +40,6 @@ nav > section > ul > li {
     align-items: center;
     font-size: 14px;
     color: black;
-    filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(22deg) brightness(97%)
-        contrast(102%);
 }
 
 nav > section > ul > li:nth-child(2),
@@ -123,7 +121,6 @@ nav .fa {
     font-size: 1.2em;
     transition: all 1s;
 }
-
 
 .nav-profile {
     width: 35px;

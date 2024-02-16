@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../css/Group.css">
     <link rel="stylesheet" href="../css/StyleSheet.css">
     <link rel="stylesheet" href="../css/Group-page.css">
+    <link rel="stylesheet" href="../css/Group-page-file.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
@@ -13,9 +14,9 @@
 
     <script src="../js/main.js"></script>
     <script src="../js/darkmode.js"></script>
-    <script src="../js/navbar.js"></script>
     <script src="../js/createGroup.js"></script>
     <script src="../js/GroupMemberBar.js"></script>
+    <script src="../js/group-file.js"></script>
 </head>
 
 <!-- test commit -->
@@ -227,12 +228,12 @@
     <section class="body">
         <aside class="left-bar">
             <ul>
-                <a>
+                <a href="group-page.html">
                     <li>
                         Home
                     </li>
                 </a>
-                <a href="group-page-file.html">
+                <a>
                     <li>Files</li>
                 </a>
                 <a href="group-page-meeting.html">
@@ -250,34 +251,41 @@
 
         <!-- Feed -->
         <feed>
-
-            <!-- Home -->
-            <div class="home">
-                <div class="feed">
-                    <div class="post-container">
-                        <div class="user-posting">
-                            <img src="../images/icons/Unknown_person.jpg" alt="">
-                            <span>Name</span>
-                        </div>
-                        <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam modi tenetur nihil odit
-                            eveniet quidem atque dolorum, voluptatibus officiis reiciendis quo, ut unde ducimus, error
-                            possimus nemo nostrum rerum quam inventore ratione voluptas commodi.</div>
+            <section class="container-file">
+                <section class="files-options">
+                    <a href="group-editor.html">
+                        <button class="new-file option-button">
+                            New File
+                        </button>
+                    </a>
+                    <button class="delete-file option-button">
+                        Delete File
+                    </button>
+                </section>
+                <section class="file-container" id="fileContainer">
+                    <div class="folder-container" onclick="openFolder(this)" folderid="Bid1">
+                        <i class="fa fa-folder" aria-hidden="true"></i>
+                        <span id="Bid1">Files</span>
+                    </div>
+                    <!-- Add more Files as needed -->
+                    <div class="folder-container" onclick="openFolder(this)" folderid="main.txt">
+                        <i class="fa fa-file" aria-hidden="true"></i>
+                        <span id="main.txt">main.txt</span>
+                    </div>
+                    <!-- Add more Files as needed -->
+                    <div class="folder-container" onclick="openFolder(this)" folderid="art">
+                        <i class="fa fa-paint-brush" aria-hidden="true"></i>
+                        <span id="art">art</span>
                     </div>
 
-                </div>
-                <div class="send">
-                    <form action="" method="post" id="newPostForm">
-                        <input type="text" placeholder="Message" />
-                        <input type="submit" value="send" />
-                    </form>
-                </div>
-            </div>
+                </section>
+            </section>
         </feed>
 
 
 
         <!--  Right Side Bar for Members -->
-        <aside class="right-bar">
+        <aside class="right-bar active">
             <div class="member-arrow" onclick="toggleMemberBar()">
                 <i class="fa fa-arrow-right" aria-hidden="true"></i>
             </div>

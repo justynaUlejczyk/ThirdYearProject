@@ -305,6 +305,10 @@
                     <img src="../images/cat.jpg" class="friendIcon">
                     <span>Name</span>
                 </friend>
+                <friend>
+                    <img src="../images/cat.jpg" class="friendIcon">
+                    <span>Name</span>
+                </friend>
 
 
                 <a href="../html/friends.php">
