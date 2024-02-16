@@ -6,8 +6,15 @@ if (!isset($_SESSION["username"])) {
 
 require_once "../php/connect_db.php";
 
-$username = $_SESSION["username"];
-
+$login_username = $_SESSION["username"];
+// Get passed product genre and assign it to a variable.
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+} else {
+    // Handle the case when 'id' is not set
+    $id = 1;
+    
+}
 
 ?>
 <!DOCTYPE html>
@@ -24,6 +31,7 @@ $username = $_SESSION["username"];
     <script src="../js/Home.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/darkmode.js"></script>
+    <script src="../js/Message.js"></script>
 </head>
 
 <!-- test commit -->
@@ -233,56 +241,104 @@ $username = $_SESSION["username"];
 
     <main>
 
-        <body>
-            <div class="chat-container">
+    <div class="chatter-container">
+ <div class="chatter-list">
+            <?php
+            
+        // displaying list of users
+$usersListQuery = "SELECT username FROM accounts ORDER BY username DESC";
+$usersListRESULT = pg_query($conn, $usersListQuery);
+if ($usersListRESULT) {
+    while ($row = pg_fetch_assoc($usersListRESULT)) {
+        if ($row["username"] != $login_username) {
+        $user = $row["username"];
+        echo '<button class="chatter-list-user" onclick="changeChat(this)" userid=' . $row['username'] . '>
+                <img src="../images/icons/Unknown_person.jpg">
+                <p><a href="Messages.php?id=' . $row['username'] . '" role="button">' . $row['username'] . '</a></p>
+            </button>';}}
+            echo "</div>";
+        }
+            else{echo "Error in fetching user list.";}
+            ?>
 
-                <?php
+       
+<div class="chatter-box">
+<!-- Chat box -->
+<?php
 
-                $stmt = pg_prepare($conn, "read_message", "SELECT * FROM messages WHERE username = $1 OR recipient = $1 ORDER BY messageID DESC");
-                $result = pg_execute($conn, "read_message", array($username));
+$stmt = pg_prepare($conn, "read_message", "SELECT * FROM messages WHERE (username = $1 AND recipient = $2) OR (username = $2 AND recipient = $1) ORDER BY messageID ASC");
+$result = pg_execute($conn, "read_message", array($login_username, $id));
+$numRows = pg_num_rows($result);
 
-                $numRows = pg_num_rows($result);
-                echo "<p>Total Messages: $numRows</p><br>"; // Display total number of messages
+
+if ($numRows > 0) {
+    
+    echo "<p>Total Messages: $numRows</p><br>"; // Display total number of messages
+    echo ' <div class="chatter-chat">';
+while ($row = pg_fetch_assoc($result)) {
+    $text = $row["text"];
+    $sender = $row["username"];
+    $recipient = $row["recipient"];
+//echo $row["username"] ;
+if ($text){
+if ($sender == $login_username){
+    
+                    echo' <div class="chatter-chat-sender">
+                            <div class="chatter-sender">
+                                <div class="chatter-chat-info">
+                                    <img src="../images/icons/Unknown_person.jpg">';
+             echo "                       <p> $sender </p>";
+                             echo " </div>
+                                <chat>
+                                   $text 
+                                <br></chat>";
+                                echo '  </div>
+                        </div>';
+}else {if ($sender == $id){
+                       echo' <div class="chatter-chat-reciever">
+                            <div class="chatter-reciever">
+                                <div class="chatter-chat-info">';
+                         echo "         <p>$sender</p>";
+                            echo "        <img src='../images/icons/Unknown_person.jpg'>
+                                </div>
+                                <chat>
+                                    $text
+                                </chat>
+                            </div></div>
+                        ";}}
+                          }} } else {echo 'no messages yet'; }
+                         
+                         
+                        ?>
+
+                  <div class="chatter-send-message">
+                 
+
+<form class="chatter-send-message" id="messages" action="../php/send_message.php" method="post">
+
+
+    <input type="text" id="recipient" name="recipient"value="<?php echo $id; ?>" hidden
+        style="display:none;">
+
+    <input type="text" id="text" name="text">
+
+    <input type="text" class="username" name="username" value="<?php echo $login_username; ?>" hidden
+        style="display:none;">
+    <button type="submit"><i class="fab fa-telegram-plane"></i></button>
+</form>
+</div>
                 
-                if ($numRows > 0) {
-                    echo "<p>New message!</p><br>"; // Display this only once
+                </div>
+
+        <div class="chatter-info"></div>
+        </div>
+
+
+        
                 
-                    while ($row = pg_fetch_assoc($result)) {
-                        $text = $row["text"];
-                        $sender = $row["username"];
-                        $recipient = $row["recipient"];
-
-                        echo "<br>Recipient: $recipient<br>
-              Sender: $sender<br>
-              Message: $text<br>";
-                    }
-                } else {
-                    echo "No messages";
-                }
-
-                // Close the PostgreSQL connection
-                pg_close($conn);
-                ?>
-
-
             </div>
 
 
-            <div class="container">
-
-                <form id="messages" action="../php/send_message.php" method="post">
-
-                    <label for="recipient">Sent to:</label><br>
-                    <input type="text" id="recipient" name="recipient"><br>
-
-                    <label for="text">message:</label><br>
-                    <input type="text" id="text" name="text">
-
-                    <input type="text" class="username" name="username" value="<?php echo $username; ?>" hidden
-                        style="display:none;">
-                    <button type="submit"><i class="fab fa-telegram-plane"></i></button>
-                </form>
-            </div>
     </main>
 
 
