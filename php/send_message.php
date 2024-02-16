@@ -18,7 +18,7 @@ $stmt = pg_prepare($conn, "sent_message", "INSERT INTO messages (username, recip
 $result = pg_execute($conn, "sent_message", array($username, $recipient, $text));
 
 if ($result) {
-    echo "Post created successfully!";
+    //echo "message created successfully!";
     $messageID = pg_fetch_result($result, 0, 'messageID');
 } else {
     echo "Error: " . pg_last_error($conn);
@@ -28,6 +28,8 @@ if ($result) {
 // Close the connection
 pg_close($conn);
 
-header('Location: ../html/Messages.php');
+header("Location: ../html/Messages.php?id=$recipient");
 exit();
+
+
 ?>
