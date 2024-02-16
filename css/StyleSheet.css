@@ -734,6 +734,9 @@ prepost {
 }
 
 .dropdown-content-profile {
+    border-left: 1px solid var(--background);
+    border-bottom: 1px solid var(--background);
+    border-right: 1px solid var(--background);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
