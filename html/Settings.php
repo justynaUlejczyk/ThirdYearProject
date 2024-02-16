@@ -1,3 +1,28 @@
+<?php
+session_start();
+if (!isset($_SESSION["username"])) {
+    header('Location: ' . "./login.php");
+}
+
+require_once "../php/connect_db.php";
+
+$username = $_SESSION["username"];
+$settingsQuery = "SELECT*FROM accounts WHERE username = $1";
+$settingsResult = pg_query_params($conn, $settingsQuery, array($username));
+
+if ($settingsResult) {
+    $row = pg_fetch_assoc($settingsResult);
+    $name = $row["name"];
+    $email = $row["email"];
+    //$accountType = $row["typeOfAccount"];
+} else {
+    // Handle query error
+    echo "Error retrieving settings: " . pg_last_error($conn);
+}
+
+
+           ?>
+
 <!DOCTYPE html>
 <html class="dimmed">
 
@@ -256,11 +281,11 @@
             <div id = "account">
                 <h1 class="updateTitle">Account Settings</h1>
                 <h1>Username</h1>
-                <p><?php echo 'display userName here ' ?></p>
+                <p><?php echo  $username  ?></p>
                 <h1>E-mail</h1>
-                <p><?php echo 'display email here ' ?></p>
+                <p><?php echo $email ?></p>
                 <h1>Account Type</h1>
-                <p><?php echo 'display accout type here ' ?></p>
+                <p><?php echo "Name changed in database?" ?></p>
                 <!-- link to profile -->
                 <a><h1>Personal info</h1></a>
                 <p><?php echo 'display bio type here ' ?></p>
@@ -278,13 +303,13 @@
 
             <div id="updateEmail">
                 <h1 class="updateTitle">Update Email</h1>
-            <form action="">
-                    <p>Current email</p> <p><?php echo "getUser email?"?></p>
+            <form action="../php/update_email.php" method="post">
+                    <p>Current email</p> <p><?php echo $email ?></p>
                     <p>New email</p>
-                        <input type="text" required>
+                        <input type="text" id ="email1" name= "email1" required />
 
                     <p>Confirm New Email</p>
-                        <input  type="text" required>
+                        <input type="text" id = "email2" name= "email2" required/>
                     
                     <button class="confirmButton">Comfirm Update</button>
                 </form> 
@@ -294,10 +319,10 @@
 
             <div id="updateName">
                 <h1 class="updateTitle">Update Name</h1>
-                <form action="" >
-                    <p>Current Name</p> <p><?php echo "getUser name?"?></p>
+                <form action="../php/update_name.php" method="post">
+                    <p>Current Name</p> <p><?php echo "$name"?></p>
                     <p>New Display Name</p>
-                        <input type="text" required>
+                        <input type="text" id ="name" name="name" required/>
                     <button class="confirmButton">Comfirm New Name </button>
                 </form>
             </div>
