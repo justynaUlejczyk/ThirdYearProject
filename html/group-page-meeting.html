@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../css/Group.css">
     <link rel="stylesheet" href="../css/StyleSheet.css">
     <link rel="stylesheet" href="../css/Group-page.css">
+    <link rel="stylesheet" href="../css/group-meetings.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
@@ -13,9 +14,12 @@
 
     <script src="../js/main.js"></script>
     <script src="../js/darkmode.js"></script>
+    <script> src = "../js/meetings.js"</script>
     <script src="../js/navbar.js"></script>
     <script src="../js/createGroup.js"></script>
-    <script src="../js/GroupMemberBar.js"></script>
+
+
+
 </head>
 
 <!-- test commit -->
@@ -252,34 +256,14 @@
 
 
         <!-- Feed -->
-        <feed>
-            HELLO
-        </feed>
-
-
-
-        <!--  Right Side Bar for Members -->
-        <aside class="right-bar active">
-            <div class="member-arrow" onclick="toggleMemberBar()">
-                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        <Feed>
+            <div id="video-container">
+                <video id="local-video" autoplay muted></video>
+                <video id="remote-video" autoplay></video>
             </div>
-            <span>Members</span>
-            <button id="add-member">Add Member</button>
-            <div class="user-list">
-                <div class="members">
-                    <img src="../images/icons/Unknown_person.jpg" alt="">
-                    <span>Name</span>
-                </div>
-                <div class="members">
-                    <img src="../images/icons/Unknown_person.jpg" alt="">
-                    <span>Name</span>
-                </div>
-
-            </div>
-        </aside>
-    </section>
-
-
+            <button id="start">Start Meeting</button>
+            <script src="script.js"></script>
+        </Feed>
 
 </body>
 
