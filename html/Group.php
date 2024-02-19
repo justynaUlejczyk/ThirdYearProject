@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (!isset($_SESSION["username"])) {
+    header('Location: ' . "./login.php");
+}
+
+require_once "../php/connect_db.php";
+$username = $_SESSION["username"];
+?>
 <!DOCTYPE html>
 <html class="dimmed">
 
@@ -258,18 +267,18 @@
                         <h1>Group 1</h1>
                     </a>
                 </div>
-                <div>
-                    <img src="../images/cat.jpg" class="groupIcon">
-                    <h1>Group 1</h1>
-                </div>
-                <div>
-                    <img src="../images/cat.jpg" class="groupIcon">
-                    <h1>Group 1</h1>
-                </div>
-                <div>
-                    <img src="../images/cat.jpg" class="groupIcon">
-                    <h1>Group 1</h1>
-                </div>
+                <?php
+                $groupsSTMT = pg_prepare($conn, "groups", "SELECT groupname FROM groups INNER JOIN accounttogroup ON groups.groupid = accounttogroup.groupid WHERE username = $1 ");
+                $groupsRESULT = pg_execute($conn, "groups", array($username));
+
+                while ($row = pg_fetch_assoc($groupsRESULT)){
+                $groupname = $row['groupname'];
+                echo "<div>
+                    <img src='../images/cat.jpg' class='groupIcon'>
+                    <h1>$groupname</h1>
+                    </div>";
+                }
+                ?>
 
 
                 <div>

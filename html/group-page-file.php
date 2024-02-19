@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (!isset($_SESSION["username"])) {
+    header('Location: ' . "./login.php");
+}
+
+require_once "../php/connect_db.php";
+$username = $_SESSION["username"];
+?>
 <!DOCTYPE html>
 <html class="dimmed">
 
@@ -277,7 +286,17 @@
                         <i class="fa fa-paint-brush" aria-hidden="true"></i>
                         <span id="art">art</span>
                     </div>
+                    <?php
+                    $groupid = 0;
+                    $get_filesSTMT = pg_prepare($conn, "get_files", "SELECT filename FROM files WHERE groupid = $1");
+                    $get_filesRESULT = pg_execute($conn, "get_files", array($groupid));
+                    
 
+                    echo
+                        "<div class='folder-container' onclick='openFolder(this)' folderid='art'>
+                        <i class='fa fa-paint-brush' aria-hidden='true'></i>
+                        <span id='art'>art</span>"
+                    ?>
                 </section>
             </section>
         </feed>

@@ -49,13 +49,13 @@ showCode.addEventListener('click', function () {
 
 const filename = document.getElementById('filename');
 
-function fileHandle(value) {
+function fileHandle(value, groupid) {
     if (value === 'new') {
         content.innerHTML = '';
         filename.value = 'untitled';
     } else if (value === 'save') {
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "../php/save_rtf.php", true);
+        xhr.open("POST", "../php/save_file.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
@@ -64,6 +64,6 @@ function fileHandle(value) {
                 }
             }
         };
-        xhr.send("filename=" + filename.value + "&content=" + content.textContent);
+        xhr.send("filename=" + filename.value + "&content=" + content.textContent + "&groupid=" + groupid);
         }
 }
