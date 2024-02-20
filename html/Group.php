@@ -239,19 +239,23 @@ $username = $_SESSION["username"];
             <div class="create-title">
                 <p>Welcome to the Collaboration Creation Menu – Your Gateway to Team Synergy!</p>
             </div>
+            <form action="../php/create_group.php" method ="post">
             <div class="create-information">
                 <div id="name">
                     <p>Name</p>
-                    <input type="text">
+                    <input type="text" id = "groupname" name ="groupname">
                 </div>
-                <div id="desc">
+                <input type="text" name="username" id="username" value="<?php echo $username; ?>">
+
+                <!--<div id="desc">
                     <p>Description</p>
                     <textarea name="textarea"></textarea>
-                </div>
+                </div>-->
             </div>
             <div class="create-options">
                 <button onclick=closeCreate()>Cancel</button>
-                <button>Create</button>
+                <button type="submit">Create</button>
+</form>
             </div>
         </section>
 
@@ -295,20 +299,9 @@ $username = $_SESSION["username"];
                     </button>
                 </div>
 
-                <div>
-                    <form action = "../php/create_group.php" method = "post">
-                    <div>
-    <label for="name">Enter your group name: </label>
-    <input type="text" name="name" id="name">
-  </div>
-  <div>
-    <input type="text" name="username" id="username" value = <?php echo $username; ?>>
-    <input type="submit" value="create!">
-  </div>
 
-                    </form>
+ 
 
-                </div>
 
             </section>
         </aside>
