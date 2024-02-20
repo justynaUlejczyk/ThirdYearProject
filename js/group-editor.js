@@ -68,3 +68,7 @@ function fileHandle(value, groupid) {
         xhr.send("filename=" + filename.value + "&content=" + content.textContent + "&groupid=" + groupid);
         }
 }
+
+function openFolder(filename, groupname) {
+
+}

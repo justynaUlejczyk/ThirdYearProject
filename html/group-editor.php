@@ -11,7 +11,14 @@ session_write_close();
 session_id("groupSession");
 session_start();
 $groupid = $_SESSION["groupid"];
+$groupname = $_SESSION["groupname"];
 session_write_close();
+
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $filePath = "../groups/$groupname/$id";
+    $fileContents = file_get_contents($filePath);
+}
 ?>
 
 <!DOCTYPE html>
@@ -327,7 +334,9 @@ session_write_close();
                     </div>
                 </div>
                 <div id="content" contenteditable="true" spellcheck="false">
-                    Lorem, ipsum.
+                    <?php if (isset($fileContents)) {
+                        echo $fileContents;
+                    }?>
                 </div>
             </div>
         </feed>

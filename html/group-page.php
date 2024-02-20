@@ -15,6 +15,11 @@ if (isset($_GET['id'])) {
     $_SESSION["groupid"] = $id;
 }
 $groupid = $_SESSION["groupid"];
+$get_groupnameSTMT = pg_prepare($conn, "get_groupname", "SELECT groupname FROM groups where groupid=$1");
+$get_groupnameRESULT = pg_execute($conn, "get_groupname", array($groupid));
+$row = pg_fetch_assoc($get_groupnameRESULT);
+$_SESSION["groupname"] = $row["groupname"];
+$groupname = $_SESSION["groupname"];
 session_write_close();
 ?>
 

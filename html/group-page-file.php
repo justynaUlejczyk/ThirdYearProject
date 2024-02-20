@@ -11,6 +11,7 @@ session_write_close();
 session_id("groupSession");
 session_start();
 $groupid = $_SESSION["groupid"];
+$groupname = $_SESSION["groupname"];
 session_write_close();
 ?>
 <!DOCTYPE html>
@@ -299,9 +300,9 @@ session_write_close();
                     while ($row = pg_fetch_assoc($get_filesRESULT)) {
                         $filename = $row["filename"];
                         echo
-                        "<div class='folder-container' onclick='openFolder(this)' folderid='file'>
+                        "<a href='group-editor.php?id=$filename'><div class='folder-container' folderid='file'>
                         <i class='fa fa-file' aria-hidden='true'></i>
-                        <span id='art'>$filename</span>";
+                        <span id='$filename'>$filename</span></a>";
                     }
                     ?>
                 </section>
