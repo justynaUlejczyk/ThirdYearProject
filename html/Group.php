@@ -239,19 +239,23 @@ $username = $_SESSION["username"];
             <div class="create-title">
                 <p>Welcome to the Collaboration Creation Menu – Your Gateway to Team Synergy!</p>
             </div>
+            <form action="../php/create_group.php" method ="post">
             <div class="create-information">
                 <div id="name">
                     <p>Name</p>
-                    <input type="text">
+                    <input type="text" id = "groupname" name ="groupname">
                 </div>
-                <div id="desc">
+                <input type="text" name="username" id="username" value="<?php echo $username; ?>">
+
+                <!--<div id="desc">
                     <p>Description</p>
                     <textarea name="textarea"></textarea>
-                </div>
+                </div>-->
             </div>
             <div class="create-options">
                 <button onclick=closeCreate()>Cancel</button>
-                <button>Create</button>
+                <button type="submit">Create</button>
+</form>
             </div>
         </section>
 
@@ -262,20 +266,23 @@ $username = $_SESSION["username"];
             <h1 class="heading">Your Groups</h1>
             <section class="groupDisplay">
                 <div>
-                    <a href="group-page.html">
+                    <a href="group-page.php">
                         <img src="../images/cat.jpg" class="groupIcon">
                         <h1>Group 1</h1>
                     </a>
                 </div>
                 <?php
-                $groupsSTMT = pg_prepare($conn, "groups", "SELECT groupname FROM groups INNER JOIN accounttogroup ON groups.groupid = accounttogroup.groupid WHERE username = $1 ");
+                $groupsSTMT = pg_prepare($conn, "groups", "SELECT *FROM groups INNER
+                JOIN accounttogroup ON groups.groupid = accounttogroup.groupid WHERE username = $1 ");
                 $groupsRESULT = pg_execute($conn, "groups", array($username));
 
                 while ($row = pg_fetch_assoc($groupsRESULT)){
-                $groupname = $row['groupname'];
+                    $groupid = $row['groupid'];
+                    $groupname = $row['groupname'];
                 echo "<div>
+                <a href='group-page.php?id=$groupid'>
                     <img src='../images/cat.jpg' class='groupIcon'>
-                    <h1>$groupname</h1>
+                    <h1>$groupname</h1></a>
                     </div>";
                 }
                 ?>
@@ -291,6 +298,10 @@ $username = $_SESSION["username"];
                         </svg>
                     </button>
                 </div>
+
+
+ 
+
 
             </section>
         </aside>
