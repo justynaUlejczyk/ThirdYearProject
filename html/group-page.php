@@ -1,3 +1,17 @@
+<?php
+session_start();
+if (!isset($_SESSION["username"])) {
+    header('Location: ' . "./login.php");
+}
+
+require_once "../php/connect_db.php";
+
+$login_username = $_SESSION["username"];
+// Get passed product genre and assign it to a variable.
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];}
+?>
+
 <!DOCTYPE html>
 <html class="dimmed">
 

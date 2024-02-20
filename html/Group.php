@@ -262,20 +262,23 @@ $username = $_SESSION["username"];
             <h1 class="heading">Your Groups</h1>
             <section class="groupDisplay">
                 <div>
-                    <a href="group-page.html">
+                    <a href="group-page.php">
                         <img src="../images/cat.jpg" class="groupIcon">
                         <h1>Group 1</h1>
                     </a>
                 </div>
                 <?php
-                $groupsSTMT = pg_prepare($conn, "groups", "SELECT groupname FROM groups INNER JOIN accounttogroup ON groups.groupid = accounttogroup.groupid WHERE username = $1 ");
+                $groupsSTMT = pg_prepare($conn, "groups", "SELECT *FROM groups INNER
+                JOIN accounttogroup ON groups.groupid = accounttogroup.groupid WHERE username = $1 ");
                 $groupsRESULT = pg_execute($conn, "groups", array($username));
 
                 while ($row = pg_fetch_assoc($groupsRESULT)){
-                $groupname = $row['groupname'];
+                    $groupid = $row['groupid'];
+                    $groupname = $row['groupname'];
                 echo "<div>
+                <a href='group-page.php?id=$groupid'>
                     <img src='../images/cat.jpg' class='groupIcon'>
-                    <h1>$groupname</h1>
+                    <h1>$groupname</h1></a>
                     </div>";
                 }
                 ?>
@@ -290,6 +293,21 @@ $username = $_SESSION["username"];
                                 fill="#1C274C" />
                         </svg>
                     </button>
+                </div>
+
+                <div>
+                    <form action = "../php/create_group.php" method = "post">
+                    <div>
+    <label for="name">Enter your group name: </label>
+    <input type="text" name="name" id="name">
+  </div>
+  <div>
+    <input type="text" name="username" id="username" value = <?php echo $username; ?>>
+    <input type="submit" value="create!">
+  </div>
+
+                    </form>
+
                 </div>
 
             </section>
