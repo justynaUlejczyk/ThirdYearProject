@@ -237,7 +237,7 @@ $username = $_SESSION["username"];
     <section class="body">
         <aside class="left-bar">
             <ul>
-                <a href="group-page.html">
+                <a href="group-page.php">
                     <li>
                         Home
                     </li>
