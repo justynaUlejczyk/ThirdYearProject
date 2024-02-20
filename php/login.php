@@ -21,6 +21,7 @@
         
     } else{
         echo ("success");
+        session_id("userSession");
         session_start();
         $_SESSION['username'] = $username;
     }

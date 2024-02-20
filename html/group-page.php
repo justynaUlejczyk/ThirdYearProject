@@ -1,15 +1,21 @@
 <?php
+require_once "../php/connect_db.php";
+session_id("userSession");
 session_start();
 if (!isset($_SESSION["username"])) {
     header('Location: ' . "./login.php");
 }
-
-require_once "../php/connect_db.php";
-
 $login_username = $_SESSION["username"];
+session_write_close();
+session_id("groupSession");
+session_start();
 // Get passed product genre and assign it to a variable.
 if (isset($_GET['id'])) {
-    $id = $_GET['id'];}
+    $id = $_GET['id'];
+    $_SESSION["groupid"] = $id;
+}
+$groupid = $_SESSION["groupid"];
+session_write_close();
 ?>
 
 <!DOCTYPE html>
@@ -273,10 +279,12 @@ if (isset($_GET['id'])) {
                             <img src="../images/icons/Unknown_person.jpg" alt="">
                             <span>Name</span>
                         </div>
-                        <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam modi tenetur nihil odit
+                        <?php
+                        echo"<div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam modi tenetur nihil odit
                             eveniet quidem atque dolorum, voluptatibus officiis reiciendis quo, ut unde ducimus, error
-                            possimus nemo nostrum rerum quam inventore ratione voluptas commodi.</div>
-                    </div>
+                            possimus nemo nostrum rerum quam inventore ratione voluptas commodi. $groupid</div>
+                    </div>"
+                    ?>
 
                 </div>
                 <div class="send">

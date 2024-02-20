@@ -1,3 +1,19 @@
+<?php
+require_once "../php/connect_db.php";
+
+session_id("userSession");
+session_start();
+if (!isset($_SESSION["username"])) {
+    header('Location: ' . "./login.php");
+}
+$username = $_SESSION["username"];
+session_write_close();
+session_id("groupSession");
+session_start();
+$groupid = $_SESSION["groupid"];
+session_write_close();
+?>
+
 <!DOCTYPE html>
 <html class="dimmed">
 
@@ -258,11 +274,10 @@
                 <div class="toolbar">
                     <div class="head">
                         <input type="text" placeholder="Filename" value="untitled" id="filename">
-                        <select onchange="fileHandle(this.value); this.selectedIndex=0">
+                        <select onchange='fileHandle(this.value,<?php echo"$groupid"?> ); this.selectedIndex=0'>
                             <option value="" selected="" hidden="" disabled="">File</option>
                             <option value="new">New file</option>
-                            <option value="txt">Save as txt</option>
-                            <option value="pdf">Save as pdf</option>
+                            <option value="save">Save file</option>
                         </select>
                         <select onchange="formatDoc('formatBlock', this.value); this.selectedIndex=0;">
                             <option value="" selected="" hidden="" disabled="">Format</option>

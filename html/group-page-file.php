@@ -1,11 +1,17 @@
 <?php
+require_once "../php/connect_db.php";
+
+session_id("userSession");
 session_start();
 if (!isset($_SESSION["username"])) {
     header('Location: ' . "./login.php");
 }
-
-require_once "../php/connect_db.php";
 $username = $_SESSION["username"];
+session_write_close();
+session_id("groupSession");
+session_start();
+$groupid = $_SESSION["groupid"];
+session_write_close();
 ?>
 <!DOCTYPE html>
 <html class="dimmed">
@@ -262,7 +268,7 @@ $username = $_SESSION["username"];
         <feed>
             <section class="container-file">
                 <section class="files-options">
-                    <a href="group-editor.html">
+                    <a href="group-editor.php">
                         <button class="new-file option-button">
                             New File
                         </button>
@@ -287,14 +293,13 @@ $username = $_SESSION["username"];
                         <span id="art">art</span>
                     </div>
                     <?php
-                    $groupid = 4;
                     $get_filesSTMT = pg_prepare($conn, "get_files", "SELECT filename FROM files WHERE groupid = $1");
                     $get_filesRESULT = pg_execute($conn, "get_files", array($groupid));
                     
                     while ($row = pg_fetch_assoc($get_filesRESULT)) {
                         $filename = $row["filename"];
                         echo
-                        "<div class='folder-container' onclick='openFolder(this)' folderid='art'>
+                        "<div class='folder-container' onclick='openFolder(this)' folderid='file'>
                         <i class='fa fa-file' aria-hidden='true'></i>
                         <span id='art'>$filename</span>";
                     }
