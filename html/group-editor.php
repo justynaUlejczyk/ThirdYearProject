@@ -231,12 +231,12 @@
     <section class="body">
         <aside class="left-bar">
             <ul>
-                <a href="group-page.html">
+                <a href="group-page.php">
                     <li>
                         Home
                     </li>
                 </a>
-                <a href="group-page-file.html">
+                <a href="group-page-file.php">
                     <li>Files</li>
                 </a>
                 <a href="group-page-meeting.html">
