@@ -287,15 +287,17 @@ $username = $_SESSION["username"];
                         <span id="art">art</span>
                     </div>
                     <?php
-                    $groupid = 0;
+                    $groupid = 4;
                     $get_filesSTMT = pg_prepare($conn, "get_files", "SELECT filename FROM files WHERE groupid = $1");
                     $get_filesRESULT = pg_execute($conn, "get_files", array($groupid));
                     
-
-                    echo
+                    while ($row = pg_fetch_assoc($get_filesRESULT)) {
+                        $filename = $row["filename"];
+                        echo
                         "<div class='folder-container' onclick='openFolder(this)' folderid='art'>
-                        <i class='fa fa-paint-brush' aria-hidden='true'></i>
-                        <span id='art'>art</span>"
+                        <i class='fa fa-file' aria-hidden='true'></i>
+                        <span id='art'>$filename</span>";
+                    }
                     ?>
                 </section>
             </section>

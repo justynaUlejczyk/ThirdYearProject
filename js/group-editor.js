@@ -49,6 +49,9 @@ showCode.addEventListener('click', function () {
 
 const filename = document.getElementById('filename');
 
+//for testing
+const groupid = 4;
+
 function fileHandle(value, groupid) {
     if (value === 'new') {
         content.innerHTML = '';
