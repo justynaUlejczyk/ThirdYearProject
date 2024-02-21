@@ -266,12 +266,6 @@ $username = $_SESSION["username"];
         <aside class="groupSection">
             <h1 class="heading">Your Groups</h1>
             <section class="groupDisplay">
-                <div>
-                    <a href="group-page.php">
-                        <img src="../images/cat.jpg" class="groupIcon">
-                        <h1>Group 1</h1>
-                    </a>
-                </div>
                 <?php
                 $groupsSTMT = pg_prepare($conn, "groups", "SELECT *FROM groups INNER
                 JOIN accounttogroup ON groups.groupid = accounttogroup.groupid WHERE username = $1 ");

@@ -337,7 +337,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                 <div class='post-info'>
                     <div class=' comment-header'>
                         <div class='user-container'>
-                            <a href='Profile.php'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
+                            <a href='Profile.php?id=$poster_username'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
                             <div class='user-post-name'>
                                 <span>$name</span>
                                 <span>@$poster_username</span>
@@ -400,7 +400,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                 <div class='comment-container'>
                     <div class='comment-user-comment'>
                         <div class='user-container'>
-                            <a href='Profile.php'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
+                            <a href='Profile.php?id=$poster_username'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
                             <div class='user-post-name'>
                                 <span>Michael Schumacher</span>
                                 <span>Comment - 22/01/23</span>
@@ -431,7 +431,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                     </div>
                     <div class='comment-user-comment'>
                         <div class='user-container'>
-                            <a href='Profile.php'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
+                            <a href='Profile.php?id=$poster_username'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
                             <div class='user-post-name'>
                                 <span>Michael Schumacher</span>
                                 <span>Comment - 22/01/23</span>
@@ -600,7 +600,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
         </prepost>";
                     echo "<div class='feed-post'>";
                     echo "<div class='user-container'>";
-                    echo "<a href='Profile.php'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>";
+                    echo "<a href='Profile.php?id=$poster_username'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>";
                     echo "<div class='user-post-name'>";
                     echo "<span>$name</span>";
                     echo "<span>@$poster_username</span>";
