@@ -29,6 +29,14 @@ function account(clickedElement){
         var updatePassword = document.getElementById("updatePassword");
         updatePassword.style.display = "inline-block";
     }
+    function updateBio(clickedElement){
+        hideAll();
+        var updateBio = document.getElementById("updateBio");
+        updateBio.style.display = "inline-block";
+    }
+
+
+
 
 function privacy(clickedElement){
     hideAll();
@@ -56,8 +64,6 @@ function accessibility(clickedElement){
 
 
 
-
-
 function hideAll(){
     var General = document.getElementById("general");
 
@@ -65,6 +71,7 @@ function hideAll(){
         var updatePassword = document.getElementById("updatePassword");
         var updateEmail = document.getElementById("updateEmail");
         var updateName = document.getElementById("updateName");
+        var updateBio = document.getElementById("updateBio");
 
     var Privacy = document.getElementById("privacy");
         var privacyPolicy = document.getElementById("privacyPolicy");
@@ -79,7 +86,7 @@ function hideAll(){
         updateName.style.display = "none";
         updateEmail.style.display = "none";
         updatePassword.style.display = "none";
-
+        updateBio.style.display ="none";
 
     Privacy.style.display = "none";
         privacyPolicy.style.display = "none";

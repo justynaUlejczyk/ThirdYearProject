@@ -259,7 +259,7 @@ if ($settingsResult) {
             <h3 onclick="updateEmail()">Update Email</h3>
             <h3 onclick="updateName()">Update Name</h3>
             <h3 onclick="updatePassword()">Reset Password</h3>
-    
+            <h3 onclick="updateBio()" >Update Bio</h3>
             
             <h1 onclick="privacy()">Privacy & security</h2>
             <h3 onclick="accountPrivacy()">Account Privacy</h3>
@@ -312,6 +312,17 @@ if ($settingsResult) {
                     <p>Confirm New Email</p>
                         <input type="text" id = "email2" name= "email2" required/>
                     
+                    <button class="confirmButton">Comfirm Update</button>
+                </form> 
+            </div>
+
+
+            <div id = "updateBio">
+            <h1 class="updateTitle">Update Bio</h1>
+            <form action="../php/update_bio.php" method="post">
+                    <p>Current Bio</p> <p><?php ?></p>
+                    <p>New Bio</p>
+                        <input type="text" id ="bio" name= "bio" required />
                     <button class="confirmButton">Comfirm Update</button>
                 </form> 
             </div>
