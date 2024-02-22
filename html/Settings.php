@@ -185,7 +185,7 @@ if ($settingsResult) {
                             <div class="dropdown-profile-icon">
                                 <a href="">
                                     <img src="../images/icons/Unknown_person.jpg" alt="">
-                                    <p>Name Surname</p>
+                                    <p><?php echo "$username"?></p>
                                 </a>
                             </div>
                             <a href="../html/Profile.php">
@@ -323,7 +323,7 @@ if ($settingsResult) {
                     <p>Current Bio</p> <p><?php ?></p>
                     <p>New Bio</p>
                         <input type="text" id ="bio" name= "bio" required />
-                    <button class="confirmButton">Comfirm Update</button>
+                    <button type="submit" class="confirmButton">Comfirm Update</button>
                 </form> 
             </div>
 

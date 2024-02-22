@@ -180,7 +180,7 @@ if (isset($_GET['id'])) {
                             <div class="dropdown-profile-icon">
                                 <a href="">
                                     <img src="../images/icons/Unknown_person.jpg" alt="">
-                                    <p>Name Surname</p>
+                                    <p><?php echo"$username"?></p>
                                 </a>
                             </div>
                             <a href="../html/Profile.php">
