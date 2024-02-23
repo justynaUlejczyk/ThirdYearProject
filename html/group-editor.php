@@ -1,3 +1,26 @@
+<?php
+require_once "../php/connect_db.php";
+
+session_id("userSession");
+session_start();
+if (!isset($_SESSION["username"])) {
+    header('Location: ' . "./login.php");
+}
+$username = $_SESSION["username"];
+session_write_close();
+session_id("groupSession");
+session_start();
+$groupid = $_SESSION["groupid"];
+$groupname = $_SESSION["groupname"];
+session_write_close();
+
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $filePath = "../groups/$groupname/$id";
+    $fileContents = file_get_contents($filePath);
+}
+?>
+
 <!DOCTYPE html>
 <html class="dimmed">
 
@@ -7,6 +30,10 @@
     <link rel="stylesheet" href="../css/StyleSheet.css">
     <link rel="stylesheet" href="../css/Group-page.css">
     <link rel="stylesheet" href="../css/Group-page-file.css">
+    <link rel="stylesheet" href="../css/group-editor.css">
+
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
@@ -16,7 +43,6 @@
     <script src="../js/darkmode.js"></script>
     <script src="../js/createGroup.js"></script>
     <script src="../js/GroupMemberBar.js"></script>
-    <script src="../js/group-file.js"></script>
 </head>
 
 <!-- test commit -->
@@ -164,7 +190,7 @@
                             <div class="dropdown-profile-icon">
                                 <a href="">
                                     <img src="../images/icons/Unknown_person.jpg" alt="">
-                                    <p>Name Surname</p>
+                                    <p><?php echo"$username"?></p>
                                 </a>
                             </div>
                             <a href="../html/Profile.php">
@@ -228,12 +254,12 @@
     <section class="body">
         <aside class="left-bar">
             <ul>
-                <a href="group-page.html">
+                <a href="group-page.php">
                     <li>
                         Home
                     </li>
                 </a>
-                <a>
+                <a href="group-page-file.php">
                     <li>Files</li>
                 </a>
                 <a href="group-page-meeting.html">
@@ -251,35 +277,68 @@
 
         <!-- Feed -->
         <feed>
-            <section class="container-file">
-                <section class="files-options">
-                    <a href="group-editor.html">
-                        <button class="new-file option-button">
-                            New File
-                        </button>
-                    </a>
-                    <button class="delete-file option-button">
-                        Delete File
-                    </button>
-                </section>
-                <section class="file-container" id="fileContainer">
-                    <div class="folder-container" onclick="openFolder(this)" folderid="Bid1">
-                        <i class="fa fa-folder" aria-hidden="true"></i>
-                        <span id="Bid1">Files</span>
+            <div class="container">
+                <div class="toolbar">
+                    <div class="head">
+                        <input type="text" placeholder="Filename" value="untitled" id="filename">
+                        <select onchange='fileHandle(this.value,<?php echo"$groupid"?> ); this.selectedIndex=0'>
+                            <option value="" selected="" hidden="" disabled="">File</option>
+                            <option value="new">New file</option>
+                            <option value="save">Save file</option>
+                        </select>
+                        <select onchange="formatDoc('formatBlock', this.value); this.selectedIndex=0;">
+                            <option value="" selected="" hidden="" disabled="">Format</option>
+                            <option value="h1">Heading 1</option>
+                            <option value="h2">Heading 2</option>
+                            <option value="h3">Heading 3</option>
+                            <option value="h4">Heading 4</option>
+                            <option value="h5">Heading 5</option>
+                            <option value="h6">Heading 6</option>
+                            <option value="p">Paragraph</option>
+                        </select>
+                        <select onchange="formatDoc('fontSize', this.value); this.selectedIndex=0;">
+                            <option value="" selected="" hidden="" disabled="">Font size</option>
+                            <option value="1">Extra small</option>
+                            <option value="2">Small</option>
+                            <option value="3">Regular</option>
+                            <option value="4">Medium</option>
+                            <option value="5">Large</option>
+                            <option value="6">Extra Large</option>
+                            <option value="7">Big</option>
+                        </select>
+                        <div class="color">
+                            <span>Color</span>
+                            <input type="color" oninput="formatDoc('foreColor', this.value); this.value='#000000';">
+                        </div>
+                        <div class="color">
+                            <span>Background</span>
+                            <input type="color" oninput="formatDoc('hiliteColor', this.value); this.value='#000000';">
+                        </div>
                     </div>
-                    <!-- Add more Files as needed -->
-                    <div class="folder-container" onclick="openFolder(this)" folderid="main.txt">
-                        <i class="fa fa-file" aria-hidden="true"></i>
-                        <span id="main.txt">main.txt</span>
+                    <div class="btn-toolbar">
+                        <button onclick="formatDoc('undo')"><i class='bx bx-undo'></i></button>
+                        <button onclick="formatDoc('redo')"><i class='bx bx-redo'></i></button>
+                        <button onclick="formatDoc('bold')"><i class='bx bx-bold'></i></button>
+                        <button onclick="formatDoc('underline')"><i class='bx bx-underline'></i></button>
+                        <button onclick="formatDoc('italic')"><i class='bx bx-italic'></i></button>
+                        <button onclick="formatDoc('strikeThrough')"><i class='bx bx-strikethrough'></i></button>
+                        <button onclick="formatDoc('justifyLeft')"><i class='bx bx-align-left'></i></button>
+                        <button onclick="formatDoc('justifyCenter')"><i class='bx bx-align-middle'></i></button>
+                        <button onclick="formatDoc('justifyRight')"><i class='bx bx-align-right'></i></button>
+                        <button onclick="formatDoc('justifyFull')"><i class='bx bx-align-justify'></i></button>
+                        <button onclick="formatDoc('insertOrderedList')"><i class='bx bx-list-ol'></i></button>
+                        <button onclick="formatDoc('insertUnorderedList')"><i class='bx bx-list-ul'></i></button>
+                        <button onclick="addLink()"><i class='bx bx-link'></i></button>
+                        <button onclick="formatDoc('unlink')"><i class='bx bx-unlink'></i></button>
+                        <button id="show-code" data-active="false">&lt;/&gt;</button>
                     </div>
-                    <!-- Add more Files as needed -->
-                    <div class="folder-container" onclick="openFolder(this)" folderid="art">
-                        <i class="fa fa-paint-brush" aria-hidden="true"></i>
-                        <span id="art">art</span>
-                    </div>
-
-                </section>
-            </section>
+                </div>
+                <div id="content" contenteditable="true" spellcheck="false">
+                    <?php if (isset($fileContents)) {
+                        echo $fileContents;
+                    }?>
+                </div>
+            </div>
         </feed>
 
 
@@ -306,7 +365,10 @@
     </section>
 
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+        integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../js/group-editor.js"></script>
 </body>
 
 </html>

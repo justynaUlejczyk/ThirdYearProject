@@ -231,12 +231,12 @@
     <section class="body">
         <aside class="left-bar">
             <ul>
-                <a href="group-page.html">
+                <a href="group-page.php">
                     <li>
                         Home
                     </li>
                 </a>
-                <a href="group-page-file.html">
+                <a href="group-page-file.php">
                     <li>Files</li>
                 </a>
                 <a href="group-page-meeting.html">
@@ -261,8 +261,7 @@
                         <select onchange="fileHandle(this.value); this.selectedIndex=0">
                             <option value="" selected="" hidden="" disabled="">File</option>
                             <option value="new">New file</option>
-                            <option value="txt">Save as txt</option>
-                            <option value="pdf">Save as pdf</option>
+                            <option value="save">Save file</option>
                         </select>
                         <select onchange="formatDoc('formatBlock', this.value); this.selectedIndex=0;">
                             <option value="" selected="" hidden="" disabled="">Format</option>

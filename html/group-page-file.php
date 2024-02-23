@@ -1,3 +1,19 @@
+<?php
+require_once "../php/connect_db.php";
+
+session_id("userSession");
+session_start();
+if (!isset($_SESSION["username"])) {
+    header('Location: ' . "./login.php");
+}
+$username = $_SESSION["username"];
+session_write_close();
+session_id("groupSession");
+session_start();
+$groupid = $_SESSION["groupid"];
+$groupname = $_SESSION["groupname"];
+session_write_close();
+?>
 <!DOCTYPE html>
 <html class="dimmed">
 
@@ -6,6 +22,7 @@
     <link rel="stylesheet" href="../css/Group.css">
     <link rel="stylesheet" href="../css/StyleSheet.css">
     <link rel="stylesheet" href="../css/Group-page.css">
+    <link rel="stylesheet" href="../css/Group-page-file.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
@@ -13,9 +30,9 @@
 
     <script src="../js/main.js"></script>
     <script src="../js/darkmode.js"></script>
-    <script src="../js/navbar.js"></script>
     <script src="../js/createGroup.js"></script>
     <script src="../js/GroupMemberBar.js"></script>
+    <script src="../js/group-file.js"></script>
 </head>
 
 <!-- test commit -->
@@ -158,11 +175,12 @@
                     <div class="dropdown">
                         <img class="nav-profile" onclick="toggleDropdownProfile()"
                             src="../images/icons/Unknown_person.jpg">
+                        </img>
                         <div class="dropdown-content-profile" id="dropdownContentProfile">
                             <div class="dropdown-profile-icon">
                                 <a href="">
                                     <img src="../images/icons/Unknown_person.jpg" alt="">
-                                    <p>Name Surname</p>
+                                    <p><?php echo"$username"?></p>
                                 </a>
                             </div>
                             <a href="../html/Profile.php">
@@ -226,20 +244,16 @@
     <section class="body">
         <aside class="left-bar">
             <ul>
-                <a href="group-page.html">
+                <a href="group-page.php">
                     <li>
                         Home
                     </li>
                 </a>
-                <a href="group-page-file.html">
-                    <li>
-                        Files
-                    </li>
-                </a>
                 <a>
-                    <li>
-                        Meetings
-                    </li>
+                    <li>Files</li>
+                </a>
+                <a href="group-page-meeting.html">
+                    <li>Meetings</li>
                 </a>
                 <a>
                     <li>
@@ -253,7 +267,46 @@
 
         <!-- Feed -->
         <feed>
-            HELLO
+            <section class="container-file">
+                <section class="files-options">
+                    <a href="group-editor.php">
+                        <button class="new-file option-button">
+                            New File
+                        </button>
+                    </a>
+                    <button class="delete-file option-button">
+                        Delete File
+                    </button>
+                </section>
+                <section class="file-container" id="fileContainer">
+                    <div class="folder-container" onclick="openFolder(this)" folderid="Bid1">
+                        <i class="fa fa-folder" aria-hidden="true"></i>
+                        <span id="Bid1">Files</span>
+                    </div>
+                    <!-- Add more Files as needed -->
+                    <div class="folder-container" onclick="openFolder(this)" folderid="main.txt">
+                        <i class="fa fa-file" aria-hidden="true"></i>
+                        <span id="main.txt">main.txt</span>
+                    </div>
+                    <!-- Add more Files as needed -->
+                    <div class="folder-container" onclick="openFolder(this)" folderid="art">
+                        <i class="fa fa-paint-brush" aria-hidden="true"></i>
+                        <span id="art">art</span>
+                    </div>
+                    <?php
+                    $get_filesSTMT = pg_prepare($conn, "get_files", "SELECT filename FROM files WHERE groupid = $1");
+                    $get_filesRESULT = pg_execute($conn, "get_files", array($groupid));
+                    
+                    while ($row = pg_fetch_assoc($get_filesRESULT)) {
+                        $filename = $row["filename"];
+                        echo
+                        "<a href='group-editor.php?id=$filename'><div class='folder-container' folderid='file'>
+                        <i class='fa fa-file' aria-hidden='true'></i>
+                        <span id='$filename'>$filename</span></a>";
+                    }
+                    ?>
+                </section>
+            </section>
         </feed>
 
 

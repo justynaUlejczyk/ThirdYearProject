@@ -49,18 +49,26 @@ showCode.addEventListener('click', function () {
 
 const filename = document.getElementById('filename');
 
-function fileHandle(value) {
+
+function fileHandle(value, groupid) {
     if (value === 'new') {
         content.innerHTML = '';
         filename.value = 'untitled';
-    } else if (value === 'txt') {
-        const blob = new Blob([content.innerText])
-        const url = URL.createObjectURL(blob)
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = `${filename.value}.txt`;
-        link.click();
-    } else if (value === 'pdf') {
-        html2pdf(content).save(filename.value);
-    }
+    } else if (value === 'save') {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "../php/save_file.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                if (xhr.responseText == "success") {
+                    console.log("file saved");
+                }
+            }
+        };
+        xhr.send("filename=" + filename.value + "&content=" + content.textContent + "&groupid=" + groupid);
+        }
+}
+
+function openFolder(filename, groupname) {
+
 }

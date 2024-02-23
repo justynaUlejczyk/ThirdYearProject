@@ -1,4 +1,5 @@
 <?php
+session_id("userSession");
 session_start();
 if (!isset($_SESSION["username"])) {
     header('Location: ' . "./login.php");
@@ -7,14 +8,20 @@ if (!isset($_SESSION["username"])) {
 require_once "../php/connect_db.php";
 
 $username = $_SESSION["username"];
+$account_username = $username;
+if(isset($_GET["id"])){
+    $id = $_GET["id"];
+    $account_username = $id;
+}
 
 $userDataSTMT = pg_prepare($conn, "user_data", "SELECT * FROM accounts where username = $1");
-$userDataRESULT = pg_execute($conn, "user_data", array($username));
+$userDataRESULT = pg_execute($conn, "user_data", array($account_username));
 $name = pg_fetch_result($userDataRESULT, 0, "name");
+$bio = pg_fetch_result($userDataRESULT, 0, "bio");
 $query = "SELECT postID, text, post.username, name  
     FROM post 
     INNER JOIN accounts ON accounts.username = post.username 
-    WHERE accounts.username = '$username'
+    WHERE accounts.username = '$account_username'
     ORDER BY postid DESC";
 
 
@@ -180,7 +187,7 @@ $result = pg_query($conn, $query);
                             <div class="dropdown-profile-icon">
                                 <a href="">
                                     <img src="../images/icons/Unknown_person.jpg" alt="">
-                                    <p>Name Surname</p>
+                                    <p><?php echo "$username"?></p>
                                 </a>
                             </div>
                             <a href="../html/Profile.php">
@@ -260,7 +267,7 @@ $result = pg_query($conn, $query);
                     <span class="banner-profile-user">
                         <?php
 
-                        echo "<h4 id=''occupation'>@$username</h4>";
+                        echo "<h4 id=''occupation'>@$account_username</h4>";
                         ?>
                     </span>
                 </div>
@@ -283,8 +290,7 @@ $result = pg_query($conn, $query);
         <section class="profile-info-display">
             <aside class="profile-bio">
                 <h3>Bio</h3>
-                <bio>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet cupiditate doloremque illo enim
-                    quibusdam totam error excepturi odit pariatur fugiat vero hic, velit fugit tenetur.</bio>
+                <bio><?php echo "$bio"?></bio>
                 <div>
                     <span>IMG</span>
                     <span>Studies at Heriot Watt</span>

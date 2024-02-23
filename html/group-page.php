@@ -1,3 +1,28 @@
+<?php
+require_once "../php/connect_db.php";
+session_id("userSession");
+session_start();
+if (!isset($_SESSION["username"])) {
+    header('Location: ' . "./login.php");
+}
+$login_username = $_SESSION["username"];
+session_write_close();
+session_id("groupSession");
+session_start();
+// Get passed product genre and assign it to a variable.
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $_SESSION["groupid"] = $id;
+}
+$groupid = $_SESSION["groupid"];
+$get_groupnameSTMT = pg_prepare($conn, "get_groupname", "SELECT groupname FROM groups where groupid=$1");
+$get_groupnameRESULT = pg_execute($conn, "get_groupname", array($groupid));
+$row = pg_fetch_assoc($get_groupnameRESULT);
+$_SESSION["groupname"] = $row["groupname"];
+$groupname = $_SESSION["groupname"];
+session_write_close();
+?>
+
 <!DOCTYPE html>
 <html class="dimmed">
 
@@ -163,7 +188,7 @@
                             <div class="dropdown-profile-icon">
                                 <a href="">
                                     <img src="../images/icons/Unknown_person.jpg" alt="">
-                                    <p>Name Surname</p>
+                                    <p><?php echo"$username"?></p>
                                 </a>
                             </div>
                             <a href="../html/Profile.php">
@@ -232,10 +257,10 @@
                         Home
                     </li>
                 </a>
-                <a href="group-page-file.html">
+                <a href="group-page-file.php">
                     <li>Files</li>
                 </a>
-                <a href="group-page-meeting.html">
+                <a href="./group-page-meeting/group-page-meeting.html">
                     <li>Meetings</li>
                 </a>
                 <a>
@@ -259,10 +284,12 @@
                             <img src="../images/icons/Unknown_person.jpg" alt="">
                             <span>Name</span>
                         </div>
-                        <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam modi tenetur nihil odit
+                        <?php
+                        echo"<div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam modi tenetur nihil odit
                             eveniet quidem atque dolorum, voluptatibus officiis reiciendis quo, ut unde ducimus, error
-                            possimus nemo nostrum rerum quam inventore ratione voluptas commodi.</div>
-                    </div>
+                            possimus nemo nostrum rerum quam inventore ratione voluptas commodi. $groupid</div>
+                    </div>"
+                    ?>
 
                 </div>
                 <div class="send">

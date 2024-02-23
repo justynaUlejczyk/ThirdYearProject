@@ -1,5 +1,6 @@
 <?php
 $page_title = 'Change email';
+session_id("userSession");
 session_start();
 if (!isset($_SESSION["username"])) {
     header('Location: ' . "./login.php");

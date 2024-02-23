@@ -1,4 +1,5 @@
 <?php
+session_id("userSession");
 session_start();
 if (!isset($_SESSION["username"])) {
     header('Location: ' . "./login.php");
@@ -179,7 +180,7 @@ if (isset($_GET['id'])) {
                             <div class="dropdown-profile-icon">
                                 <a href="">
                                     <img src="../images/icons/Unknown_person.jpg" alt="">
-                                    <p>Name Surname</p>
+                                    <p><?php echo"$login_username"?></p>
                                 </a>
                             </div>
                             <a href="../html/Profile.php">
@@ -245,8 +246,21 @@ if (isset($_GET['id'])) {
  <div class="chatter-list">
             <?php
             
-        // displaying list of users
-$usersListQuery = "SELECT username FROM accounts ORDER BY username DESC";
+        // displaying list of users ordered by last message received so the user who last sent a message to the logged in user is at the top of the list.
+$usersListQuery = "SELECT subquery2.username, COALESCE(MAX(subquery1.max_messageid), -1) AS last_messageid
+FROM
+    (SELECT username, MAX(messageid) AS max_messageid
+     FROM messages
+     WHERE recipient = '$login_username'
+     GROUP BY username
+    ) AS subquery1
+RIGHT JOIN
+    (SELECT username
+     FROM accounts
+    ) AS subquery2
+ON subquery1.username = subquery2.username
+GROUP BY subquery2.username
+ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
 $usersListRESULT = pg_query($conn, $usersListQuery);
 if ($usersListRESULT) {
     while ($row = pg_fetch_assoc($usersListRESULT)) {
