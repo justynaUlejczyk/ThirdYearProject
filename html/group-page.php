@@ -299,7 +299,7 @@ session_write_close();
                         
                         </div>";
                     }
-                        echo '</div>';
+                        //echo '</div>';
                     }else {echo'<div class="user-posting">
                     <img src="../images/icons/Unknown_person.jpg" alt="">';
                     echo "No posts yet
