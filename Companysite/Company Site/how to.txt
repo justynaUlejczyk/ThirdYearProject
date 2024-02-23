@@ -1,4 +1,0 @@
-In order to run the code
-1. Open terminal
-2. Be in /companysite
-3. Flutter run -d chrome 
