@@ -278,6 +278,7 @@ $username = $_SESSION["username"];
                 <a href='group-page.php?id=$groupid'>
                     <img src='../images/cat.jpg' class='groupIcon'>
                     <h1>$groupname</h1></a>
+                    <a href='../php/delete_group.php?id=$groupid'>delete group</a>
                     </div>";
                 }
                 ?>
