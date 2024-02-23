@@ -310,6 +310,34 @@ session_write_close();
             </div>
             <span>Members</span>
             <button id="add-member">Add Member</button>
+            <form action="../php/add_users.php" method="post">
+                <h2> Add member</h2>
+Name: <input type="text" name="name"><br>
+<input type="submit">
+</form>
+<?php
+//retriving members of group
+
+
+$stmt = pg_prepare($conn, "members", "SELECT * FROM accounttogroup WHERE groupid=$1");
+$result = pg_execute($conn, "members", array($groupid));
+$numRows = pg_num_rows($result);
+echo '<div class="user-list">';
+if ($numRows > 0) {
+    echo "<p>Members: $numRows</p>"; // Display total number of members
+    while ($row = pg_fetch_assoc($result)) {
+        $username = $row['username'];
+       echo' <div class="members">
+            <img src="../images/icons/Unknown_person.jpg" alt="">';
+            echo "<span>$username</span>
+        </div>";
+    }
+
+}
+
+
+?>
+            
             <div class="user-list">
                 <div class="members">
                     <img src="../images/icons/Unknown_person.jpg" alt="">
@@ -318,6 +346,8 @@ session_write_close();
                 <div class="members">
                     <img src="../images/icons/Unknown_person.jpg" alt="">
                     <span>Name</span>
+                    
+
                 </div>
 
             </div>
