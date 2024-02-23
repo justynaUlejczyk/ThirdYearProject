@@ -172,7 +172,9 @@ $username = $_SESSION["username"];
                             <div class="dropdown-profile-icon">
                                 <a href="">
                                     <img src="../images/icons/Unknown_person.jpg" alt="">
-                                    <p><?php echo"$username"?></p>
+                                    <p>
+                                        <?php echo "$username" ?>
+                                    </p>
                                 </a>
                             </div>
                             <a href="../html/Profile.php">
@@ -240,23 +242,23 @@ $username = $_SESSION["username"];
             <div class="create-title">
                 <p>Welcome to the Collaboration Creation Menu – Your Gateway to Team Synergy!</p>
             </div>
-            <form action="../php/create_group.php" method ="post">
-            <div class="create-information">
-                <div id="name">
-                    <p>Name</p>
-                    <input type="text" id = "groupname" name ="groupname">
-                </div>
-                <input type="hidden" name="username" id="username" value="<?php echo $username; ?>">
+            <form action="../php/create_group.php" method="post">
+                <div class="create-information">
+                    <div id="name">
+                        <p>Name</p>
+                        <input type="text" id="groupname" name="groupname">
+                    </div>
+                    <input type="hidden" name="username" id="username" value="<?php echo $username; ?>">
 
-                <!--<div id="desc">
+                    <!--<div id="desc">
                     <p>Description</p>
                     <textarea name="textarea"></textarea>
                 </div>-->
-            </div>
-            <div class="create-options">
-            <button type="button" onclick="closeCreate()">Cancel</button>
-                <button type="submit">Create</button>
-</form>
+                </div>
+                <div class="create-options">
+                    <button type="button" onclick="closeCreate()">Cancel</button>
+                    <button type="submit">Create</button>
+            </form>
             </div>
         </section>
 
@@ -271,13 +273,13 @@ $username = $_SESSION["username"];
                 JOIN accounttogroup ON groups.groupid = accounttogroup.groupid WHERE username = $1 ");
                 $groupsRESULT = pg_execute($conn, "groups", array($username));
 
-                while ($row = pg_fetch_assoc($groupsRESULT)){
+                while ($row = pg_fetch_assoc($groupsRESULT)) {
                     $groupid = $row['groupid'];
                     $groupname = $row['groupname'];
-                echo "<div>
+                    echo "<div>
                 <a href='group-page.php?id=$groupid'>
                     <img src='../images/cat.jpg' class='groupIcon'>
-                    <h1>$groupname</h1></a>
+                    <h1 class='groupName'>$groupname</h1></a>
                     <a href='../php/delete_group.php?id=$groupid'>delete group</a>
                     </div>";
                 }
@@ -296,7 +298,7 @@ $username = $_SESSION["username"];
                 </div>
 
 
- 
+
 
 
             </section>

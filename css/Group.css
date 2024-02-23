@@ -58,6 +58,10 @@ main {
     box-sizing: border-box;
 }
 
+a {
+    color: var(--text);
+}
+
 .heading {
     text-align: center;
     font-size: 24px;

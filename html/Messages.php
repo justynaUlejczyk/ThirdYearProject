@@ -14,7 +14,7 @@ if (isset($_GET['id'])) {
 } else {
     // Handle the case when 'id' is not set
     $id = 1;
-    
+
 }
 
 ?>
@@ -180,7 +180,9 @@ if (isset($_GET['id'])) {
                             <div class="dropdown-profile-icon">
                                 <a href="">
                                     <img src="../images/icons/Unknown_person.jpg" alt="">
-                                    <p><?php echo"$login_username"?></p>
+                                    <p>
+                                        <?php echo "$login_username" ?>
+                                    </p>
                                 </a>
                             </div>
                             <a href="../html/Profile.php">
@@ -242,12 +244,12 @@ if (isset($_GET['id'])) {
 
     <main>
 
-    <div class="chatter-container">
- <div class="chatter-list">
-            <?php
-            
-        // displaying list of users ordered by last message received so the user who last sent a message to the logged in user is at the top of the list.
-$usersListQuery = "SELECT subquery2.username, COALESCE(MAX(subquery1.max_messageid), -1) AS last_messageid
+        <div class="chatter-container">
+            <div class="chatter-list">
+                <?php
+
+                // displaying list of users ordered by last message received so the user who last sent a message to the logged in user is at the top of the list.
+                $usersListQuery = "SELECT subquery2.username, COALESCE(MAX(subquery1.max_messageid), -1) AS last_messageid
 FROM
     (SELECT username, MAX(messageid) AS max_messageid
      FROM messages
@@ -261,96 +263,97 @@ RIGHT JOIN
 ON subquery1.username = subquery2.username
 GROUP BY subquery2.username
 ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
-$usersListRESULT = pg_query($conn, $usersListQuery);
-if ($usersListRESULT) {
-    while ($row = pg_fetch_assoc($usersListRESULT)) {
-        if ($row["username"] != $login_username) {
-        $user = $row["username"];
-        echo '<button class="chatter-list-user" onclick="changeChat(this)" userid=' . $row['username'] . '>
+                $usersListRESULT = pg_query($conn, $usersListQuery);
+                if ($usersListRESULT) {
+                    while ($row = pg_fetch_assoc($usersListRESULT)) {
+                        if ($row["username"] != $login_username) {
+                            $user = $row["username"];
+                            echo '<button class="chatter-list-user" onclick="changeChat(this)" userid=' . $row['username'] . '>
                 <img src="../images/icons/Unknown_person.jpg">
                 <p><a href="Messages.php?id=' . $row['username'] . '" role="button">' . $row['username'] . '</a></p>
-            </button>';}}
-            echo "</div>";
-        }
-            else{echo "Error in fetching user list.";}
-            ?>
-
-       
-<div class="chatter-box">
-<!-- Chat box -->
-<?php
-
-$stmt = pg_prepare($conn, "read_message", "SELECT * FROM messages WHERE (username = $1 AND recipient = $2) OR (username = $2 AND recipient = $1) ORDER BY messageID ASC");
-$result = pg_execute($conn, "read_message", array($login_username, $id));
-$numRows = pg_num_rows($result);
+            </button>';
+                        }
+                    }
+                    echo "</div>";
+                } else {
+                    echo "Error in fetching user list.";
+                }
+                ?>
 
 
-if ($numRows > 0) {
-    
-    echo "<p>Total Messages: $numRows</p><br>"; // Display total number of messages
-    echo ' <div class="chatter-chat">';
-while ($row = pg_fetch_assoc($result)) {
-    $text = $row["text"];
-    $sender = $row["username"];
-    $recipient = $row["recipient"];
-//echo $row["username"] ;
-if ($text){
-if ($sender == $login_username){
-    
-                    echo' <div class="chatter-chat-sender">
+                <div class="chatter-box">
+                    <!-- Chat box -->
+                    <?php
+
+                    $stmt = pg_prepare($conn, "read_message", "SELECT * FROM messages WHERE (username = $1 AND recipient = $2) OR (username = $2 AND recipient = $1) ORDER BY messageID ASC");
+                    $result = pg_execute($conn, "read_message", array($login_username, $id));
+                    $numRows = pg_num_rows($result);
+
+
+                    if ($numRows > 0) {
+
+                        echo "<p>Total Messages: $numRows</p>"; // Display total number of messages
+                        echo ' <div class="chatter-chat">';
+                        while ($row = pg_fetch_assoc($result)) {
+                            $text = $row["text"];
+                            $sender = $row["username"];
+                            $recipient = $row["recipient"];
+                            //echo $row["username"] ;
+                            if ($text) {
+                                if ($sender == $id) {
+
+                                    echo ' <div class="chatter-chat-sender">
                             <div class="chatter-sender">
                                 <div class="chatter-chat-info">
                                     <img src="../images/icons/Unknown_person.jpg">';
-             echo "                       <p> $sender </p>";
-                             echo " </div>
-                                <chat>
+                                    echo "                       <p> $sender </p>";
+                                    echo " </div>
+                                <div class='chat'>
                                    $text 
-                                <br></chat>";
-                                echo '  </div>
+                                </div>";
+                                    echo '  </div>
                         </div>';
-}else {if ($sender == $id){
-                       echo' <div class="chatter-chat-reciever">
+                                } else {
+                                    if ($sender == $login_username) {
+                                        echo ' <div class="chatter-chat-reciever">
                             <div class="chatter-reciever">
                                 <div class="chatter-chat-info">';
-                         echo "         <p>$sender</p>";
-                            echo "        <img src='../images/icons/Unknown_person.jpg'>
+                                        echo "         <p>$sender</p>";
+                                        echo "        <img src='../images/icons/Unknown_person.jpg'>
                                 </div>
-                                <chat>
+                                <div class='chat'>
                                     $text
-                                </chat>
+                                </div>
                             </div></div>
-                        ";}}
-                          }} } else {echo 'no messages yet'; }
-                         
-                         
-                        ?>
-
-                  <div class="chatter-send-message">
-                 
-
-<form class="chatter-send-message" id="messages" action="../php/send_message.php" method="post">
+                        ";
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        echo 'No Messages Yet';
+                    }
 
 
-    <input type="text" id="recipient" name="recipient"value="<?php echo $id; ?>" hidden
-        style="display:none;">
 
-    <input type="text" id="text" name="text">
+                    ?>
 
-    <input type="text" class="username" name="username" value="<?php echo $login_username; ?>" hidden
-        style="display:none;">
-    <button type="submit"><i class="fab fa-telegram-plane"></i></button>
-</form>
-</div>
-                
+
                 </div>
-
-        <div class="chatter-info"></div>
-        </div>
+                <form class="chatter-send-message" id="messages" action="../php/send_message.php" method="post">
 
 
-        
-                
+                    <input type="text" id="recipient" name="recipient" value="<?php echo $id; ?>" hidden
+                        style="display:none;">
+
+                    <input type="text" id="text" name="text">
+
+                    <input type="text" class="username" name="username" value="<?php echo $login_username; ?>" hidden
+                        style="display:none;">
+                    <button type="submit"><i class="fab fa-telegram-plane"></i></button>
+                </form>
             </div>
+        </div>
 
 
     </main>
