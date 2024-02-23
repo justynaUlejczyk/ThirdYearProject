@@ -188,7 +188,7 @@ session_write_close();
                             <div class="dropdown-profile-icon">
                                 <a href="">
                                     <img src="../images/icons/Unknown_person.jpg" alt="">
-                                    <p><?php echo"$username"?></p>
+                                    <p><?php echo"$login_username"?></p>
                                 </a>
                             </div>
                             <a href="../html/Profile.php">
