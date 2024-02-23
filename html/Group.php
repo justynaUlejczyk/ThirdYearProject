@@ -246,7 +246,7 @@ $username = $_SESSION["username"];
                     <p>Name</p>
                     <input type="text" id = "groupname" name ="groupname">
                 </div>
-                <input type="text" name="username" id="username" value="<?php echo $username; ?>">
+                <input type="hidden" name="username" id="username" value="<?php echo $username; ?>">
 
                 <!--<div id="desc">
                     <p>Description</p>
@@ -254,7 +254,7 @@ $username = $_SESSION["username"];
                 </div>-->
             </div>
             <div class="create-options">
-                <button onclick=closeCreate()>Cancel</button>
+            <button type="button" onclick="closeCreate()">Cancel</button>
                 <button type="submit">Create</button>
 </form>
             </div>
