@@ -349,7 +349,7 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
                     <input type="text" id="recipient" name="recipient" value="<?php echo $id; ?>" hidden
                         style="display:none;">
 
-                    <input type="text" id="text" name="text">
+                    <input type="text" id="text" name="text" required="">
 
                     <input type="text" class="username" name="username" value="<?php echo $login_username; ?>" hidden
                         style="display:none;">
