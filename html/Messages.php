@@ -325,11 +325,13 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
                                     $text
                                 </div>
                             </div></div>
+                            
                         ";
                                     }
                                 }
                             }
                         }
+                        echo "</div>";
                     } else {
                         echo 'No Messages Yet';
                     }
@@ -339,7 +341,7 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
                     ?>
 
 
-                </div>
+
                 <form class="chatter-send-message" id="messages" action="../php/send_message.php" method="post">
 
 
