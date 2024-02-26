@@ -188,7 +188,7 @@ session_write_close();
                             <div class="dropdown-profile-icon">
                                 <a href="">
                                     <img src="../images/icons/Unknown_person.jpg" alt="">
-                                    <p><?php echo"$username"?></p>
+                                    <p><?php echo"$login_username"?></p>
                                 </a>
                             </div>
                             <a href="../html/Profile.php">
@@ -279,22 +279,38 @@ session_write_close();
             <!-- Home -->
             <div class="home">
                 <div class="feed">
-                    <div class="post-container">
-                        <div class="user-posting">
-                            <img src="../images/icons/Unknown_person.jpg" alt="">
-                            <span>Name</span>
-                        </div>
+                    
                         <?php
-                        echo"<div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam modi tenetur nihil odit
-                            eveniet quidem atque dolorum, voluptatibus officiis reiciendis quo, ut unde ducimus, error
-                            possimus nemo nostrum rerum quam inventore ratione voluptas commodi. $groupid</div>
-                    </div>"
+                    $stmt = pg_prepare($conn, "message", "SELECT * FROM groupmessage WHERE groupid= $1");
+                    $result =  pg_execute($conn, "message", array($groupid));
+                    $numRows = pg_num_rows($result);
+
+
+                    if ($numRows > 0) {
+                        while($row =pg_fetch_assoc($result)){
+                            $text = $row["text"];
+                            $sender = $row["username"];
+
+                           echo'  <div class="post-container">
+                           <div class="user-posting">
+                            <img src="../images/icons/Unknown_person.jpg" alt="">';
+                            echo "<span>$sender</span></div>
+                            <div><br>$text</div>
+                        
+                        </div>";
+                    }
+                        //echo '</div>';
+                    }else {echo'<div class="user-posting">
+                    <img src="../images/icons/Unknown_person.jpg" alt="">';
+                    echo "No posts yet
+                </div>";}
+
                     ?>
 
                 </div>
                 <div class="send">
-                    <form action="" method="post" id="newPostForm">
-                        <input type="text" placeholder="Message" />
+                    <form action="../php/group_message.php" method="post" id="newPostForm">
+                        <input type="text"  id= "text" name = "text" />
                         <input type="submit" value="send" />
                     </form>
                 </div>
@@ -310,6 +326,34 @@ session_write_close();
             </div>
             <span>Members</span>
             <button id="add-member">Add Member</button>
+            <form action="../php/add_users.php" method="post">
+                <h2> Add member</h2>
+Name: <input type="text" name="name"><br>
+<input type="submit">
+</form>
+<?php
+//retriving members of group
+
+
+$stmt = pg_prepare($conn, "members", "SELECT * FROM accounttogroup WHERE groupid=$1");
+$result = pg_execute($conn, "members", array($groupid));
+$numRows = pg_num_rows($result);
+echo '<div class="user-list">';
+if ($numRows > 0) {
+    echo "<p>Members: $numRows</p>"; // Display total number of members
+    while ($row = pg_fetch_assoc($result)) {
+        $username = $row['username'];
+       echo' <div class="members">
+            <img src="../images/icons/Unknown_person.jpg" alt="">';
+            echo "<span>$username</span>
+        </div>";
+    }
+
+}
+
+
+?>
+            
             <div class="user-list">
                 <div class="members">
                     <img src="../images/icons/Unknown_person.jpg" alt="">
@@ -318,6 +362,8 @@ session_write_close();
                 <div class="members">
                     <img src="../images/icons/Unknown_person.jpg" alt="">
                     <span>Name</span>
+                    
+
                 </div>
 
             </div>
