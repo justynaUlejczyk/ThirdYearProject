@@ -218,7 +218,7 @@ input[type="text"]:focus {
     border-radius: 12px;
     padding: 32px;
     background-color: var(--foreground);
-    max-width: 800px;
+    width: 800px;
     margin-bottom: 50px;
 }
 
