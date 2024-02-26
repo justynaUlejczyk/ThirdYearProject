@@ -357,19 +357,6 @@ session_write_close();
 
 
             ?>
-
-            <div class="user-list">
-                <div class="members">
-                    <img src="../images/icons/Unknown_person.jpg" alt="">
-                    <span>Name</span>
-                </div>
-                <div class="members">
-                    <img src="../images/icons/Unknown_person.jpg" alt="">
-                    <span>Name</span>
-
-
-                </div>
-
             </div>
         </aside>
     </section>
