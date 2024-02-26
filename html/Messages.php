@@ -285,7 +285,8 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
                     <!-- Chat box -->
                     <?php
 
-                    $stmt = pg_prepare($conn, "read_message", "SELECT * FROM messages WHERE (username = $1 AND recipient = $2) OR (username = $2 AND recipient = $1) ORDER BY messageID ASC");
+                    $stmt = pg_prepare($conn, "read_message", "SELECT * FROM messages WHERE
+                     (username = $1 AND recipient = $2) OR (username = $2 AND recipient = $1) ORDER BY messageID ASC");
                     $result = pg_execute($conn, "read_message", array($login_username, $id));
                     $numRows = pg_num_rows($result);
 

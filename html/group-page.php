@@ -188,7 +188,9 @@ session_write_close();
                             <div class="dropdown-profile-icon">
                                 <a href="">
                                     <img src="../images/icons/Unknown_person.jpg" alt="">
-                                    <p><?php echo"$login_username"?></p>
+                                    <p>
+                                        <?php echo "$login_username" ?>
+                                    </p>
                                 </a>
                             </div>
                             <a href="../html/Profile.php">
@@ -279,38 +281,40 @@ session_write_close();
             <!-- Home -->
             <div class="home">
                 <div class="feed">
-                    
-                        <?php
+
+                    <?php
                     $stmt = pg_prepare($conn, "message", "SELECT * FROM groupmessage WHERE groupid= $1");
-                    $result =  pg_execute($conn, "message", array($groupid));
+                    $result = pg_execute($conn, "message", array($groupid));
                     $numRows = pg_num_rows($result);
 
 
                     if ($numRows > 0) {
-                        while($row =pg_fetch_assoc($result)){
+                        while ($row = pg_fetch_assoc($result)) {
                             $text = $row["text"];
                             $sender = $row["username"];
 
-                           echo'  <div class="post-container">
-                           <div class="user-posting">
+                            echo '  <div class="post-container">
+                        <div class="user-posting">
                             <img src="../images/icons/Unknown_person.jpg" alt="">';
                             echo "<span>$sender</span></div>
                             <div><br>$text</div>
                         
                         </div>";
-                    }
+                        }
                         //echo '</div>';
-                    }else {echo'<div class="user-posting">
+                    } else {
+                        echo '<div class="user-posting">
                     <img src="../images/icons/Unknown_person.jpg" alt="">';
-                    echo "No posts yet
-                </div>";}
+                        echo "No posts yet
+                </div>";
+                    }
 
                     ?>
 
                 </div>
                 <div class="send">
                     <form action="../php/group_message.php" method="post" id="newPostForm">
-                        <input type="text"  id= "text" name = "text" />
+                        <input type="text" id="text" name="text" />
                         <input type="submit" value="send" />
                     </form>
                 </div>
@@ -328,32 +332,32 @@ session_write_close();
             <button id="add-member">Add Member</button>
             <form action="../php/add_users.php" method="post">
                 <h2> Add member</h2>
-Name: <input type="text" name="name"><br>
-<input type="submit">
-</form>
-<?php
-//retriving members of group
-
-
-$stmt = pg_prepare($conn, "members", "SELECT * FROM accounttogroup WHERE groupid=$1");
-$result = pg_execute($conn, "members", array($groupid));
-$numRows = pg_num_rows($result);
-echo '<div class="user-list">';
-if ($numRows > 0) {
-    echo "<p>Members: $numRows</p>"; // Display total number of members
-    while ($row = pg_fetch_assoc($result)) {
-        $username = $row['username'];
-       echo' <div class="members">
-            <img src="../images/icons/Unknown_person.jpg" alt="">';
-            echo "<span>$username</span>
-        </div>";
-    }
-
-}
-
-
-?>
+                Name: <input type="text" name="name"><br>
+                <input type="submit">
+            </form>
+            <?php
+            //retriving members of group
             
+
+            $stmt = pg_prepare($conn, "members", "SELECT * FROM accounttogroup WHERE groupid=$1");
+            $result = pg_execute($conn, "members", array($groupid));
+            $numRows = pg_num_rows($result);
+            echo '<div class="user-list">';
+            if ($numRows > 0) {
+                echo "<p>Members: $numRows</p>"; // Display total number of members
+                while ($row = pg_fetch_assoc($result)) {
+                    $username = $row['username'];
+                    echo ' <div class="members">
+            <img src="../images/icons/Unknown_person.jpg" alt="">';
+                    echo "<span>$username</span>
+        </div>";
+                }
+
+            }
+
+
+            ?>
+
             <div class="user-list">
                 <div class="members">
                     <img src="../images/icons/Unknown_person.jpg" alt="">
@@ -362,7 +366,7 @@ if ($numRows > 0) {
                 <div class="members">
                     <img src="../images/icons/Unknown_person.jpg" alt="">
                     <span>Name</span>
-                    
+
 
                 </div>
 
