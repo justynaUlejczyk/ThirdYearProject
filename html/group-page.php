@@ -294,7 +294,7 @@ session_write_close();
                             $sender = $row["username"];
 
                             echo '  <div class="post-container">
-                           <div class="user-posting">
+                        <div class="user-posting">
                             <img src="../images/icons/Unknown_person.jpg" alt="">';
                             echo "<span>$sender</span></div>
                             <div><br>$text</div>
