@@ -31,6 +31,7 @@ session_write_close();
     <link rel="stylesheet" href="../css/Group.css">
     <link rel="stylesheet" href="../css/StyleSheet.css">
     <link rel="stylesheet" href="../css/Group-page.css">
+    <link rel="stylesheet" href="../css/Group-settings.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
@@ -41,6 +42,7 @@ session_write_close();
     <script src="../js/navbar.js"></script>
     <script src="../js/createGroup.js"></script>
     <script src="../js/GroupMemberBar.js"></script>
+    <script src="../js/addMember.js"></script>
 </head>
 
 <!-- test commit -->
@@ -255,7 +257,7 @@ session_write_close();
         <aside class="left-bar">
             <ul>
                 <a>
-                    <li>
+                    <li href="group-page.php">
                         Home
                     </li>
                 </a>
@@ -265,7 +267,7 @@ session_write_close();
                 <a href="./group-page-meeting.html">
                     <li>Meetings</li>
                 </a>
-                <a href="group-settings.php">
+                <a>
                     <li>
                         Settings
                     </li>
@@ -277,50 +279,10 @@ session_write_close();
 
         <!-- Feed -->
         <feed>
+            <div class="settings">
 
-            <!-- Home -->
-            <div class="home">
-                <div class="feed">
-
-                    <?php
-                    $stmt = pg_prepare($conn, "message", "SELECT * FROM groupmessage WHERE groupid= $1");
-                    $result = pg_execute($conn, "message", array($groupid));
-                    $numRows = pg_num_rows($result);
-
-
-                    if ($numRows > 0) {
-                        while ($row = pg_fetch_assoc($result)) {
-                            $text = $row["text"];
-                            $sender = $row["username"];
-                            $messageid = $row['groupmessageid'];
-
-                            echo '  <div class="post-container">
-                        <div class="user-posting">
-                            <img src="../images/icons/Unknown_person.jpg" alt="">';
-                            echo "<span>$sender</span></div>
-                            <div><br>$text</div>
-                            <a href='../php/delete_groupPost.php?mg=$messageid'> delete </a>
-                        
-                        </div>";
-                        }
-                        //echo '</div>';
-                    } else {
-                        echo '<div class="user-posting">
-                    <img src="../images/icons/Unknown_person.jpg" alt="">';
-                        echo "No posts yet
-                </div>";
-                    }
-
-                    ?>
-
-                </div>
-                <div class="send">
-                    <form action="../php/group_message.php" method="post" id="newPostForm">
-                        <input type="text" id="text" name="text" />
-                        <input type="submit" value="send" />
-                    </form>
-                </div>
             </div>
+
         </feed>
 
 
@@ -331,12 +293,8 @@ session_write_close();
                 <i class="fa fa-arrow-right" aria-hidden="true"></i>
             </div>
             <span>Members</span>
-            <button id="add-member">Add Member</button>
-            <form action="../php/add_users.php" method="post">
-                <h2> Add member</h2>
-                Name: <input type="text" name="name"><br>
-                <input type="submit">
-            </form>
+            <button id="add-member" onclick='addMember()'>Add Member</button>
+
             <?php
             //retriving members of group
             
@@ -361,9 +319,6 @@ session_write_close();
 
 
             ?>
-            </div>
-
-
 
 
         </aside>
