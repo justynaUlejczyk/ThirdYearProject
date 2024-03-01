@@ -41,7 +41,6 @@ session_write_close();
     <script src="../js/navbar.js"></script>
     <script src="../js/createGroup.js"></script>
     <script src="../js/GroupMemberBar.js"></script>
-    <script src="../js/addMember.js"></script>
 </head>
 
 <!-- test commit -->
@@ -293,12 +292,14 @@ session_write_close();
                         while ($row = pg_fetch_assoc($result)) {
                             $text = $row["text"];
                             $sender = $row["username"];
+                            $messageid = $row['groupmessageid'];
 
                             echo '  <div class="post-container">
                         <div class="user-posting">
                             <img src="../images/icons/Unknown_person.jpg" alt="">';
                             echo "<span>$sender</span></div>
                             <div><br>$text</div>
+                            <a href='../php/delete_groupPost.php?mg=$messageid'> delete </a>
                         
                         </div>";
                         }
@@ -322,13 +323,6 @@ session_write_close();
             </div>
         </feed>
 
-        <form action="../php/add_users.php" method="post" class='add-members'>
-            <h2> Add member</h2>
-            <span>Name:<input type="text" name="name"></span>
-            <span>
-                <input onclick="cancelMember()" type="button" value='Cancel'>
-                <input type="submit"></span>
-        </form>
 
 
         <!--  Right Side Bar for Members -->
@@ -337,8 +331,12 @@ session_write_close();
                 <i class="fa fa-arrow-right" aria-hidden="true"></i>
             </div>
             <span>Members</span>
-            <button id="add-member" onclick='addMember()'>Add Member</button>
-
+            <button id="add-member">Add Member</button>
+            <form action="../php/add_users.php" method="post">
+                <h2> Add member</h2>
+                Name: <input type="text" name="name"><br>
+                <input type="submit">
+            </form>
             <?php
             //retriving members of group
             
@@ -363,19 +361,6 @@ session_write_close();
 
 
             ?>
-
-            <div class="user-list">
-                <div class="members">
-                    <img src="../images/icons/Unknown_person.jpg" alt="">
-                    <span>Name</span>
-                </div>
-                <div class="members">
-                    <img src="../images/icons/Unknown_person.jpg" alt="">
-                    <span>Name</span>
-
-
-                </div>
-
             </div>
         </aside>
     </section>
