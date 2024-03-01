@@ -62,7 +62,11 @@ function accessibility(clickedElement){
 }
 
 
-
+function deleteAccount{
+    hideAll();
+    var deleteAccount = document.getElementById("deleteAccount");
+    deleteAccount.style.display = "none";
+}
 
 function hideAll(){
     var General = document.getElementById("general");
@@ -76,6 +80,7 @@ function hideAll(){
     var Privacy = document.getElementById("privacy");
         var privacyPolicy = document.getElementById("privacyPolicy");
         var accountPrivacy = document.getElementById("accountPrivacy");
+        var deleteAccount = document.getElementById("deleteAccount");
 
     var Accessibility = document.getElementById("accessibility")
 
@@ -91,7 +96,7 @@ function hideAll(){
     Privacy.style.display = "none";
         privacyPolicy.style.display = "none";
         accountPrivacy.style.display = "none";
-
+        deleteAccount.style.display ="none"
 
     Accessibility.style.display = "none";
 

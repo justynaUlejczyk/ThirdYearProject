@@ -160,6 +160,9 @@ margin-bottom: 0px;
     display: inline;
 }
 
+#deleteAccount{
+    display: none;
+}
 
 .profileSwitch{
     position: relative;
