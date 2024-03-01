@@ -263,7 +263,7 @@ session_write_close();
                 <a href="group-page-file.php">
                     <li>Files</li>
                 </a>
-                <a href="./group-page-meeting/group-page-meeting.html">
+                <a href="./group-page-meeting.html">
                     <li>Meetings</li>
                 </a>
                 <a>
@@ -354,6 +354,8 @@ session_write_close();
                     echo ' <div class="members">
             <img src="../images/icons/Unknown_person.jpg" alt="">';
                     echo "<span>$username</span>
+                    <span><a href ='../php/delete_member.php?user=$username'>remove</a></span>
+
         </div>";
                 }
 
@@ -362,6 +364,19 @@ session_write_close();
 
             ?>
 
+            <div class="user-list">
+                <div class="members">
+                    <img src="../images/icons/Unknown_person.jpg" alt="">
+                    <span>Name</span>
+                </div>
+                <div class="members">
+                    <img src="../images/icons/Unknown_person.jpg" alt="">
+                    <span>Name</span>
+
+
+                </div>
+
+            </div>
         </aside>
     </section>
 

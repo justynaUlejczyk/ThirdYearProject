@@ -663,7 +663,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
             }
 
             // Close the database connection
-            pg_close($conn);
+           
             ?>
             <!-- End of Post 1 -->
             <!-- End of Posts -->
@@ -675,26 +675,30 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
         <!-- Start of Groups-->
         <groups class="tile group">
             <div id="tile3">
-                <button class="groupButton">
-                    <div class="placeholder-img"></div>
-                    <p>Group 1</p>
-                </button>
-                <button class="groupButton">
-                    <div class="placeholder-img"></div>
-                    <p>Group 1</p>
-                </button>
-                <button class="groupButton">
-                    <div class="placeholder-img"></div>
-                    <p>Group 1</p>
-                </button>
-            </div>
+            <?php
+                $groupsSTMT = pg_prepare($conn, "groups", "SELECT *FROM groups INNER
+                JOIN accounttogroup ON groups.groupid = accounttogroup.groupid WHERE username = $1 ");
+                $groupsRESULT = pg_execute($conn, "groups", array($username));
+
+                while ($row = pg_fetch_assoc($groupsRESULT)) {
+                    $groupid = $row['groupid'];
+                    $groupname = $row['groupname'];
+                    echo "<button class='groupButton'>
+                    <div class='placeholder-img'></div>
+                <a href='group-page.php?id=$groupid'>
+                    <p>$groupname</p</a>
+                    </button>";
+                }
+                ?>
+                </div>
+                
             <div id="viewMore">
-                <a href="../html/Notificaitons.php">View More</a>
+                <a href="../html/group.php">View More</a>
             </div>
         </groups>
         <!-- End of Gorups -->
     </main>
 </body>
-
+<?php  pg_close($conn); ?>
 
 </html>
