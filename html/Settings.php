@@ -264,7 +264,7 @@ if ($settingsResult) {
             <h1 onclick="privacy()">Privacy & security</h2>
             <h3 onclick="accountPrivacy()">Account Privacy</h3>
             <h3 onclick="privacyPolicy()">  Privacy Policy</h3>
-            <h3 >Delete Account</h3>
+            <h3 onclick="deleteAccount()">Delete Account</h3>
 
             <h1 onclick="accessibility()">Accessability</h2>
             <h3>darkmode</h3>
@@ -376,12 +376,13 @@ if ($settingsResult) {
             </div>
 
 
-            <div id = "deleteAcount">
+            <div id = "deleteAccount">
 
                 <h1 class="updateTitle">Delete Account</h1>
 
-
+                <br>
                 <p class="inline">To delete your account click here, once clicked this acction cannot be undone</p>
+                <br>
                 <button class="confirmButton">Delete Account </button>
 
             </div>

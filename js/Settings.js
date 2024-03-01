@@ -65,7 +65,7 @@ function accessibility(clickedElement){
 function deleteAccount(clickedElement){
     hideAll();
     var deleteAccount = document.getElementById("deleteAccount");
-    deleteAccount.style.display = "none";
+    deleteAccount.style.display = "inline-block";
 }
 
 function hideAll(){
