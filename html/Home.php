@@ -663,7 +663,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
             }
 
             // Close the database connection
-           
+
             ?>
             <!-- End of Post 1 -->
             <!-- End of Posts -->
@@ -691,7 +691,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                 }
                 ?>
                 </div>
-                
+
             <div id="viewMore">
                 <a href="../html/group.php">View More</a>
             </div>
