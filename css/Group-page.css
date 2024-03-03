@@ -261,23 +261,6 @@ input[type="text"]:focus {
 }
 
 .add-members {
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: fixed;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    max-width: 350px;
-    aspect-ratio: 1/1;
-    background-color: var(--foreground);
-    border-radius: 25px;
-    height: auto;
-    z-index: 999;
-    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
@@ -287,13 +270,6 @@ form.add-members {
     cursor: pointer;
 }
 
-.add-members span {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-}
-
 .add-members input[type="submit"],
 .add-members input[type="button"] {
     background: none;
@@ -301,4 +277,18 @@ form.add-members {
     border: none;
     font-size: 16px;
     font-family: "Josefin Sans", sans-serif;
+}
+
+.settings form {
+    width: 100%;
+}
+
+.input-user {
+    display: flex;
+    gap: 25px;
+}
+
+.submit {
+    padding: 15px 20px;
+    border: 1px solid white;
 }

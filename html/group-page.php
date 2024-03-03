@@ -322,13 +322,6 @@ session_write_close();
             </div>
         </feed>
 
-        <form action="../php/add_users.php" method="post" class='add-members'>
-            <h2> Add member</h2>
-            <span>Name:<input type="text" name="name"></span>
-            <span>
-                <input onclick="cancelMember()" type="button" value='Cancel'>
-                <input type="submit"></span>
-        </form>
 
 
         <!--  Right Side Bar for Members -->
@@ -337,7 +330,6 @@ session_write_close();
                 <i class="fa fa-arrow-right" aria-hidden="true"></i>
             </div>
             <span>Members</span>
-            <button id="add-member" onclick='addMember()'>Add Member</button>
 
             <?php
             //retriving members of group
