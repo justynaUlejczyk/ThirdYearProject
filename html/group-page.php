@@ -41,7 +41,6 @@ session_write_close();
     <script src="../js/navbar.js"></script>
     <script src="../js/createGroup.js"></script>
     <script src="../js/GroupMemberBar.js"></script>
-    <script src="../js/addMember.js"></script>
 </head>
 
 <!-- test commit -->
@@ -293,12 +292,14 @@ session_write_close();
                         while ($row = pg_fetch_assoc($result)) {
                             $text = $row["text"];
                             $sender = $row["username"];
+                            $messageid = $row['groupmessageid'];
 
                             echo '  <div class="post-container">
                         <div class="user-posting">
                             <img src="../images/icons/Unknown_person.jpg" alt="">';
                             echo "<span>$sender</span></div>
                             <div><br>$text</div>
+                            <a href='../php/delete_groupPost.php?mg=$messageid'> delete </a>
                         
                         </div>";
                         }
@@ -330,7 +331,6 @@ session_write_close();
                 <i class="fa fa-arrow-right" aria-hidden="true"></i>
             </div>
             <span>Members</span>
-
             <?php
             //retriving members of group
             
@@ -355,6 +355,9 @@ session_write_close();
 
 
             ?>
+            </div>
+
+
 
 
         </aside>

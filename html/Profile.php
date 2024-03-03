@@ -9,7 +9,7 @@ require_once "../php/connect_db.php";
 
 $username = $_SESSION["username"];
 $account_username = $username;
-if(isset($_GET["id"])){
+if (isset($_GET["id"])) {
     $id = $_GET["id"];
     $account_username = $id;
 }
@@ -187,7 +187,9 @@ $result = pg_query($conn, $query);
                             <div class="dropdown-profile-icon">
                                 <a href="">
                                     <img src="../images/icons/Unknown_person.jpg" alt="">
-                                    <p><?php echo "$username"?></p>
+                                    <p>
+                                        <?php echo "$username" ?>
+                                    </p>
                                 </a>
                             </div>
                             <a href="../html/Profile.php">
@@ -279,7 +281,8 @@ $result = pg_query($conn, $query);
                         <button onclick="showAboutTab()">About</button>
                     </div>
                     <div>
-                        <button>Edit</button>
+                        <!-- Will need Php code to display follow or unfollow depending if theyre following the user or not (if theyre following it should say unfollow) -->
+                        <button class='follow-button'>Follow</button>
                     </div>
                 </div>
             </div>
@@ -290,7 +293,9 @@ $result = pg_query($conn, $query);
         <section class="profile-info-display">
             <aside class="profile-bio">
                 <h3>Bio</h3>
-                <bio><?php echo "$bio"?></bio>
+                <bio>
+                    <?php echo "$bio" ?>
+                </bio>
                 <div>
                     <span>IMG</span>
                     <span>Studies at Heriot Watt</span>
@@ -670,50 +675,55 @@ $result = pg_query($conn, $query);
 
 
             <div class="aboutContainer">
-                    <div id="leftMainHeading">     
-                        <h1>About</h1>
-                        <h2 onclick="overview()">Overview</h2>
-                        <h2 onclick="contact()">Contact Info</h2>
-                        <h2 onclick="profileInfo()">Profile Info</h2>
-                    </div>
-                    <div id = "rightInfo"> 
-                        <div id ="overview">
-                            <p>University: </p>
-                            <p>Works at:</p>
-                            <p>From:</p>
-                            <p>Gender:</p>
-                            <p>Birthday:</p>
-                        </div>
-
-                        <div id ="contact">
-                            <p>Phone Number:</p>
-                            <p>Email: </p>
-                            <p></p>
-                        </div>
-
-                        <div id = "profileInfo">
-                            <p>bio</p>
-                        </div>
-
-                    </div>
+                <div id="leftMainHeading">
+                    <h1>About</h1>
+                    <h2 onclick="overview()">Overview</h2>
+                    <h2 onclick="contact()">Contact Info</h2>
+                    <h2 onclick="profileInfo()">Profile Info</h2>
                 </div>
+                <div id="rightInfo">
+                    <div id="overview">
+                        <p>University: </p>
+                        <div class="divider"></div>
+                        <p>Works at:</p>
+                        <div class="divider"></div>
+                        <p>From:</p>
+                        <div class="divider"></div>
+                        <p>Gender:</p>
+                        <div class="divider"></div>
+                        <p>Birthday:</p>
+                    </div>
+
+                    <div id="contact">
+                        <p>Phone Number:</p>
+                        <div class="divider"></div>
+                        <p>Email: </p>
+                        <p></p>
+                    </div>
+
+                    <div id="profileInfo">
+                        <p>bio</p>
+                    </div>
+
+                </div>
+            </div>
 
             <section id="friends">
                 <div>
                     <h1>Friends</h1>
 
 
-                    <div class = "profile">
-                        <img src="../images/icons/Unknown_person.jpg" alt="friend profile pic"> 
+                    <div class="profile">
+                        <img src="../images/icons/Unknown_person.jpg" alt="friend profile pic">
                         <p id="friendName">name</p>
-                        <p id ="username">username</p>
+                        <p id="username">username</p>
                     </div>
 
 
                 </div>
             </section>
         </section>
-                    
+
         </section>
     </main>
 

@@ -1,13 +1,67 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap");
 
-main section{
+:root {
+    --light-bg: #ebebeb;
+    --light-bg-s: white;
+    --light-text: black;
+
+    --dark-gray: #646464;
+
+    --dark-bg: #1a1a1a;
+    --dark-bg-s: #292929;
+    --dark-text: #ffffff;
+
+    --gray: #c2c2c2;
+    --accent: #f64c72;
+    --stroke: 2px;
+
+    --background: var(--light-bg);
+    --foreground: var(--light-bg-s);
+    --text: var(--light-text);
+    --svg: var(--dark-gray);
+    --svg-stroke: var(--stroke);
+    --fill-color-back: var(--light-bg);
+
+    --border: 1px solid var(--gray);
+    --box-shadow: 0 4px 8px -6px #181818;
+}
+
+.darkmode {
+    --light-bg: #ebebeb;
+    --light-bg-s: white;
+    --light-text: black;
+
+    --dark-gray: #646464;
+
+    --dark-bg: #1a1a1a;
+    --dark-bg-s: #292929;
+    --dark-text: #ffffff;
+
+    --gray: #c2c2c2;
+    --accent: #f64c72;
+    --stroke: 1px;
+
+    --background: var(--dark-bg);
+    --foreground: var(--dark-bg-s);
+    --text: var(--dark-text);
+    --svg: var(--light-bg-s);
+    --svg-stroke: var(--stroke);
+    --fill-color-back: var(--light-bg);
+
+    --box-shadow: none;
+    --border: none;
+}
+
+main section {
     height: auto;
 }
 
-#settingsHeading{
-    margin-top:70px;
+#settingsHeading {
+    margin-top: 70px;
     padding: 20px;
     padding-bottom: 0px;
-    cursor:pointer;
+    cursor: pointer;
 }
 .settingsLinks {
     display: inline-block;
@@ -16,29 +70,32 @@ main section{
     width: 20%;
     margin: 20px;
     padding: 5px;
-    border-right:1px solid black;
-   
+    border-right: 1px solid var(--text);
 }
-.settingsLinks h3{
-    margin-left:10px;
+.settingsLinks h3 {
+    margin-left: 10px;
 }
 
+h1,
+h3 {
+    padding: 10px;
+    margin: 0;
+    font-weight: 600;
+}
 
-.settingsLinks h3:hover{
+.settingsLinks h3:hover {
     background-color: hotpink;
     border-radius: 10px;
     margin-right: 5px;
-    padding: 5px;   
     cursor: pointer;
-} 
+}
 
-.settingsLinks h1:hover{
+.settingsLinks h1:hover {
     background-color: hotpink;
     border-radius: 10px;
     margin-right: 5px;
-    padding: 5px;   
     cursor: pointer;
-} 
+}
 
 .settingsContent {
     display: inline-block;
@@ -48,120 +105,109 @@ main section{
     padding: 5px;
 }
 
-
-.updateTitle{
-    font-size: 40px;
+.updateTitle {
+    font-size: 48px;
     padding-top: 0px;
     margin-top: 0px;
-    font-weight: bold;
 }
 
-.settingsContent p{
+.settingsContent p {
     font-size: 20px;
 }
 
-
-
-#privacy{
+#privacy {
     display: none;
 }
 
-#account{
+#account {
     display: none;
-
 }
 
-#account p{
+#account p {
     margin-top: 0px;
 }
 
-#account h1{
+#account h1 {
     margin-bottom: 0px;
 }
-#profileLink{
+#profileLink {
     background-color: turquoise;
     cursor: pointer;
     border-radius: 10px;
 }
 
-
-
-#accessibility{
-    display: none;
-
-}
-
-
-#updateEmail{
+#accessibility {
     display: none;
 }
 
-#updateBio{
+#updateEmail {
     display: none;
 }
 
-.settingsContent p{
-    margin:20px;
+#updateBio {
+    display: none;
+}
+
+.settingsContent p {
+    margin: 20px;
     padding: 10px;
     margin-bottom: 0px;
 }
 
-.settingsContent h1{
-margin-bottom: 0px;
-
+.settingsContent h1 {
+    margin-bottom: 0px;
 }
 
-
-.settingsContent  button{
-    background-color: bisque;
+.settingsContent button {
+    background-color: var(--foreground);
     margin: 20px;
     border-radius: 10px;
-    padding: 10px;
+    padding: 15px 25px;
     cursor: pointer;
-
 }
 
-.settingsContent input{
-    background-color: grey;
-    border:none;
+.settingsContent input {
+    background-color: var(--fill-color-back);
+    color: black;
+    border: 1px solid var(--text);
     height: 40px;
     margin-left: 30px;
     border-radius: 10px;
     padding: 10px;
 }
 
-.settingsContent input[type=text] {
+.settingsContent input[type="text"] {
     width: 100%;
     padding: 20px;
     font-size: 25px;
     margin: 8px 0;
     box-sizing: border-box;
-  }
+}
 
-#updateName{
+#updateName {
     display: none;
 }
 
-
-#updatePassword{
-    display: none;
-
-}
-
-
-#privacyPolicy{
+#updatePassword {
     display: none;
 }
 
-#accountPrivacy{
+#privacyPolicy {
     display: none;
 }
-.inline{
+
+#accountPrivacy {
+    display: none;
+}
+.inline {
     display: inline;
 }
 
+#deleteAccount {
+    display: none;
+}
 
-.profileSwitch{
+.profileSwitch {
     position: relative;
     display: inline-block;
     width: 60px;
@@ -183,8 +229,8 @@ margin-bottom: 0px;
     right: 0;
     bottom: 0;
     background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
 }
 
 .slider:before {
@@ -195,25 +241,41 @@ margin-bottom: 0px;
     left: 4px;
     bottom: 4px;
     background-color: white;
-    -webkit-transition:.4s;
-    transition:.4s;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
 }
 
-input:checked +.slider {
-    background-color: #2196F3;
+input:checked + .slider {
+    background-color: #2196f3;
 }
 
-input:focus +.slider {
-    box-shadow: 0 0 1px #2196F3;
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196f3;
 }
 
-input:checked +.slider:before {
+input:checked + .slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
 }
 
+.settingsContent .divider {
+    margin: 25px 0px;
+}
 
+.info-display {
+    display: flex;
+}
 
+.info-display p {
+    margin: 0 !important;
+}
 
+.info-cat {
+    font-weight: 700;
+}
 
+.personal-info {
+    display: flex;
+    flex-direction: column;
+}
