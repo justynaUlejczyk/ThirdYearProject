@@ -49,7 +49,7 @@
     --box-shadow: none;
 }
 
-.settings {
+.setting {
     box-sizing: border-box;
     padding: 50px;
     display: flex;
@@ -59,6 +59,7 @@
     background-color: var(--foreground);
     width: 80%;
     height: 80%;
+    gap: 50px;
 }
 
 .settings-title {
@@ -115,6 +116,38 @@ article {
     padding: 0px 20px;
 }
 
-.settings span {
+.setting span {
     font-size: 24px;
+}
+
+input[type="text"].change-group-name {
+    padding: 10px;
+    width: 250px;
+    border-radius: 15px;
+}
+
+input[type="submit"].change-group-name {
+    padding: 10px 25px;
+    border-radius: 15px;
+    width: 100px;
+    background-color: var(--foreground);
+    color: var(--text);
+    border: 1px solid var(--text);
+}
+
+.change-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.wrapper {
+    margin-bottom: 50px;
+}
+
+.submit-button {
+    margin-top: 25px;
+    padding: 5px 25px;
+    border-radius: 15px;
+    border: 1px solid var(--text) !important;
 }

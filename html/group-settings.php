@@ -278,7 +278,7 @@ session_write_close();
 
         <!-- Feed -->
         <feed>
-            <div class="settings">
+            <div class="setting">
                 <div class='settings-title'>
                     <span>Settings</span>
                     <span>Group Name</span>
@@ -298,23 +298,42 @@ session_write_close();
                     </div>
                     <div class='settings-tab'>
                         <article>
-                            <h2>article1</h2>
+                            <div class="wrapper">
+                                <h2>Change Name</h2>
+                                <!-- change this below to a form -->
+                                <div class="change-container">
+                                    <input type="text" placeholder="New Group Name" class="change-group-name" />
+                                    <input type="submit" class="change-group-name" />
+                                </div>
+                            </div>
+                            <div class="wrapper">
+                                <h2>Change Description</h2>
+                                <!-- change this below to a form -->
+                                <div class="change-container">
+                                    <textarea id="text" name="text" rows="4" cols="50" maxlength="3000"
+                                        class="feed-create-post-captions"></textarea>
+                                    <input type="submit" class="change-group-name " />
+                                </div>
+                            </div>
                         </article>
                         <article>
                             <form action="../php/add_users.php" method="post" class='add-members'>
                                 <h2> Add member</h2>
                                 <span class='input-user'>Name:<input type="text" name="name"></span>
-                                <input type="submit" class="submit">
+                                <input type="submit" class="submit-button">
                             </form>
                         </article>
                         <article>
-                            <h2>article3</h2>
+                            <h2>Users</h2>
+                            <p>Display users along with delete button (same as in the .right-bar)</p>
                         </article>
                         <article>
-                            <h2>article4</h2>
+                            <h2>Are you sure you want to leave?</h2>
+                            <p>Put the button to leave here</p>
                         </article>
                         <article>
-                            <h2>article5</h2>
+                            <h2>Are you sure you want to delete this group?</h2>
+                            <p>Put button to delete group</p>
                         </article>
                     </div>
                 </div>
