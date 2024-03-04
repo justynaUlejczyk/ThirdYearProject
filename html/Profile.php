@@ -652,7 +652,7 @@ $result = pg_query($conn, $query);
                     <!-- Include this script in your HTML -->
                     <?php
                     // Close the database connection
-                    pg_close($conn);
+                    //pg_close($conn);
                     ?>
 
                 </bside>
@@ -709,13 +709,45 @@ $result = pg_query($conn, $query);
 
             <section id="friends">
                 <div>
-                    <h1>Friends</h1>
+                    <h1>You follow:</h1>
 
 
-                    <div class="profile">
-                        <img src="../images/icons/Unknown_person.jpg" alt="friend profile pic">
-                        <p id="friendName">name</p>
-                        <p id="username">username</p>
+                    
+                        <?php 
+                        //require_once '../php/connect_db.php';
+                        $followeeStmt=pg_prepare($conn, "follows", "SELECT * From follows Where username = $1");
+                         $followeeEx= pg_execute($conn, "follows", array($account_username));
+                         $numRows =pg_num_rows($followeeEx);
+                         $followersStmt=pg_prepare($conn, "follower", "SELECT * From follows Where followee = $1");
+                         $followersEx= pg_execute($conn, "follower", array($account_username));
+                         $numRows2 =pg_num_rows($followersEx);
+                        ?>
+                        <?php 
+                        if ($numRows>0){
+                            echo "you follow: ($numRows users) ";
+                            while  ($row=pg_fetch_assoc($followeeEx))
+                            {
+                                $foll=$row['followee'];
+
+                                   echo '<div class="profile"><img src="../images/icons/Unknown_person.jpg" alt="friend profile pic">
+                                   <p id="friendName">'; echo $foll; echo '</p></div>'; 
+
+                            }
+
+                        } else {echo "<div class='profile'>$account_username is not following anyone</div>";}
+                        
+                        echo '<h1>Followers:</h1>';
+                        if ($numRows2>0){
+                            echo "account_username has $numRows2 followers: ";
+                            while  ($row=pg_fetch_assoc($followersEx))
+                            {
+                                $foll=$row['username'];
+                                echo '<div class="profile"><img src="../images/icons/Unknown_person.jpg" alt="friend profile pic">
+                                   <p id="friendName">'; echo $foll; echo '</p></div>'; 
+                            }}
+                            else{echo'No followers yet... ';}
+                        ?>
+                        
                     </div>
 
 

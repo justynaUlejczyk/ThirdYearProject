@@ -25,22 +25,23 @@ $followee = $_GET['name'];
 $group = $_SESSION['groupid']; // Using session variable directly
 
 //check if not following user yet
-$stmtFollowee = pg_prepare($conn, "check", "SELECT followee from follows Where followee = $1 and username = $2");
+$stmtFollowee = pg_prepare($conn, "check", "SELECT followee FROM follows WHERE followee = $1 AND username = $2");
 $stmtEx = pg_execute($conn, "check", array($followee, $login_username));
-if($stmtEx)
-{
- echo "you already follow $followee";
-}else{
+
+if($stmtEx !== false) {
+    // Check if there are any rows returned
+    if(pg_num_rows($stmtEx) > 0) {
+        echo "You already follow $followee";
+    }else{
 
 // Assuming $conn is properly initialized
 $stmt = pg_prepare($conn, "followers", "INSERT INTO  follows (username, followee) VALUES ($1, $2)");
 $result = pg_execute($conn, "followers", array( $login_username, $followee)); // Using $result instead of $result2
 if ($result) {
-   header ('Location: ../html/messages.php');
+   header ('Location: ../html/profile.php');
 } else {
     echo "Error: " . pg_last_error($conn);
     die();
-}}
+}}}
 pg_close($conn);
 ?>
-
