@@ -280,9 +280,8 @@ $result = pg_query($conn, $query);
                         <button onclick="showGroupsTab()">Groups</button>
                         <button onclick="showAboutTab()">About</button>
                     </div>
-                    <div>
-                        <!-- Will need Php code to display follow or unfollow depending if theyre following the user or not (if theyre following it should say unfollow) -->
-                        <button class='follow-button'>Follow</button>
+                    <div><?php echo "<button class='follow-button'><a href ='../php/follow.php?name=$account_username' >
+                        Follow</button></a>";?>
                     </div>
                 </div>
             </div>

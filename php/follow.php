@@ -25,7 +25,7 @@ $followee = $_GET['name'];
 $group = $_SESSION['groupid']; // Using session variable directly
 
 //check if not following user yet
-$stmtFollowee = pg_prepare($conn, "check", "SELECT * from follows Where followee = $1 and username = $2");
+$stmtFollowee = pg_prepare($conn, "check", "SELECT followee from follows Where followee = $1 and username = $2");
 $stmtEx = pg_execute($conn, "check", array($followee, $login_username));
 if($stmtEx)
 {
