@@ -308,32 +308,39 @@ $username = $_SESSION["username"];
 
 
 
+        <?php
+ $stmt = pg_prepare($conn, "followers", "SELECT * FROM follows WHERE username=$1");
+ $result = pg_execute($conn, "followers", array($username)); // Assuming $login_username is set properly
+ $numRows = pg_num_rows($result);
+ 
+?>
+
         <bside class="friendBox">
             <h1 class="heading">Friends List</h1>
+            <?php 
+            if ($numRows > 0) {
+                echo "<p>You follow: $numRows users</p>"; // Display total number of members
+                while ($row = pg_fetch_assoc($result)) {
+                    $followee = $row['followee'];
+            ?>
             <section class="friendList">
                 <friend>
                     <img src="../images/cat.jpg" class="friendIcon">
-                    <span>Name</span>
-                </friend>
-                <friend>
-                    <img src="../images/cat.jpg" class="friendIcon">
-                    <span>Name</span>
-                </friend>
-                <friend>
-                    <img src="../images/cat.jpg" class="friendIcon">
-                    <span>Name</span>
-                </friend>
-                <friend>
-                    <img src="../images/cat.jpg" class="friendIcon">
-                    <span>Name</span>
-                </friend>
-
-
+                    <?php 
+                    
+                    echo "<span>$followee</span></friend>";
+                }}?>
+                
+            
                 <a href="../html/friends.php">
                     <h1 class="viewMore">View All</h1>
                 </a>
             </section>
         </bside>
+
+
+
+                
 
 
 
