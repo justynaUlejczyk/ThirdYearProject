@@ -738,7 +738,7 @@ $result = pg_query($conn, $query);
                         
                         echo '<h1>Followers:</h1>';
                         if ($numRows2>0){
-                            echo "account_username has $numRows2 followers: ";
+                            echo "$account_username has $numRows2 followers: ";
                             while  ($row=pg_fetch_assoc($followersEx))
                             {
                                 $foll=$row['username'];
