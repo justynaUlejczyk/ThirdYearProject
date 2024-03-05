@@ -312,16 +312,23 @@ $username = $_SESSION["username"];
  $stmt = pg_prepare($conn, "followers", "SELECT * FROM follows WHERE username=$1");
  $result = pg_execute($conn, "followers", array($username)); // Assuming $login_username is set properly
  $numRows = pg_num_rows($result);
+ $stmt2 = pg_prepare($conn, "followers2", "SELECT * FROM follows WHERE followee = $1");
+ $result2 = pg_execute($conn, "followers2", array($username)); // Assuming $login_username is set properly
+ $numRows2 = pg_num_rows($result2);
+ 
  
 ?>
 
         <bside class="friendBox">
             <h1 class="heading">Friends List</h1>
             <?php 
-            if ($numRows > 0) {
-                echo "<p>You follow: $numRows users</p>"; // Display total number of members
+            if ($numRows > 0 && $numRows2>0) {
+               
+                //echo "<p>You follow: $numRows users</p>"; // Display total number of members
                 while ($row = pg_fetch_assoc($result)) {
                     $followee = $row['followee'];
+                    $follower =$row ['username'];
+                    while ($row2=pg_fetch_assoc($result2)){
             ?>
             <section class="friendList">
                 <friend>
@@ -329,7 +336,7 @@ $username = $_SESSION["username"];
                     <?php 
                     
                     echo "<span>$followee</span></friend>";
-                }}?>
+              }}}?>
                 
             
                 <a href="../html/friends.php">
