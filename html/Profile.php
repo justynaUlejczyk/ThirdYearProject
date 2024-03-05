@@ -724,21 +724,22 @@ $result = pg_query($conn, $query);
                         ?>
                         <?php 
                         if ($numRows>0){
-                            echo "you follow: ($numRows users) ";
+                            echo "<p>you follow: ($numRows users)<p> ";
                             while  ($row=pg_fetch_assoc($followeeEx))
                             {
                                 $foll=$row['followee'];
 
-                                   echo '<div class="profile"><img src="../images/icons/Unknown_person.jpg" alt="friend profile pic">
-                                   <p id="friendName">'; echo $foll; echo '</p></div>'; 
+                                   echo '<div class="profile">
+                                   <img src="../images/icons/Unknown_person.jpg" alt="friend profile pic">
+                                   <p id="friendName">'; echo "$foll </p></div>"; 
 
                             }
 
                         } else {echo "<div class='profile'>$account_username is not following anyone</div>";}
                         
-                        echo '<h1>Followers:</h1>';
+                        echo '</div></section> <section id="friends"><h1>Followers:</h1>';
                         if ($numRows2>0){
-                            echo "$account_username has $numRows2 followers: ";
+                            echo "<p>$account_username has $numRows2 followers: </p>";
                             while  ($row=pg_fetch_assoc($followersEx))
                             {
                                 $foll=$row['username'];
