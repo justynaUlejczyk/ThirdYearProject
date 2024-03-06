@@ -1,6 +1,7 @@
 <?php
 require_once "../php/connect_db.php";
 $usersRESULT = pg_query($conn, "SELECT * FROM accounts ORDER BY username ASC");
+$groupsRESULT = pg_query($conn, "SELECT * FROM groups ORDER BY groupid ASC");
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +26,8 @@ $usersRESULT = pg_query($conn, "SELECT * FROM accounts ORDER BY username ASC");
         </tr>
 
     </table>
+
+    
     
 </body>
 </html>
