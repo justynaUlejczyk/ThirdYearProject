@@ -26,8 +26,22 @@ $groupsRESULT = pg_query($conn, "SELECT * FROM groups ORDER BY groupid ASC");
         </tr>
 
     </table>
+<hr>
+    <table>
+        <tr>
+            <th>Group name</th>
+            <th>Delete group?</th>
+        </tr>
+        <tr>
+            <?php while ($row = pg_fetch_assoc($groupsRESULT)){
+                $group_name = $row['groupname'];
+                $groupid = $row['groupid'];
+                echo "<tr><td>$group_name</td> <td><form action='../php/admin_delete_group.php', method='post'><input type='hidden' id='groupid' name='groupid' value=$groupid><input type='submit' value='delete'></form></td></tr>";
+            }
+            ?>
+        </tr>
 
-    
+    </table>
     
 </body>
 </html>
