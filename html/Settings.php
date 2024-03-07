@@ -445,7 +445,6 @@ if ($settingsResult) {
             <button type="button" onclick="deleteAccount()"> No, nevermind</button>
         </div>
 
-
     </section>
 
 
