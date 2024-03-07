@@ -277,6 +277,11 @@ session_write_close();
                     <button class="delete-file option-button">
                         Delete File
                     </button>
+                    <a href="group-canvas.html">
+                        <button class="canvas-file option-button" >
+                            Canvas File
+                        </button>
+                    </a>
                 </section>
                 <section class="file-container" id="fileContainer">
                     <div class="folder-container" onclick="openFolder(this)" folderid="Bid1">
