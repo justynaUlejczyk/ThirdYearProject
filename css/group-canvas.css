@@ -1,6 +1,39 @@
-#container {
+
+
+.container {
     display: flex;
+    height:500px
 }
-#canvas {
-    border: 1px solid black;
+
+
+#toolbar {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    width: 70px;
+    background-color: #202020;
+}
+
+#toolbar * {
+    margin-bottom: 6px;
+}
+
+#toolbar label {
+    font-size: 12px;
+}
+
+#toolbar:hover {
+    cursor: pointer;
+}
+
+#toolbar input {
+    width: 100%;
+}
+
+#toolbar button {
+    
+    border: none;
+    border-radius: 4px;
+    color:white;
+    padding: 2px;
 }

@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="../css/Group-page-file.css">
     <link rel="stylesheet" href="../css/group-editor.css">
 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <script type="text/JavaScript"
         src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js?ver=1.4.2"></script>
 
@@ -21,14 +25,14 @@
     <script src="../js/darkmode.js"></script>
     <script src="../js/createGroup.js"></script>
     <script src="../js/GroupMemberBar.js"></script>
-
+    
 </head>
 
 <!-- test commit -->
 
 <!-- test commit - branch demo -->
 
-<body>
+<body style="height: 600px;">
     <!-- Start of SubNav -->
     <subnav>
         <ul>
@@ -37,7 +41,7 @@
                     <img src="../images/cat.jpg" class="nav-profile">
                 </a>
             </li>
-x
+
             <li>
                 <div class="dropdown">
                     <button class="dropButton">
@@ -230,9 +234,25 @@ x
     <!-- End of Nav -->
 
     <!-- Left Side Bar for Options of what to do -->
+    <main>
+        <section class="container">
+            <div id="toolbar">
+                <h1>Filename</h1>
+                <label for="stroke">Stroke</label>
+                <input id="stroke" name='stroke' type="color">
+                <label for="lineWidth">Line Width</label>
+                <input id="lineWidth" name='lineWidth' type="range"  min="1" max="25" value="5">
 
+                <button id="clear">Clear</button>
+                <button onclick="saveCanvas()">Save</button>
+            </div>
+            <div class="drawing-board" class = "sticky-container">
+                <canvas id="drawing-board"></canvas>
+            </div>
+        </section>
+        <script src="../js/group-canvas.js"></script>
+    </main>
 
-    <script src="../js/group-canvas.js"></script>
 </body>
 
 </html>

@@ -1,29 +1,65 @@
-const canvas = document.getElementById('canvas');
+const canvas = document.getElementById('drawing-board');
+const toolbar = document.getElementById('toolbar');
 const ctx = canvas.getContext('2d');
-let painting = false;
 
-function startPosition(e) {
-    painting = true;
-    draw(e);
-}
+const canvasOffsetX = canvas.offsetLeft;
+const canvasOffsetY = canvas.offsetTop;
 
-function finishedPosition() {
-    painting = false;
-    ctx.beginPath();
-}
+canvas.width = window.innerWidth - canvasOffsetX;
+canvas.height = (window.innerHeight-100) - canvasOffsetY;
 
-function draw(e) {
-    if (!painting) return;
-    ctx.lineWidth = document.getElementById('penSize').value;
+let isPainting = false;
+let lineWidth = 5;
+let startX;
+let startY;
+
+toolbar.addEventListener('click', e => {
+    if (e.target.id === 'clear') {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+});
+
+toolbar.addEventListener('change', e => {
+    if(e.target.id === 'stroke') {
+        ctx.strokeStyle = e.target.value;
+    }
+
+    if(e.target.id === 'lineWidth') {
+        lineWidth = e.target.value;
+    }
+    
+});
+
+toolbar.addEventListener('save', e => {
+    
+    var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
+    window.location.href=image;
+});
+
+const draw = (e) => {
+    if(!isPainting) {
+        return;
+    }
+
+    ctx.lineWidth = lineWidth;
     ctx.lineCap = 'round';
-    ctx.strokeStyle = document.getElementById('penColor').value;
 
-    ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+    ctx.lineTo(e.clientX - canvasOffsetX, (e.clientY -200));
+    ctx.stroke();
+}
+
+canvas.addEventListener('mousedown', (e) => {
+    isPainting = true;
+    startX = e.clientX;
+    startY = e.clientY;
+});
+
+canvas.addEventListener('mouseup', e => {
+    isPainting = false;
     ctx.stroke();
     ctx.beginPath();
-    ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
-}
+});
 
-canvas.addEventListener('mousedown', startPosition);
-canvas.addEventListener('mouseup', finishedPosition);
 canvas.addEventListener('mousemove', draw);
+
+
