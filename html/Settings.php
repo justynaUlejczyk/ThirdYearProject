@@ -438,12 +438,11 @@ if ($settingsResult) {
         </div>
 
         <div id = "deleteAccountBox">
-            <h1 class="updateTitle">Delete Account</h1>
             <br>
             <p class="inline">To delete your account click here, once clicked this acction cannot be undone. Are you sure?</p>
             <br>
             <button class="confirmButton" onclick = "deleteAccountBox()">yes, delete account </button>
-            <button type="button" > No, nevermind</button>
+            <button type="button" onclick="deleteAccount()"> No, nevermind</button>
         </div>
 
 

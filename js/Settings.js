@@ -36,8 +36,6 @@ function account(clickedElement){
     }
 
 
-
-
 function privacy(clickedElement){
     hideAll();
     var privacy = document.getElementById("privacy");
@@ -69,9 +67,10 @@ function deleteAccount(clickedElement){
 }
 
 function deleteAccountBox(clickedElement){
-    
+    hideAll();
+    var deleteAccountBox = document.getElementById("deleteAccountBox");
+    deleteAccountBox.style.display = "inline-block";
 }
-
 
 function hideAll(){
     var General = document.getElementById("general");
@@ -86,6 +85,7 @@ function hideAll(){
         var privacyPolicy = document.getElementById("privacyPolicy");
         var accountPrivacy = document.getElementById("accountPrivacy");
         var deleteAccount = document.getElementById("deleteAccount");
+        var deleteAccountBox = document.getElementById("deleteAccountBox");
 
     var Accessibility = document.getElementById("accessibility")
 
@@ -101,7 +101,8 @@ function hideAll(){
     Privacy.style.display = "none";
         privacyPolicy.style.display = "none";
         accountPrivacy.style.display = "none";
-        deleteAccount.style.display ="none"
+        deleteAccount.style.display ="none";
+        deleteAccountBox.style.display ="none";
 
     Accessibility.style.display = "none";
 
