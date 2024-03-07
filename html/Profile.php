@@ -5,9 +5,11 @@ if (!isset($_SESSION["username"])) {
     header('Location: ' . "./login.php");
 }
 
+
 require_once "../php/connect_db.php";
 
 $username = $_SESSION["username"];
+$login_username = $_SESSION["username"];
 $account_username = $username;
 if (isset($_GET["id"])) {
     $id = $_GET["id"];
@@ -280,8 +282,20 @@ $result = pg_query($conn, $query);
                         <button onclick="showGroupsTab()">Groups</button>
                         <button onclick="showAboutTab()">About</button>
                     </div>
-                    <div><?php echo "<button class='follow-button'><a href ='../php/follow.php?name=$account_username' >
-                        Follow</button></a>";?>
+                    <div><?php 
+                    
+                    if ($login_username != $account_username) {
+                        $stmtFollowee = pg_prepare($conn, "check", "SELECT followee FROM follows WHERE followee = $1 AND username = $2");
+                        $stmtEx = pg_execute($conn, "check", array($account_username, $login_username));
+                    
+                        if ($stmtEx !== false && pg_num_rows($stmtEx) == 0) {
+                            // If the logged-in user is not following the profile user, show the follow button
+                            echo "<button class='follow-button'><a href ='../php/follow.php?name=$account_username'>Follow</a></button>";
+                        }else{echo "<button class='follow-button'><a href ='../php/stop_follow.php?id=$account_username'>Unfollow</a></button>";
+                        
+
+                        }
+                    }?>
                     </div>
                 </div>
             </div>
@@ -731,9 +745,11 @@ $result = pg_query($conn, $query);
 
                                    echo '<div class="profile">
                                    <img src="../images/icons/Unknown_person.jpg" alt="friend profile pic">
-                                   <p id="friendName">'; echo "$foll </p></div>"; 
+                                   <p id="friendName">'; echo "$foll </p>";
+                                   if ($login_username == $account_username) {
+                                   echo"<span><a href='../php/stop_follow.php?id=$foll'>unfollow</a></div>"; 
 
-                            }
+                            }}
 
                         } else {echo "<div class='profile'>$account_username is not following anyone</div>";}
                         
@@ -761,6 +777,6 @@ $result = pg_query($conn, $query);
 
 
 </body>
-
+<?php pg_close($conn);?>
 
 </html>
