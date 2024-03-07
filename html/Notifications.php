@@ -234,3 +234,37 @@ $username = $_SESSION["username"];
     </nav>
     <!-- End of Nav -->
 
+<body>
+
+
+<?php
+$query = pg_prepare($conn, "not", "SELECT * FROM notifications WHERE username = $1 ");
+$results = pg_execute($conn, "not", array($username));
+//CREATE TABLE notifications (
+ //   notificationID SERIAL,
+//    username VARCHAR(35) NOT NULL,
+ //   timestamp DATE,
+//    killTime DATE,
+ //   notifMessage
+
+ $NumbRows =pg_num_rows($results);
+
+ if($NumbRows>0)
+
+ {
+    $counter =0;
+while($row=pg_fetch_assoc($results))
+{   $counter = $counter+1;
+    $notification = $row['notifMessage'];
+    //$timestamp = $row['timestamp']; // Adding this line to fetch timestamp
+    echo "$counter: $notification <br>";
+}
+ }else
+ {
+echo "<div> <h1>No notifications yet...</h1></div>";
+
+ }
+?>
+
+
+</body>
