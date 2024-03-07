@@ -30,7 +30,7 @@ $stmt = pg_execute($conn, "delete", array($account_username,$login_username ));
 if ( $stmt) {
         
     // Group deleted successfully
-    header('Location: ../html/profile.php');
+    header("Location: ../html/profile.php?id=$account_username");
 
 } else {
 // Error occurred, display an error message

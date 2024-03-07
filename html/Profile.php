@@ -291,6 +291,9 @@ $result = pg_query($conn, $query);
                         if ($stmtEx !== false && pg_num_rows($stmtEx) == 0) {
                             // If the logged-in user is not following the profile user, show the follow button
                             echo "<button class='follow-button'><a href ='../php/follow.php?name=$account_username'>Follow</a></button>";
+                        }else{echo "<button class='follow-button'><a href ='../php/stop_follow.php?id=$account_username'>Unfollow</a></button>";
+                        
+
                         }
                     }?>
                     </div>
