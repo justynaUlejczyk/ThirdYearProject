@@ -1,63 +1,39 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap");
 
-:root {
-    --light-bg: #ebebeb;
-    --light-bg-s: white;
-    --light-text: black;
 
-    --dark-gray: #646464;
-
-    --dark-bg: #1a1a1a;
-    --dark-bg-s: #292929;
-    --dark-text: #ffffff;
-
-    --gray: #c2c2c2;
-    --accent: #f64c72;
-    --stroke: 2px;
-
-    --background: var(--light-bg);
-    --foreground: var(--light-bg-s);
-    --text: var(--light-text);
-    --svg: var(--dark-gray);
-    --svg-stroke: var(--stroke);
-
-    --box-shadow: 0 4px 8px -6px #181818;
+.container {
+    display: flex;
+    height:500px
 }
 
-.darkmode {
-    --light-bg: #ebebeb;
-    --light-bg-s: white;
-    --light-text: black;
 
-    --dark-gray: #646464;
-
-    --dark-bg: #1a1a1a;
-    --dark-bg-s: #292929;
-    --dark-text: #ffffff;
-
-    --gray: #c2c2c2;
-    --accent: #f64c72;
-    --stroke: 1px;
-
-    --background: var(--dark-bg);
-    --foreground: var(--dark-bg-s);
-    --text: var(--dark-text);
-    --svg: var(--light-bg-s);
-    --svg-stroke: var(--stroke);
-
-    --box-shadow: none;
+#toolbar {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    width: 70px;
+    background-color: #202020;
 }
 
-#myCanvas {
-    flex: 5;
-    cursor: crosshair;
-    background-color: white;
+#toolbar * {
+    margin-bottom: 6px;
 }
 
-.left-side-bar {
-    flex: 1;
-    background-color: var(--foreground);
-    height: 100%;
-    width: 100px;
+#toolbar label {
+    font-size: 12px;
+}
+
+#toolbar:hover {
+    cursor: pointer;
+}
+
+#toolbar input {
+    width: 100%;
+}
+
+#toolbar button {
+    
+    border: none;
+    border-radius: 4px;
+    color:white;
+    padding: 2px;
 }

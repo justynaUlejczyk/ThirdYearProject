@@ -1,84 +1,65 @@
-window.onload = function () {
-    var myCanvas = document.getElementById("myCanvas");
-    var ctx = myCanvas.getContext("2d");
+const canvas = document.getElementById('drawing-board');
+const toolbar = document.getElementById('toolbar');
+const ctx = canvas.getContext('2d');
 
-    // Fill Window Width and Height
-    myCanvas.width = window.innerWidth;
-    myCanvas.height = window.innerHeight;
+const canvasOffsetX = canvas.offsetLeft;
+const canvasOffsetY = canvas.offsetTop;
 
-    // Set Background Color
-    ctx.fillStyle = "#fff";
-    ctx.fillRect(0, 0, myCanvas.width, myCanvas.height);
+canvas.width = window.innerWidth - canvasOffsetX;
+canvas.height = (window.innerHeight-100) - canvasOffsetY;
 
-    // Mouse Event Handlers
-    if (myCanvas) {
-        var isDown = false;
-        var canvasX, canvasY;
-        ctx.lineWidth = 5;
+let isPainting = false;
+let lineWidth = 5;
+let startX;
+let startY;
 
-        $(myCanvas)
-            .mousedown(function (e) {
-                isDown = true;
-                ctx.beginPath();
-                canvasX = e.pageX - myCanvas.offsetLeft;
-                canvasY = e.pageY - myCanvas.offsetTop;
-                ctx.moveTo(canvasX, canvasY);
-            })
-            .mousemove(function (e) {
-                if (isDown !== false) {
-                    canvasX = e.pageX - myCanvas.offsetLeft;
-                    canvasY = e.pageY - myCanvas.offsetTop;
-                    ctx.lineTo(canvasX, canvasY);
-                    ctx.strokeStyle = "#000";
-                    ctx.stroke();
-                }
-            })
-            .mouseup(function (e) {
-                isDown = false;
-                ctx.closePath();
-            });
+toolbar.addEventListener('click', e => {
+    if (e.target.id === 'clear') {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+});
+
+toolbar.addEventListener('change', e => {
+    if(e.target.id === 'stroke') {
+        ctx.strokeStyle = e.target.value;
     }
 
-    // Touch Events Handlers
-    draw = {
-        started: false,
-        start: function (evt) {
+    if(e.target.id === 'lineWidth') {
+        lineWidth = e.target.value;
+    }
+    
+});
 
-            ctx.beginPath();
-            ctx.moveTo(
-                evt.touches[0].pageX,
-                evt.touches[0].pageY
-            );
+toolbar.addEventListener('save', e => {
+    
+    var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
+    window.location.href=image;
+});
 
-            this.started = true;
+const draw = (e) => {
+    if(!isPainting) {
+        return;
+    }
 
-        },
-        move: function (evt) {
+    ctx.lineWidth = lineWidth;
+    ctx.lineCap = 'round';
 
-            if (this.started) {
-                ctx.lineTo(
-                    evt.touches[0].pageX,
-                    evt.touches[0].pageY
-                );
+    ctx.lineTo(e.clientX - canvasOffsetX, (e.clientY -200));
+    ctx.stroke();
+}
 
-                ctx.strokeStyle = "#000";
-                ctx.lineWidth = 5;
-                ctx.stroke();
-            }
+canvas.addEventListener('mousedown', (e) => {
+    isPainting = true;
+    startX = e.clientX;
+    startY = e.clientY;
+});
 
-        },
-        end: function (evt) {
-            this.started = false;
-        }
-    };
+canvas.addEventListener('mouseup', e => {
+    isPainting = false;
+    ctx.stroke();
+    ctx.beginPath();
+});
 
-    // Touch Events
-    myCanvas.addEventListener('touchstart', draw.start, false);
-    myCanvas.addEventListener('touchend', draw.end, false);
-    myCanvas.addEventListener('touchmove', draw.move, false);
+canvas.addEventListener('mousemove', draw);
 
-    // Disable Page Move
-    document.body.addEventListener('touchmove', function (evt) {
-        evt.preventDefault();
-    }, false);
-};
+
