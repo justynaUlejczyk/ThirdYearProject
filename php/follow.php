@@ -32,6 +32,9 @@ if($stmtEx !== false) {
     // Check if there are any rows returned
     if(pg_num_rows($stmtEx) > 0) {
         echo "You already follow $followee";
+    }else{ if($followee==$login_username){
+        echo "you cannot follow yourself...";
+        header ('Location: ../html/profile.php');
     }else{
 
 // Assuming $conn is properly initialized
@@ -42,6 +45,6 @@ if ($result) {
 } else {
     echo "Error: " . pg_last_error($conn);
     die();
-}}}
+    }}}}
 pg_close($conn);
 ?>

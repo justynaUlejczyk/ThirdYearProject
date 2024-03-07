@@ -5,9 +5,11 @@ if (!isset($_SESSION["username"])) {
     header('Location: ' . "./login.php");
 }
 
+
 require_once "../php/connect_db.php";
 
 $username = $_SESSION["username"];
+$login_username = $_SESSION["username"];
 $account_username = $username;
 if (isset($_GET["id"])) {
     $id = $_GET["id"];
@@ -280,8 +282,10 @@ $result = pg_query($conn, $query);
                         <button onclick="showGroupsTab()">Groups</button>
                         <button onclick="showAboutTab()">About</button>
                     </div>
-                    <div><?php echo "<button class='follow-button'><a href ='../php/follow.php?name=$account_username' >
-                        Follow</button></a>";?>
+                    <div><?php 
+                    if ($login_username==$account_username){}else
+                    {echo "<button class='follow-button'><a href ='../php/follow.php?name=$account_username' >
+                        Follow</button></a>";}?>
                     </div>
                 </div>
             </div>
@@ -761,6 +765,6 @@ $result = pg_query($conn, $query);
 
 
 </body>
-
+<?php pg_close($conn);?>
 
 </html>
