@@ -404,3 +404,7 @@ img.profile-info-groups-group {
     padding: 10px 20px;
     border-radius: 20px;
 }
+
+.follow-button a {
+    color: var(--text);
+}
