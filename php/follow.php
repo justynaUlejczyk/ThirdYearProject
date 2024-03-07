@@ -34,14 +34,14 @@ if($stmtEx !== false) {
         echo "You already follow $followee";
     }else{ if($followee==$login_username){
         echo "you cannot follow yourself...";
-        header ('Location: ../html/profile.php');
+        header ("Location: ../html/profile.php");
     }else{
 
 // Assuming $conn is properly initialized
 $stmt = pg_prepare($conn, "followers", "INSERT INTO  follows (username, followee) VALUES ($1, $2)");
 $result = pg_execute($conn, "followers", array( $login_username, $followee)); // Using $result instead of $result2
 if ($result) {
-   header ('Location: ../html/profile.php');
+   header ("Location: ../html/profile.php?id=$followee");
 } else {
     echo "Error: " . pg_last_error($conn);
     die();

@@ -283,9 +283,16 @@ $result = pg_query($conn, $query);
                         <button onclick="showAboutTab()">About</button>
                     </div>
                     <div><?php 
-                    if ($login_username==$account_username){}else
-                    {echo "<button class='follow-button'><a href ='../php/follow.php?name=$account_username' >
-                        Follow</button></a>";}?>
+                    
+                    if ($login_username != $account_username) {
+                        $stmtFollowee = pg_prepare($conn, "check", "SELECT followee FROM follows WHERE followee = $1 AND username = $2");
+                        $stmtEx = pg_execute($conn, "check", array($account_username, $login_username));
+                    
+                        if ($stmtEx !== false && pg_num_rows($stmtEx) == 0) {
+                            // If the logged-in user is not following the profile user, show the follow button
+                            echo "<button class='follow-button'><a href ='../php/follow.php?name=$account_username'>Follow</a></button>";
+                        }
+                    }?>
                     </div>
                 </div>
             </div>
