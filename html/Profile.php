@@ -742,9 +742,11 @@ $result = pg_query($conn, $query);
 
                                    echo '<div class="profile">
                                    <img src="../images/icons/Unknown_person.jpg" alt="friend profile pic">
-                                   <p id="friendName">'; echo "$foll </p></div>"; 
+                                   <p id="friendName">'; echo "$foll </p>";
+                                   if ($login_username == $account_username) {
+                                   echo"<span><a href='../php/stop_follow.php?id=$foll'>unfollow</a></div>"; 
 
-                            }
+                            }}
 
                         } else {echo "<div class='profile'>$account_username is not following anyone</div>";}
                         

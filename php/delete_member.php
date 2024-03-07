@@ -38,5 +38,5 @@ echo "Error executing deletion.";
 
 // Close statement
 $stmt2 = null;
-
+pg_close($conn);
 ?>
