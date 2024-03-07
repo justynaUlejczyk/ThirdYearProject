@@ -5,6 +5,19 @@ function general(clickedElement){
 }
 
 
+function saveCurrentSection(sectionId) {
+    localStorage.setItem('currentSettingsSection', sectionId);
+  }
+  
+  // Load and display the section that was last visited
+  document.addEventListener('DOMContentLoaded', () => {
+    const lastSectionId = localStorage.getItem('currentSettingsSection');
+    if (lastSectionId) {
+      document.getElementById(lastSectionId).style.display = 'block';
+    }
+  });
+
+  
 function account(clickedElement){
     hideAll();
     var Account = document.getElementById("account");
