@@ -36,10 +36,9 @@ session_write_close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/darkmode.js"></script>
-    <script src="../js/navbar.js"></script>
     <script src="../js/createGroup.js"></script>
     <script src="../js/GroupMemberBar.js"></script>
     <script src="../js/addMember.js"></script>
@@ -256,8 +255,8 @@ session_write_close();
     <section class="body">
         <aside class="left-bar">
             <ul>
-                <a>
-                    <li href="group-page.php">
+                <a href="group-page.php">
+                    <li>
                         Home
                     </li>
                 </a>
@@ -279,8 +278,65 @@ session_write_close();
 
         <!-- Feed -->
         <feed>
-            <div class="settings">
-
+            <div class="setting">
+                <div class='settings-title'>
+                    <span>Settings</span>
+                    <span>Group Name</span>
+                </div>
+                <div class='settings-box'>
+                    <div class='settings-options'>
+                        <input type="radio" id="tab1" name="tab" checked>
+                        <label for="tab1">Manage Group</label>
+                        <input type="radio" id="tab2" name="tab">
+                        <label for="tab2">Add Member</label>
+                        <input type="radio" id="tab3" name="tab">
+                        <label for="tab3">Remove Member</label>
+                        <input type="radio" id="tab4" name="tab">
+                        <label for="tab4">Leave Group</label>
+                        <input type="radio" id="tab5" name="tab">
+                        <label for="tab5">Delete Group</label>
+                    </div>
+                    <div class='settings-tab'>
+                        <article>
+                            <div class="wrapper">
+                                <h2>Change Name</h2>
+                                <!-- change this below to a form -->
+                                <div class="change-container">
+                                    <input type="text" placeholder="New Group Name" class="change-group-name" />
+                                    <input type="submit" class="change-group-name" />
+                                </div>
+                            </div>
+                            <div class="wrapper">
+                                <h2>Change Description</h2>
+                                <!-- change this below to a form -->
+                                <div class="change-container">
+                                    <textarea id="text" name="text" rows="4" cols="50" maxlength="3000"
+                                        class="feed-create-post-captions"></textarea>
+                                    <input type="submit" class="change-group-name " />
+                                </div>
+                            </div>
+                        </article>
+                        <article>
+                            <form action="../php/add_users.php" method="post" class='add-members'>
+                                <h2> Add member</h2>
+                                <span class='input-user'>Name:<input type="text" name="name"></span>
+                                <input type="submit" class="submit-button">
+                            </form>
+                        </article>
+                        <article>
+                            <h2>Users</h2>
+                            <p>Display users along with delete button (same as in the .right-bar)</p>
+                        </article>
+                        <article>
+                            <h2>Are you sure you want to leave?</h2>
+                            <p>Put the button to leave here</p>
+                        </article>
+                        <article>
+                            <h2>Are you sure you want to delete this group?</h2>
+                            <p>Put button to delete group</p>
+                        </article>
+                    </div>
+                </div>
             </div>
 
         </feed>
@@ -293,7 +349,6 @@ session_write_close();
                 <i class="fa fa-arrow-right" aria-hidden="true"></i>
             </div>
             <span>Members</span>
-            <button id="add-member" onclick='addMember()'>Add Member</button>
 
             <?php
             //retriving members of group
@@ -325,7 +380,7 @@ session_write_close();
     </section>
 
 
-
+    <script src="../js/group-settings.js"></script>
 </body>
 
 </html>

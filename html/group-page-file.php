@@ -180,7 +180,9 @@ session_write_close();
                             <div class="dropdown-profile-icon">
                                 <a href="">
                                     <img src="../images/icons/Unknown_person.jpg" alt="">
-                                    <p><?php echo"$username"?></p>
+                                    <p>
+                                        <?php echo "$username" ?>
+                                    </p>
                                 </a>
                             </div>
                             <a href="../html/Profile.php">
@@ -255,7 +257,7 @@ session_write_close();
                 <a href="group-page-meeting.html">
                     <li>Meetings</li>
                 </a>
-                <a>
+                <a href="group-settings.php">
                     <li>
                         Settings
                     </li>
@@ -296,11 +298,11 @@ session_write_close();
                     <?php
                     $get_filesSTMT = pg_prepare($conn, "get_files", "SELECT filename FROM files WHERE groupid = $1");
                     $get_filesRESULT = pg_execute($conn, "get_files", array($groupid));
-                    
+
                     while ($row = pg_fetch_assoc($get_filesRESULT)) {
                         $filename = $row["filename"];
                         echo
-                        "<a href='group-editor.php?id=$filename'><div class='folder-container' folderid='file'>
+                            "<a href='group-editor.php?id=$filename'><div class='folder-container' folderid='file'>
                         <i class='fa fa-file' aria-hidden='true'></i>
                         <span id='$filename'>$filename</span></a>";
                     }
@@ -312,23 +314,40 @@ session_write_close();
 
 
         <!--  Right Side Bar for Members -->
-        <aside class="right-bar active">
+        <aside class="right-bar">
             <div class="member-arrow" onclick="toggleMemberBar()">
                 <i class="fa fa-arrow-right" aria-hidden="true"></i>
             </div>
             <span>Members</span>
-            <button id="add-member">Add Member</button>
-            <div class="user-list">
-                <div class="members">
-                    <img src="../images/icons/Unknown_person.jpg" alt="">
-                    <span>Name</span>
-                </div>
-                <div class="members">
-                    <img src="../images/icons/Unknown_person.jpg" alt="">
-                    <span>Name</span>
-                </div>
+            <?php
+            //retriving members of group
+            
 
+            $stmt = pg_prepare($conn, "members", "SELECT * FROM accounttogroup WHERE groupid=$1");
+            $result = pg_execute($conn, "members", array($groupid));
+            $numRows = pg_num_rows($result);
+            echo '<div class="user-list">';
+            if ($numRows > 0) {
+                echo "<p>Members: $numRows</p>"; // Display total number of members
+                while ($row = pg_fetch_assoc($result)) {
+                    $username = $row['username'];
+                    echo ' <div class="members">
+            <img src="../images/icons/Unknown_person.jpg" alt="">';
+                    echo "<span>$username</span>
+                    <span><a href ='../php/delete_member.php?user=$username'>remove</a></span>
+
+        </div>";
+                }
+
+            }
+
+
+            ?>
             </div>
+
+
+
+
         </aside>
     </section>
 

@@ -37,6 +37,8 @@ if ($settingsResult) {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/Profile.js"></script>
     <script src="../js/darkmode.js"></script>
@@ -279,7 +281,25 @@ if ($settingsResult) {
 
         <div id="general">
             <h1 class="updateTitle">General Settings</h1>
-            <h3>Idk what to put here any ideas would be great </h1>
+            <div class="banner" style="background-image: url(../images/default-background.png);">
+                <div class="banner-edit">
+                    <input type='file' id="bannerUpload" accept=".png, .jpg, .jpeg" />
+                    <label for="bannerUpload"></label>
+                </div>
+
+                <div class="banner-preview"></div>
+            </div>
+            <div class="avatar-upload">
+                <div class="avatar-edit">
+                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                    <label for="imageUpload"></label>
+                </div>
+                <div class="avatar-preview">
+                    <div id="imagePreview" style="background-image: url(../images/icons/Unknown_person.jpg);">
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <div id="account">
@@ -449,7 +469,7 @@ if ($settingsResult) {
 
 
 </main>
-
+<script src="../js/icon-change.js"></script>
 
 
 </body>

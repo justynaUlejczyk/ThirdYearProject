@@ -331,12 +331,6 @@ session_write_close();
                 <i class="fa fa-arrow-right" aria-hidden="true"></i>
             </div>
             <span>Members</span>
-            <button id="add-member">Add Member</button>
-            <form action="../php/add_users.php" method="post">
-                <h2> Add member</h2>
-                Name: <input type="text" name="name"><br>
-                <input type="submit">
-            </form>
             <?php
             //retriving members of group
             
