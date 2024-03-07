@@ -461,7 +461,7 @@ if ($settingsResult) {
             <br>
             <p class="inline">To delete your account click here, once clicked this acction cannot be undone. Are you sure?</p>
             <br>
-            <button class="confirmButton" onclick = "deleteAccountBox()">yes, delete account </button>
+            <button class="confirmButton" onclick = "deleteAccountBox()"><a href ="../php/delete_user.php">yes, delete account</a> </button>
             <button type="button" onclick="deleteAccount()"> No, nevermind</button>
         </div>
 
