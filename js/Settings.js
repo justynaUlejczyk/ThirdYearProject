@@ -68,6 +68,11 @@ function deleteAccount(clickedElement){
     deleteAccount.style.display = "inline-block";
 }
 
+function deleteAccountBox(clickedElement){
+    
+}
+
+
 function hideAll(){
     var General = document.getElementById("general");
 
