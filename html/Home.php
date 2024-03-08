@@ -279,9 +279,9 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                 </button>
             </div>
             <div class='fyp-filter'>
-                <button>All Users</button>
+            <a href='Home.php?id=all'><button>All Users</button></a>
                 <span> - </span>
-                <button>Following</button>
+                <a href='Home.php?id=following'><button>Following</button></a>
             </div>
             <!-- End of Create Post Button-->
             <!-- Start of Create Post Options -->
@@ -309,7 +309,13 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
             <!-- Start Post -->
             <!-- Start Post 1 -->
             <?php
-            $postsListQuery = "SELECT postid, text, post.username, name  FROM post INNER JOIN accounts ON accounts.username = post.username ORDER BY postid DESC";
+            if(isset ($_GET["id"])){
+                if($_GET["id"] == "following"){
+                    $postsListQuery = "SELECT * FROM post INNER JOIN accounts ON accounts.username = post.username INNER JOIN follows ON accounts.username = follows.followee WHERE follows.username = '$username' ORDER BY postid DESC";
+                } else{
+                    $postsListQuery = "SELECT postid, text, post.username, name  FROM post INNER JOIN accounts ON accounts.username = post.username ORDER BY postid DESC";
+                } 
+            }
             $postsListRESULT = pg_query($conn, $postsListQuery);
             $postLikesSTMT = pg_prepare($conn, "postLikes", "SELECT * FROM usertolikes where postid = $1");
             $postLikedByUserSTMT = pg_prepare($conn, "postLikedByUser", "SELECT * FROM usertolikes where postid = $1 AND username = $2");
