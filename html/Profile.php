@@ -28,6 +28,10 @@ $query = "SELECT postID, text, post.username, name
 
 
 $result = pg_query($conn, $query);
+if(pg_num_rows($userDataRESULT) == 0){
+    header('Location: ' . "./profile.php");
+}
+
 ?>
 <!DOCTYPE html>
 <html class="dimmed">
