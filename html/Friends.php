@@ -255,13 +255,18 @@ $username = $_SESSION["username"];
                         $followee = $row['followee'];
                 ?>
                 
-                
-                        <img src="../images/cat.jpg" class="friendIcon">
-                        <?php 
-                        
-                        echo "<span>$followee</span><br>";
-                        //echo "<p>You follow: $numRows users</p>"; // Display total number of members
-                    }}?>
+                   
+                      
+                                <?php 
+                               
+                                echo  "<section id='friendDisplay'>";
+                                echo   "<img src='../images/cat.jpg' class='friendIcon'>";
+                                echo "<span>$followee</span><br>";
+                                echo "</section>";
+
+                                //echo "<p>You follow: $numRows users</p>"; // Display total number of members
+                            }}?>
+                    
 
 
             </section>
