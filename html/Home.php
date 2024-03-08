@@ -309,11 +309,10 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
             <!-- Start Post -->
             <!-- Start Post 1 -->
             <?php
+            $postsListQuery = "SELECT postid, text, post.username, name  FROM post INNER JOIN accounts ON accounts.username = post.username ORDER BY postid DESC";
             if(isset ($_GET["id"])){
                 if($_GET["id"] == "following"){
                     $postsListQuery = "SELECT * FROM post INNER JOIN accounts ON accounts.username = post.username INNER JOIN follows ON accounts.username = follows.followee WHERE follows.username = '$username' ORDER BY postid DESC";
-                } else{
-                    $postsListQuery = "SELECT postid, text, post.username, name  FROM post INNER JOIN accounts ON accounts.username = post.username ORDER BY postid DESC";
                 } 
             }
             $postsListRESULT = pg_query($conn, $postsListQuery);
