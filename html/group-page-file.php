@@ -286,20 +286,6 @@ session_write_close();
                     </a>
                 </section>
                 <section class="file-container" id="fileContainer">
-                    <div class="folder-container" onclick="openFolder(this)" folderid="Bid1">
-                        <i class="fa fa-folder" aria-hidden="true"></i>
-                        <span id="Bid1">Files</span>
-                    </div>
-                    <!-- Add more Files as needed -->
-                    <div class="folder-container" onclick="openFolder(this)" folderid="main.txt">
-                        <i class="fa fa-file" aria-hidden="true"></i>
-                        <span id="main.txt">main.txt</span>
-                    </div>
-                    <!-- Add more Files as needed -->
-                    <div class="folder-container" onclick="openFolder(this)" folderid="art">
-                        <i class="fa fa-paint-brush" aria-hidden="true"></i>
-                        <span id="art">art</span>
-                    </div>
                     <?php
                     $get_filesSTMT = pg_prepare($conn, "get_files", "SELECT filename FROM files WHERE groupid = $1");
                     $get_filesRESULT = pg_execute($conn, "get_files", array($groupid));
