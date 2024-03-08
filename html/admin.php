@@ -17,13 +17,14 @@ $groupsRESULT = pg_query($conn, "SELECT * FROM groups ORDER BY groupid ASC");
             <th>Username</th>
             <th>Delete user?</th>
         </tr>
-        <tr>
             <?php while ($row = pg_fetch_assoc($usersRESULT)){
                 $username = $row['username'];
-                echo "<tr><td>$username</td> <td><form action='../php/delete_user.php', method='post'><input type='hidden' id='username' name='username' value=$username><input type='submit' value='delete'></form></td></tr>";
+                echo "<tr><td><form method='post' action='admin_view_user.php'>
+                <input type='hidden' name='username' value='$username'/> 
+                <a onclick='this.parentNode.submit();'>$username</a></form></td> 
+                <td><form action='../php/delete_user.php', method='post'><input type='hidden' id='username' name='username' value=$username><input type='submit' value='delete'></form></td></tr>";
             }
             ?>
-        </tr>
 
     </table>
 <hr>
