@@ -113,3 +113,36 @@ feed {
     padding: 14px 24px;
     border-radius: 15px;
 }
+
+#newCanvasContent{
+    display: none;
+    background-color: var(--foreground);
+    border-radius: 10px;
+    padding: 1px;
+    margin: 0px;
+}
+
+#newCanvas{
+    width: 100%;
+    align-items: baseline;
+    padding: 15px;
+
+}
+
+#newCanvas input{
+
+    margin: 10px;
+}
+
+
+
+
+#newCanvas button{
+    margin: 0px;
+    margin-right: 0px;
+    width: 95px;
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    border: white solid 2px;
+}

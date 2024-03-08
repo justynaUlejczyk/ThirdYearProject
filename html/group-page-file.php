@@ -271,20 +271,46 @@ session_write_close();
         <feed>
             <section class="container-file">
                 <section class="files-options">
+                    
                     <a href="group-editor.php">
-                        <button class="new-file option-button">
-                            New File
-                        </button>
+                    <button class="new-file option-button">
+                        New File
+                    </button>
                     </a>
+                    
                     <button class="delete-file option-button">
                         Delete File
                     </button>
-                    <a href="group-canvas.html">
-                        <button class="canvas-file option-button" >
-                            Canvas File
-                        </button>
-                    </a>
+            
+                    <button class="canvas-file option-button" onclick="newCanvas()" >
+                        Canvas File
+                    </button>
+             
+                    <br>
+
+                    
+
                 </section>
+                <section id = "newCanvasContent">
+                    <form id="newCanvas" action="group-canvas.html" >
+
+                    <div>
+                        <label for="fileName">File Name: </label>
+                        <input type="text" name="fileName"  required>
+                    </div>
+                    <div>
+                        <label for="background">Background(optional):</label>
+                        <input type="file" name="background" >
+                        <br>
+                    </div>
+                    <br>
+                        <div>
+                            <button type="submit">Create file</button>
+                        </div>
+                    </form>
+                    
+                </section>
+
                 <section class="file-container" id="fileContainer">
                     <?php
                     $get_filesSTMT = pg_prepare($conn, "get_files", "SELECT filename FROM files WHERE groupid = $1");
