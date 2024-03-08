@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/Group-page.css">
     <link rel="stylesheet" href="../css/Group-page-file.css">
     <link rel="stylesheet" href="../css/group-editor.css">
+    <link rel="stylesheet" href="../css/group-canvas.css">
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,6 +27,7 @@
     <script src="../js/createGroup.js"></script>
     <script src="../js/GroupMemberBar.js"></script>
     
+   
 </head>
 
 <!-- test commit -->
@@ -256,18 +258,18 @@
     <!-- Left Side Bar for Options of what to do -->
     <main>
         
-        <section class="container">
+        <section class="canvasContainer">
             <div id="toolbar">
                 <h1>Filename</h1>
                 <label for="stroke">Stroke</label>
                 <input id="stroke" name='stroke' type="color">
                 <label for="lineWidth">Line Width</label>
                 <input id="lineWidth" name='lineWidth' type="range"  min="1" max="25" value="5">
-
                 <button id="clear">Clear</button>
                 <button onclick="saveCanvas()">Save</button>
             </div>
-            <div class="drawing-board" class = "sticky-container">
+
+            <div class="drawing-board">
                 <canvas id="drawing-board"></canvas>
             </div>
         </section>

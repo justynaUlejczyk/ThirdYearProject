@@ -1,19 +1,17 @@
 
 
 .container {
-    display: block;
-    margin: 0px;
-    height:500px;
+    height: 100%;
+    display: flex;
 }
 
-
 #toolbar {
-    margin-top: 0px;
-    margin: 0px;
-    display: block;
-    flex-direction: column;
+
+    display: block;;
     padding: 5px;
-    width: 70px;
+    float: left;
+    width: 10%;
+    height: 100%;
     background-color: #202020;
 }
 
@@ -25,16 +23,12 @@
     font-size: 12px;
 }
 
-#toolbar:hover {
-    cursor: pointer;
-}
-
 #toolbar input {
     width: 100%;
 }
 
 #toolbar button {
-    
+    background-color: #1565c0;
     border: none;
     border-radius: 4px;
     color:white;
