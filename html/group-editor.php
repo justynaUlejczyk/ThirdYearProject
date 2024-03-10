@@ -176,7 +176,7 @@ if (isset($_GET['id'])) {
     // Load initial notifications
     include_once "../php/load_notifications.php";
     ?>
-    <a href="../html/Notifications.php" id="seeMoreLink">See More</a>
+    <a href="../html/Notifications.php">See More</a>
 </div>
 
 <script>

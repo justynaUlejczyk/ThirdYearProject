@@ -173,7 +173,7 @@ $result = pg_query($conn, $query);
     // Load initial notifications
     include_once "../php/load_notifications.php";
     ?>
-    <a href="../html/Notifications.php" id="seeMoreLink">See More</a>
+    <a href="../html/Notifications.php">See More</a>
 </div>
 
 <script>
@@ -285,20 +285,19 @@ $notificationQuery = pg_prepare($conn, "notification", "SELECT * FROM notificati
 $notificationResult = pg_execute($conn, "notification", array($username));
 $NumbRows = pg_num_rows($notificationResult);
 
+$notifications = array(); // Array to hold all notifications
+
 if ($NumbRows > 0) {
-    $counter = 0;
     while ($row = pg_fetch_assoc($notificationResult)) {
-        $counter++;
         $notification = $row['notifmessage'];
-        $timestamp = $row['timestamp']; // Adding this line to fetch timestamp
+        $time = $row['timestamp'];
         $killtime = $row['killtime'];
         if (strtotime($killtime) >= strtotime(date("Y-m-d"))){
-        $time= $row['timestamp']; // Adding this line to fetch timestamp
-        echo "$counter: $notification ($time)<br>";
-    }}
-} else {
-    echo "<div> <h1>No notifications yet...</h1></div>";
+            $notifications[] = array('notification' => $notification, 'time' => $time);
+        }
+    }
 }
+
 $followeeNot = pg_prepare($conn, "notification1", "SELECT DISTINCT notifications.* FROM notifications 
 JOIN follows 
 ON notifications.username = follows.followee WHERE follows.username = $1 ORDER BY notifications.notificationID DESC");
@@ -306,19 +305,29 @@ ON notifications.username = follows.followee WHERE follows.username = $1 ORDER B
 $followeeRes = pg_execute($conn, "notification1", array($username));
 
 $NumbRows2 = pg_num_rows($followeeRes);
-echo "<br><h1>Following users: </h1>";
+
 if ($NumbRows2 > 0) {
-    $counter2 = 0;
     while ($row = pg_fetch_assoc($followeeRes)) {
-        $counter2++;
         $notification = $row['notifmessage'];
         $user = $row['username'];
-        $time= $row['timestamp']; // Adding this line to fetch timestamp
+        $time = $row['timestamp'];
         $killtime = $row['killtime'];
-        if($username!= $user){
-            if (strtotime($killtime) >= strtotime(date("Y-m-d"))){
-        echo "$counter2: $user: $notification ($time)<br>";
-        }}
+        if($username != $user && strtotime($killtime) >= strtotime(date("Y-m-d"))){
+            $notifications[] = array('notification' => "$user: $notification", 'time' => $time);
+        }
+    }
+}
+
+// Sort notifications by time
+usort($notifications, function($a, $b) {
+    return strtotime($b['time']) - strtotime($a['time']);
+});
+
+if (count($notifications) > 0) {
+    $counter = 0;
+    foreach ($notifications as $notification) {
+        $counter++;
+        echo "$counter: {$notification['notification']} ({$notification['time']})<br>";
     }
 } else {
     echo "<div> <h1>No notifications yet...</h1></div>";
