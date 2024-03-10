@@ -307,7 +307,7 @@ session_write_close();
                     </button>
             
                     <button class="canvas-file option-button" onclick="newCanvas()" >
-                        Canvas File
+                        New Canvas File
                     </button>
              
                     <br>
