@@ -46,5 +46,18 @@ if ($result) {
     echo "Error: " . pg_last_error($conn);
     die();
     }}}}
+ 
+ // adding to notifications table 
+
+$date = date("Y-m-d");
+$killTime = new DateTime();
+$killTime->modify('+3 weeks');
+
+$mess =  "$login_username started following  $followee";
+$notificationQuery = pg_prepare($conn, "add_notification", "INSERT INTO notifications 
+(username, timestamp, killtime, notifmessage) 
+VALUES ($1, $2, $3, $4) RETURNING notificationID");
+$notificationResult = pg_execute($conn, "add_notification", array($login_username, $date, $killTime->format('Y-m-d'), $mess));
+
 pg_close($conn);
 ?>
