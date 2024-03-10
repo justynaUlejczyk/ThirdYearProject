@@ -288,7 +288,7 @@ if (isset($_GET['id'])) {
                 <a href="group-page-meeting.php">
                     <li>Meetings</li>
                 </a>
-                <a>
+                <a href="group-ettings.php">
                     <li>
                         Settings
                     </li>

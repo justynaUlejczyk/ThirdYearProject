@@ -159,12 +159,13 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                             </svg>
                         </button>
                         <div class="dropdown-content" id="dropdownContent">
-    <?php
-    // Load initial notifications
-    include_once "../php/load_notifications.php";
-    ?>
-    <a href="../html/Notifications.php">See More</a>
-</div>
+                        <?php
+                        // Load initial notifications
+                        include_once "../php/load_notifications.php";
+                        ?>
+                        <a href="../html/Notifications.php">See More</a>
+                    </div>
+                
 
 <script>
     // Function to load more notifications
