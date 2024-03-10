@@ -1,5 +1,31 @@
 <!DOCTYPE html>
 <html class="dimmed">
+<?php
+require_once "../php/connect_db.php";
+session_id("userSession");
+session_start();
+if (!isset($_SESSION["username"])) {
+    header('Location: ' . "./login.php");
+}
+$login_username = $_SESSION["username"];
+session_write_close();
+session_id("groupSession");
+session_start();
+// Get passed product genre and assign it to a variable.
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $_SESSION["groupid"] = $id;
+}
+$groupid = $_SESSION["groupid"];
+$get_groupnameSTMT = pg_prepare($conn, "get_groupname", "SELECT groupname FROM groups where groupid=$1");
+$get_groupnameRESULT = pg_execute($conn, "get_groupname", array($groupid));
+$row = pg_fetch_assoc($get_groupnameRESULT);
+$_SESSION["groupname"] = $row["groupname"];
+$groupname = $_SESSION["groupname"];
+session_write_close();
+?>
+
+
 
 <head>
     <title>Groups</title>
@@ -34,9 +60,6 @@
 <!-- test commit -->
 
 <!-- test commit - branch demo -->
-
-
-<body>
 
 <body style="height: 600px;">
 
@@ -276,27 +299,6 @@
     </nav>
     <!-- End of Nav -->
 
-
-    <!-- Left Side Bar for Options of what to do -->
-    <section class="body">
-        <aside>
-        </aside>
-
-
-
-        <!-- Feed -->
-        <feed>
-            <canvas id="myCanvas"></canvas>
-        </feed>
-
-
-
-        <!--  Right Side Bar for Members -->
-        <aside class="right-bar active">
-        </aside>
-    </section>
-
-
     <script src="../js/group-canvas.js"></script>
 
     <section class="body">
@@ -313,7 +315,7 @@
                 <a href="group-page-meeting.php">
                     <li>Meetings</li>
                 </a>
-                <a>
+                <a href="group-settings.php">
                     <li>
                         Settings
                     </li>

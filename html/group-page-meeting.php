@@ -1,15 +1,38 @@
 <!DOCTYPE html>
 <html class="dimmed">
 
+<?php
+require_once "../php/connect_db.php";
+session_id("userSession");
+session_start();
+if (!isset($_SESSION["username"])) {
+    header('Location: ' . "./login.php");
+}
+$login_username = $_SESSION["username"];
+session_write_close();
+session_id("groupSession");
+session_start();
+// Get passed product genre and assign it to a variable.
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $_SESSION["groupid"] = $id;
+}
+$groupid = $_SESSION["groupid"];
+$get_groupnameSTMT = pg_prepare($conn, "get_groupname", "SELECT groupname FROM groups where groupid=$1");
+$get_groupnameRESULT = pg_execute($conn, "get_groupname", array($groupid));
+$row = pg_fetch_assoc($get_groupnameRESULT);
+$_SESSION["groupname"] = $row["groupname"];
+$groupname = $_SESSION["groupname"];
+session_write_close();
+?>
+
 <head>
     <title>Groups</title>
     <link rel="stylesheet" href="../css/Group.css">
     <link rel="stylesheet" href="../css/StyleSheet.css">
     <link rel="stylesheet" href="../css/Group-page.css">
     <link rel="stylesheet" href="../css/group-meetings.css">
-
-    
-
+ 
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
@@ -21,38 +44,18 @@
     <script src="../js/navbar.js"></script>
     <script src="../js/createGroup.js"></script>
 
-    <script src="/socket.io/socket.io.js"></script>
-
-    
-    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"></script>
-    <script>
-    const socket = io(); // This connects to your Socket.IO server
-
-
-    <script src="/socket.io/socket.io.js"></script>
-
-
-    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"></script>
-    <script>
-        const socket = io(); // This connects to your Socket.IO server
-
-    </script>
-
-
     <script defer src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+   
     <script src="/socket.io/socket.io.js" defer></script>
-    <!-- Include your custom script -->
-    <script src="../js/script.js" defer></script>
-    <!-- Add any necessary CSS for video grid here or in external CSS files -->
+    <script src="./script.js" defer></script>
+
+
     <style>
         #video-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, 300px);
             grid-auto-rows: 300px;
         }
-
-
-
         video {
             width: 100%;
             height: 100%;
@@ -189,40 +192,6 @@
                             </svg>
                         </button>
                         <div class="dropdown-content" id="dropdownContent">
-
-                            <?php
-    // Load initial notifications
-    include_once "../php/load_notifications.php";
-    ?>
-                            <a href="../html/Notifications.php" id="seeMoreLink">See More</a>
-                        </div>
-                        
-                        <script>
-                            // Function to load more notifications
-                            function loadMoreNotifications() {
-                                // Make an AJAX request
-                                var xhr = new XMLHttpRequest();
-                                xhr.open("GET", "load_notifications.php", true);
-                                xhr.onreadystatechange = function() {
-                                    if (xhr.readyState == 4 && xhr.status == 200) {
-                                        // Update the content of the dropdownContent div
-                                        document.getElementById("dropdownContent").innerHTML = xhr.responseText;
-                                    }
-                                };
-                                xhr.send();
-                            }
-                        
-                            // Attach click event listener to the "See More" link
-                            document.getElementById("seeMoreLink").addEventListener("click", function(event) {
-                                event.preventDefault(); // Prevent default link behavior
-                                loadMoreNotifications(); // Call the function to load more notifications
-                            });
-                        </script>
-                                                </div>
-                                            </div>
-                                            <span>Notifications</span>
-                                        </li>
-
                             <a href="#">Link 1</a>
                             <a href="#">Link 2</a>
                             <a href="#">Link 3</a>
@@ -231,7 +200,6 @@
                     </div>
                     <span>Notifications</span>
                 </li>
-
 
                 <li>
                     <div class="dropdown">
@@ -320,11 +288,7 @@
                         Meetings
                     </li>
                 </a>
-
-                <a>
-
-                <a href="group-settings.php">
-
+                <a href= "group-settings.php">
                     <li>
                         Settings
                     </li>
@@ -336,9 +300,16 @@
 
         <!-- Feed -->
         <Feed>
+            <h1>Group Call</h1>
+            <button id="startButton">Join</button>
+            <button id="hangupButton" disabled>Hang Up</button>
+            <button id="muteButton">Mute</button>
+
+
             <video id="localVideo" autoplay muted></video>
             <video id="remoteVideo" autoplay></video>
-            <script src="script.js"></script>
+
+            <script src="app.js"></script>
         </Feed>
 
 </body>

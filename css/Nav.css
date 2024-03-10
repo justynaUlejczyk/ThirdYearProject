@@ -9,6 +9,10 @@ nav {
     height: 60px;
 }
 
+a{
+    text-decoration: none;
+}
+
 nav > section:first-child {
     display: flex;
     align-items: center;
