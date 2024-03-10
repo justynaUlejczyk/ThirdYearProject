@@ -16,7 +16,7 @@ $date = date("Y-m-d");
 $killTime = new DateTime();
 $killTime->modify('+3 weeks');
 
-$mess =  "You created $groupname";
+$mess =  "$username created $groupname";
 $result = pg_execute($conn, "create_group", array($username, $groupname));
 
 $notificationQuery = pg_prepare($conn, "add_notification", "INSERT INTO notifications 

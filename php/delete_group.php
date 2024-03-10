@@ -60,7 +60,7 @@ $date = date("Y-m-d");
 $killTime = new DateTime();
 $killTime->modify('+3 weeks');
 
-$mess =  "You deleted $groupname";
+$mess =  "$username deleted $groupname";
 $notificationQuery = pg_prepare($conn, "add_notification", "INSERT INTO notifications 
 (username, timestamp, killtime, notifmessage) 
 VALUES ($1, $2, $3, $4) RETURNING notificationID");

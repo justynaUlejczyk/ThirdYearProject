@@ -169,10 +169,24 @@ $result = pg_query($conn, $query);
                             </svg>
                         </button>
                         <div class="dropdown-content" id="dropdownContent">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
-                            <a href="../html/Group.php">See More</a>
+                            <?php
+                        $notificationQuery = pg_prepare($conn, "list",
+                         "SELECT * FROM notifications WHERE username = $1 ORDER BY notificationID DESC LIMIT 3");
+$notificationResult = pg_execute($conn, "list", array($username));
+$NumbRows = pg_num_rows($notificationResult);
+
+if ($NumbRows > 0) {
+    $counter = 0;
+    while ($row = pg_fetch_assoc($notificationResult)) {
+        $notification = $row['notifmessage'];
+        $timestamp = $row['timestamp']; // Adding this line to fetch timestamp
+        $killtime = $row['killtime'];
+        if (strtotime($killtime) >= strtotime(date("Y-m-d"))){
+        $time= $row['timestamp']; // Adding this line to fetch timestamp
+        echo "<p> $notification </p><br>";
+    }}
+} ?>
+                            <a href="../html/Notifications.php">See More</a>
                         </div>
                     </div>
                     <span>Notifications</span>
@@ -259,9 +273,6 @@ $result = pg_query($conn, $query);
         <?php
 $notificationQuery = pg_prepare($conn, "notification", "SELECT * FROM notifications WHERE username = $1 ORDER BY notificationID DESC");
 $notificationResult = pg_execute($conn, "notification", array($username));
-
-
-
 $NumbRows = pg_num_rows($notificationResult);
 
 if ($NumbRows > 0) {
@@ -280,7 +291,7 @@ if ($NumbRows > 0) {
 }
 $followeeNot = pg_prepare($conn, "notification1", "SELECT DISTINCT notifications.* FROM notifications 
 JOIN follows 
-ON notifications.username = follows.username WHERE follows.followee = $1 ORDER BY notifications.notificationID DESC");
+ON notifications.username = follows.followee WHERE follows.username = $1 ORDER BY notifications.notificationID DESC");
 
 $followeeRes = pg_execute($conn, "notification1", array($username));
 
