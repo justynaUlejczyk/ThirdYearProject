@@ -721,7 +721,6 @@ if(pg_num_rows($userDataRESULT) == 0){
 
             <section id="friends">
                 <div>
-                    <h1>You follow:</h1>
 
 
                     
@@ -736,18 +735,20 @@ if(pg_num_rows($userDataRESULT) == 0){
                         ?>
                         <?php 
                         if ($numRows>0){
-                            echo "<p>you follow: ($numRows users)<p> ";
+                            echo "<p>$username follows: ($numRows users)<p> ";
                             while  ($row=pg_fetch_assoc($followeeEx))
                             {
                                 $foll=$row['followee'];
 
                                    echo '<div class="profile">
                                    <img src="../images/icons/Unknown_person.jpg" alt="friend profile pic">
-                                   <p id="friendName">'; echo "<a href ='../html/Profile.php?id=$foll'><p>$foll</p><a> </p>";
+                                   <p id="friendName">'; 
+                                   echo "<a href ='../html/Profile.php?id=$foll'>$foll<a> </p>";
                                    if ($login_username == $account_username) {
                                    echo"<span><a href='../php/stop_follow.php?id=$foll'>unfollow</a></div>"; 
 
-                            }}
+                                } else{echo '</div>';}
+                            }
 
                         } else {echo "<div class='profile'>$account_username is not following anyone</div>";}
                         
