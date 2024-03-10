@@ -292,7 +292,7 @@ session_write_close();
 
                 </section>
                 <section id = "newCanvasContent">
-                    <form id="newCanvas" action="group-canvas.html" >
+                    <form id="newCanvas" action="group-canvas.php" >
 
                     <div>
                         <label for="fileName">File Name: </label>
