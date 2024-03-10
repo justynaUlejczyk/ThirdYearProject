@@ -22,7 +22,7 @@ $followeeNot = pg_prepare($conn, "notification_list", "SELECT DISTINCT notificat
 JOIN follows 
 ON notifications.username = follows.followee WHERE follows.username = $1 ORDER BY notifications.notificationID DESC Limit 3");
 
-$followeeRes = pg_execute($conn, "notification_list", array($username));
+$followeeRes = pg_execute($conn, "notification_list", array($user));
 
 $NumbRows2 = pg_num_rows($followeeRes);
 
@@ -30,10 +30,10 @@ if ($NumbRows2 > 0) {
     while ($row = pg_fetch_assoc($followeeRes)) {
         $notificationID = $row['notificationid'];
         $notification = $row['notifmessage'];
-        $user = $row['username'];
+        $user_table = $row['username'];
         $time = $row['timestamp'];
         $killtime = $row['killtime'];
-        if($username != $user && strtotime($killtime) >= strtotime(date("Y-m-d"))){
+        if($user != $user_table && strtotime($killtime) >= strtotime(date("Y-m-d"))){
             $notifications[] = array('notificationID' => $notificationID, 'notification' => " $notification", 'time' => $time);
         }
     }
