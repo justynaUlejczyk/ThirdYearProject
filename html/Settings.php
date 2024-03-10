@@ -37,6 +37,8 @@ if ($settingsResult) {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/Profile.js"></script>
     <script src="../js/darkmode.js"></script>
@@ -302,7 +304,25 @@ if ($settingsResult) {
 
         <div id="general">
             <h1 class="updateTitle">General Settings</h1>
-            <h3>Idk what to put here any ideas would be great </h1>
+            <div class="banner" style="background-image: url(../images/default-background.png);">
+                <div class="banner-edit">
+                    <input type='file' id="bannerUpload" accept=".png, .jpg, .jpeg" />
+                    <label for="bannerUpload"></label>
+                </div>
+
+                <div class="banner-preview"></div>
+            </div>
+            <div class="avatar-upload">
+                <div class="avatar-edit">
+                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                    <label for="imageUpload"></label>
+                </div>
+                <div class="avatar-preview">
+                    <div id="imagePreview" style="background-image: url(../images/icons/Unknown_person.jpg);">
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <div id="account">
@@ -454,19 +474,25 @@ if ($settingsResult) {
             <h1 class="updateTitle">Delete Account</h1>
 
             <br>
-            <p class="inline">To delete your account click here, once clicked this acction cannot be undone</p>
+            <p class="inline">To delete your account click here</p>
             <br>
-            <button class="confirmButton">Delete Account </button>
+            <button class="confirmButton" onclick = "deleteAccountBox()">Delete Account </button>
 
         </div>
 
-
+        <div id = "deleteAccountBox">
+            <br>
+            <p class="inline">To delete your account click here, once clicked this acction cannot be undone. Are you sure?</p>
+            <br>
+            <button class="confirmButton" onclick = "deleteAccountBox()"><a href ="../php/delete_user.php">yes, delete account</a> </button>
+            <button type="button" onclick="deleteAccount()"> No, nevermind</button>
+        </div>
 
     </section>
 
 
 </main>
-
+<script src="../js/icon-change.js"></script>
 
 
 </body>

@@ -1,0 +1,22 @@
+#FriendsContentArea{
+    display: block;
+    width: 100%;
+    margin: 80px;
+    padding: 30px;
+
+}
+
+#friendDisplay{
+    display: inline-block;
+    width: 70px;
+    height: 60px;
+    padding: 10px;
+    margin: 10px;
+    background-color: grey;
+    border-radius: 10px;
+}
+
+#friendDisplay img{
+    width: 40px;
+    height: 40px;
+}

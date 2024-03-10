@@ -16,6 +16,7 @@ $username = $_SESSION["username"];
     <link rel="stylesheet" href="../css/Group.css">
     <link rel="stylesheet" href="../css/StyleSheet.css">
     <link rel="stylesheet" href="../css/Group-create.css">
+    <link rel="stylesheet" href="../css/Friends.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
@@ -243,25 +244,34 @@ $username = $_SESSION["username"];
 ?>
         
             
-            <?php 
-            if ($numRows > 0) {
+            <section id= "FriendsContentArea">
+                <h1>Friends List</h1>
+                <?php 
+                if ($numRows > 0) {
 
-                echo "<p>You follow: $numRows users</p>"; // Display total number of members
-                echo '<div>';
-                while ($row = pg_fetch_assoc($result)) {
-                    $followee = $row['followee'];
-            ?>
-            
-               
-                    <img src="../images/cat.jpg" class="friendIcon">
-                    <?php 
+                    echo "<p>You follow: $numRows users</p>"; // Display total number of members
+                    echo '<div>';
+                    while ($row = pg_fetch_assoc($result)) {
+                        $followee = $row['followee'];
+                ?>
+                
+                   
+                      
+                                <?php 
+                               
+                                echo  "<section id='friendDisplay'>";
+                                echo   "<img src='../images/cat.jpg' class='friendIcon'>";
+                                echo "<span>$followee</span><br>";
+                                echo "</section>";
+
+                                //echo "<p>You follow: $numRows users</p>"; // Display total number of members
+                            }}?>
                     
-                    echo "<span>$followee</span><br>";
-                    //echo "<p>You follow: $numRows users</p>"; // Display total number of members
-                }}?>
-            
-        
-            </div>
+
+
+            </section>
+
+
             </body>
             </html>
 

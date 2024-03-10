@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="../css/StyleSheet.css">
     <link rel="stylesheet" href="../css/Group-page.css">
     <link rel="stylesheet" href="../css/group-meetings.css">
+
     
+
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
@@ -18,13 +20,22 @@
     <script> src = "../js/meetings.js"</script>
     <script src="../js/navbar.js"></script>
     <script src="../js/createGroup.js"></script>
-    
+
     <script src="/socket.io/socket.io.js"></script>
 
     
     <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"></script>
     <script>
     const socket = io(); // This connects to your Socket.IO server
+
+
+    <script src="/socket.io/socket.io.js"></script>
+
+
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"></script>
+    <script>
+        const socket = io(); // This connects to your Socket.IO server
+
     </script>
 
 
@@ -39,6 +50,9 @@
             grid-template-columns: repeat(auto-fill, 300px);
             grid-auto-rows: 300px;
         }
+
+
+
         video {
             width: 100%;
             height: 100%;
@@ -175,6 +189,7 @@
                             </svg>
                         </button>
                         <div class="dropdown-content" id="dropdownContent">
+
                             <?php
     // Load initial notifications
     include_once "../php/load_notifications.php";
@@ -207,6 +222,16 @@
                                             </div>
                                             <span>Notifications</span>
                                         </li>
+
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                            <a href="../html/Group.php">See More</a>
+                        </div>
+                    </div>
+                    <span>Notifications</span>
+                </li>
+
 
                 <li>
                     <div class="dropdown">
@@ -295,7 +320,11 @@
                         Meetings
                     </li>
                 </a>
+
                 <a>
+
+                <a href="group-settings.php">
+
                     <li>
                         Settings
                     </li>

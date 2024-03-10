@@ -204,7 +204,9 @@ session_write_close();
                             <div class="dropdown-profile-icon">
                                 <a href="">
                                     <img src="../images/icons/Unknown_person.jpg" alt="">
-                                    <p><?php echo"$username"?></p>
+                                    <p>
+                                        <?php echo "$username" ?>
+                                    </p>
                                 </a>
                             </div>
                             <a href="../html/Profile.php">
@@ -276,10 +278,10 @@ session_write_close();
                 <a>
                     <li>Files</li>
                 </a>
-                <a href="group-page-meeting.html">
+                <a href="group-page-meeting.php">
                     <li>Meetings</li>
                 </a>
-                <a>
+                <a href="group-settings.php">
                     <li>
                         Settings
                     </li>
@@ -293,38 +295,55 @@ session_write_close();
         <feed>
             <section class="container-file">
                 <section class="files-options">
+                    
                     <a href="group-editor.php">
-                        <button class="new-file option-button">
-                            New File
-                        </button>
+                    <button class="new-file option-button">
+                        New File
+                    </button>
                     </a>
+                    
                     <button class="delete-file option-button">
                         Delete File
                     </button>
+            
+                    <button class="canvas-file option-button" onclick="newCanvas()" >
+                        Canvas File
+                    </button>
+             
+                    <br>
+
+                    
+
                 </section>
+                <section id = "newCanvasContent">
+                    <form id="newCanvas" action="group-canvas.php" >
+
+                    <div>
+                        <label for="fileName">File Name: </label>
+                        <input type="text" name="fileName"  required>
+                    </div>
+                    <div>
+                        <label for="background">Background(optional):</label>
+                        <input type="file" name="background" >
+                        <br>
+                    </div>
+                    <br>
+                        <div>
+                            <button type="submit">Create file</button>
+                        </div>
+                    </form>
+                    
+                </section>
+
                 <section class="file-container" id="fileContainer">
-                    <div class="folder-container" onclick="openFolder(this)" folderid="Bid1">
-                        <i class="fa fa-folder" aria-hidden="true"></i>
-                        <span id="Bid1">Files</span>
-                    </div>
-                    <!-- Add more Files as needed -->
-                    <div class="folder-container" onclick="openFolder(this)" folderid="main.txt">
-                        <i class="fa fa-file" aria-hidden="true"></i>
-                        <span id="main.txt">main.txt</span>
-                    </div>
-                    <!-- Add more Files as needed -->
-                    <div class="folder-container" onclick="openFolder(this)" folderid="art">
-                        <i class="fa fa-paint-brush" aria-hidden="true"></i>
-                        <span id="art">art</span>
-                    </div>
                     <?php
                     $get_filesSTMT = pg_prepare($conn, "get_files", "SELECT filename FROM files WHERE groupid = $1");
                     $get_filesRESULT = pg_execute($conn, "get_files", array($groupid));
-                    
+
                     while ($row = pg_fetch_assoc($get_filesRESULT)) {
                         $filename = $row["filename"];
                         echo
-                        "<a href='group-editor.php?id=$filename'><div class='folder-container' folderid='file'>
+                            "<a href='group-editor.php?id=$filename'><div class='folder-container' folderid='file'>
                         <i class='fa fa-file' aria-hidden='true'></i>
                         <span id='$filename'>$filename</span></a>";
                     }
@@ -336,23 +355,40 @@ session_write_close();
 
 
         <!--  Right Side Bar for Members -->
-        <aside class="right-bar active">
+        <aside class="right-bar">
             <div class="member-arrow" onclick="toggleMemberBar()">
                 <i class="fa fa-arrow-right" aria-hidden="true"></i>
             </div>
             <span>Members</span>
-            <button id="add-member">Add Member</button>
-            <div class="user-list">
-                <div class="members">
-                    <img src="../images/icons/Unknown_person.jpg" alt="">
-                    <span>Name</span>
-                </div>
-                <div class="members">
-                    <img src="../images/icons/Unknown_person.jpg" alt="">
-                    <span>Name</span>
-                </div>
+            <?php
+            //retriving members of group
+            
 
+            $stmt = pg_prepare($conn, "members", "SELECT * FROM accounttogroup WHERE groupid=$1");
+            $result = pg_execute($conn, "members", array($groupid));
+            $numRows = pg_num_rows($result);
+            echo '<div class="user-list">';
+            if ($numRows > 0) {
+                echo "<p>Members: $numRows</p>"; // Display total number of members
+                while ($row = pg_fetch_assoc($result)) {
+                    $username = $row['username'];
+                    echo ' <div class="members">
+            <img src="../images/icons/Unknown_person.jpg" alt="">';
+                    echo "<span>$username</span>
+                    <span><a href ='../php/delete_member.php?user=$username'>remove</a></span>
+
+        </div>";
+                }
+
+            }
+
+
+            ?>
             </div>
+
+
+
+
         </aside>
     </section>
 

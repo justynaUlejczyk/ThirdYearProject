@@ -12,8 +12,6 @@ function addLink() {
 }
 
 
-
-
 const content = document.getElementById('content');
 
 content.addEventListener('mouseenter', function () {

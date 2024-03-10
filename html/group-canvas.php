@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="../css/Group-page-file.css">
     <link rel="stylesheet" href="../css/group-editor.css">
 
+    <link rel="stylesheet" href="../css/group-canvas.css">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
     <script type="text/JavaScript"
         src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js?ver=1.4.2"></script>
 
@@ -21,13 +28,18 @@
     <script src="../js/darkmode.js"></script>
     <script src="../js/createGroup.js"></script>
     <script src="../js/GroupMemberBar.js"></script>
+
 </head>
 
 <!-- test commit -->
 
 <!-- test commit - branch demo -->
 
+
 <body>
+
+<body style="height: 600px;">
+
     <!-- Start of SubNav -->
     <subnav>
         <ul>
@@ -50,6 +62,7 @@
                         </svg>
 
                     </button>
+
                     <div class="dropdown-content" id="dropdownContent">
                         <?php
                         // Load initial notifications
@@ -83,6 +96,15 @@
                                         </div>
                                         <span>Notifications</span>
                                     </li>
+
+                    <div class="dropdown-content">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>
+                </div>
+            </li>
+
         </ul>
     </subnav>
     <!-- End of SubNav -->
@@ -254,6 +276,7 @@
     </nav>
     <!-- End of Nav -->
 
+
     <!-- Left Side Bar for Options of what to do -->
     <section class="body">
         <aside>
@@ -275,6 +298,50 @@
 
 
     <script src="../js/group-canvas.js"></script>
+
+    <section class="body">
+        <aside class="left-bar">
+            <ul>
+                <a href="group-page.php">
+                    <li>
+                        Home
+                    </li>
+                </a>
+                <a href="group-page-file.php">
+                    <li>Files</li>
+                </a>
+                <a href="group-page-meeting.php">
+                    <li>Meetings</li>
+                </a>
+                <a>
+                    <li>
+                        Settings
+                    </li>
+                </a>
+            </ul>
+        </aside>
+    <!-- Left Side Bar for Options of what to do -->
+    <main>
+        
+        <section class="canvasContainer">
+            <div id="toolbar">
+                <h1>Filename</h1>
+                <label for="stroke">Stroke</label>
+                <input id="stroke" name='stroke' type="color">
+                <label for="lineWidth">Line Width</label>
+                <input id="lineWidth" name='lineWidth' type="range"  min="1" max="25" value="5">
+                <button id="clear">Clear</button>
+                <button onclick="saveCanvas()">Save</button>
+            </div>
+
+            <div class="drawing-board">
+                <canvas id="drawing-board"></canvas>
+            </div>
+        </section>
+        <script src="../js/group-canvas.js"></script>
+    </main>
+
+
 </body>
 
 </html>
