@@ -171,16 +171,39 @@ if (isset($_GET['id'])) {
                                     stroke="black" stroke-width="2" stroke-linecap="round" />
                             </svg>
                         </button>
-                        <div class="dropdown-content" id="dropdownContent">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
-                            <a href="../html/Group.php">See More</a>
+                        <<div class="dropdown-content" id="dropdownContent">
+    <?php
+    // Load initial notifications
+    include_once "../php/load_notifications.php";
+    ?>
+    <a href="../html/Notifications.php" id="seeMoreLink">See More</a>
+</div>
+
+<script>
+    // Function to load more notifications
+    function loadMoreNotifications() {
+        // Make an AJAX request
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "load_notifications.php", true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                // Update the content of the dropdownContent div
+                document.getElementById("dropdownContent").innerHTML = xhr.responseText;
+            }
+        };
+        xhr.send();
+    }
+
+    // Attach click event listener to the "See More" link
+    document.getElementById("seeMoreLink").addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent default link behavior
+        loadMoreNotifications(); // Call the function to load more notifications
+    });
+</script>
                         </div>
                     </div>
                     <span>Notifications</span>
                 </li>
-
                 <li>
                     <div class="dropdown">
                         <img class="nav-profile" onclick="toggleDropdownProfile()"

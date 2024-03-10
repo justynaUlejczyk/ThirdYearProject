@@ -81,7 +81,7 @@ $result = pg_query($conn, $query);
     <!-- End of SubNav -->
 
     <!-- Start of Nav -->
-    <nav>
+   <nav>
         <section>
             <form id="searchForm" action="">
                 <input id="searchInput" type="search" required>
@@ -169,24 +169,34 @@ $result = pg_query($conn, $query);
                             </svg>
                         </button>
                         <div class="dropdown-content" id="dropdownContent">
-                            <?php
-                        $notificationQuery = pg_prepare($conn, "list",
-                         "SELECT * FROM notifications WHERE username = $1 ORDER BY notificationID DESC LIMIT 3");
-$notificationResult = pg_execute($conn, "list", array($username));
-$NumbRows = pg_num_rows($notificationResult);
+    <?php
+    // Load initial notifications
+    include_once "../php/load_notifications.php";
+    ?>
+    <a href="../html/Notifications.php" id="seeMoreLink">See More</a>
+</div>
 
-if ($NumbRows > 0) {
-    $counter = 0;
-    while ($row = pg_fetch_assoc($notificationResult)) {
-        $notification = $row['notifmessage'];
-        $timestamp = $row['timestamp']; // Adding this line to fetch timestamp
-        $killtime = $row['killtime'];
-        if (strtotime($killtime) >= strtotime(date("Y-m-d"))){
-        $time= $row['timestamp']; // Adding this line to fetch timestamp
-        echo "<p> $notification </p><br>";
-    }}
-} ?>
-                            <a href="../html/Notifications.php">See More</a>
+<script>
+    // Function to load more notifications
+    function loadMoreNotifications() {
+        // Make an AJAX request
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "load_notifications.php", true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                // Update the content of the dropdownContent div
+                document.getElementById("dropdownContent").innerHTML = xhr.responseText;
+            }
+        };
+        xhr.send();
+    }
+
+    // Attach click event listener to the "See More" link
+    document.getElementById("seeMoreLink").addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent default link behavior
+        loadMoreNotifications(); // Call the function to load more notifications
+    });
+</script>
                         </div>
                     </div>
                     <span>Notifications</span>
