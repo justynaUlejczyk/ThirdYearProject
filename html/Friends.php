@@ -235,7 +235,35 @@ $username = $_SESSION["username"];
     </nav>
     <!-- End of Nav -->
 <body>
+    <?php
+$stmt = pg_prepare($conn, "followers", "SELECT followee FROM follows WHERE username=$1 ");
+ $result = pg_execute($conn, "followers", array($username)); 
+$numRows = pg_num_rows($result);
+$stmt2 = pg_prepare($conn, "followers2", "SELECT username FROM follows WHERE followee=$1");
 
+
+        ?>
+        <section id= "FriendsContentArea">
+                <h1>Friends List</h1>
+            <?php 
+            if ($numRows > 0) {
+               
+                //echo "<p>You follow: $numRows users</p>"; // Display total number of members
+                while ($row = pg_fetch_assoc($result)){
+                    $followee = $row['followee'];     
+                    
+                    $result2 = pg_execute($conn, "followers2", array($username)); 
+                    $numRows2 = pg_num_rows($result2);
+                    if( $numRows2>0){
+                        echo '<div>';
+                        while ($row2= pg_fetch_assoc($result2)){
+                        $follower = $row2['username'];
+                        if($follower ==$followee){
+                            echo  "<section id='friendDisplay'>";
+                            echo   "<img src='../images/cat.jpg' class='friendIcon'>";
+                            echo "<span><a href ='../html/Profile.php?id=$followee'><p>$followee</p><a></span><br>";
+                            echo "</section>";
+                }}}}}?>
     <?php
  $stmt = pg_prepare($conn, "followee", "SELECT * FROM follows WHERE username=$1");
  $result = pg_execute($conn, "followee", array($username)); // Assuming $login_username is set properly
@@ -244,28 +272,7 @@ $username = $_SESSION["username"];
 ?>
         
             
-            <section id= "FriendsContentArea">
-                <h1>Friends List</h1>
-                <?php 
-                if ($numRows > 0) {
-
-                    echo "<p>You follow: $numRows users</p>"; // Display total number of members
-                    echo '<div>';
-                    while ($row = pg_fetch_assoc($result)) {
-                        $followee = $row['followee'];
-                ?>
-                
-                   
-                      
-                                <?php 
-                               
-                                echo  "<section id='friendDisplay'>";
-                                echo   "<img src='../images/cat.jpg' class='friendIcon'>";
-                                echo "<span>$followee</span><br>";
-                                echo "</section>";
-
-                                //echo "<p>You follow: $numRows users</p>"; // Display total number of members
-                            }}?>
+            
                     
 
 

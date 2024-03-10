@@ -329,10 +329,10 @@ $username = $_SESSION["username"];
         </aside>
 
         <?php
- $stmt = pg_prepare($conn, "followers", "SELECT followee FROM follows WHERE username=$1 ");
+ $stmt = pg_prepare($conn, "followers", "SELECT followee FROM follows WHERE username=$1");
  $result = pg_execute($conn, "followers", array($username)); 
 $numRows = pg_num_rows($result);
-$stmt2 = pg_prepare($conn, "followers2", "SELECT username FROM follows WHERE followee=$1");
+$stmt2 = pg_prepare($conn, "followers2", "SELECT username FROM follows WHERE followee=$1 ");
 
 
         ?>
@@ -340,7 +340,7 @@ $stmt2 = pg_prepare($conn, "followers2", "SELECT username FROM follows WHERE fol
             <h1 class="heading">Friends List</h1>
             <?php 
             if ($numRows > 0) {
-               
+                echo '<section class="friendList">';
                 //echo "<p>You follow: $numRows users</p>"; // Display total number of members
                 while ($row = pg_fetch_assoc($result)){
                     $followee = $row['followee'];     
@@ -352,12 +352,12 @@ $stmt2 = pg_prepare($conn, "followers2", "SELECT username FROM follows WHERE fol
                         $follower = $row2['username'];
                         if($follower ==$followee){
             ?>              
-            <section class="friendList">
+            
                 <friend>
                     <img src="../images/cat.jpg" class="friendIcon">
                     <?php 
                     
-                    echo "<span>$followee</span></friend>";
+                    echo "<span><a href ='../html/Profile.php?id=$followee'><p>$followee</p><a></span></friend>";
                 }}}}}?>
 
     </bside>

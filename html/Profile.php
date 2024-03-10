@@ -743,7 +743,7 @@ if(pg_num_rows($userDataRESULT) == 0){
 
                                    echo '<div class="profile">
                                    <img src="../images/icons/Unknown_person.jpg" alt="friend profile pic">
-                                   <p id="friendName">'; echo "$foll </p>";
+                                   <p id="friendName">'; echo "<a href ='../html/Profile.php?id=$foll'><p>$foll</p><a> </p>";
                                    if ($login_username == $account_username) {
                                    echo"<span><a href='../php/stop_follow.php?id=$foll'>unfollow</a></div>"; 
 
@@ -758,7 +758,7 @@ if(pg_num_rows($userDataRESULT) == 0){
                             {
                                 $foll=$row['username'];
                                 echo '<div class="profile"><img src="../images/icons/Unknown_person.jpg" alt="friend profile pic">
-                                   <p id="friendName">'; echo $foll; echo '</p></div>'; 
+                                   <p id="friendName">'; echo"<a href ='../html/Profile.php?id=$foll'><p>$foll</p><a>"; echo '</p></div>'; 
                             }}
                             else{echo'No followers yet... ';}
                         ?>
