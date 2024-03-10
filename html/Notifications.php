@@ -289,11 +289,12 @@ $notifications = array(); // Array to hold all notifications
 
 if ($NumbRows > 0) {
     while ($row = pg_fetch_assoc($notificationResult)) {
+        $notificationID = $row['notificationid'];
         $notification = $row['notifmessage'];
         $time = $row['timestamp'];
         $killtime = $row['killtime'];
         if (strtotime($killtime) >= strtotime(date("Y-m-d"))){
-            $notifications[] = array('notification' => $notification, 'time' => $time);
+            $notifications[] = array('notificationID' => $notificationID, 'notification' => $notification, 'time' => $time);
         }
     }
 }
@@ -308,19 +309,28 @@ $NumbRows2 = pg_num_rows($followeeRes);
 
 if ($NumbRows2 > 0) {
     while ($row = pg_fetch_assoc($followeeRes)) {
+        $notificationID = $row['notificationid'];
         $notification = $row['notifmessage'];
         $user = $row['username'];
         $time = $row['timestamp'];
         $killtime = $row['killtime'];
         if($username != $user && strtotime($killtime) >= strtotime(date("Y-m-d"))){
-            $notifications[] = array('notification' => "$user: $notification", 'time' => $time);
+            $notifications[] = array('notificationID' => $notificationID, 'notification' => "$user: $notification", 'time' => $time);
         }
     }
 }
 
-// Sort notifications by time
+// Sort notifications by ID first, then by time
 usort($notifications, function($a, $b) {
-    return strtotime($b['time']) - strtotime($a['time']);
+    // Compare notificationID first
+    $idComparison = $b['notificationID'] - $a['notificationID'];
+    
+    // If notificationID is equal, compare timestamps
+    if ($idComparison == 0) {
+        return strtotime($b['time']) - strtotime($a['time']);
+    }
+    
+    return $idComparison;
 });
 
 if (count($notifications) > 0) {
@@ -333,6 +343,7 @@ if (count($notifications) > 0) {
     echo "<div> <h1>No notifications yet...</h1></div>";
 }
 ?>
+
 
 
 </section> 
