@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html class="dimmed">
 <?php
 require_once "../php/connect_db.php";
 session_id("userSession");
@@ -25,26 +23,15 @@ $groupname = $_SESSION["groupname"];
 session_write_close();
 ?>
 
-
+<!DOCTYPE html>
+<html class="dimmed">
 
 <head>
     <title>Groups</title>
     <link rel="stylesheet" href="../css/Group.css">
     <link rel="stylesheet" href="../css/StyleSheet.css">
     <link rel="stylesheet" href="../css/Group-page.css">
-    <link rel="stylesheet" href="../css/Group-page-file.css">
-    <link rel="stylesheet" href="../css/group-editor.css">
-
     <link rel="stylesheet" href="../css/group-canvas.css">
-
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    <script type="text/JavaScript"
-        src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js?ver=1.4.2"></script>
-
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
@@ -52,17 +39,16 @@ session_write_close();
 
     <script src="../js/main.js"></script>
     <script src="../js/darkmode.js"></script>
+    <script src="../js/navbar.js"></script>
     <script src="../js/createGroup.js"></script>
     <script src="../js/GroupMemberBar.js"></script>
-
 </head>
 
 <!-- test commit -->
 
 <!-- test commit - branch demo -->
 
-<body style="height: 600px;">
-
+<body>
     <!-- Start of SubNav -->
     <subnav>
         <ul>
@@ -85,41 +71,6 @@ session_write_close();
                         </svg>
 
                     </button>
-
-                    <div class="dropdown-content" id="dropdownContent">
-                        <?php
-                        // Load initial notifications
-                        include_once "../php/load_notifications.php";
-                        ?>
-                        <a href="../html/Notifications.php">See More</a>
-                    </div>
-                    
-                    <script>
-                        // Function to load more notifications
-                        function loadMoreNotifications() {
-                            // Make an AJAX request
-                            var xhr = new XMLHttpRequest();
-                            xhr.open("GET", "load_notifications.php", true);
-                            xhr.onreadystatechange = function() {
-                                if (xhr.readyState == 4 && xhr.status == 200) {
-                                    // Update the content of the dropdownContent div
-                                    document.getElementById("dropdownContent").innerHTML = xhr.responseText;
-                                }
-                            };
-                            xhr.send();
-                        }
-                    
-                        // Attach click event listener to the "See More" link
-                        document.getElementById("seeMoreLink").addEventListener("click", function(event) {
-                            event.preventDefault(); // Prevent default link behavior
-                            loadMoreNotifications(); // Call the function to load more notifications
-                        });
-                    </script>
-                                            </div>
-                                        </div>
-                                        <span>Notifications</span>
-                                    </li>
-
                     <div class="dropdown-content">
                         <a href="#">Link 1</a>
                         <a href="#">Link 2</a>
@@ -127,7 +78,6 @@ session_write_close();
                     </div>
                 </div>
             </li>
-
         </ul>
     </subnav>
     <!-- End of SubNav -->
@@ -221,10 +171,34 @@ session_write_close();
                             </svg>
                         </button>
                         <div class="dropdown-content" id="dropdownContent">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
-                            <a href="../html/Group.php">See More</a>
+    <?php
+    // Load initial notifications
+    include_once "../php/load_notifications.php";
+    ?>
+    <a href="../html/Notifications.php">See More</a>
+</div>
+
+<script>
+    // Function to load more notifications
+    function loadMoreNotifications() {
+        // Make an AJAX request
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "load_notifications.php", true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                // Update the content of the dropdownContent div
+                document.getElementById("dropdownContent").innerHTML = xhr.responseText;
+            }
+        };
+        xhr.send();
+    }
+
+    // Attach click event listener to the "See More" link
+    document.getElementById("seeMoreLink").addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent default link behavior
+        loadMoreNotifications(); // Call the function to load more notifications
+    });
+</script>
                         </div>
                     </div>
                     <span>Notifications</span>
@@ -239,7 +213,9 @@ session_write_close();
                             <div class="dropdown-profile-icon">
                                 <a href="">
                                     <img src="../images/icons/Unknown_person.jpg" alt="">
-                                    <p>Name Surname</p>
+                                    <p>
+                                        <?php echo "$login_username" ?>
+                                    </p>
                                 </a>
                             </div>
                             <a href="../html/Profile.php">
@@ -299,12 +275,11 @@ session_write_close();
     </nav>
     <!-- End of Nav -->
 
-    <script src="../js/group-canvas.js"></script>
-
+    <!-- Left Side Bar for Options of what to do -->
     <section class="body">
         <aside class="left-bar">
             <ul>
-                <a href="group-page.php">
+                <a>
                     <li>
                         Home
                     </li>
@@ -312,7 +287,7 @@ session_write_close();
                 <a href="group-page-file.php">
                     <li>Files</li>
                 </a>
-                <a href="group-page-meeting.php">
+                <a href="./group-page-meeting.php">
                     <li>Meetings</li>
                 </a>
                 <a href="group-settings.php">
@@ -322,26 +297,79 @@ session_write_close();
                 </a>
             </ul>
         </aside>
-    <!-- Left Side Bar for Options of what to do -->
-    <main>
-        
-        <section class="canvasContainer">
-            <div id="toolbar">
-                <h1>Filename</h1>
-                <label for="stroke">Stroke</label>
-                <input id="stroke" name='stroke' type="color">
-                <label for="lineWidth">Line Width</label>
-                <input id="lineWidth" name='lineWidth' type="range"  min="1" max="25" value="5">
-                <button id="clear">Clear</button>
-                <button onclick="saveCanvas()">Save</button>
+
+
+
+        <!-- Feed -->
+        <feed>
+        <div id="toolbar">
+            <h1>FileName</h1>
+            <label for="stroke">Stroke</label>
+            <input id="stroke" name='stroke' type="color">
+            <label for="lineWidth">Line Width</label>
+            <input id="lineWidth" name='lineWidth' type="range" max = "25" min = "1" value="5">
+            <button id="clear">Clear</button>
+            <button id="undo">Undo</button>
+            <button id="redo">Redo</button>
+            <button id="save">Save</button>
+            <input type="file" id="imageLoader" accept="image/*" />
+        </div>
+            <div class="drawing-board">
+                <canvas id="drawing-board" ></canvas>
+            </div>
+            <script src="../js/group-canvas.js"></script>
+        </feed>
+
+
+
+        <!--  Right Side Bar for Members -->
+        <aside class="right-bar">
+            <div class="member-arrow" onclick="toggleMemberBar()">
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </div>
+            <span>Members</span>
+            <?php
+            //retriving members of group
+            
+
+            $stmt = pg_prepare($conn, "members", "SELECT * FROM accounttogroup WHERE groupid=$1");
+            $result = pg_execute($conn, "members", array($groupid));
+            $numRows = pg_num_rows($result);
+            echo '<div class="user-list">';
+            if ($numRows > 0) {
+                echo "<p>Members: $numRows</p>"; // Display total number of members
+                while ($row = pg_fetch_assoc($result)) {
+                    $username = $row['username'];
+                    echo ' <div class="members">
+            <img src="../images/icons/Unknown_person.jpg" alt="">';
+                    echo "<span>$username</span>
+                    <span><a href ='../php/delete_member.php?user=$username'>
+                    <svg width='64px' height='64px' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+
+                    <g id='SVGRepo_bgCarrier' stroke-width='0';/>
+
+                    <g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'/>
+
+                    <g id='SVGRepo_iconCarrier'> <path d='M3 6.38597C3 5.90152 3.34538 5.50879 3.77143 5.50879L6.43567 5.50832C6.96502 5.49306 7.43202 5.11033 7.61214 4.54412C7.61688 4.52923 7.62232 4.51087 7.64185 4.44424L7.75665 4.05256C7.8269 3.81241 7.8881 3.60318 7.97375 3.41617C8.31209 2.67736 8.93808 2.16432 9.66147 2.03297C9.84457 1.99972 10.0385 1.99986 10.2611 2.00002H13.7391C13.9617 1.99986 14.1556 1.99972 14.3387 2.03297C15.0621 2.16432 15.6881 2.67736 16.0264 3.41617C16.1121 3.60318 16.1733 3.81241 16.2435 4.05256L16.3583 4.44424C16.3778 4.51087 16.3833 4.52923 16.388 4.54412C16.5682 5.11033 17.1278 5.49353 17.6571 5.50879H20.2286C20.6546 5.50879 21 5.90152 21 6.38597C21 6.87043 20.6546 7.26316 20.2286 7.26316H3.77143C3.34538 7.26316 3 6.87043 3 6.38597Z' fill='#1C274C'/> <path fill-rule='evenodd' clip-rule='evenodd' d='M11.5956 22.0001H12.4044C15.1871 22.0001 16.5785 22.0001 17.4831 21.1142C18.3878 20.2283 18.4803 18.7751 18.6654 15.8686L18.9321 11.6807C19.0326 10.1037 19.0828 9.31524 18.6289 8.81558C18.1751 8.31592 17.4087 8.31592 15.876 8.31592H8.12404C6.59127 8.31592 5.82488 8.31592 5.37105 8.81558C4.91722 9.31524 4.96744 10.1037 5.06788 11.6807L5.33459 15.8686C5.5197 18.7751 5.61225 20.2283 6.51689 21.1142C7.42153 22.0001 8.81289 22.0001 11.5956 22.0001ZM10.2463 12.1886C10.2051 11.7548 9.83753 11.4382 9.42537 11.4816C9.01321 11.525 8.71251 11.9119 8.75372 12.3457L9.25372 17.6089C9.29494 18.0427 9.66247 18.3593 10.0746 18.3159C10.4868 18.2725 10.7875 17.8856 10.7463 17.4518L10.2463 12.1886ZM14.5746 11.4816C14.9868 11.525 15.2875 11.9119 15.2463 12.3457L14.7463 17.6089C14.7051 18.0427 14.3375 18.3593 13.9254 18.3159C13.5132 18.2725 13.2125 17.8856 13.2537 17.4518L13.7537 12.1886C13.7949 11.7548 14.1625 11.4382 14.5746 11.4816Z' fill='#1C274C'/> </g>
+
+                    </svg>
+                    </a></span>
+
+        </div>";
+                }
+
+            }
+
+
+            ?>
             </div>
 
-            <div class="drawing-board">
-                <canvas id="drawing-board"></canvas>
-            </div>
-        </section>
-        <script src="../js/group-canvas.js"></script>
-    </main>
+
+
+
+        </aside>
+    </section>
+
 
 
 </body>
