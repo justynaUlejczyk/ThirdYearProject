@@ -254,7 +254,7 @@ session_write_close();
                 <a>
                     <li>Files</li>
                 </a>
-                <a href="group-page-meeting.html">
+                <a href="group-page-meeting.php">
                     <li>Meetings</li>
                 </a>
                 <a href="group-settings.php">
