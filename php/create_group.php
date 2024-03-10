@@ -11,8 +11,18 @@ require_once "../php/connect_db.php";
 $stmt = pg_prepare($conn, "create_group", "INSERT INTO groups (managerID, groupname) VALUES ($1, $2) RETURNING groupID");
 $username = $_SESSION['username'];
 $groupname = $_POST['groupname'];
+$date = date("Y-m-d");
 
+$killTime = new DateTime();
+$killTime->modify('+3 weeks');
+
+$mess =  "$username created $groupname";
 $result = pg_execute($conn, "create_group", array($username, $groupname));
+
+$notificationQuery = pg_prepare($conn, "add_notification", "INSERT INTO notifications 
+(username, timestamp, killtime, notifmessage) 
+VALUES ($1, $2, $3, $4) RETURNING notificationID");
+$notificationResult = pg_execute($conn, "add_notification", array($username, $date, $killTime->format('Y-m-d'), $mess));
 
 if ($result) {
     echo "Group created successfully!";

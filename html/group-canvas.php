@@ -8,11 +8,13 @@
     <link rel="stylesheet" href="../css/Group-page.css">
     <link rel="stylesheet" href="../css/Group-page-file.css">
     <link rel="stylesheet" href="../css/group-editor.css">
+
     <link rel="stylesheet" href="../css/group-canvas.css">
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
     <script type="text/JavaScript"
         src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js?ver=1.4.2"></script>
@@ -26,15 +28,18 @@
     <script src="../js/darkmode.js"></script>
     <script src="../js/createGroup.js"></script>
     <script src="../js/GroupMemberBar.js"></script>
-    
-   
+
 </head>
 
 <!-- test commit -->
 
 <!-- test commit - branch demo -->
 
+
+<body>
+
 <body style="height: 600px;">
+
     <!-- Start of SubNav -->
     <subnav>
         <ul>
@@ -57,6 +62,41 @@
                         </svg>
 
                     </button>
+
+                    <div class="dropdown-content" id="dropdownContent">
+                        <?php
+                        // Load initial notifications
+                        include_once "../php/load_notifications.php";
+                        ?>
+                        <a href="../html/Notifications.php">See More</a>
+                    </div>
+                    
+                    <script>
+                        // Function to load more notifications
+                        function loadMoreNotifications() {
+                            // Make an AJAX request
+                            var xhr = new XMLHttpRequest();
+                            xhr.open("GET", "load_notifications.php", true);
+                            xhr.onreadystatechange = function() {
+                                if (xhr.readyState == 4 && xhr.status == 200) {
+                                    // Update the content of the dropdownContent div
+                                    document.getElementById("dropdownContent").innerHTML = xhr.responseText;
+                                }
+                            };
+                            xhr.send();
+                        }
+                    
+                        // Attach click event listener to the "See More" link
+                        document.getElementById("seeMoreLink").addEventListener("click", function(event) {
+                            event.preventDefault(); // Prevent default link behavior
+                            loadMoreNotifications(); // Call the function to load more notifications
+                        });
+                    </script>
+                                            </div>
+                                        </div>
+                                        <span>Notifications</span>
+                                    </li>
+
                     <div class="dropdown-content">
                         <a href="#">Link 1</a>
                         <a href="#">Link 2</a>
@@ -64,6 +104,7 @@
                     </div>
                 </div>
             </li>
+
         </ul>
     </subnav>
     <!-- End of SubNav -->
@@ -234,6 +275,30 @@
         </section>
     </nav>
     <!-- End of Nav -->
+
+
+    <!-- Left Side Bar for Options of what to do -->
+    <section class="body">
+        <aside>
+        </aside>
+
+
+
+        <!-- Feed -->
+        <feed>
+            <canvas id="myCanvas"></canvas>
+        </feed>
+
+
+
+        <!--  Right Side Bar for Members -->
+        <aside class="right-bar active">
+        </aside>
+    </section>
+
+
+    <script src="../js/group-canvas.js"></script>
+
     <section class="body">
         <aside class="left-bar">
             <ul>
@@ -275,6 +340,7 @@
         </section>
         <script src="../js/group-canvas.js"></script>
     </main>
+
 
 </body>
 

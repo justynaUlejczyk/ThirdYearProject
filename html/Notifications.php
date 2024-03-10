@@ -1,51 +1,58 @@
 <?php
-require_once "../php/connect_db.php";
-
 session_id("userSession");
 session_start();
 if (!isset($_SESSION["username"])) {
     header('Location: ' . "./login.php");
 }
+
+require_once "../php/connect_db.php";
+
 $username = $_SESSION["username"];
-session_write_close();
-session_id("groupSession");
-session_start();
-$groupid = $_SESSION["groupid"];
-$groupname = $_SESSION["groupname"];
-session_write_close();
+$account_username = $username;
+if (isset($_GET["id"])) {
+    $id = $_GET["id"];
+    $account_username = $id;
+}
+
+$userDataSTMT = pg_prepare($conn, "user_data", "SELECT * FROM accounts where username = $1");
+$userDataRESULT = pg_execute($conn, "user_data", array($account_username));
+$name = pg_fetch_result($userDataRESULT, 0, "name");
+$bio = pg_fetch_result($userDataRESULT, 0, "bio");
+$query = "SELECT postID, text, post.username, name  
+    FROM post 
+    INNER JOIN accounts ON accounts.username = post.username 
+    WHERE accounts.username = '$account_username'
+    ORDER BY postid DESC";
+
+
+$result = pg_query($conn, $query);
 ?>
 <!DOCTYPE html>
 <html class="dimmed">
 
 <head>
-    <title>Groups</title>
-    <link rel="stylesheet" href="../css/Group.css">
+    <title>Notifications</title>
     <link rel="stylesheet" href="../css/StyleSheet.css">
-    <link rel="stylesheet" href="../css/Group-page.css">
-    <link rel="stylesheet" href="../css/Group-page-file.css">
+    <link rel="stylesheet" href="../css/Profile.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <script src="../js/main.js"></script>
+    <script src="../js/Profile.js"></script>
     <script src="../js/darkmode.js"></script>
-    <script src="../js/createGroup.js"></script>
-    <script src="../js/GroupMemberBar.js"></script>
-    <script src="../js/group-file.js"></script>
+
 </head>
 
-<!-- test commit -->
 
-<!-- test commit - branch demo -->
-
-<body>
+<body class="dimmed">
     <!-- Start of SubNav -->
     <subnav>
         <ul>
             <li>
                 <a href="Profile.php">
-                    <img src="../images/cat.jpg" class="nav-profile">
+                    <img src="../images/icons/Unknown_person.jpg" class="nav-profile">
                 </a>
             </li>
 
@@ -74,7 +81,7 @@ session_write_close();
     <!-- End of SubNav -->
 
     <!-- Start of Nav -->
-    <nav>
+   <nav>
         <section>
             <form id="searchForm" action="">
                 <input id="searchInput" type="search" required>
@@ -110,7 +117,7 @@ session_write_close();
                         <img src="../images/icons/nav-icons/add-square-svgrepo-com.svg">
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="../html/Group.php">
                         <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -266,134 +273,69 @@ session_write_close();
     </nav>
     <!-- End of Nav -->
 
-    <!-- Left Side Bar for Options of what to do -->
-    <section class="body">
-        <aside class="left-bar">
-            <ul>
-                <a href="group-page.php">
-                    <li>
-                        Home
-                    </li>
-                </a>
-                <a>
-                    <li>Files</li>
-                </a>
-                <a href="group-page-meeting.php">
-                    <li>Meetings</li>
-                </a>
-                <a href="group-settings.php">
-                    <li>
-                        Settings
-                    </li>
-                </a>
-            </ul>
-        </aside>
+    <main>
 
 
 
-        <!-- Feed -->
-        <feed>
-            <section class="container-file">
-                <section class="files-options">
-                    
-                    <a href="group-editor.php">
-                    <button class="new-file option-button">
-                        New File
-                    </button>
-                    </a>
-                    
-                    <button class="delete-file option-button">
-                        Delete File
-                    </button>
-            
-                    <button class="canvas-file option-button" onclick="newCanvas()" >
-                        Canvas File
-                    </button>
-             
-                    <br>
+<div>
+<section>
+        <h1>Notifications: </h1><br>
+        <?php
+$notificationQuery = pg_prepare($conn, "notification", "SELECT * FROM notifications WHERE username = $1 ORDER BY notificationID DESC");
+$notificationResult = pg_execute($conn, "notification", array($username));
+$NumbRows = pg_num_rows($notificationResult);
 
-                    
+$notifications = array(); // Array to hold all notifications
 
-                </section>
-                <section id = "newCanvasContent">
-                    <form id="newCanvas" action="group-canvas.php" >
+if ($NumbRows > 0) {
+    while ($row = pg_fetch_assoc($notificationResult)) {
+        $notification = $row['notifmessage'];
+        $time = $row['timestamp'];
+        $killtime = $row['killtime'];
+        if (strtotime($killtime) >= strtotime(date("Y-m-d"))){
+            $notifications[] = array('notification' => $notification, 'time' => $time);
+        }
+    }
+}
 
-                    <div>
-                        <label for="fileName">File Name: </label>
-                        <input type="text" name="fileName"  required>
-                    </div>
-                    <div>
-                        <label for="background">Background(optional):</label>
-                        <input type="file" name="background" >
-                        <br>
-                    </div>
-                    <br>
-                        <div>
-                            <button type="submit">Create file</button>
-                        </div>
-                    </form>
-                    
-                </section>
+$followeeNot = pg_prepare($conn, "notification1", "SELECT DISTINCT notifications.* FROM notifications 
+JOIN follows 
+ON notifications.username = follows.followee WHERE follows.username = $1 ORDER BY notifications.notificationID DESC");
 
-                <section class="file-container" id="fileContainer">
-                    <?php
-                    $get_filesSTMT = pg_prepare($conn, "get_files", "SELECT filename FROM files WHERE groupid = $1");
-                    $get_filesRESULT = pg_execute($conn, "get_files", array($groupid));
+$followeeRes = pg_execute($conn, "notification1", array($username));
 
-                    while ($row = pg_fetch_assoc($get_filesRESULT)) {
-                        $filename = $row["filename"];
-                        echo
-                            "<a href='group-editor.php?id=$filename'><div class='folder-container' folderid='file'>
-                        <i class='fa fa-file' aria-hidden='true'></i>
-                        <span id='$filename'>$filename</span></a>";
-                    }
-                    ?>
-                </section>
-            </section>
-        </feed>
+$NumbRows2 = pg_num_rows($followeeRes);
+
+if ($NumbRows2 > 0) {
+    while ($row = pg_fetch_assoc($followeeRes)) {
+        $notification = $row['notifmessage'];
+        $user = $row['username'];
+        $time = $row['timestamp'];
+        $killtime = $row['killtime'];
+        if($username != $user && strtotime($killtime) >= strtotime(date("Y-m-d"))){
+            $notifications[] = array('notification' => "$user: $notification", 'time' => $time);
+        }
+    }
+}
+
+// Sort notifications by time
+usort($notifications, function($a, $b) {
+    return strtotime($b['time']) - strtotime($a['time']);
+});
+
+if (count($notifications) > 0) {
+    $counter = 0;
+    foreach ($notifications as $notification) {
+        $counter++;
+        echo "$counter: {$notification['notification']} ({$notification['time']})<br>";
+    }
+} else {
+    echo "<div> <h1>No notifications yet...</h1></div>";
+}
+?>
 
 
-
-        <!--  Right Side Bar for Members -->
-        <aside class="right-bar">
-            <div class="member-arrow" onclick="toggleMemberBar()">
-                <i class="fa fa-arrow-right" aria-hidden="true"></i>
-            </div>
-            <span>Members</span>
-            <?php
-            //retriving members of group
-            
-
-            $stmt = pg_prepare($conn, "members", "SELECT * FROM accounttogroup WHERE groupid=$1");
-            $result = pg_execute($conn, "members", array($groupid));
-            $numRows = pg_num_rows($result);
-            echo '<div class="user-list">';
-            if ($numRows > 0) {
-                echo "<p>Members: $numRows</p>"; // Display total number of members
-                while ($row = pg_fetch_assoc($result)) {
-                    $username = $row['username'];
-                    echo ' <div class="members">
-            <img src="../images/icons/Unknown_person.jpg" alt="">';
-                    echo "<span>$username</span>
-                    <span><a href ='../php/delete_member.php?user=$username'>remove</a></span>
-
-        </div>";
-                }
-
-            }
-
-
-            ?>
-            </div>
-
-
-
-
-        </aside>
-    </section>
-
-
+</section> 
+</div>
 
 </body>
-
-</html>
