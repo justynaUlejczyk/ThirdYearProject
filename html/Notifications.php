@@ -6,38 +6,53 @@ if (!isset($_SESSION["username"])) {
 }
 
 require_once "../php/connect_db.php";
+
 $username = $_SESSION["username"];
+$account_username = $username;
+if (isset($_GET["id"])) {
+    $id = $_GET["id"];
+    $account_username = $id;
+}
+
+$userDataSTMT = pg_prepare($conn, "user_data", "SELECT * FROM accounts where username = $1");
+$userDataRESULT = pg_execute($conn, "user_data", array($account_username));
+$name = pg_fetch_result($userDataRESULT, 0, "name");
+$bio = pg_fetch_result($userDataRESULT, 0, "bio");
+$query = "SELECT postID, text, post.username, name  
+    FROM post 
+    INNER JOIN accounts ON accounts.username = post.username 
+    WHERE accounts.username = '$account_username'
+    ORDER BY postid DESC";
+
+
+$result = pg_query($conn, $query);
 ?>
 <!DOCTYPE html>
 <html class="dimmed">
 
 <head>
-    <title>Groups</title>
-    <link rel="stylesheet" href="../css/Group.css">
+    <title>Notifications</title>
     <link rel="stylesheet" href="../css/StyleSheet.css">
-    <link rel="stylesheet" href="../css/Group-create.css">
+    <link rel="stylesheet" href="../css/Profile.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <script src="../js/main.js"></script>
+    <script src="../js/Profile.js"></script>
     <script src="../js/darkmode.js"></script>
-    <script src="../js/navbar.js"></script>
-    <script src="../js/createGroup.js"></script>
+
 </head>
 
-<!-- test commit -->
 
-<!-- test commit - branch demo -->
-
-<body>
+<body class="dimmed">
     <!-- Start of SubNav -->
     <subnav>
         <ul>
             <li>
                 <a href="Profile.php">
-                    <img src="../images/cat.jpg" class="nav-profile">
+                    <img src="../images/icons/Unknown_person.jpg" class="nav-profile">
                 </a>
             </li>
 
@@ -102,7 +117,7 @@ $username = $_SESSION["username"];
                         <img src="../images/icons/nav-icons/add-square-svgrepo-com.svg">
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="../html/Group.php">
                         <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -234,37 +249,63 @@ $username = $_SESSION["username"];
     </nav>
     <!-- End of Nav -->
 
-<body>
+    <main>
 
 
-<?php
-$query = pg_prepare($conn, "not", "SELECT * FROM notifications WHERE username = $1 ");
-$results = pg_execute($conn, "not", array($username));
-//CREATE TABLE notifications (
- //   notificationID SERIAL,
-//    username VARCHAR(35) NOT NULL,
- //   timestamp DATE,
-//    killTime DATE,
- //   notifMessage
 
- $NumbRows =pg_num_rows($results);
+<div>
+<section>
+        <h1>Notifications: </h1><br>
+        <?php
+$notificationQuery = pg_prepare($conn, "notification", "SELECT * FROM notifications WHERE username = $1 ORDER BY notificationID DESC");
+$notificationResult = pg_execute($conn, "notification", array($username));
 
- if($NumbRows>0)
 
- {
-    $counter =0;
-while($row=pg_fetch_assoc($results))
-{   $counter = $counter+1;
-    $notification = $row['notifMessage'];
-    //$timestamp = $row['timestamp']; // Adding this line to fetch timestamp
-    echo "$counter: $notification <br>";
+
+$NumbRows = pg_num_rows($notificationResult);
+
+if ($NumbRows > 0) {
+    $counter = 0;
+    while ($row = pg_fetch_assoc($notificationResult)) {
+        $counter++;
+        $notification = $row['notifmessage'];
+        $timestamp = $row['timestamp']; // Adding this line to fetch timestamp
+        $killtime = $row['killtime'];
+        if (strtotime($killtime) >= strtotime(date("Y-m-d"))){
+        $time= $row['timestamp']; // Adding this line to fetch timestamp
+        echo "$counter: $notification ($time)<br>";
+    }}
+} else {
+    echo "<div> <h1>No notifications yet...</h1></div>";
 }
- }else
- {
-echo "<div> <h1>No notifications yet...</h1></div>";
+$followeeNot = pg_prepare($conn, "notification1", "SELECT DISTINCT notifications.* FROM notifications 
+JOIN follows 
+ON notifications.username = follows.username WHERE follows.followee = $1 ORDER BY notifications.notificationID DESC");
 
- }
+$followeeRes = pg_execute($conn, "notification1", array($username));
+
+$NumbRows2 = pg_num_rows($followeeRes);
+echo "<br><h1>Following users: </h1>";
+if ($NumbRows2 > 0) {
+    $counter2 = 0;
+    while ($row = pg_fetch_assoc($followeeRes)) {
+        $counter2++;
+        $notification = $row['notifmessage'];
+        $user = $row['username'];
+        $time= $row['timestamp']; // Adding this line to fetch timestamp
+        $killtime = $row['killtime'];
+        if($username!= $user){
+            if (strtotime($killtime) >= strtotime(date("Y-m-d"))){
+        echo "$counter2: $user: $notification ($time)<br>";
+        }}
+    }
+} else {
+    echo "<div> <h1>No notifications yet...</h1></div>";
+}
 ?>
 
+
+</section> 
+</div>
 
 </body>

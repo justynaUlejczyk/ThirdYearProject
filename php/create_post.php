@@ -30,7 +30,18 @@
         }else{
         echo "Possible file upload attack!\n";
         }
-        
+        $username = $_SESSION['username'];
+
+$date = date("Y-m-d");
+$killTime = new DateTime();
+$killTime->modify('+3 weeks');
+
+$mess =  "You added new post <a href = '../html/Home.php'>See here</a>";
+        $notificationQuery = pg_prepare($conn, "add_notification", "INSERT INTO notifications 
+(username, timestamp, killtime, notifmessage) 
+VALUES ($1, $2, $3, $4) RETURNING notificationID");
+$notificationResult = pg_execute($conn, "add_notification", array($username, $date, $killTime->format('Y-m-d'), $mess));
+
         // Close the connection
         pg_close($conn);
         header('Location: '."../html/Home.php");
