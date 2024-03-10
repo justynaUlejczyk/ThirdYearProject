@@ -445,6 +445,74 @@ if ($settingsResult) {
                 Privacy Policy
             </span>
             <p>Our Privacy Policy... </p>
+            <p>1. Information Collection
+
+We collect information that you provide directly to us when you:
+
+Create an account,
+Post content,
+Participate in community discussions,
+Interact with other users.  
+
+<br>We also collect information automatically as you navigate the platform, including:
+
+Usage data,
+Location information,
+Device information,
+Cookies and similar technologies.
+
+</p> 
+
+<p>2. Use of Information
+
+The information we collect is used to:
+
+Provide, maintain, and improve our services
+Foster a safe and secure environment
+Personalize your experience
+Communicate with you about our services, offers, and updates
+Analyze how users interact with our platform
+</p>
+<p>
+3. Information Sharing
+
+We do not sell your personal information to third parties. However, we may share your information with:
+
+Service providers who assist us in operating the platform
+Law enforcement or other entities if required by law or to protect our rights
+Business partners, with your consent, for collaborative promotions or services
+</p>
+<p>
+4. Data Security
+
+
+We implement a variety of security measures to maintain the safety of your personal information. However, no method of transmission over the Internet or electronic storage is 100% secure.
+</p>
+<p>
+5. International Data Transfers
+
+Your information may be transferred to, stored, and processed in a country different from where it was collected, subject to local privacy laws.
+<p>
+
+<p>
+6. Your Rights
+
+You have the right to:
+
+Access and update your personal information
+Opt out of certain data collection and use practices
+Delete your account and related information
+</p>
+<p>
+7. Changes to This Policy
+
+We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new policy on our platform.
+</p>
+<p>
+8. Contact Us
+
+If you have any questions about this Privacy Policy, please contact us at <a>sharesync@gmail.com<a>
+</p>
         </div>
 
 

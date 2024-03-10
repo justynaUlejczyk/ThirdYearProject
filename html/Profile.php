@@ -720,10 +720,7 @@ if(pg_num_rows($userDataRESULT) == 0){
             </div>
 
             <section id="friends">
-                <div>
-
-
-                    
+                <div>                    
                         <?php 
                         //require_once '../php/connect_db.php';
                         $followeeStmt=pg_prepare($conn, "follows", "SELECT * From follows Where username = $1");

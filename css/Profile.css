@@ -374,6 +374,11 @@ img.profile-info-groups-group {
     padding: 20px;
 }
 
+.profile a{
+    text-decoration: none;
+    color: var(--text);
+}
+
 .profile {
     display: inline-block;
     margin: 20px;
