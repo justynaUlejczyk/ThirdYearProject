@@ -420,16 +420,15 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                             
                             echo "<div class='user-post-name'>";
                             if ($commentNumb>0){
-                               echo " 
-                                <a href='Profile.php?id=$poster_username'><img src='../images/icons/Unknown_person.jpg' 
-                                class='post-avatar' /></a>";
                                
-
                                 while($row = pg_fetch_assoc($commentResult)){
         
                                     $user = $row['username'];
                                     $comment = $row['text'];
                                     $date = $row['timestamp'];
+                                    echo " 
+                                <a href='Profile.php?id=$poster_username'><img src='../images/icons/Unknown_person.jpg' 
+                                class='post-avatar' /></a>";
                                     echo "<span>$username</span>
                                     <span>Comment - $date</span>";
                                
