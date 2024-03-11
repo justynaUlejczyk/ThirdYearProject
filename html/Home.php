@@ -346,7 +346,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
             $postsListRESULT = pg_query($conn, $postsListQuery);
             $postLikesSTMT = pg_prepare($conn, "postLikes", "SELECT * FROM usertolikes where postid = $1");
             $postLikedByUserSTMT = pg_prepare($conn, "postLikedByUser", "SELECT * FROM usertolikes where postid = $1 AND username = $2");
-
+            $commentQuery =pg_prepare($conn, "comment", "SELECT* FROM comments Where postid = $1");
 
             if ($postsListRESULT) {
                 // Output data of each row
@@ -361,7 +361,8 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
 
                     $postLikedByUserRESULT = pg_execute($conn, "postLikedByUser", array($postid, $username));
                     $postLikedByUser = pg_num_rows($postLikedByUserRESULT) != 0;
-
+                    $commentResult = pg_execute($conn, "comment", array($postid));
+                    $commentNumb = pg_num_rows($commentResult);
                     echo "<post class='posts' id=$postid>";
                     echo " <prepost>
             <div class='post-column'>
@@ -414,31 +415,47 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                 </div>
                 <div class='comment-container'>
                     <div class='comment-user-comment'>
-                        <div class='user-container'>
-                            <a href='Profile.php?id=$poster_username'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
-                            <div class='user-post-name'>
-                                <span>Michael Schumacher</span>
-                                <span>Comment - 22/01/23</span>
-                            </div>
-                        </div>
-                        <div class='comment-like'>
-                            <button class='like icons' onclick='toggleHeart(this)'>
-                                <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
-                                    xmlns='http://www.w3.org/2000/svg'>
-                                    <path
-                                        d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z'
-                                        fill='red' />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
+                    <div class='user-container'>
+                         ";
+                            
+                            echo "<div class='user-post-name'>";
+                            if ($commentNumb>0){
+                               echo " 
+                                <a href='Profile.php?id=$poster_username'><img src='../images/icons/Unknown_person.jpg' 
+                                class='post-avatar' /></a>";
+                               
+
+                                while($row = pg_fetch_assoc($commentResult)){
+        
+                                    $user = $row['username'];
+                                    $comment = $row['text'];
+                                    $date = $row['timestamp'];
+                                    echo "<span>$username</span>
+                                    <span>Comment - $date</span>";
+                               
+                                    $user = $row['username'];
+                                    $comment = $row['text'];
+                                    echo "<div class='comment-text'> $comment </div>";
+                                }
+                            
+                            }else {echo "no comments found";}
+                           echo " 
 
                     <div>
-                        <div class='comment-text'>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt animi obcaecati
-                            quidem
-                            nostrum commodi tenetur?
-                        </div>
+                        ";
+                       echo" </div>
+                       </div>
+                       <div class='comment-like'>
+                           <button class='like icons' onclick='toggleHeart(this)'>
+                               <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
+                                   xmlns='http://www.w3.org/2000/svg'>
+                                   <path
+                                       d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z'
+                                       fill='red' />
+                               </svg>
+                           </button>
+                       </div>
+                   </div> 
                         <div class='comment-options'>
                             <span>1 Like</span>
                             <a><button>Delete</button></a>
@@ -447,11 +464,15 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                     
                     
                 </div>
-                <div class='comment-create-container'>
-                    <form>
-                        <input class='comment-create' type='text'>
-                    </form>
-                </div>
+                <div class='comment-create-container'>";?>
+                  <form action="../php/comments.php" method="post">
+    <input class="comment-create" id="comment" name="text" type="text"> 
+    <input type="hidden" id="postid" name="postid" value="<?php echo $postid; ?>">
+    <button type="submit" name="commentSubmit">Submit</button> <!-- Add a name to your submit button -->
+</form>
+
+
+             <?php  echo " </div>
             </div>
         </prepost>";
                     echo "<div class='feed-post'>";
@@ -486,9 +507,8 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                     echo "</div>";
 
                     echo "</post>";
-
-                }
-            } else {
+                    
+            } }else {
                 echo "No posts found.";
             }
 
