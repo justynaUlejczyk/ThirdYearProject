@@ -66,6 +66,7 @@ function hasClass(element, className) {
 
 
 function handleLikeButtonClick(postid) {
+    console.log("handling")
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '../php/update_likes.php', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
@@ -74,7 +75,10 @@ function handleLikeButtonClick(postid) {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
                 var response = JSON.parse(xhr.responseText);
-                document.getElementsByClassName('likeCounter ' + postid)[0].textContent = response.likesCount;
+                var counters = document.getElementsByClassName('likeCounter ' + postid)
+                for (let counter of counters) {
+                    counter.innerHTML = response.likesCount;
+                };
             } else {
                 console.error('Error:', xhr.statusText);
             }

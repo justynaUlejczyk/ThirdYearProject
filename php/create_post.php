@@ -7,10 +7,11 @@
         // Connect to the database
         require_once "connect_db.php";
     
-        $stmt = pg_prepare($conn, "insert_post", "INSERT INTO post (username, text) VALUES ($1, $2) RETURNING postid");
+        $stmt = pg_prepare($conn, "insert_post", "INSERT INTO post (username, text, ) VALUES ($1, $2) RETURNING postid");
         
         $username = $_SESSION['username'];
         $text = $_POST['text'];
+        $tags = $_POST['tags'];
 
         $result = pg_execute($conn, "insert_post", array($username, $text));
          if ($result) {

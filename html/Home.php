@@ -323,7 +323,9 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                                 class="feed-create-post-captions"></textarea>
                         </div>
                         <div>
-                            <h3>tags will go here</h3>
+                            <h3>Tags</h3>
+                            <textarea id="tags" name="tags" rows="2" cols="20" maxlength="3000"
+                                class="feed-create-post-captions"></textarea>
                         </div>
                         <input type="submit" name="submit_post" class="feed-create-post-submit" onclick="finishPost()">
                     </form>
