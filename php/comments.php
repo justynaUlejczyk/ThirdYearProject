@@ -14,7 +14,7 @@ session_id("userSession");
         $comment =  $_POST['text'];
         $post_id = $_POST['postid'];
 
-        $query = "INSERT INTO comments(username, timestamp, text, postid) VALUES($1, $2, $3, $4)";
+        $query = "INSERT INTO comments(username, timestamp, text, postid) VALUES($1, $2, $3, $4) Return commentid";
         $result = pg_query_params($conn, $query, array($user_id, $date, $comment, $post_id));
         if ($result) {
             header('Location: ../html/Home.php');
