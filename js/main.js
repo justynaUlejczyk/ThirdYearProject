@@ -90,5 +90,21 @@ function handleLikeButtonClick(postid) {
     }));
 }
 
+function handleSubmit(buttonId, formId, messageId) {
+    var messageInput = document.getElementById(messageId);
+    if (messageInput.value.trim() === "") {
+        alert("Please enter a message.");
+        return;
+    } else {
+            // Disable the button to prevent multiple submissions
+            document.getElementById(buttonId).disabled = true;
+
+            // Submit the form
+            document.getElementById(formId).submit();
+    }
+
+    
+}
+
 
 

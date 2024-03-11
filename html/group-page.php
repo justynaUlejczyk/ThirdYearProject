@@ -341,7 +341,7 @@ session_write_close();
                 <div class="send">
                     <form action="../php/group_message.php" method="post" id="newPostForm">
                         <input type="text" id="text" name="text" />
-                        <input type="submit" value="send" />
+                        <input type="button" value="send" id="messageSubmit" onclick="handleSubmit('messageSubmit', 'newPostForm', 'text');" />
                     </form>
                 </div>
             </div>
