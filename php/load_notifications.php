@@ -1,6 +1,4 @@
 <?php
-session_id("userSession");
-session_start();
 $user = $_SESSION["username"];
 session_write_close();
 $notificationQuery = pg_prepare($conn, "list", "SELECT * FROM notifications WHERE username = $1 ORDER BY notificationID DESC limit 3");
