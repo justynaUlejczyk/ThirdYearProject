@@ -8,6 +8,7 @@ if (!isset($_SESSION["username"])) {
 require_once "../php/connect_db.php";
 
 $username = $_SESSION["username"];
+session_write_close();
 
 $userDataSTMT = pg_prepare($conn, "user_data", "SELECT * FROM accounts where username = $1");
 $userDataRESULT = pg_execute($conn, "user_data", array($username));
