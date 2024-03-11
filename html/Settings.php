@@ -15,6 +15,7 @@ if ($settingsResult) {
     $row = pg_fetch_assoc($settingsResult);
     $name = $row["name"];
     $email = $row["email"];
+    $bio = $row["bio"];
     //$accountType = $row["typeOfAccount"];
 } else {
     // Handle query error
@@ -353,7 +354,7 @@ if ($settingsResult) {
             <div class="info-display personal-info">
                 <p class="info-cat">Personal Info -</p>
                 <p>
-                    <?php echo 'display bio type here ' ?>
+                    <?php echo $bio ?>
                 </p>
 
             </div>
@@ -398,7 +399,7 @@ if ($settingsResult) {
                 <div class="info-display personal-info">
                     <p class="info-cat">Current Bio -</p>
                     <p>
-                        <?php echo 'display bio type here ' ?>
+                        <?php echo $bio ?>
                     </p>
 
                 </div>
