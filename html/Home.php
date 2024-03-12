@@ -419,7 +419,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
 
                     if ($commentNumb > 0) {
                         while ($row = pg_fetch_assoc($commentResult)) {
-                            $user = $row['username'];
+                            $commenting_user = $row['username'];
                             $comment = $row['text'];
                             $date = $row['timestamp'];
                             echo "
@@ -428,7 +428,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                         <div class='user-container'>
                             <a href='Profile.php?id=$username'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
                             <div class='user-post-name'>
-                                <span>$username</span>
+                                <span>$commenting_user</span>
                                 <span>Comment - $date</span>
                             </div>
                         </div>
