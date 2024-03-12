@@ -612,6 +612,7 @@ prepost {
 }
 
 .comment-container {
+    width: 400px;
     font-size: 14px;
     display: flex;
     flex-direction: column;

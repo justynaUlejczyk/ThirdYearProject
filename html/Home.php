@@ -160,36 +160,36 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                             </svg>
                         </button>
                         <div class="dropdown-content" id="dropdownContent">
-                        <?php
-                        // Load initial notifications
-                        include_once "../php/load_notifications.php";
-                        ?>
-                        <a href="../html/Notifications.php">See More</a>
-                    </div>
-                
-
-<script>
-    // Function to load more notifications
-    function loadMoreNotifications() {
-        // Make an AJAX request
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "load_notifications.php", true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                // Update the content of the dropdownContent div
-                document.getElementById("dropdownContent").innerHTML = xhr.responseText;
-            }
-        };
-        xhr.send();
-    }
-
-    // Attach click event listener to the "See More" link
-    document.getElementById("seeMoreLink").addEventListener("click", function(event) {
-        event.preventDefault(); // Prevent default link behavior
-        loadMoreNotifications(); // Call the function to load more notifications
-    });
-</script>
+                            <?php
+                            // Load initial notifications
+                            include_once "../php/load_notifications.php";
+                            ?>
+                            <a href="../html/Notifications.php">See More</a>
                         </div>
+
+
+                        <script>
+                            // Function to load more notifications
+                            function loadMoreNotifications() {
+                                // Make an AJAX request
+                                var xhr = new XMLHttpRequest();
+                                xhr.open("GET", "load_notifications.php", true);
+                                xhr.onreadystatechange = function () {
+                                    if (xhr.readyState == 4 && xhr.status == 200) {
+                                        // Update the content of the dropdownContent div
+                                        document.getElementById("dropdownContent").innerHTML = xhr.responseText;
+                                    }
+                                };
+                                xhr.send();
+                            }
+
+                            // Attach click event listener to the "See More" link
+                            document.getElementById("seeMoreLink").addEventListener("click", function (event) {
+                                event.preventDefault(); // Prevent default link behavior
+                                loadMoreNotifications(); // Call the function to load more notifications
+                            });
+                        </script>
+                    </div>
                     </div>
                     <span>Notifications</span>
                 </li>
@@ -305,7 +305,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                 </button>
             </div>
             <div class='fyp-filter'>
-            <a href='Home.php?id=all'><button>All Users</button></a>
+                <a href='Home.php?id=all'><button>All Users</button></a>
                 <span> - </span>
                 <a href='Home.php?id=following'><button>Following</button></a>
             </div>
@@ -338,15 +338,15 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
             <!-- Start Post 1 -->
             <?php
             $postsListQuery = "SELECT postid, text, post.username, name  FROM post INNER JOIN accounts ON accounts.username = post.username ORDER BY postid DESC";
-            if(isset ($_GET["id"])){
-                if($_GET["id"] == "following"){
+            if (isset($_GET["id"])) {
+                if ($_GET["id"] == "following") {
                     $postsListQuery = "SELECT * FROM post INNER JOIN accounts ON accounts.username = post.username INNER JOIN follows ON accounts.username = follows.followee WHERE follows.username = '$username' ORDER BY postid DESC";
-                } 
+                }
             }
             $postsListRESULT = pg_query($conn, $postsListQuery);
             $postLikesSTMT = pg_prepare($conn, "postLikes", "SELECT * FROM usertolikes where postid = $1");
             $postLikedByUserSTMT = pg_prepare($conn, "postLikedByUser", "SELECT * FROM usertolikes where postid = $1 AND username = $2");
-            $commentQuery =pg_prepare($conn, "comment", "SELECT* FROM comments Where postid = $1");
+            $commentQuery = pg_prepare($conn, "comment", "SELECT* FROM comments Where postid = $1");
 
             if ($postsListRESULT) {
                 // Output data of each row
@@ -413,109 +413,101 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                     <h4>Comments</h4>
                     <div class='divider'></div>
                 </div>
-                <div class='comment-container'>
-                    <div class='comment-user-comment'>
-                    <div class='user-container'>
-                         ";
-                            
-                            echo "<div class='user-post-name'>";
-                            if ($commentNumb>0){
-                               
-                                while($row = pg_fetch_assoc($commentResult)){
-        
-                                    $user = $row['username'];
-                                    $comment = $row['text'];
-                                    $date = $row['timestamp'];
-                                    echo " 
-                                <a href='Profile.php?id=$poster_username'><img src='../images/icons/Unknown_person.jpg' 
-                                class='post-avatar' /></a>";
-                                    echo "<span>$username</span>
-                                    <span>Comment - $date</span>";
-                               
-                                    $user = $row['username'];
-                                    $comment = $row['text'];
-                                    echo "<div class='comment-text'> $comment </div>";
-                                }
-                            
-                            }else {echo "no comments found";}
-                           echo " 
 
-                    <div>
-                        ";
-                       echo" </div>
-                       </div>
-                       <div class='comment-like'>
-                           <button class='like icons' onclick='toggleHeart(this)'>
-                               <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
-                                   xmlns='http://www.w3.org/2000/svg'>
-                                   <path
-                                       d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z'
-                                       fill='red' />
-                               </svg>
-                           </button>
-                       </div>
-                   </div> 
+                    
+                <div class='comment-container'>";
+
+                    if ($commentNumb > 0) {
+                        while ($row = pg_fetch_assoc($commentResult)) {
+                            $user = $row['username'];
+                            $comment = $row['text'];
+                            $date = $row['timestamp'];
+                            echo "
+                
+                    <div class='comment-user-comment'>
+                        <div class='user-container'>
+                            <a href='Profile.php?id=$username'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
+                            <div class='user-post-name'>
+                                <span>$username</span>
+                                <span>Comment - $date</span>
+                            </div>
+                        </div>
+                        <div class='comment-like'>
+                        <button class='like icons' onclick='toggleHeart(this)'>
+                            <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                                <path d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z' fill='red' />
+                            </svg>
+                        </button>
+                    </div>
+                    </div>
+                        <div>
+                        <div class='comment-text'>$comment</div>
                         <div class='comment-options'>
                             <span>1 Like</span>
                             <a><button>Delete</button></a>
                         </div>
+                    </div>";
+                        }
+                    } else {
+                        echo "No comments";
+                    }
+                    ; ?>
+
                     </div>
-                    
-                    
-                </div>
-                <div class='comment-create-container'>";?>
-                  <form action="../php/comments.php" method="post">
-    <input class="comment-create" id="comment" name="text" type="text"> 
-    <input type="hidden" id="postid" name="postid" value="<?php echo $postid; ?>">
-    <button type="submit" name="commentSubmit">Submit</button> <!-- Add a name to your submit button -->
-</form>
+                    <div class='comment-create-container'>
+                        <form action="../php/comments.php" method="post">
+                            <input class="comment-create" id="comment" name="text" type="text">
+                            <input type="hidden" id="postid" name="postid" value="<?php echo $postid; ?>">
+                            <button type="submit" name="commentSubmit">Submit</button> <!-- Add a name to your submit button -->
+                        </form>
 
 
-             <?php  echo " </div>
+                        <?php echo " </div>
             </div>
         </prepost>";
-                    echo "<div class='feed-post'>";
-                    echo "<div class='user-container'>";
-                    echo "<a href='Profile.php?id=$poster_username'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>";
-                    echo "<div class='user-post-name'>";
-                    echo "<span>$name</span>";
-                    echo "<span>@$poster_username</span>";
-                    echo "</div>";
-                    echo "</div>";
-                    echo "<button class='post-image' onclick='openPost(this)' data-postid=$postid>";
-                    echo "<img class='post-image' src=$post_image_path />";
-                    echo "</button>";
-                    echo "<div class='choices'>";
-                    echo "<div class='post-options'>";
-                    echo "<!-- Likes -->";
-                    if ($postLikedByUser) {
-                        echo "<button class='like icons active post-$postid' onclick='toggleHeart($postid);handleLikeButtonClick($postid);'>";
-                    } else {
-                        echo "<button class='like icons post-$postid' onclick='toggleHeart($postid);handleLikeButtonClick($postid);'>";
-                    }
-                    echo "<svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'";
-                    echo "xmlns='http://www.w3.org/2000/svg'>";
-                    echo "<path";
-                    echo ' d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"';
-                    echo "fill='red' />";
-                    echo "</svg>";
-                    echo "</button>";
-                    echo "<p class='likeCounter $postid'>$likesCount</p>";
-                    echo "</div>";
-                    echo "</div>";
-                    echo "</div>";
+                        echo "<div class='feed-post'>";
+                        echo "<div class='user-container'>";
+                        echo "<a href='Profile.php?id=$poster_username'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>";
+                        echo "<div class='user-post-name'>";
+                        echo "<span>$name</span>";
+                        echo "<span>@$poster_username</span>";
+                        echo "</div>";
+                        echo "</div>";
+                        echo "<button class='post-image' onclick='openPost(this)' data-postid=$postid>";
+                        echo "<img class='post-image' src=$post_image_path />";
+                        echo "</button>";
+                        echo "<div class='choices'>";
+                        echo "<div class='post-options'>";
+                        echo "<!-- Likes -->";
+                        if ($postLikedByUser) {
+                            echo "<button class='like icons active post-$postid' onclick='toggleHeart($postid);handleLikeButtonClick($postid);'>";
+                        } else {
+                            echo "<button class='like icons post-$postid' onclick='toggleHeart($postid);handleLikeButtonClick($postid);'>";
+                        }
+                        echo "<svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'";
+                        echo "xmlns='http://www.w3.org/2000/svg'>";
+                        echo "<path";
+                        echo ' d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"';
+                        echo "fill='red' />";
+                        echo "</svg>";
+                        echo "</button>";
+                        echo "<p class='likeCounter $postid'>$likesCount</p>";
+                        echo "</div>";
+                        echo "</div>";
+                        echo "</div>";
 
-                    echo "</post>";
-                    
-            } }else {
+                        echo "</post>";
+
+                }
+            } else {
                 echo "No posts found.";
             }
 
             // Close the database connection
             
             ?>
-            <!-- End of Post 1 -->
-            <!-- End of Posts -->
+                <!-- End of Post 1 -->
+                <!-- End of Posts -->
         </feed>
         <!-- End of Feed -->
 

@@ -28,7 +28,7 @@ $query = "SELECT postID, text, post.username, name
 
 
 $result = pg_query($conn, $query);
-if(pg_num_rows($userDataRESULT) == 0){
+if (pg_num_rows($userDataRESULT) == 0) {
     header('Location: ' . "./profile.php");
 }
 
@@ -175,35 +175,35 @@ if(pg_num_rows($userDataRESULT) == 0){
                             </svg>
                         </button>
                         <div class="dropdown-content" id="dropdownContent">
-    <?php
-    // Load initial notifications
-    include_once "../php/load_notifications.php";
-    ?>
-    <a href="../html/Notifications.php" >See More</a>
-</div>
-
-<script>
-    // Function to load more notifications
-    function loadMoreNotifications() {
-        // Make an AJAX request
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "load_notifications.php", true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                // Update the content of the dropdownContent div
-                document.getElementById("dropdownContent").innerHTML = xhr.responseText;
-            }
-        };
-        xhr.send();
-    }
-
-    // Attach click event listener to the "See More" link
-    document.getElementById("seeMoreLink").addEventListener("click", function(event) {
-        event.preventDefault(); // Prevent default link behavior
-        loadMoreNotifications(); // Call the function to load more notifications
-    });
-</script>
+                            <?php
+                            // Load initial notifications
+                            include_once "../php/load_notifications.php";
+                            ?>
+                            <a href="../html/Notifications.php">See More</a>
                         </div>
+
+                        <script>
+                            // Function to load more notifications
+                            function loadMoreNotifications() {
+                                // Make an AJAX request
+                                var xhr = new XMLHttpRequest();
+                                xhr.open("GET", "load_notifications.php", true);
+                                xhr.onreadystatechange = function () {
+                                    if (xhr.readyState == 4 && xhr.status == 200) {
+                                        // Update the content of the dropdownContent div
+                                        document.getElementById("dropdownContent").innerHTML = xhr.responseText;
+                                    }
+                                };
+                                xhr.send();
+                            }
+
+                            // Attach click event listener to the "See More" link
+                            document.getElementById("seeMoreLink").addEventListener("click", function (event) {
+                                event.preventDefault(); // Prevent default link behavior
+                                loadMoreNotifications(); // Call the function to load more notifications
+                            });
+                        </script>
+                    </div>
                     </div>
                     <span>Notifications</span>
                 </li>
@@ -310,20 +310,22 @@ if(pg_num_rows($userDataRESULT) == 0){
                         <button onclick="showGroupsTab()">Groups</button>
                         <button onclick="showAboutTab()">About</button>
                     </div>
-                    <div><?php 
-                    
-                    if ($login_username != $account_username) {
-                        $stmtFollowee = pg_prepare($conn, "check", "SELECT followee FROM follows WHERE followee = $1 AND username = $2");
-                        $stmtEx = pg_execute($conn, "check", array($account_username, $login_username));
-                    
-                        if ($stmtEx !== false && pg_num_rows($stmtEx) == 0) {
-                            // If the logged-in user is not following the profile user, show the follow button
-                            echo "<button class='follow-button'><a href ='../php/follow.php?name=$account_username'>Follow</a></button>";
-                        }else{echo "<button class='follow-button'><a href ='../php/stop_follow.php?id=$account_username'>Unfollow</a></button>";
-                        
+                    <div>
+                        <?php
 
-                        }
-                    }?>
+                        if ($login_username != $account_username) {
+                            $stmtFollowee = pg_prepare($conn, "check", "SELECT followee FROM follows WHERE followee = $1 AND username = $2");
+                            $stmtEx = pg_execute($conn, "check", array($account_username, $login_username));
+
+                            if ($stmtEx !== false && pg_num_rows($stmtEx) == 0) {
+                                // If the logged-in user is not following the profile user, show the follow button
+                                echo "<button class='follow-button'><a href ='../php/follow.php?name=$account_username'>Follow</a></button>";
+                            } else {
+                                echo "<button class='follow-button'><a href ='../php/stop_follow.php?id=$account_username'>Unfollow</a></button>";
+
+
+                            }
+                        } ?>
                     </div>
                 </div>
             </div>
@@ -415,7 +417,7 @@ if(pg_num_rows($userDataRESULT) == 0){
                                 <div class='user-container'>
                                     <a href='Profile.php'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
                                     <div class='user-post-name'>
-                                        <span>Michael Schumacher</span>
+                                        <span>Kacper test</span>
                                         <span>Comment - 22/01/23</span>
                                     </div>
                                 </div>
@@ -435,175 +437,16 @@ if(pg_num_rows($userDataRESULT) == 0){
                                 <div class='comment-text'>
                                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt animi obcaecati
                                     quidem
-                                    nostrum commodi tenetur?
+                                    nostrum commodi tenetur?123
                                 </div>
                                 <div class='comment-options'>
                                     <span>1 Like</span>
-                                    <a>Reply</a>
-                                </div>
-                            </div>
-                            <div class='comment-user-comment'>
-                                <div class='user-container'>
-                                    <a href='Profile.php'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
-                                    <div class='user-post-name'>
-                                        <span>Michael Schumacher</span>
-                                        <span>Comment - 22/01/23</span>
-                                    </div>
-                                </div>
-                                <div class='comment-like'>
-                                    <button class='like icons' onclick='toggleHeart(this)'>
-                                        <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
-                                            xmlns='http://www.w3.org/2000/svg'>
-                                            <path
-                                                d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z'
-                                                fill='red' />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                            <div>
-                                <div class='comment-text'>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt animi obcaecati
-                                    quidem
-                                    nostrum commodi tenetur?
-                                </div>
-                                <div class='comment-options'>
-                                    <span>1 Like</span>
-                                    <a>Reply</a>
-                                </div>
-                            </div>
-                            <div class='comment-user-comment'>
-                                <div class='user-container'>
-                                    <a href='Profile.php'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
-                                    <div class='user-post-name'>
-                                        <span>Michael Schumacher</span>
-                                        <span>Comment - 22/01/23</span>
-                                    </div>
-                                </div>
-                                <div class='comment-like'>
-                                    <button class='like icons' onclick='toggleHeart(this)'>
-                                        <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
-                                            xmlns='http://www.w3.org/2000/svg'>
-                                            <path
-                                                d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z'
-                                                fill='red' />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                            <div>
-                                <div class='comment-text'>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt animi obcaecati
-                                    quidem
-                                    nostrum commodi tenetur?
-                                </div>
-                                <div class='comment-options'>
-                                    <span>1 Like</span>
-                                    <a>Reply</a>
-                                </div>
-                            </div>
-                            <div class='comment-user-comment'>
-                                <div class='user-container'>
-                                    <a href='Profile.php'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
-                                    <div class='user-post-name'>
-                                        <span>Michael Schumacher</span>
-                                        <span>Comment - 22/01/23</span>
-                                    </div>
-                                </div>
-                                <div class='comment-like'>
-                                    <!-- Likes -->
-                                    <button class='like icons' onclick='toggleHeart(this)'>
-                                        <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
-                                            xmlns='http://www.w3.org/2000/svg'>
-                                            <path
-                                                d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z'
-                                                fill='red' />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                            <div>
-                                <div class='comment-text'>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt animi obcaecati
-                                    quidem
-                                    nostrum commodi tenetur?
-                                </div>
-                                <div class='comment-options'>
-                                    <span>1 Like</span>
-                                    <a>Reply</a>
-                                </div>
-                            </div>
-                            <div class='comment-user-comment'>
-                                <div class='user-container'>
-                                    <a href='Profile.php'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
-                                    <div class='user-post-name'>
-                                        <span>Michael Schumacher</span>
-                                        <span>Comment - 22/01/23</span>
-                                    </div>
-                                </div>
-                                <div class='comment-like'>
-                                    <button class='like icons' onclick='toggleHeart(this)'>
-                                        <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
-                                            xmlns='http://www.w3.org/2000/svg'>
-                                            <path
-                                                d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z'
-                                                fill='red' />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                            <div>
-                                <div class='comment-text'>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt animi obcaecati
-                                    quidem
-                                    nostrum commodi tenetur?
-                                </div>
-                                <div class='comment-options'>
-                                    <span>1 Like</span>
-                                    <a>Reply</a>
-                                </div>
-                            </div>
-                            <div class='comment-replies'>
-                                <div class='comment-user-comment'>
-                                    <div class='user-container'>
-                                        <a href='Profile.php'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
-                                        <div class='user-post-name'>
-                                            <span>Michael Schumacher</span>
-                                            <span>Comment - 22/01/23</span>
-                                        </div>
-                                    </div>
-                                    <div class='comment-like'>
-                                        <button class='like icons' onclick='toggleHeart(this)'>
-                                            <svg width='24px' height='24px' viewBox='0 0 24 24' fill='none'
-                                                xmlns='http://www.w3.org/2000/svg'>
-                                                <path
-                                                    d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z'
-                                                    fill='red' />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class='comment-replies-container'>
-                                    <div class='comment-text'>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet,
-                                            nulla et dictum interdum, nisi lorem egestas vitae scel<span
-                                                id='dots'>...</span><span id='more'>erisque enim ligula venenatis dolor.
-                                                Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce
-                                                luctus vestibulum augue ut aliquet. Nunc sagittis dictum nisi, sed
-                                                ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet
-                                                sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer
-                                                fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor
-                                                porta.</span></p>
-        
-                                        <button onclick='toggleMore()' id='myBtn'>Read more</button>
-                                    </div>
-                                    <div class='comment-options'>
-                                        <span>1 Like</span>
-                                        <a>Reply</a>
-                                    </div>
+                                    <button>Delete</button>
                                 </div>
                             </div>
                         </div>
+
+                        
                         <div class='comment-create-container'>
                             <form>
                                 <input class='comment-create' type='text'>
@@ -642,10 +485,10 @@ if(pg_num_rows($userDataRESULT) == 0){
                             echo "fill='#1C274C' />";
                             echo "</svg>";
                             echo "</button>";
-                  
-             
+
+
                             echo "</div>";
-                           
+
                             echo "</div>";
                             echo "</div>";
 
@@ -720,48 +563,54 @@ if(pg_num_rows($userDataRESULT) == 0){
             </div>
 
             <section id="friends">
-                <div>                    
-                        <?php 
-                        //require_once '../php/connect_db.php';
-                        $followeeStmt=pg_prepare($conn, "follows", "SELECT * From follows Where username = $1");
-                         $followeeEx= pg_execute($conn, "follows", array($account_username));
-                         $numRows =pg_num_rows($followeeEx);
-                         $followersStmt=pg_prepare($conn, "follower", "SELECT * From follows Where followee = $1");
-                         $followersEx= pg_execute($conn, "follower", array($account_username));
-                         $numRows2 =pg_num_rows($followersEx);
-                        ?>
-                        <?php 
-                        if ($numRows>0){
-                            echo "<p>$username follows: ($numRows users)<p> ";
-                            while  ($row=pg_fetch_assoc($followeeEx))
-                            {
-                                $foll=$row['followee'];
+                <div>
+                    <?php
+                    //require_once '../php/connect_db.php';
+                    $followeeStmt = pg_prepare($conn, "follows", "SELECT * From follows Where username = $1");
+                    $followeeEx = pg_execute($conn, "follows", array($account_username));
+                    $numRows = pg_num_rows($followeeEx);
+                    $followersStmt = pg_prepare($conn, "follower", "SELECT * From follows Where followee = $1");
+                    $followersEx = pg_execute($conn, "follower", array($account_username));
+                    $numRows2 = pg_num_rows($followersEx);
+                    ?>
+                    <?php
+                    if ($numRows > 0) {
+                        echo "<p>$username follows: ($numRows users)<p> ";
+                        while ($row = pg_fetch_assoc($followeeEx)) {
+                            $foll = $row['followee'];
 
-                                   echo '<div class="profile">
+                            echo '<div class="profile">
                                    <img src="../images/icons/Unknown_person.jpg" alt="friend profile pic">
-                                   <p id="friendName">'; 
-                                   echo "<a href ='../html/Profile.php?id=$foll'>$foll<a> </p>";
-                                   if ($login_username == $account_username) {
-                                   echo"<span><a href='../php/stop_follow.php?id=$foll'>unfollow</a></div>"; 
+                                   <p id="friendName">';
+                            echo "<a href ='../html/Profile.php?id=$foll'>$foll<a> </p>";
+                            if ($login_username == $account_username) {
+                                echo "<span><a href='../php/stop_follow.php?id=$foll'>unfollow</a></div>";
 
-                                } else{echo '</div>';}
+                            } else {
+                                echo '</div>';
                             }
+                        }
 
-                        } else {echo "<div class='profile'>$account_username is not following anyone</div>";}
-                        
-                        echo '</div></section> <section id="friends"><h1>Followers:</h1>';
-                        if ($numRows2>0){
-                            echo "<p>$account_username has $numRows2 followers: </p>";
-                            while  ($row=pg_fetch_assoc($followersEx))
-                            {
-                                $foll=$row['username'];
-                                echo '<div class="profile"><img src="../images/icons/Unknown_person.jpg" alt="friend profile pic">
-                                   <p id="friendName">'; echo"<a href ='../html/Profile.php?id=$foll'><p>$foll</p><a>"; echo '</p></div>'; 
-                            }}
-                            else{echo'No followers yet... ';}
-                        ?>
-                        
-                    </div>
+                    } else {
+                        echo "<div class='profile'>$account_username is not following anyone</div>";
+                    }
+
+                    echo '</div></section> <section id="friends"><h1>Followers:</h1>';
+                    if ($numRows2 > 0) {
+                        echo "<p>$account_username has $numRows2 followers: </p>";
+                        while ($row = pg_fetch_assoc($followersEx)) {
+                            $foll = $row['username'];
+                            echo '<div class="profile"><img src="../images/icons/Unknown_person.jpg" alt="friend profile pic">
+                                   <p id="friendName">';
+                            echo "<a href ='../html/Profile.php?id=$foll'><p>$foll</p><a>";
+                            echo '</p></div>';
+                        }
+                    } else {
+                        echo 'No followers yet... ';
+                    }
+                    ?>
+
+                </div>
 
 
                 </div>
@@ -773,6 +622,6 @@ if(pg_num_rows($userDataRESULT) == 0){
 
 
 </body>
-<?php pg_close($conn);?>
+<?php pg_close($conn); ?>
 
 </html>
