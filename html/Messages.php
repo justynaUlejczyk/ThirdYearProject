@@ -11,6 +11,8 @@ $login_username = $_SESSION["username"];
 // Get passed product genre and assign it to a variable.
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
+    $messageReadSTMT = pg_prepare($conn, "messageRead", "UPDATE messages SET messageread = 1 WHERE username = $1 AND recipient = '$login_username'");
+    $messageReadRESULT = pg_execute($conn, "messageRead", array($id));
 } else {
     // Handle the case when 'id' is not set
     $id = 1;
@@ -295,7 +297,7 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
                             echo '<button class="chatter-list-user" onclick="changeChat(this)" userid=' . $row['username'] . '>
                 <img src="../images/icons/Unknown_person.jpg">
                 <p><a href="Messages.php?id=' . $row['username'] . '" role="button">' . $row['username'];
-                            if ($row["messageread"] == 0)echo '***'; 
+                            if ($row["messageread"] == 0 && $row["last_messageid"] != -1)echo '***'; 
                 echo '</a></p></button>';
                         }
                     }
