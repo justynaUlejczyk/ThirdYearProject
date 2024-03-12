@@ -23,29 +23,49 @@
         <!-- Login Part -->
 
         <form action="../php/login.php" method="post" id="loginForm">
+    <div>
+        <div class="login-inputs">
             <div>
-                <div class="login-inputs">
-                    <div>
-                        <img src="../images/icons/login/user-svgrepo-com.svg" alt="">
-                        <input id="loginUsername" type="text" name="username" placeholder="Username" required="">
-                    </div>
-                    <div>
-                        <img src="../images/icons/login/lock-keyhole-minimalistic-svgrepo-com.svg" alt="">
-                        <input id="loginPassword" type="password" name="password" placeholder="Password" required="">
-                    </div>
-                </div>
-                <div>
-                    <a href="update_password.php">Forgot password?</a>
-                    <div class="option2">
-                        <p>New to this website? </p>
-                        <a class="to-signup-change-screen">Sign Up</a>
-                    </div>
-                </div>
+                <img src="../images/icons/login/user-svgrepo-com.svg" alt="">
+                <input id="loginUsername" type="text" name="username" placeholder="Username" required="">
             </div>
             <div>
-                <input id="loginSubmit" type="button" name="login" value="Login" onclick="loginProcess()">
+                <img src="../images/icons/login/lock-keyhole-minimalistic-svgrepo-com.svg" alt="">
+                <input id="loginPassword" type="password" name="password" placeholder="Password" required="">
             </div>
-        </form>
+        </div>
+        <div>
+            <a href="update_password.php">Forgot password?</a>
+            <div class="option2">
+                <p>New to this website? </p>
+                <a class="to-signup-change-screen">Sign Up</a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <span id="loginMessage"></span>
+        <input id="loginSubmit" type="submit" name="login" value="Login">
+    </div>
+</form>
+
+<script>
+    document.getElementById("loginForm").addEventListener("keypress", function(event) {
+        // Check if Enter key is pressed
+        if (event.keyCode === 13) {
+            event.preventDefault(); // Prevent default form submission
+            loginProcess(); // Call your login process function
+        }
+    });
+
+    function loginProcess() {
+        // Implement your login process here
+        // This function will be called when the form is submitted
+        // You can collect form data and send it to the server for processing
+        // For example:
+        document.getElementById("loginForm").submit(); // Submit the form
+    }
+</script>
+
     </section>
 
     <section id="registerSection">
