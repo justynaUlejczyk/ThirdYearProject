@@ -273,19 +273,19 @@ if (isset($_GET['id'])) {
                 <?php
 
                 // displaying list of users ordered by last message received so the user who last sent a message to the logged in user is at the top of the list.
-                $usersListQuery = "SELECT subquery2.username, COALESCE(MAX(subquery1.max_messageid), -1) AS last_messageid
+                $usersListQuery = "SELECT subquery2.username, COALESCE(MAX(subquery1.max_messageid), -1) AS last_messageid, messageread
 FROM
-    (SELECT username, MAX(messageid) AS max_messageid
+    (SELECT username, MAX(messageid) AS max_messageid, messageread
      FROM messages
      WHERE recipient = '$login_username'
-     GROUP BY username
+     GROUP BY username, messageread
     ) AS subquery1
 RIGHT JOIN
     (SELECT username
      FROM accounts
     ) AS subquery2
 ON subquery1.username = subquery2.username
-GROUP BY subquery2.username
+GROUP BY subquery2.username, messageread
 ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
                 $usersListRESULT = pg_query($conn, $usersListQuery);
                 if ($usersListRESULT) {
@@ -294,8 +294,9 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
                             $user = $row["username"];
                             echo '<button class="chatter-list-user" onclick="changeChat(this)" userid=' . $row['username'] . '>
                 <img src="../images/icons/Unknown_person.jpg">
-                <p><a href="Messages.php?id=' . $row['username'] . '" role="button">' . $row['username'] . '</a></p>
-            </button>';
+                <p><a href="Messages.php?id=' . $row['username'] . '" role="button">' . $row['username'];
+                            if ($row["messageread"] == 0)echo '***'; 
+                echo '</a></p></button>';
                         }
                     }
                     echo "</div>";
