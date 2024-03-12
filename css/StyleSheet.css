@@ -58,7 +58,6 @@ body {
     color: var(--text);
     min-height: 100vh;
     overflow-x: hidden;
-    transition: 200ms ease-in-out;
 }
 
 a {
