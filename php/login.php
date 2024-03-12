@@ -27,7 +27,7 @@ if (!password_verify($user_entered_password, $stored_password_hash)) {
 } else {
     // Start a session and store the username
     session_start();
-    session_id("userSession");
+    //session_id("userSession");
     $_SESSION['username'] = $username;
 
     // Redirect to home.php
