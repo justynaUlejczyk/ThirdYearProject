@@ -324,10 +324,13 @@ session_write_close();
                         <article>
                             <div class="wrapper">
                                 <h2>Change Name</h2>
-                                <!-- change this below to a form -->
+                                <h4 id="namechangestatus"></h4>
                                 <div class="change-container">
-                                    <input type="text" placeholder="New Group Name" class="change-group-name" />
+                                    <form onsubmit="updateGroupName(event);" method="post">
+                                    <input type="hidden" name="groupid" value=<?php echo "$groupid"?>>
+                                    <input type="text" placeholder="New Group Name" name="groupname" class="change-group-name" />
                                     <input type="submit" class="change-group-name" />
+                                    </form>
                                 </div>
                             </div>
                             <div class="wrapper">
