@@ -14,14 +14,14 @@ require_once "../php/connect_db.php";
 $login_username = $_SESSION["username"];
 
 // Check if the group ID is provided
-if (!isset($_GET['id'])) {
+if (!isset($_POST['groupid'])) {
     // Redirect user or display an error message
     echo "No group ID provided.";
     exit();
 }
 
 // Get the group ID from the URL
-$group_id = $_GET['id'];
+$group_id = $_POST['groupid'];
 $nameQuery =pg_prepare($conn, "name", "SELECT * FROM groups Where groupid = $1");
 $stmt = pg_execute($conn, "name", array($group_id));
 $group = pg_fetch_assoc($stmt);

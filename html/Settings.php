@@ -531,7 +531,7 @@ If you have any questions about this Privacy Policy, please contact us at <a>sha
             <h1>Profile Visibility</h1>
             <p class="inline">public</p>
             <label class="profileSwitch" class="round">
-                <input type="checkbox">
+                <input type="checkbox" onchange='updateVisibilty(<?php echo "$username";?>, this);'>
                 <span class="slider"></span>
             </label>
             <p class="inline">private</p>

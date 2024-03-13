@@ -305,7 +305,7 @@ session_write_close();
             <div class="setting">
                 <div class='settings-title'>
                     <span>Settings</span>
-                    <span>Group Name</span>
+                    <span><?php echo "$groupname";?></span>
                 </div>
                 <div class='settings-box'>
                     <div class='settings-options'>
@@ -360,7 +360,10 @@ session_write_close();
                         </article>
                         <article>
                             <h2>Are you sure you want to delete this group?</h2>
-                            <p>Put button to delete group</p>
+                            <form action="../php/delete_group.php" method="post">
+                            <input type="hidden" name = groupid value='<?php echo "$groupid"?>'>
+                            <input type="submit" value="">
+                            </form>
                         </article>
                     </div>
                 </div>

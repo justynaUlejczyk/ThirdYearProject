@@ -107,3 +107,28 @@ function hideAll(){
     Accessibility.style.display = "none";
 
 }
+
+function updateVisibilty(username, checkbox) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '../php/update_account_visibility.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    var formData = new URLSearchParams();
+    formData.append("username", username);
+    if (checkbox.checked) {
+        var privacy = 1;
+    } else {
+        var privacy = 0;
+    }
+    formData.append("privacy", privacy);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+                console.log("updated")
+        }
+    };
+    
+    xhr.onerror = function () {
+        console.error('Request failed');
+    };
+    
+    xhr.send(formData);    
+}
