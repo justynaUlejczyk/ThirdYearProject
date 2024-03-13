@@ -4,19 +4,20 @@ if (isset($_POST['register'])) {
   require_once "connect_db.php";
 
     // Prepare and execute the SQL statement
-    $stmt = pg_prepare($conn, "insert_account", "INSERT INTO accounts (name, username, email, password) VALUES ($1, $2, $3, $4) RETURNING username");
+    $stmt = pg_prepare($conn, "insert_account", "INSERT INTO accounts (name, username, email, password, typeofaccount) VALUES ($1, $2, $3, $4, $5) RETURNING username");
     
     // Get the form data
     $name = $_POST["name"];
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $account_type = $_POST['account_type'];
 
     // Hash the password
     $password = password_hash($password, PASSWORD_BCRYPT);
 
     // Execute the SQL statement
-    $result = pg_execute($conn, "insert_account", array($name, $username, $email, $password));
+    $result = pg_execute($conn, "insert_account", array($name, $username, $email, $password, $account_type));
 
     // Check the result
     if ($result) {

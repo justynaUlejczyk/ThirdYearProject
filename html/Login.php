@@ -85,6 +85,11 @@
                 <input id="email" name="email" required="" type="email" />
                 <label for="password">Password:</label>
                 <input id="password" name="password" required="" type="password" />
+                <p>Account type:</p>
+                <input type="radio" id="student" name="account_type" value="student">
+                <label for="student">Student</label><br>
+                <input type="radio" id="artist" name="account_type" value="artist">
+                <label for="artist">Artist</label><br>
                 <div class="option2">
                     <p>Already a Member?</p>
                     <a class="to-login-change-screen">Login</a>
