@@ -451,18 +451,18 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                     } else {
                         echo "No comments";
                     }
-                    ; ?>
+                    ?>
 
                     </div>
                     <div class='comment-create-container'>
                         <form action="../php/comments.php" method="post">
                             <input class="comment-create" id="comment" name="text" type="text">
                             <input type="hidden" id="postid" name="postid" value="<?php echo $postid; ?>">
-                            <button type="submit" name="commentSubmit">Submit</button> <!-- Add a name to your submit button -->
+                            <button type="submit" name="commentSubmit">Comment</button> 
                         </form>
+                </div>
 
-
-                        <?php echo " </div>
+                        <?php echo "
             </div>
         </prepost>";
                         echo "<div class='feed-post'>";
