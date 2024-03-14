@@ -34,6 +34,7 @@ $result = pg_query($conn, $query);
     <title>Notifications</title>
     <link rel="stylesheet" href="../css/StyleSheet.css">
     <link rel="stylesheet" href="../css/Profile.css">
+    <link rel="stylesheet" href="../css/notifications.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
@@ -42,6 +43,7 @@ $result = pg_query($conn, $query);
     <script src="../js/main.js"></script>
     <script src="../js/Profile.js"></script>
     <script src="../js/darkmode.js"></script>
+
 
 </head>
 
@@ -81,7 +83,7 @@ $result = pg_query($conn, $query);
     <!-- End of SubNav -->
 
     <!-- Start of Nav -->
-   <nav>
+    <nav>
         <section>
             <form id="searchForm" action="">
                 <input id="searchInput" type="search" required>
@@ -169,35 +171,35 @@ $result = pg_query($conn, $query);
                             </svg>
                         </button>
                         <div class="dropdown-content" id="dropdownContent">
-    <?php
-    // Load initial notifications
-    include_once "../php/load_notifications.php";
-    ?>
-    <a href="../html/Notifications.php">See More</a>
-</div>
-
-<script>
-    // Function to load more notifications
-    function loadMoreNotifications() {
-        // Make an AJAX request
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "load_notifications.php", true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                // Update the content of the dropdownContent div
-                document.getElementById("dropdownContent").innerHTML = xhr.responseText;
-            }
-        };
-        xhr.send();
-    }
-
-    // Attach click event listener to the "See More" link
-    document.getElementById("seeMoreLink").addEventListener("click", function(event) {
-        event.preventDefault(); // Prevent default link behavior
-        loadMoreNotifications(); // Call the function to load more notifications
-    });
-</script>
+                            <?php
+                            // Load initial notifications
+                            include_once "../php/load_notifications.php";
+                            ?>
+                            <a href="../html/Notifications.php">See More</a>
                         </div>
+
+                        <script>
+                            // Function to load more notifications
+                            function loadMoreNotifications() {
+                                // Make an AJAX request
+                                var xhr = new XMLHttpRequest();
+                                xhr.open("GET", "load_notifications.php", true);
+                                xhr.onreadystatechange = function () {
+                                    if (xhr.readyState == 4 && xhr.status == 200) {
+                                        // Update the content of the dropdownContent div
+                                        document.getElementById("dropdownContent").innerHTML = xhr.responseText;
+                                    }
+                                };
+                                xhr.send();
+                            }
+
+                            // Attach click event listener to the "See More" link
+                            document.getElementById("seeMoreLink").addEventListener("click", function (event) {
+                                event.preventDefault(); // Prevent default link behavior
+                                loadMoreNotifications(); // Call the function to load more notifications
+                            });
+                        </script>
+                    </div>
                     </div>
                     <span>Notifications</span>
                 </li>
@@ -277,76 +279,80 @@ $result = pg_query($conn, $query);
 
 
 
-<div>
-<section>
-        <h1>Notifications: </h1><br>
-        <?php
-$notificationQuery = pg_prepare($conn, "notification", "SELECT * FROM notifications WHERE username = $1 ORDER BY notificationID DESC");
-$notificationResult = pg_execute($conn, "notification", array($username));
-$NumbRows = pg_num_rows($notificationResult);
+        <div>
+            <section>
+                <h1>Notifications: </h1><br>
+                <?php
+                $notificationQuery = pg_prepare($conn, "notification", "SELECT * FROM notifications WHERE username = $1 ORDER BY notificationID DESC");
+                $notificationResult = pg_execute($conn, "notification", array($username));
+                $NumbRows = pg_num_rows($notificationResult);
 
-$notifications = array(); // Array to hold all notifications
+                $notifications = array(); // Array to hold all notifications
+                
+                if ($NumbRows > 0) {
+                    while ($row = pg_fetch_assoc($notificationResult)) {
+                        $notificationID = $row['notificationid'];
+                        $notification = $row['notifmessage'];
+                        $time = $row['timestamp'];
+                        $killtime = $row['killtime'];
+                        if (strtotime($killtime) >= strtotime(date("Y-m-d"))) {
+                            $notifications[] = array('notificationID' => $notificationID, 'notification' => $notification, 'time' => $time);
+                        }
+                    }
+                }
 
-if ($NumbRows > 0) {
-    while ($row = pg_fetch_assoc($notificationResult)) {
-        $notificationID = $row['notificationid'];
-        $notification = $row['notifmessage'];
-        $time = $row['timestamp'];
-        $killtime = $row['killtime'];
-        if (strtotime($killtime) >= strtotime(date("Y-m-d"))){
-            $notifications[] = array('notificationID' => $notificationID, 'notification' => $notification, 'time' => $time);
-        }
-    }
-}
-
-$followeeNot = pg_prepare($conn, "notification1", "SELECT DISTINCT notifications.* FROM notifications 
+                $followeeNot = pg_prepare($conn, "notification1", "SELECT DISTINCT notifications.* FROM notifications 
 JOIN follows 
 ON notifications.username = follows.followee WHERE follows.username = $1 ORDER BY notifications.notificationID DESC");
 
-$followeeRes = pg_execute($conn, "notification1", array($username));
+                $followeeRes = pg_execute($conn, "notification1", array($username));
 
-$NumbRows2 = pg_num_rows($followeeRes);
+                $NumbRows2 = pg_num_rows($followeeRes);
 
-if ($NumbRows2 > 0) {
-    while ($row = pg_fetch_assoc($followeeRes)) {
-        $notificationID = $row['notificationid'];
-        $notification = $row['notifmessage'];
-        $user = $row['username'];
-        $time = $row['timestamp'];
-        $killtime = $row['killtime'];
-        if($username != $user && strtotime($killtime) >= strtotime(date("Y-m-d"))){
-            $notifications[] = array('notificationID' => $notificationID, 'notification' => "$user: $notification", 'time' => $time);
-        }
-    }
-}
+                if ($NumbRows2 > 0) {
+                    while ($row = pg_fetch_assoc($followeeRes)) {
+                        $notificationID = $row['notificationid'];
+                        $notification = $row['notifmessage'];
+                        $user = $row['username'];
+                        $time = $row['timestamp'];
+                        $killtime = $row['killtime'];
+                        if ($username != $user && strtotime($killtime) >= strtotime(date("Y-m-d"))) {
+                            $notifications[] = array('notificationID' => $notificationID, 'notification' => "$user: $notification", 'time' => $time);
+                        }
+                    }
+                }
 
-// Sort notifications by ID first, then by time
-usort($notifications, function($a, $b) {
-    // Compare notificationID first
-    $idComparison = $b['notificationID'] - $a['notificationID'];
-    
-    // If notificationID is equal, compare timestamps
-    if ($idComparison == 0) {
-        return strtotime($b['time']) - strtotime($a['time']);
-    }
-    
-    return $idComparison;
-});
+                // Sort notifications by ID first, then by time
+                usort($notifications, function ($a, $b) {
+                    // Compare notificationID first
+                    $idComparison = $b['notificationID'] - $a['notificationID'];
 
-if (count($notifications) > 0) {
-    $counter = 0;
-    foreach ($notifications as $notification) {
-        $counter++;
-        echo "$counter: {$notification['notification']} ({$notification['time']})<br>";
-    }
-} else {
-    echo "<div> <h1>No notifications yet...</h1></div>";
-}
-?>
+                    // If notificationID is equal, compare timestamps
+                    if ($idComparison == 0) {
+                        return strtotime($b['time']) - strtotime($a['time']);
+                    }
+
+                    return $idComparison;
+                });
+
+                if (count($notifications) > 0) {
+                    $counter = 0;
+                    foreach ($notifications as $notification) {
+                        $counter++;
+                        echo "<div style='padding: 10px 0px; width:500px;'>
+                        {$notification['time']}: {$notification['notification']}
+                        
+                        </div>";
+
+                    }
+                } else {
+                    echo "<div> <h1>No notifications yet...</h1></div>";
+                }
+                ?>
 
 
 
-</section> 
-</div>
+            </section>
+        </div>
 
 </body>
