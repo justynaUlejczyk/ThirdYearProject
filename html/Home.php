@@ -323,7 +323,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                                 class="feed-create-post-captions"></textarea>
                         </div>
                         <div>
-                            <h3>Tags</h3>
+                            <h3>Tags(Seperated by commas)</h3>
                             <textarea id="tags" name="tags" rows="2" cols="20" maxlength="3000"
                                 class="feed-create-post-captions"></textarea>
                         </div>
@@ -345,6 +345,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
             }
             $postsListRESULT = pg_query($conn, $postsListQuery);
             $postLikesSTMT = pg_prepare($conn, "postLikes", "SELECT * FROM usertolikes where postid = $1");
+            $postTagsSTMT = pg_prepare($conn, "postTags", "SELECT tagname FROM tags where postid= $1");
             $postLikedByUserSTMT = pg_prepare($conn, "postLikedByUser", "SELECT * FROM usertolikes where postid = $1 AND username = $2");
             $commentQuery = pg_prepare($conn, "comment", "SELECT* FROM comments Where postid = $1");
 
@@ -358,6 +359,8 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                     $post_image_path = "../post_images/post_image" . $postid . ".png";
                     $postLikesRESULT = pg_execute($conn, "postLikes", array($postid));
                     $likesCount = pg_num_rows($postLikesRESULT);
+
+                    $postTagsRESULT = pg_execute($conn, "postTags", array($postid));
 
                     $postLikedByUserRESULT = pg_execute($conn, "postLikedByUser", array($postid, $username));
                     $postLikedByUser = pg_num_rows($postLikedByUserRESULT) != 0;
