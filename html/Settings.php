@@ -172,38 +172,38 @@ if ($settingsResult) {
                                 </svg>
                             </button>
                             <div class="dropdown-content" id="dropdownContent">
-    <?php
-    // Load initial notifications
-    include_once "../php/load_notifications.php";
-    ?>
-    <a href="../html/Notifications.php" >See More</a>
-</div>
+                                <?php
+                                // Load initial notifications
+                                include_once "../php/load_notifications.php";
+                                ?>
+                                <a href="../html/Notifications.php">See More</a>
+                            </div>
 
-<script>
-    // Function to load more notifications
-    function loadMoreNotifications() {
-        // Make an AJAX request
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "load_notifications.php", true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                // Update the content of the dropdownContent div
-                document.getElementById("dropdownContent").innerHTML = xhr.responseText;
-            }
-        };
-        xhr.send();
-    }
+                            <script>
+                                // Function to load more notifications
+                                function loadMoreNotifications() {
+                                    // Make an AJAX request
+                                    var xhr = new XMLHttpRequest();
+                                    xhr.open("GET", "load_notifications.php", true);
+                                    xhr.onreadystatechange = function () {
+                                        if (xhr.readyState == 4 && xhr.status == 200) {
+                                            // Update the content of the dropdownContent div
+                                            document.getElementById("dropdownContent").innerHTML = xhr.responseText;
+                                        }
+                                    };
+                                    xhr.send();
+                                }
 
-    // Attach click event listener to the "See More" link
-    document.getElementById("seeMoreLink").addEventListener("click", function(event) {
-        event.preventDefault(); // Prevent default link behavior
-        loadMoreNotifications(); // Call the function to load more notifications
-    });
-</script>
+                                // Attach click event listener to the "See More" link
+                                document.getElementById("seeMoreLink").addEventListener("click", function (event) {
+                                    event.preventDefault(); // Prevent default link behavior
+                                    loadMoreNotifications(); // Call the function to load more notifications
+                                });
+                            </script>
                         </div>
-                    </div>
-                    <span>Notifications</span>
-                </li>
+                        </div>
+                        <span>Notifications</span>
+                    </li>
                     <li>
                         <div class="dropdown">
                             <img class="nav-profile" onclick="toggleDropdownProfile()"
@@ -290,6 +290,8 @@ if ($settingsResult) {
                 <h3 onclick="updateName()">Update Name</h3>
                 <h3 onclick="updatePassword()">Reset Password</h3>
                 <h3 onclick="updateBio()">Update Bio</h3>
+                <h3 onclick="overview()">Overview</h3>
+                <h3 onclick="contactinfo()">Contact Info</h3>
 
                 <h1 onclick="privacy()">Privacy & security</h2>
                     <h3 onclick="accountPrivacy()">Account Privacy</h3>
@@ -302,6 +304,7 @@ if ($settingsResult) {
 
     </section>
     <section class="settingsContent">
+
 
         <div id="general">
             <h1 class="updateTitle">General Settings</h1>
@@ -440,6 +443,82 @@ if ($settingsResult) {
             </form>
         </div>
 
+        <div id="overview">
+            <span class="updateTitle">Overview</span>
+            <div class='divider'></div>
+            <form action="" method="post">
+                <div class="info-display">
+                    <p class="info-cat">University -</p>
+                    <p>
+                        University
+                    </p>
+
+                </div>
+                <p>New University</p>
+                <input type="text" id="email1" name="email1" required />
+                <button class="confirmButton">Comfirm Update</button>
+            </form>
+
+            <form action="" method="post">
+                <div class="info-display">
+                    <p class="info-cat">Work Place -</p>
+                    <p>
+                        work place
+                    </p>
+
+                </div>
+                <p>New work place</p>
+                <input type="text" id="email1" name="email1" required />
+                <button class="confirmButton">Comfirm Update</button>
+            </form>
+
+            <form action="" method="post">
+                <div class="info-display">
+                    <p class="info-cat">Nationality -</p>
+                    <p>
+                        place from
+                    </p>
+
+                </div>
+                <p>New Nationality</p>
+                <input type="text" id="email1" name="email1" required />
+                <button class="confirmButton">Comfirm Update</button>
+            </form>
+
+            <form action="" method="post">
+                <div class="info-display">
+                    <p class="info-cat">Gender -</p>
+                    <p>
+                        gender
+                    </p>
+
+                </div>
+                <p>New Gender</p>
+                <input type="text" id="email1" name="email1" required />
+                <button class="confirmButton">Comfirm Update</button>
+            </form>
+
+
+        </div>
+
+        <div id="contactinfo">
+            <span class="updateTitle">Contact Methods</span>
+            <div class='divider'></div>
+            <form action="" method="post">
+                <div class="info-display">
+                    <p class="info-cat">Current Number -</p>
+                    <p>
+                        07785521002
+                    </p>
+
+                </div>
+                <p>New Number</p>
+                <input type="text" id="email1" name="email1" required />
+                <button class="confirmButton">Comfirm Update</button>
+            </form>
+
+        </div>
+
 
         <div id="privacyPolicy">
             <span class="updateTitle">
@@ -448,72 +527,75 @@ if ($settingsResult) {
             <p>Our Privacy Policy... </p>
             <p>1. Information Collection
 
-We collect information that you provide directly to us when you:
+                We collect information that you provide directly to us when you:
 
-Create an account,
-Post content,
-Participate in community discussions,
-Interact with other users.  
+                Create an account,
+                Post content,
+                Participate in community discussions,
+                Interact with other users.
 
-<br>We also collect information automatically as you navigate the platform, including:
+                <br>We also collect information automatically as you navigate the platform, including:
 
-Usage data,
-Location information,
-Device information,
-Cookies and similar technologies.
+                Usage data,
+                Location information,
+                Device information,
+                Cookies and similar technologies.
 
-</p> 
+            </p>
 
-<p>2. Use of Information
+            <p>2. Use of Information
 
-The information we collect is used to:
+                The information we collect is used to:
 
-Provide, maintain, and improve our services
-Foster a safe and secure environment
-Personalize your experience
-Communicate with you about our services, offers, and updates
-Analyze how users interact with our platform
-</p>
-<p>
-3. Information Sharing
+                Provide, maintain, and improve our services
+                Foster a safe and secure environment
+                Personalize your experience
+                Communicate with you about our services, offers, and updates
+                Analyze how users interact with our platform
+            </p>
+            <p>
+                3. Information Sharing
 
-We do not sell your personal information to third parties. However, we may share your information with:
+                We do not sell your personal information to third parties. However, we may share your information with:
 
-Service providers who assist us in operating the platform
-Law enforcement or other entities if required by law or to protect our rights
-Business partners, with your consent, for collaborative promotions or services
-</p>
-<p>
-4. Data Security
+                Service providers who assist us in operating the platform
+                Law enforcement or other entities if required by law or to protect our rights
+                Business partners, with your consent, for collaborative promotions or services
+            </p>
+            <p>
+                4. Data Security
 
 
-We implement a variety of security measures to maintain the safety of your personal information. However, no method of transmission over the Internet or electronic storage is 100% secure.
-</p>
-<p>
-5. International Data Transfers
+                We implement a variety of security measures to maintain the safety of your personal information.
+                However, no method of transmission over the Internet or electronic storage is 100% secure.
+            </p>
+            <p>
+                5. International Data Transfers
 
-Your information may be transferred to, stored, and processed in a country different from where it was collected, subject to local privacy laws.
-<p>
+                Your information may be transferred to, stored, and processed in a country different from where it was
+                collected, subject to local privacy laws.
+            <p>
 
-<p>
-6. Your Rights
+            <p>
+                6. Your Rights
 
-You have the right to:
+                You have the right to:
 
-Access and update your personal information
-Opt out of certain data collection and use practices
-Delete your account and related information
-</p>
-<p>
-7. Changes to This Policy
+                Access and update your personal information
+                Opt out of certain data collection and use practices
+                Delete your account and related information
+            </p>
+            <p>
+                7. Changes to This Policy
 
-We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new policy on our platform.
-</p>
-<p>
-8. Contact Us
+                We may update this Privacy Policy from time to time. We will notify you of any changes by posting the
+                new policy on our platform.
+            </p>
+            <p>
+                8. Contact Us
 
-If you have any questions about this Privacy Policy, please contact us at <a>sharesync@gmail.com<a>
-</p>
+                If you have any questions about this Privacy Policy, please contact us at <a>sharesync@gmail.com<a>
+            </p>
         </div>
 
 
@@ -531,7 +613,7 @@ If you have any questions about this Privacy Policy, please contact us at <a>sha
             <h1>Profile Visibility</h1>
             <p class="inline">public</p>
             <label class="profileSwitch" class="round">
-                <input type="checkbox" onchange='updateVisibilty(<?php echo "$username";?>, this);'>
+                <input type="checkbox" onchange='updateVisibilty(<?php echo "$username"; ?>, this);'>
                 <span class="slider"></span>
             </label>
             <p class="inline">private</p>
@@ -545,17 +627,22 @@ If you have any questions about this Privacy Policy, please contact us at <a>sha
             <br>
             <p class="inline">To delete your account click here</p>
             <br>
-            <button class="confirmButton" onclick = "deleteAccountBox()">Delete Account </button>
+            <button class="confirmButton" onclick="deleteAccountBox()">Delete Account </button>
 
         </div>
 
-        <div id = "deleteAccountBox">
+        <div id="deleteAccountBox">
             <br>
-            <p class="inline">To delete your account click here, once clicked this acction cannot be undone. Are you sure?</p>
+            <p class="inline">To delete your account click here, once clicked this acction cannot be undone. Are you
+                sure?</p>
             <br>
-            <button class="confirmButton" onclick = "deleteAccountBox()"><a href ="../php/delete_user.php">yes, delete account</a> </button>
+            <button class="confirmButton" onclick="deleteAccountBox()"><a href="../php/delete_user.php">yes, delete
+                    account</a> </button>
             <button type="button" onclick="deleteAccount()"> No, nevermind</button>
         </div>
+
+
+
 
     </section>
 
