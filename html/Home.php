@@ -317,17 +317,76 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                     <form action="../php/create_post.php" method="post" enctype="multipart/form-data">
                         <input type="file" class="feed-create-post-img" name="post_image" accept=".png, .jpg, .jpeg"
                             required>
-                        <div>
+                        <div class="caption-container">
                             <h3>Caption</h3>
                             <textarea id="text" name="text" rows="4" cols="50" maxlength="3000"
                                 class="feed-create-post-captions"></textarea>
                         </div>
-                        <div>
-                            <h3>Tags(Seperated by commas)</h3>
-                            <textarea id="tags" name="tags" rows="2" cols="20" maxlength="3000"
-                                class="feed-create-post-captions"></textarea>
+                        <div class="tags-container">
+                            <h3>Tags</h3>
+                            <div class="tags-box">
+                                <div><input type="checkbox" name="tag" value="tag" id="tag">
+                                    <label for="tag">Tag</label>
+                                </div>
+                                <div><input type="checkbox" name="tag" value="tag" id="tag">
+                                    <label for="tag">Tag</label>
+                                </div>
+
+                                <div><input type="checkbox" name="tag" value="tag" id="tag">
+                                    <label for="tag">Tag</label>
+                                </div>
+                                <div><input type="checkbox" name="tag" value="tag" id="tag">
+                                    <label for="tag">Tag</label>
+                                </div>
+                                <div><input type="checkbox" name="tag" value="tag" id="tag">
+                                    <label for="tag">Tag</label>
+                                </div>
+                                <div><input type="checkbox" name="tag" value="tag" id="tag">
+                                    <label for="tag">Tag</label>
+                                </div>
+                                <div><input type="checkbox" name="tag" value="tag" id="tag">
+                                    <label for="tag">Tag</label>
+                                </div>
+                                <div><input type="checkbox" name="tag" value="tag" id="tag">
+                                    <label for="tag">Tag</label>
+                                </div>
+
+                                <div><input type="checkbox" name="tag" value="tag" id="tag">
+                                    <label for="tag">Tag</label>
+                                </div>
+                                <div><input type="checkbox" name="tag" value="tag" id="tag">
+                                    <label for="tag">Tag</label>
+                                </div>
+                                <div><input type="checkbox" name="tag" value="tag" id="tag">
+                                    <label for="tag">Tag</label>
+                                </div>
+                                <div><input type="checkbox" name="tag" value="tag" id="tag">
+                                    <label for="tag">Tag</label>
+                                </div>
+                                <div><input type="checkbox" name="tag" value="tag" id="tag">
+                                    <label for="tag">Tag</label>
+                                </div>
+                                <div><input type="checkbox" name="tag" value="tag" id="tag">
+                                    <label for="tag">Tag</label>
+                                </div>
+
+                                <div><input type="checkbox" name="tag" value="tag" id="tag">
+                                    <label for="tag">Tag</label>
+                                </div>
+                                <div><input type="checkbox" name="tag" value="tag" id="tag">
+                                    <label for="tag">Tag</label>
+                                </div>
+                                <div><input type="checkbox" name="tag" value="tag" id="tag">
+                                    <label for="tag">Tag</label>
+                                </div>
+                                <div><input type="checkbox" name="tag" value="tag" id="tag">
+                                    <label for="tag">Tag</label>
+                                </div>
+
+                            </div>
                         </div>
-                        <input type="submit" name="submit_post" class="feed-create-post-submit" onclick="finishPost()">
+                        <input value="Post" type="submit" name="submit_post" class="feed-create-post-submit"
+                            onclick="finishPost()">
                     </form>
                 </div>
             </div>
@@ -454,18 +513,18 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                     } else {
                         echo "No comments";
                     }
-                    ; ?>
+                    ?>
 
                     </div>
                     <div class='comment-create-container'>
                         <form action="../php/comments.php" method="post">
                             <input class="comment-create" id="comment" name="text" type="text">
                             <input type="hidden" id="postid" name="postid" value="<?php echo $postid; ?>">
-                            <button type="submit" name="commentSubmit">Submit</button> <!-- Add a name to your submit button -->
+                            <button type="submit" name="commentSubmit">Comment</button> 
                         </form>
+                </div>
 
-
-                        <?php echo " </div>
+                        <?php echo "
             </div>
         </prepost>";
                         echo "<div class='feed-post'>";

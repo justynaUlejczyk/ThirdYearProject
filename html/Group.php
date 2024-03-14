@@ -303,9 +303,14 @@ $username = $_SESSION["username"];
                     echo "<div>
                 <a href='group-page.php?id=$groupid'>
                     <img src='../images/cat.jpg' class='groupIcon'>
-                    <h1 class='groupName'>$groupname</h1></a>
-                    <a href='../php/delete_group.php?id=$groupid'>delete group</a>
-                    </div>";
+                    <h1 class='groupName'>$groupname</h1></a>";
+                    ?><form action="../php/delete_group.php" method="post">
+                            <input type="hidden" name = groupid value='<?php echo "$groupid"?>'>
+                            <input type="submit" value="delete">
+                            </form>
+            
+                </div>
+                <?php
                 }
                 ?>
 
