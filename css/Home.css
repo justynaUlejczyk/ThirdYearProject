@@ -253,6 +253,41 @@ main > profile > div:nth-child(2) {
     cursor: default;
 }
 
+.tags-container {
+    width: 80%;
+}
+
+.tags-box {
+    border: 1px solid var(--dark-gray);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 10px;
+    width: 100%;
+    height: 125px;
+    overflow-y: scroll;
+}
+
+.tags-box div {
+    padding: 5px 20px;
+}
+
+.caption-container {
+    width: 80%;
+}
+
+.feed-create-post-captions {
+    width: 100%;
+}
+
+.feed-create-post-container input[type="submit"] {
+    padding: 10px 50px;
+    border-radius: 15px;
+    border: 1px solid var(--text);
+    color: var(--text);
+    background: none;
+    font-size: 20px;
+}
+
 /* Screen sizes between 1150 and 1200 */
 @media only screen and (max-width: 1200px) {
     main {
@@ -389,4 +424,3 @@ main > profile > div:nth-child(2) {
     margin-bottom: 20px;
     font-size: 16px;
 }
-
