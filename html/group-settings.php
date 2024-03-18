@@ -1,16 +1,16 @@
 <?php
 require_once "../php/connect_db.php";
-session_id("userSession");
+//session_id("userSession");
 session_start();
-if (!isset($_SESSION["username"])) {
+if (!isset ($_SESSION["username"])) {
     header('Location: ' . "./login.php");
 }
 $login_username = $_SESSION["username"];
 session_write_close();
 //session_id("groupSession");
-session_start();
+//session_start();
 // Get passed product genre and assign it to a variable.
-if (isset($_GET['id'])) {
+if (isset ($_GET['id'])) {
     $id = $_GET['id'];
     $_SESSION["groupid"] = $id;
 }
@@ -32,6 +32,7 @@ session_write_close();
     <link rel="stylesheet" href="../css/StyleSheet.css">
     <link rel="stylesheet" href="../css/Group-page.css">
     <link rel="stylesheet" href="../css/Group-settings.css">
+
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
@@ -171,35 +172,35 @@ session_write_close();
                             </svg>
                         </button>
                         <div class="dropdown-content" id="dropdownContent">
-    <?php
-    // Load initial notifications
-    include_once "../php/load_notifications.php";
-    ?>
-    <a href="../html/Notifications.php">See More</a>
-</div>
-
-<script>
-    // Function to load more notifications
-    function loadMoreNotifications() {
-        // Make an AJAX request
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "load_notifications.php", true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                // Update the content of the dropdownContent div
-                document.getElementById("dropdownContent").innerHTML = xhr.responseText;
-            }
-        };
-        xhr.send();
-    }
-
-    // Attach click event listener to the "See More" link
-    document.getElementById("seeMoreLink").addEventListener("click", function(event) {
-        event.preventDefault(); // Prevent default link behavior
-        loadMoreNotifications(); // Call the function to load more notifications
-    });
-</script>
+                            <?php
+                            // Load initial notifications
+                            include_once "../php/load_notifications.php";
+                            ?>
+                            <a href="../html/Notifications.php">See More</a>
                         </div>
+
+                        <script>
+                            // Function to load more notifications
+                            function loadMoreNotifications() {
+                                // Make an AJAX request
+                                var xhr = new XMLHttpRequest();
+                                xhr.open("GET", "load_notifications.php", true);
+                                xhr.onreadystatechange = function () {
+                                    if (xhr.readyState == 4 && xhr.status == 200) {
+                                        // Update the content of the dropdownContent div
+                                        document.getElementById("dropdownContent").innerHTML = xhr.responseText;
+                                    }
+                                };
+                                xhr.send();
+                            }
+
+                            // Attach click event listener to the "See More" link
+                            document.getElementById("seeMoreLink").addEventListener("click", function (event) {
+                                event.preventDefault(); // Prevent default link behavior
+                                loadMoreNotifications(); // Call the function to load more notifications
+                            });
+                        </script>
+                    </div>
                     </div>
                     <span>Notifications</span>
                 </li>
@@ -305,7 +306,9 @@ session_write_close();
             <div class="setting">
                 <div class='settings-title'>
                     <span>Settings</span>
-                    <span><?php echo "$groupname";?></span>
+                    <span>
+                        <?php echo "$groupname"; ?>
+                    </span>
                 </div>
                 <div class='settings-box'>
                     <div class='settings-options'>
@@ -327,9 +330,10 @@ session_write_close();
                                 <h4 id="namechangestatus"></h4>
                                 <div class="change-container">
                                     <form onsubmit="updateGroupName(event);" method="post">
-                                    <input type="hidden" name="groupid" value=<?php echo "$groupid"?>>
-                                    <input type="text" placeholder="New Group Name" name="groupname" class="change-group-name" />
-                                    <input type="submit" class="change-group-name" />
+                                        <input type="hidden" name="groupid" value=<?php echo "$groupid" ?>>
+                                        <input type="text" placeholder="New Group Name" name="groupname"
+                                            class="change-group-name" />
+                                        <input type="submit" class="change-group-name" />
                                     </form>
                                 </div>
                             </div>
@@ -340,6 +344,23 @@ session_write_close();
                                     <textarea id="text" name="text" rows="4" cols="50" maxlength="3000"
                                         class="feed-create-post-captions"></textarea>
                                     <input type="submit" class="change-group-name " />
+                                </div>
+                            </div>
+                            <div class="wrapper">
+                                <h2>Change Icon</h2>
+                                <!-- change this below to a form -->
+                                <div class="change-container">
+                                    <div class="avatar-upload">
+                                        <div class="avatar-edit">
+                                            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                            <label for="imageUpload"></label>
+                                        </div>
+                                        <div class="avatar-preview">
+                                            <div id="imagePreview"
+                                                style="background-image: url(../images/icons/Unknown_person.jpg);">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </article>
@@ -356,13 +377,16 @@ session_write_close();
                         </article>
                         <article>
                             <h2>Are you sure you want to leave?</h2>
-                            <p>Put the button to leave here</p>
+                            <form action="../php/delete_group.php" method="post">
+                                <input type="hidden" name=groupid value='<?php echo "$groupid" ?>'>
+                                <input class='delete-group' type="submit" value="Leave Group">
+                            </form>
                         </article>
                         <article>
                             <h2>Are you sure you want to delete this group?</h2>
                             <form action="../php/delete_group.php" method="post">
-                            <input type="hidden" name = groupid value='<?php echo "$groupid"?>'>
-                            <input type="submit" value="">
+                                <input type="hidden" name=groupid value='<?php echo "$groupid" ?>'>
+                                <input class='delete-group' type="submit" value="Delete Group">
                             </form>
                         </article>
                     </div>
@@ -409,7 +433,7 @@ session_write_close();
         </aside>
     </section>
 
-
+    <script src="../js/icon-change.js"></script>
     <script src="../js/group-settings.js"></script>
 </body>
 

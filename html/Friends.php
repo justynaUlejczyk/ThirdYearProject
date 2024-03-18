@@ -270,12 +270,14 @@ $stmt2 = pg_prepare($conn, "followers2", "SELECT username FROM follows WHERE fol
  $numRows = pg_num_rows($result);
  
 ?>
-        
-            
-            
-                    
-
-
+    <section>
+        <h2>Look for your Friends:</h2>
+        <form id="searchForm" action="../php/search_friend.php" method="POST"> <!-- Added method="POST" -->
+        <input id="searchInput" type="search" name="search" required> <!-- Added name="search" -->
+        <button type="submit"> <!-- Added submit button -->
+        <!-- Optionally, you can add an icon if needed -->
+         <i class="fa fa-search"></i></button>
+    </form>
             </section>
 
 
