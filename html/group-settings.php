@@ -420,12 +420,9 @@ session_write_close();
             <img src="../images/icons/Unknown_person.jpg" alt="">';
                     echo "<span>$username</span>
                     <span><a href ='../php/delete_member.php?user=$username'>remove</a></span>
-
         </div>";
                 }
-
             }
-
 
             ?>
 

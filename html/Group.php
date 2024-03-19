@@ -272,6 +272,10 @@ $username = $_SESSION["username"];
                         <p>Name</p>
                         <input type="text" id="groupname" name="groupname">
                     </div>
+                    <div id="description">
+                        <p>Description</p>
+                        <input type="text" id="description" name="description">
+                    </div>
                     <input type="hidden" name="username" id="username" value="<?php echo $username; ?>">
                 </div>
                 <div class="create-options">
@@ -351,7 +355,7 @@ $username = $_SESSION["username"];
                                 ?>
 
                                 <friend>
-                                    <img src="../images/cat.jpg" class="friendIcon">
+                                    <img src="<?php echo "../profile_pic/profile_pic_$followee.png";?>" class="friendIcon">
                                     <?php
 
                                     echo "<span><a href ='../html/Profile.php?id=$followee'><p>$followee</p><a></span></friend>";
