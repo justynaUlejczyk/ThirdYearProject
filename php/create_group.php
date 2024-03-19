@@ -12,7 +12,7 @@ $stmt = pg_prepare($conn, "create_group", "INSERT INTO groups (managerID, groupn
 $username = $_SESSION['username'];
 $groupname = $_POST['groupname'];
 $description = $_POST['description'];
-$date = date("Y-m-d");
+$date = date("Y-m-d"); 
 
 $killTime = new DateTime();
 $killTime->modify('+3 weeks');
