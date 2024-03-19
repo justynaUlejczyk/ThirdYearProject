@@ -16,4 +16,4 @@ if (move_uploaded_file($_FILES['profile_pic']['tmp_name'], $uploadfile)) {
     echo "Error uploading file.";
 }
 
-?>
+header('Location: ' . '/html/settings.php');
