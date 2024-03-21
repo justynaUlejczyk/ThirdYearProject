@@ -1,4 +1,5 @@
 <?php
+
 //session_id("userSession");
 session_start();
 if (!isset ($_SESSION["username"])) {
@@ -190,7 +191,7 @@ $username = $_SESSION["username"];
                 <li>
                     <div class="dropdown">
                         <img class="nav-profile" onclick="toggleDropdownProfile()"
-                            src="<?php echo "../profile_pic/profile_pic_$username.png";?>"">
+                            src="<?php echo "../profile_pic/profile_pic_$username.png";?>">
                         </img>
                         <div class="dropdown-content-profile" id="dropdownContentProfile">
                             <div class="dropdown-profile-icon">
@@ -272,6 +273,10 @@ $username = $_SESSION["username"];
                         <p>Name</p>
                         <input type="text" id="groupname" name="groupname">
                     </div>
+                    <div id="description">
+                        <p>Description</p>
+                        <input type="text" id="description" name="description">
+                    </div>
                     <input type="hidden" name="username" id="username" value="<?php echo $username; ?>">
                 </div>
                 <div class="create-options">
@@ -285,26 +290,37 @@ $username = $_SESSION["username"];
 
 
         <aside class="groupSection">
-            <h1 class="heading">Your Groups</h1>
-            <section class="groupDisplay">
-                <?php
-                $groupsSTMT = pg_prepare($conn, "groups", "SELECT *FROM groups INNER
-                JOIN accounttogroup ON groups.groupid = accounttogroup.groupid WHERE username = $1 ");
-                $groupsRESULT = pg_execute($conn, "groups", array($username));
+    <h1 class="heading">Your Groups</h1>
+    <section class="groupDisplay">
+        <?php
+        $groupsSTMT = pg_prepare($conn, "groups", "SELECT * FROM groups INNER JOIN accounttogroup ON groups.groupid = accounttogroup.groupid WHERE username = $1 ");
+        $groupsRESULT = pg_execute($conn, "groups", array($username));
 
-                while ($row = pg_fetch_assoc($groupsRESULT)) {
-                    $groupid = $row['groupid'];
-                    $groupname = $row['groupname'];
-                    echo "<div>
-                <a href='group-page.php?id=$groupid'>
-                    <img src='../images/cat.jpg' class='groupIcon'>
-                    <h1 class='groupName'>$groupname</h1></a>";
-                    ?>
+        while ($row = pg_fetch_assoc($groupsRESULT)) {
+            $groupid = $row['groupid'];
+            $groupname = $row['groupname'];
+            echo "<div>
+                    <a href='group-page.php?id=$groupid'>
+                        <img class='nav-profile' id='profile-img_$groupid' onclick='toggleDropdownProfile()' src='../group_pic/group_pic_$groupname.png'></img>
+                        <h1 class='groupName'>$groupname</h1>
+                    </a>
+                </div>";
+            // Echo groupname as a string literal in JavaScript
+            echo "<script>
+                    var groupname_$groupid = '" . $groupname . "'; // Set your groupname here dynamically
+                    var img_$groupid = new Image();
+                    img_$groupid.onload = function() {
+                        document.getElementById('profile-img_$groupid').src = '../group_pic/group_pic_' + groupname_$groupid + '.png';
+                    };
+                    img_$groupid.onerror = function() {
+                        document.getElementById('profile-img_$groupid').src = '../images/cat.jpg';
+                    };
+                    img_$groupid.src = '../group_pic/group_pic_' + groupname_$groupid + '.png';
+                </script>";
+        }
+        ?>
+   
 
-                    </div>
-                    <?php
-                }
-                ?>
 
 
                 <div>
@@ -324,7 +340,7 @@ $username = $_SESSION["username"];
 
             </section>
         </aside>
-
+       
         <?php
         $stmt = pg_prepare($conn, "followers", "SELECT followee FROM follows WHERE username=$1");
         $result = pg_execute($conn, "followers", array($username));
@@ -333,6 +349,7 @@ $username = $_SESSION["username"];
 
 
         ?>
+        
         <bside class="friendBox">
             <h3 class="heading">Friends List</h3>
             <?php
@@ -351,10 +368,11 @@ $username = $_SESSION["username"];
                                 ?>
 
                                 <friend>
-                                    <img src="../images/cat.jpg" class="friendIcon">
+                                    <img src="<?php echo "../profile_pic/profile_pic_$followee.png";?>" 
+                                    class="friendIcon">
                                     <?php
-
-                                    echo "<span><a href ='../html/Profile.php?id=$followee'><p>$followee</p><a></span></friend>";
+                                    echo "<span><p><a href ='../html/Profile.php?id=$followee'>
+                                    $followee</p><a></span></friend>";
                             }
                         }
                     }
@@ -362,8 +380,6 @@ $username = $_SESSION["username"];
             } ?>
 
         </bside>
-
-
         <a href="../html/friends.php">
             <h4 class="viewMore">View All</h4>
         </a>
