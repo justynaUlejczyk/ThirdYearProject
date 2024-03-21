@@ -447,11 +447,12 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                                 <div class='comment-text'>$comment</div>
                                 <div class='comment-options'>";
 
-                        // Corrected form part
-                        echo "<form action='../php/deleteComments.php' method='post'>";
-                        echo "<input type='hidden' name='comment_id' value='$comment_id'>";
-                        echo "<button type='submit' name='delete_comment'>Delete</button>";
-                        echo "</form>";
+                         // Corrected form part
+                         if ($commenting_user==$username){
+                            echo "<form action='../php/deleteComments.php' method='post'>";
+                            echo "<input type='hidden' name='comment_id' value='$comment_id'>";
+                            echo "<button type='submit' name='delete_comment'>Delete</button>";
+                            echo "</form>";}
 
                         // Close the HTML structure
                         echo "</div>
