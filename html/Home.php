@@ -423,6 +423,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                         $commenting_user = $row['username'];
                         $comment = $row['text'];
                         $date = $row['timestamp'];
+                        $comment_id = $row['commentid'];
 
                         echo "<form action='../php/deleteComments.php' method='post'>";
                         echo "
