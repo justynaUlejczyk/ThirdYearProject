@@ -301,7 +301,7 @@ session_write_close();
 
         <!-- Feed -->
         <Feed>
-            <script src="./views/room.ejs"></script>
+            <div ></div>
         </Feed>
 
 </body>

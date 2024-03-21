@@ -19,10 +19,11 @@ app.get('/:room',(req,res) => {
 })
 
 
-io.on('connection', (socket) => {
-    socket.on('user-connected', (userId) => {
-      socket.broadcast.emit(userId);
-    });
-  });
+io.on('connection', (socket) =>{
+    socket.on('join-room',(roomId,userId) =>{
+        socket.join(roomId)
+        socket.to(roomId).emit('user-connected', userId);
+    })
+})
 
-server.listen(3000)
+server.listen(8010)
