@@ -1,15 +1,7 @@
 <?php
 
 $login_username = $_SESSION["username"];
-// Get passed product genre and assign it to a variable.
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $messageReadSTMT = pg_prepare($conn, "messageRead", "UPDATE messages SET messageread = 1 WHERE username = $1 AND recipient = '$login_username'");
-    $messageReadRESULT = pg_execute($conn, "messageRead", array($id));
-} else {
-    // Handle the case when 'id' is not set
-    $id = 1;
-}
+
 
 $stmt = pg_prepare($conn, "read_message", "SELECT * FROM messages WHERE
                      (username = $1 AND recipient = $2) OR (username = $2 AND recipient = $1) ORDER BY messageID ASC");

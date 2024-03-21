@@ -1,17 +1,25 @@
 <?php
+//session_id("userSession");
 session_start();
 if (!isset($_SESSION["username"])) {
     header('Location: ' . "./login.php");
-    exit(); // Make sure to exit after redirecting
 }
 
 require_once "../php/connect_db.php";
 
 $login_username = $_SESSION["username"];
+// Get passed product genre and assign it to a variable.
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $messageReadSTMT = pg_prepare($conn, "messageRead", "UPDATE messages SET messageread = 1 WHERE username = $1 AND recipient = '$login_username'");
+    $messageReadRESULT = pg_execute($conn, "messageRead", array($id));
+} else {
+    // Handle the case when 'id' is not set
+    $id = 1;
+
+}
+
 ?>
-
-
-
 <!DOCTYPE html>
 <html>
 
@@ -27,8 +35,6 @@ $login_username = $_SESSION["username"];
     <script src="../js/main.js"></script>
     <script src="../js/darkmode.js"></script>
     <script src="../js/Message.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 </head>
 
 <!-- test commit -->
@@ -261,10 +267,11 @@ $login_username = $_SESSION["username"];
         </section>
     </nav>
     <!-- End of Nav -->
-   
+
+    <main>
+
         <div class="chatter-container">
             <div class="chatter-list">
-                <section>
                 <?php
 
                 // displaying list of users ordered by last message received so the user who last sent a message to the logged in user is at the top of the list.
@@ -301,59 +308,37 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
                 }
                 ?>
 
-            </section>
-<div class="chatter-box">
-<?php
+
+                <div class="chatter-box">
+                    <!-- Chat box -->
+                    <?php
+                    // Get passed product genre and assign it to a variable.
+
 // Load initial notifications
 include_once "../php/load_messages.php";
 ?>
-<script>
-    // Function to continuously load notifications
-    function loadMessages() {
-        // Make an AJAX request
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "../php/load_messages.php", true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                // Update the content of the dropdownContent div
-                document.getElementById("dropdownContent").innerHTML = xhr.responseText;
-                // Call the function again after a short delay
-                setTimeout(loadNotifications, 1000); // Adjust delay as needed
-            }
-        };
-        xhr.send();
-    }
 
-    // Call the function initially
-    loadMessages();
-</script>
+                <form class="chatter-send-message" id="messages" action="../php/send_message.php" method="post">
 
 
-<form class="chatter-send-message" id="messages" action="../php/send_message.php" method="post">
-<input type="text" id="recipient" name="recipient" value="<?php echo $id; ?>" hidden
-    style="display:none;">
+                    <input type="text" id="recipient" name="recipient" value="<?php echo $id; ?>" hidden
+                        style="display:none;">
 
-<input type="text" id="text" name="text" required="">
+                    <input type="text" id="text" name="text" required="">
 
-<input type="text" class="username" name="username" value="<?php echo $login_username; ?>" hidden
-    style="display:none;">
-<button type="submit"><i class="fab fa-telegram-plane"></i></button>
-</form>
-
-
-
+                    <input type="text" class="username" name="username" value="<?php echo $login_username; ?>" hidden
+                        style="display:none;">
+                    <button type="submit"><i class="fab fa-telegram-plane"></i></button>
+                </form>
+            </div>
+        </div>
 
 
+    </main>
 
-</form>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+
 
 </body>
+
 
 </html>
