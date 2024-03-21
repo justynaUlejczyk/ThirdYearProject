@@ -448,7 +448,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
 
                         // Corrected form part
                         echo "<form action='../php/deleteComments.php' method='post'>";
-                        echo "<input type='hidden' name='comment_id' value='" . $row['comment_id'] . "'>";
+                        echo "<input type='hidden' name='comment_id' value='$comment_id'>";
                         echo "<button type='submit' name='delete_comment'>Delete</button>";
                         echo "</form>";
 
