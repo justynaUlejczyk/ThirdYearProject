@@ -16,7 +16,12 @@ session_write_close();
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $filePath = "../groups/$groupname/$id";
+    $split = $_GET["split"];
+    if($split==1){
+        $filePath = "../groups/$groupname/$id" . "B";
+    } else{
+        $filePath = "../groups/$groupname/$id";
+    }
     $fileContents = file_get_contents($filePath);
 }
 ?>
@@ -305,7 +310,7 @@ if (isset($_GET['id'])) {
                 <div class="toolbar">
                     <div class="head">
                         <input type="text" placeholder="Filename" value="untitled" id="filename">
-                        <select onchange='fileHandle(this.value,<?php echo"$groupid"?> ); this.selectedIndex=0'>
+                        <select onchange='fileHandle(this.value,<?php echo"$groupid", $split?> ); this.selectedIndex=0'>
                             <option value="" selected="" hidden="" disabled="">File</option>
                             <option value="new">New file</option>
                             <option value="save">Save file</option>

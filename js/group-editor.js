@@ -48,7 +48,7 @@ showCode.addEventListener('click', function () {
 const filename = document.getElementById('filename');
 
 
-function fileHandle(value, groupid) {
+function fileHandle(value, groupid, split) {
     if (value === 'new') {
         content.innerHTML = '';
         filename.value = 'untitled';
@@ -63,7 +63,7 @@ function fileHandle(value, groupid) {
                 }
             }
         };
-        xhr.send("filename=" + filename.value + "&content=" + content.textContent + "&groupid=" + groupid);
+        xhr.send("filename=" + filename.value + "&content=" + content.textContent + "&groupid=" + groupid + "&split=" + split);
         }
 }
 

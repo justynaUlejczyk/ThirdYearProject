@@ -337,7 +337,11 @@ session_write_close();
 
                 <section class="file-container" id="fileContainer">
                     <?php
-                    $get_filesSTMT = pg_prepare($conn, "get_files", "SELECT filename FROM files WHERE groupid = $1");
+                    if($_GET["split"]==1){
+                        $get_filesSTMT = pg_prepare($conn, "get_files", "SELECT filename FROM splitfiles WHERE groupid = $1");
+                    } else{
+                        $get_filesSTMT = pg_prepare($conn, "get_files", "SELECT filename FROM files WHERE groupid = $1");
+                    }
                     $get_filesRESULT = pg_execute($conn, "get_files", array($groupid));
 
                     while ($row = pg_fetch_assoc($get_filesRESULT)) {
