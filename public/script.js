@@ -2,7 +2,7 @@ const socket = io('/')
 
 const myPeer = new Peer(undefined,{
     host:'/',
-    port:'8001'
+    port:'3001'
 })
 
 myPeer.on('open', id =>{
@@ -18,7 +18,6 @@ navigator.mediaDevices.getUserMedia({
     video:true,
     audio:true
 }).then(stream => {
-    
 
     socket.on('user-connected',userId =>{
         connectToNewUser(userId,stream)
