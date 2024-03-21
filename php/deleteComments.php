@@ -1,30 +1,36 @@
 <?php
+require_once "connect_db.php";
 session_start();
 if (!isset($_SESSION["username"])) {
-    header('Location: ' . "register.php");
+    header('Location: ' . "./login.php");
     exit(); // Ensure script stops execution after redirection
 }
 
-require_once "connect_db.php";
+$user_id = $_SESSION["username"];
+$date = date('Y-m-d H:i:s');
+$post_id = $_POST['postid'];
+$comment = $_POST['text'];
 
-if (isset($_POST['delete_comment'])) {
-    // Get necessary variables
-    $username = $_SESSION["username"];
-    $postID = $_SESSION["postid"];
-    $timestamp = $_POST["timestamp"];
+$query = "INSERT INTO comments(username, timestamp, text, postid) VALUES($1, $2, $3, $4) RETURNING commentid;";
+$result = pg_query_params($conn, $query, array($user_id, $date, $comment, $post_id));
 
-    // Implement your code to delete the comment from the database
-    $stmt = pg_prepare($conn, "delete_query", "DELETE FROM comments WHERE username = $1 AND postID = $2 AND timestamp = $3");
-    $delete_result = pg_execute($conn, "delete_query", array($username, $postID, $timestamp));
+if ($result) {
+    $postquery = pg_prepare($conn, "post_name", "SELECT * FROM post WHERE postid = $1");
+    $postresult = pg_execute($conn, "post_name", array($post_id));
+    $postRow = pg_fetch_assoc($postresult);
+    $post_user = $postRow['username'];
+    exit();
+}
 
-    if ($delete_result) {
+    $query2 = pg_prepare($conn, "delete", "DELETE FROM comments WHERE username = $1 AND postid = $2");
+    $stmt2 = pg_execute($conn, "delete", array($user_id, $post_id));
+
+    if ($stmt2) {
         header('Location: ../html/Home.php');
         exit();
     } else {
-        // Handle the case where deletion failed
         echo "Failed to delete the comment.";
     }
-}
 
 pg_close($conn);
 ?>
