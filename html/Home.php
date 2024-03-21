@@ -1,3 +1,4 @@
+
 <?php
 //session_id("userSession");
 session_start();
@@ -331,8 +332,6 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                 </div>
             </div>
             <!-- End of Create Post Options -->
-
-
             <!-- Start Post -->
             <!-- Start Post 1 -->
             <?php
@@ -365,6 +364,8 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                     $postLikedByUser = pg_num_rows($postLikedByUserRESULT) != 0;
                     $commentResult = pg_execute($conn, "comment", array($postid));
                     $commentNumb = pg_num_rows($commentResult);
+
+
                     echo "<post class='posts' id=$postid>";
                     echo " <prepost>
             <div class='post-column'>
@@ -372,7 +373,6 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                     <img src=$post_image_path>
                 </div>
             </div>
-
 
             <div class='comments-column'>
                 <div class='post-info'>
@@ -402,10 +402,9 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                                 </svg>
                                 <span class='likeCounter $postid'>$likesCount</span>
                             </button>
-                            
-                        
+
                         </div>
-                        
+
                     </div>
                     <p class='caption'>
                     $text
@@ -416,7 +415,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                     <div class='divider'></div>
                 </div>
 
-                    
+
                 <div class='comment-container id-$postid'>";
 
                     if ($commentNumb > 0) {
@@ -424,6 +423,8 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                             $commenting_user = $row['username'];
                             $comment = $row['text'];
                             $date = $row['timestamp'];
+
+                            echo "<form action='../php/deleteComments.php' method='post'>";
 
                             echo "
 
@@ -447,11 +448,11 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                         <div class='comment-text'>$comment</div>
                         <div class='comment-options'>
                             <span>1 Like</span>
-                            <form action='../php/deleteComments.php' method='post'>
-                    <input type='hidden' name='postid' value='$postid'>
-                    <input type='hidden' name='timestamp' value='$row[timestamp]'>
-                    <button type='submit' name='delete_comment'>Delete</button>
-                </form>
+                        <form action='../php/deleteComments.php' method='post'>
+                        <input type='hidden' name='postid' value='$postid'>
+                        <input type='hidden' name='timestamp' value='$timestamp'>
+                        <button type='submit' name='delete_comment'>Delete</button>
+                    </form>
                         </div>
                     </div>";
                         }
@@ -509,15 +510,12 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
             }
 
             // Close the database connection
-            
+
             ?>
             <!-- End of Post 1 -->
             <!-- End of Posts -->
         </feed>
         <!-- End of Feed -->
-
-
-
 
     </main>
 
