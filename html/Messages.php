@@ -1,23 +1,15 @@
 <?php
-//session_id("userSession");
 session_start();
 if (!isset($_SESSION["username"])) {
     header('Location: ' . "./login.php");
+    exit(); // Make sure to exit after redirecting
 }
 
 require_once "../php/connect_db.php";
 
 $login_username = $_SESSION["username"];
-// Get passed product genre and assign it to a variable.
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $messageReadSTMT = pg_prepare($conn, "messageRead", "UPDATE messages SET messageread = 1 WHERE username = $1 AND recipient = '$login_username'");
-    $messageReadRESULT = pg_execute($conn, "messageRead", array($id));
-} else {
-    // Handle the case when 'id' is not set
-    $id = 1;
+?>
 
-}
 
 ?>
 <!DOCTYPE html>
@@ -35,6 +27,8 @@ if (isset($_GET['id'])) {
     <script src="../js/main.js"></script>
     <script src="../js/darkmode.js"></script>
     <script src="../js/Message.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 
 <!-- test commit -->
@@ -267,11 +261,10 @@ if (isset($_GET['id'])) {
         </section>
     </nav>
     <!-- End of Nav -->
-
-    <main>
-
+   
         <div class="chatter-container">
             <div class="chatter-list">
+                <section>
                 <?php
 
                 // displaying list of users ordered by last message received so the user who last sent a message to the logged in user is at the top of the list.
@@ -308,90 +301,59 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
                 }
                 ?>
 
+            </section>
+<div class="chatter-box">
+<?php
+// Load initial notifications
+include_once "../php/load_messages.php";
+?>
+<script>
+    // Function to continuously load notifications
+    function loadMessages() {
+        // Make an AJAX request
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "../php/load_messages.php", true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                // Update the content of the dropdownContent div
+                document.getElementById("dropdownContent").innerHTML = xhr.responseText;
+                // Call the function again after a short delay
+                setTimeout(loadNotifications, 1000); // Adjust delay as needed
+            }
+        };
+        xhr.send();
+    }
 
-                <div class="chatter-box">
-                    <!-- Chat box -->
-                    <?php
-
-                    $stmt = pg_prepare($conn, "read_message", "SELECT * FROM messages WHERE
-                     (username = $1 AND recipient = $2) OR (username = $2 AND recipient = $1) ORDER BY messageID ASC");
-                    $result = pg_execute($conn, "read_message", array($login_username, $id));
-                    $numRows = pg_num_rows($result);
+    // Call the function initially
+    loadMessages();
+</script>
 
 
-                    if ($numRows > 0) {
+<form class="chatter-send-message" id="messages" action="../php/send_message.php" method="post">
+<input type="text" id="recipient" name="recipient" value="<?php echo $id; ?>" hidden
+    style="display:none;">
 
-                        echo "<p>Total Messages: $numRows</p>"; // Display total number of messages
-                        echo ' <div class="chatter-chat">';
-                        while ($row = pg_fetch_assoc($result)) {
-                            $text = $row["text"];
-                            $sender = $row["username"];
-                            $recipient = $row["recipient"];
-                            //echo $row["username"] ;
-                            if ($text) {
-                                if ($sender == $id) {
+<input type="text" id="text" name="text" required="">
 
-                                    echo ' <div class="chatter-chat-sender">
-                            <div class="chatter-sender">
-                                <div class="chatter-chat-info">';
-                                  echo "  <img src='../profile_pic/profile_pic_$sender.png'>";
-                                    echo "                       <p> $sender </p>";
-                                    echo " </div>
-                                <div class='chat'>
-                                   $text 
-                                </div>";
-                                    echo '  </div>
-                        </div>';
-                                } else {
-                                    if ($sender == $login_username) {
-                                        echo ' <div class="chatter-chat-reciever">
-                            <div class="chatter-reciever">
-                                <div class="chatter-chat-info">';
-                                        echo "         <p>$sender</p>";
-                                        echo "        <img src='../profile_pic/profile_pic_$login_username.png'>
-                                </div>
-                                <div class='chat'>
-                                    $text
-                                </div>
-                            </div></div>
-                            
-                        ";
-                                    }
-                                }
-                            }
-                        }
-                        echo "</div>";
-                    } else {
-                        echo 'No Messages Yet';
-                    }
+<input type="text" class="username" name="username" value="<?php echo $login_username; ?>" hidden
+    style="display:none;">
+<button type="submit"><i class="fab fa-telegram-plane"></i></button>
+</form>
 
 
 
-                    ?>
 
 
 
-                <form class="chatter-send-message" id="messages" action="../php/send_message.php" method="post">
-
-
-                    <input type="text" id="recipient" name="recipient" value="<?php echo $id; ?>" hidden
-                        style="display:none;">
-
-                    <input type="text" id="text" name="text" required="">
-
-                    <input type="text" class="username" name="username" value="<?php echo $login_username; ?>" hidden
-                        style="display:none;">
-                    <button type="submit"><i class="fab fa-telegram-plane"></i></button>
-                </form>
-            </div>
-        </div>
-
-
-    </main>
-
-
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 </body>
-
 
 </html>
