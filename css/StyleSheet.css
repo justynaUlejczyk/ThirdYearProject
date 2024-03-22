@@ -920,6 +920,19 @@ prepost {
 
 /* Screen sizes 800 and down */
 @media only screen and (max-width: 800px) {
+    .notfications-message {
+        padding: 10px;
+        margin-bottom: 25px;
+        height: 75px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .notfications-message span {
+        font-size: 20px;
+    }
+
     .post-column {
         display: none;
     }
@@ -929,7 +942,7 @@ prepost {
     }
 
     .comment-container {
-        width: 350px;
+        width: 300px;
     }
 
     .comment-text {
@@ -950,7 +963,6 @@ prepost {
     }
 
     prepost .choices {
-        display: none;
     }
 
     .caption {

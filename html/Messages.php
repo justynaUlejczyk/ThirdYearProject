@@ -1,7 +1,7 @@
 <?php
 //session_id("userSession");
 session_start();
-if (!isset($_SESSION["username"])) {
+if (!isset ($_SESSION["username"])) {
     header('Location: ' . "./login.php");
 }
 
@@ -9,7 +9,7 @@ require_once "../php/connect_db.php";
 
 $login_username = $_SESSION["username"];
 // Get passed product genre and assign it to a variable.
-if (isset($_GET['id'])) {
+if (isset ($_GET['id'])) {
     $id = $_GET['id'];
     $messageReadSTMT = pg_prepare($conn, "messageRead", "UPDATE messages SET messageread = 1 WHERE username = $1 AND recipient = '$login_username'");
     $messageReadRESULT = pg_execute($conn, "messageRead", array($id));
@@ -47,29 +47,27 @@ if (isset($_GET['id'])) {
         <ul>
             <li>
                 <a href="Profile.php">
-                    <img src="../images/cat.jpg" class="nav-profile">
+                    <img src="../images/icons/Unknown_person.jpg" class="nav-profile">
                 </a>
             </li>
 
             <li>
-                <div class="dropdown">
-                    <button class="dropButton">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M6.44784 7.96942C6.76219 5.14032 9.15349 3 12 3V3C14.8465 3 17.2378 5.14032 17.5522 7.96942L17.804 10.2356C17.8072 10.2645 17.8088 10.279 17.8104 10.2933C17.9394 11.4169 18.3051 12.5005 18.8836 13.4725C18.8909 13.4849 18.8984 13.4973 18.9133 13.5222L19.4914 14.4856C20.0159 15.3599 20.2782 15.797 20.2216 16.1559C20.1839 16.3946 20.061 16.6117 19.8757 16.7668C19.5971 17 19.0873 17 18.0678 17H5.93223C4.91268 17 4.40291 17 4.12434 16.7668C3.93897 16.6117 3.81609 16.3946 3.77841 16.1559C3.72179 15.797 3.98407 15.3599 4.50862 14.4856L5.08665 13.5222C5.10161 13.4973 5.10909 13.4849 5.11644 13.4725C5.69488 12.5005 6.06064 11.4169 6.18959 10.2933C6.19123 10.279 6.19283 10.2645 6.19604 10.2356L6.44784 7.96942Z"
-                                stroke="black" stroke-width="2" />
-                            <path
-                                d="M8 17C8 17.5253 8.10346 18.0454 8.30448 18.5307C8.5055 19.016 8.80014 19.457 9.17157 19.8284C9.54301 20.1999 9.98396 20.4945 10.4693 20.6955C10.9546 20.8965 11.4747 21 12 21C12.5253 21 13.0454 20.8965 13.5307 20.6955C14.016 20.4945 14.457 20.1999 14.8284 19.8284C15.1999 19.457 15.4945 19.016 15.6955 18.5307C15.8965 18.0454 16 17.5253 16 17"
-                                stroke="black" stroke-width="2" stroke-linecap="round" />
-                        </svg>
+                <a href="../html/Notifications.php">
+                    <div class="dropdown">
+                        <button class="dropButton">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M6.44784 7.96942C6.76219 5.14032 9.15349 3 12 3V3C14.8465 3 17.2378 5.14032 17.5522 7.96942L17.804 10.2356C17.8072 10.2645 17.8088 10.279 17.8104 10.2933C17.9394 11.4169 18.3051 12.5005 18.8836 13.4725C18.8909 13.4849 18.8984 13.4973 18.9133 13.5222L19.4914 14.4856C20.0159 15.3599 20.2782 15.797 20.2216 16.1559C20.1839 16.3946 20.061 16.6117 19.8757 16.7668C19.5971 17 19.0873 17 18.0678 17H5.93223C4.91268 17 4.40291 17 4.12434 16.7668C3.93897 16.6117 3.81609 16.3946 3.77841 16.1559C3.72179 15.797 3.98407 15.3599 4.50862 14.4856L5.08665 13.5222C5.10161 13.4973 5.10909 13.4849 5.11644 13.4725C5.69488 12.5005 6.06064 11.4169 6.18959 10.2933C6.19123 10.279 6.19283 10.2645 6.19604 10.2356L6.44784 7.96942Z"
+                                    stroke="black" stroke-width="2" />
+                                <path
+                                    d="M8 17C8 17.5253 8.10346 18.0454 8.30448 18.5307C8.5055 19.016 8.80014 19.457 9.17157 19.8284C9.54301 20.1999 9.98396 20.4945 10.4693 20.6955C10.9546 20.8965 11.4747 21 12 21C12.5253 21 13.0454 20.8965 13.5307 20.6955C14.016 20.4945 14.457 20.1999 14.8284 19.8284C15.1999 19.457 15.4945 19.016 15.6955 18.5307C15.8965 18.0454 16 17.5253 16 17"
+                                    stroke="black" stroke-width="2" stroke-linecap="round" />
+                            </svg>
 
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
+                        </button>
                     </div>
-                </div>
+                </a>
             </li>
         </ul>
     </subnav>
@@ -164,35 +162,35 @@ if (isset($_GET['id'])) {
                             </svg>
                         </button>
                         <div class="dropdown-content" id="dropdownContent">
-    <?php
-    // Load initial notifications
-    include_once "../php/load_notifications.php";
-    ?>
-    <a href="../html/Notifications.php" >See More</a>
-</div>
-
-<script>
-    // Function to load more notifications
-    function loadMoreNotifications() {
-        // Make an AJAX request
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "load_notifications.php", true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                // Update the content of the dropdownContent div
-                document.getElementById("dropdownContent").innerHTML = xhr.responseText;
-            }
-        };
-        xhr.send();
-    }
-
-    // Attach click event listener to the "See More" link
-    document.getElementById("seeMoreLink").addEventListener("click", function(event) {
-        event.preventDefault(); // Prevent default link behavior
-        loadMoreNotifications(); // Call the function to load more notifications
-    });
-</script>
+                            <?php
+                            // Load initial notifications
+                            include_once "../php/load_notifications.php";
+                            ?>
+                            <a href="../html/Notifications.php">See More</a>
                         </div>
+
+                        <script>
+                            // Function to load more notifications
+                            function loadMoreNotifications() {
+                                // Make an AJAX request
+                                var xhr = new XMLHttpRequest();
+                                xhr.open("GET", "load_notifications.php", true);
+                                xhr.onreadystatechange = function () {
+                                    if (xhr.readyState == 4 && xhr.status == 200) {
+                                        // Update the content of the dropdownContent div
+                                        document.getElementById("dropdownContent").innerHTML = xhr.responseText;
+                                    }
+                                };
+                                xhr.send();
+                            }
+
+                            // Attach click event listener to the "See More" link
+                            document.getElementById("seeMoreLink").addEventListener("click", function (event) {
+                                event.preventDefault(); // Prevent default link behavior
+                                loadMoreNotifications(); // Call the function to load more notifications
+                            });
+                        </script>
+                    </div>
                     </div>
                     <span>Notifications</span>
                 </li>
@@ -200,12 +198,12 @@ if (isset($_GET['id'])) {
                 <li>
                     <div class="dropdown">
                         <img class="nav-profile" onclick="toggleDropdownProfile()"
-                            src="<?php echo "../profile_pic/profile_pic_$login_username.png";?>">
+                            src="<?php echo "../profile_pic/profile_pic_$login_username.png"; ?>">
                         </img>
                         <div class="dropdown-content-profile" id="dropdownContentProfile">
                             <div class="dropdown-profile-icon">
                                 <a href="">
-                                    <img src="<?php echo "../profile_pic/profile_pic_$login_username.png";?>" alt="">
+                                    <img src="<?php echo "../profile_pic/profile_pic_$login_username.png"; ?>" alt="">
                                     <p>
                                         <?php echo "$login_username" ?>
                                     </p>
@@ -296,10 +294,11 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
                             $user = $row["username"];
                             echo '<button class="chatter-list-user" 
                             onclick="changeChat(this)" userid=' . $row['username'] . '>';
-                echo "<img src='../profile_pic/profile_pic_$user.png'>";
-               echo ' <p><a href="Messages.php?id=' . $row['username'] . '" role="button">' . $row['username'];
-                            if ($row["messageread"] == 0 && $row["last_messageid"] != -1)echo '***'; 
-                echo '</a></p></button>';
+                            echo "<img src='../profile_pic/profile_pic_$user.png'>";
+                            echo ' <p><a href="Messages.php?id=' . $row['username'] . '" role="button">' . $row['username'];
+                            if ($row["messageread"] == 0 && $row["last_messageid"] != -1)
+                                echo '***';
+                            echo '</a></p></button>';
                         }
                     }
                     echo "</div>";
@@ -334,7 +333,7 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
                                     echo ' <div class="chatter-chat-sender">
                             <div class="chatter-sender">
                                 <div class="chatter-chat-info">';
-                                  echo "  <img src='../profile_pic/profile_pic_$sender.png'>";
+                                    echo "  <img src='../profile_pic/profile_pic_$sender.png'>";
                                     echo "                       <p> $sender </p>";
                                     echo " </div>
                                 <div class='chat'>
@@ -371,20 +370,20 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
 
 
 
-                <form class="chatter-send-message" id="messages" action="../php/send_message.php" method="post">
+                    <form class="chatter-send-message" id="messages" action="../php/send_message.php" method="post">
 
 
-                    <input type="text" id="recipient" name="recipient" value="<?php echo $id; ?>" hidden
-                        style="display:none;">
+                        <input type="text" id="recipient" name="recipient" value="<?php echo $id; ?>" hidden
+                            style="display:none;">
 
-                    <input type="text" id="text" name="text" required="">
+                        <input type="text" id="text" name="text" required="">
 
-                    <input type="text" class="username" name="username" value="<?php echo $login_username; ?>" hidden
-                        style="display:none;">
-                    <button type="submit"><i class="fab fa-telegram-plane"></i></button>
-                </form>
+                        <input type="text" class="username" name="username" value="<?php echo $login_username; ?>"
+                            hidden style="display:none;">
+                        <button type="submit"><i class="fab fa-telegram-plane"></i></button>
+                    </form>
+                </div>
             </div>
-        </div>
 
 
     </main>
