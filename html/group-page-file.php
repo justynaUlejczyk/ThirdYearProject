@@ -314,6 +314,9 @@ $split = $_GET["split"];
                     <button class="canvas-file option-button" onclick="newCanvas()">
                         New Canvas File
                     </button>
+                    <button class="canvas-file option-button" onclick="split()">
+                        Create Split
+                    </button>
 
                     <form method="post" action="../php/create_group_split.php">
                         <input type="hidden" name="groupname" value="<?php echo"$groupname"?>">
