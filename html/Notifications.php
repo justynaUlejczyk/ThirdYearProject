@@ -278,79 +278,82 @@ $result = pg_query($conn, $query);
 
 
         <div>
-            <section>
+            <section class="noti-screen-container">
                 <h1>Notifications: </h1><br>
-                <?php
-                $notificationQuery = pg_prepare($conn, "notification", "SELECT * FROM notifications WHERE username = $1  ORDER BY notificationID DESC");
-                $notificationResult = pg_execute($conn, "notification", array($username));
-                $NumbRows = pg_num_rows($notificationResult);
+                <div class="noti-container">
+                    <?php
+                    $notificationQuery = pg_prepare($conn, "notification", "SELECT * FROM notifications WHERE username = $1  ORDER BY notificationID DESC");
+                    $notificationResult = pg_execute($conn, "notification", array($username));
+                    $NumbRows = pg_num_rows($notificationResult);
 
-                $notifications = array(); // Array to hold all notifications
-                
-                if ($NumbRows > 0) {
-                    while ($row = pg_fetch_assoc($notificationResult)) {
-                        $notificationID = $row['notificationid'];
-                        $notification = $row['notifmessage'];
-                        $time = $row['timestamp'];
-                        $killtime = $row['killtime'];
-                        if (strtotime($killtime) >= strtotime(date("Y-m-d"))) {
-                            $notifications[] = array('notificationID' => $notificationID, 'notification' => $notification, 'time' => $time);
+                    $notifications = array(); // Array to hold all notifications
+                    
+                    if ($NumbRows > 0) {
+                        while ($row = pg_fetch_assoc($notificationResult)) {
+                            $notificationID = $row['notificationid'];
+                            $notification = $row['notifmessage'];
+                            $time = $row['timestamp'];
+                            $killtime = $row['killtime'];
+                            if (strtotime($killtime) >= strtotime(date("Y-m-d"))) {
+                                $notifications[] = array('notificationID' => $notificationID, 'notification' => $notification, 'time' => $time);
+                            }
                         }
                     }
-                }
 
-                $followeeNot = pg_prepare($conn, "notification1", "SELECT DISTINCT notifications.* FROM notifications 
+                    $followeeNot = pg_prepare($conn, "notification1", "SELECT DISTINCT notifications.* FROM notifications 
 JOIN follows 
 ON notifications.username = follows.followee WHERE follows.username = $1 AND notifmessage NOT LIKE '%message%' ORDER BY notifications.notificationID DESC");
 
-                $followeeRes = pg_execute($conn, "notification1", array($username));
+                    $followeeRes = pg_execute($conn, "notification1", array($username));
 
-                $NumbRows2 = pg_num_rows($followeeRes);
+                    $NumbRows2 = pg_num_rows($followeeRes);
 
-                if ($NumbRows2 > 0) {
-                    while ($row = pg_fetch_assoc($followeeRes)) {
-                        $notificationID = $row['notificationid'];
-                        $notification = $row['notifmessage'];
-                        $user = $row['username'];
-                        $time = $row['timestamp'];
-                        $killtime = $row['killtime'];
-                        if ($username != $user && strtotime($killtime) >= strtotime(date("Y-m-d"))) {
-                            $notifications[] = array('notificationID' => $notificationID, 'notification' => "$user: $notification", 'time' => $time);
+                    if ($NumbRows2 > 0) {
+                        while ($row = pg_fetch_assoc($followeeRes)) {
+                            $notificationID = $row['notificationid'];
+                            $notification = $row['notifmessage'];
+                            $user = $row['username'];
+                            $time = $row['timestamp'];
+                            $killtime = $row['killtime'];
+                            if ($username != $user && strtotime($killtime) >= strtotime(date("Y-m-d"))) {
+                                $notifications[] = array('notificationID' => $notificationID, 'notification' => "$user: $notification", 'time' => $time);
+                            }
                         }
                     }
-                }
 
-                // Sort notifications by ID first, then by time
-                usort($notifications, function ($a, $b) {
-                    // Compare notificationID first
-                    $idComparison = $b['notificationID'] - $a['notificationID'];
+                    // Sort notifications by ID first, then by time
+                    usort($notifications, function ($a, $b) {
+                        // Compare notificationID first
+                        $idComparison = $b['notificationID'] - $a['notificationID'];
 
-                    // If notificationID is equal, compare timestamps
-                    if ($idComparison == 0) {
-                        return strtotime($b['time']) - strtotime($a['time']);
-                    }
+                        // If notificationID is equal, compare timestamps
+                        if ($idComparison == 0) {
+                            return strtotime($b['time']) - strtotime($a['time']);
+                        }
 
-                    return $idComparison;
-                });
+                        return $idComparison;
+                    });
 
-                if (count($notifications) > 0) {
-                    $counter = 0;
-                    foreach ($notifications as $notification) {
-                        $counter++;
-                        echo "<div class='notfications-message'>
+                    if (count($notifications) > 0) {
+                        $counter = 0;
+                        foreach ($notifications as $notification) {
+                            $counter++;
+                            echo "<div class='notifications-container'>
+                        <div class='notfications-message'>
                         <p>{$notification['time']}:</p>
                             <span>{$notification['notification']}</span>
                         
+                        </div>
                         </div>";
 
+                        }
+                    } else {
+                        echo "<div> <h1>No notifications yet...</h1></div>";
                     }
-                } else {
-                    echo "<div> <h1>No notifications yet...</h1></div>";
-                }
-                ?>
+                    ?>
 
 
-
+                </div>
             </section>
         </div>
 

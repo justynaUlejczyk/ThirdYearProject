@@ -887,6 +887,32 @@ prepost {
     transform: translateY(-40px);
 }
 
+@media only screen and (min-width: 800px) {
+    .noti-container {
+        width: 600px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: var(--foreground);
+        box-sizing: border-box;
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    .noti-screen-container {
+        margin-top: 75px;
+
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .notfications-message {
+        padding-bottom: 45px;
+    }
+}
+
 /* Screen sizes between 1000 and 1150 */
 @media only screen and (max-width: 1150px) {
     nav > section:first-child {
