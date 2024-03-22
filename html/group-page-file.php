@@ -7,12 +7,17 @@ if (!isset ($_SESSION["username"])) {
     header('Location: ' . "./login.php");
 }
 $username = $_SESSION["username"];
-session_write_close();
 //session_id("groupSession");
 //session_start();
 $groupid = $_SESSION["groupid"];
 $groupname = $_SESSION["groupname"];
 session_write_close();
+
+if(!isset ($_GET["split"])){
+    header("location: " . "./group-page-file.php?split=0");
+}
+
+$split = $_GET["split"];
 ?>
 <!DOCTYPE html>
 <html class="dimmed">
@@ -278,7 +283,7 @@ session_write_close();
                 <a>
                     <li>Files</li>
                 </a>
-                <a href="http://localhost:8010">
+                <a href="http://localhost:3000">
                     <li>Meetings</li>
                 </a>
                 <a href="group-settings.php">
@@ -296,7 +301,7 @@ session_write_close();
             <section class="container-file">
                 <section class="files-options">
 
-                    <a href="group-editor.php">
+                    <a href='group-editor.php?split=<?php echo "$split";?>'>
                         <button class="new-file option-button">
                             New File
                         </button>
@@ -309,11 +314,24 @@ session_write_close();
                     <button class="canvas-file option-button" onclick="newCanvas()">
                         New Canvas File
                     </button>
+                    <button class="canvas-file option-button" onclick="split()">
+                        Create Split
+                    </button>
+
+                    <form method="post" action="../php/create_group_split.php">
+                        <input type="hidden" name="groupname" value="<?php echo"$groupname"?>">
+                        <input type="hidden" name="groupid" value="<?php echo"$groupid"?>">
+                    <input type="submit" value="Create Split" class="canvas-file option-button" onclick="split()">
+                    </form>
 
                     <br>
 
                 </section>
 
+                <section id ="splitOptions">
+                    <button class= "canvas-file option-button">Original</button>
+                    <button class= "canvas-file option-button">Split</button>
+                </section>
 
                 <section id="newCanvasContent">
                     <form id="newCanvas" action="group-canvas.php">
@@ -322,14 +340,9 @@ session_write_close();
                             <label for="fileName">File Name: </label>
                             <input type="text" name="fileName" required>
                         </div>
-                        <div>
-                            <label for="background">Background(optional):</label>
-                            <input type="file" name="background">
-                            <br>
-                        </div>
                         <br>
                         <div>
-                            <button type="submit">Create file</button>
+                            <button type="submit" class= "canvas-file option-button">Create file</button>
                         </div>
                     </form>
 
@@ -337,7 +350,11 @@ session_write_close();
 
                 <section class="file-container" id="fileContainer">
                     <?php
-                    $get_filesSTMT = pg_prepare($conn, "get_files", "SELECT filename FROM files WHERE groupid = $1");
+                    if($_GET["split"]==1){
+                        $get_filesSTMT = pg_prepare($conn, "get_files", "SELECT filename FROM splitfiles WHERE groupid = $1");
+                    } else{
+                        $get_filesSTMT = pg_prepare($conn, "get_files", "SELECT filename FROM files WHERE groupid = $1");
+                    }
                     $get_filesRESULT = pg_execute($conn, "get_files", array($groupid));
 
                     while ($row = pg_fetch_assoc($get_filesRESULT)) {
