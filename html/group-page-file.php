@@ -283,7 +283,7 @@ $split = $_GET["split"];
                 <a>
                     <li>Files</li>
                 </a>
-                <a href="http://localhost:8010">
+                <a href="http://localhost:3000">
                     <li>Meetings</li>
                 </a>
                 <a href="group-settings.php">
