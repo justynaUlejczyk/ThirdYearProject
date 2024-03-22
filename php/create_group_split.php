@@ -3,7 +3,7 @@ require_once "connect_db.php";
 $groupname = $_POST["groupname"];
 
 $folderPathA = "../groups/" . $groupname; 
-$folderPathB = "../groups/" . $groupname . "B"; 
+$folderPathB = "../splits/" . $groupname; 
     
 if (!file_exists($folderPathB)) {
     if (!mkdir($folderPathB, 0777, true)) {
