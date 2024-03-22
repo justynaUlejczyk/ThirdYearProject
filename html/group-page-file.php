@@ -335,14 +335,9 @@ $split = $_GET["split"];
                             <label for="fileName">File Name: </label>
                             <input type="text" name="fileName" required>
                         </div>
-                        <div>
-                            <label for="background">Background(optional):</label>
-                            <input type="file" name="background">
-                            <br>
-                        </div>
                         <br>
                         <div>
-                            <button type="submit">Create file</button>
+                            <button type="submit" class= "canvas-file option-button">Create file</button>
                         </div>
                     </form>
 
