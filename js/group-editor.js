@@ -49,6 +49,7 @@ const filename = document.getElementById('filename');
 
 
 function fileHandle(value, groupid, split) {
+    console.log(split);
     if (value === 'new') {
         content.innerHTML = '';
         filename.value = 'untitled';
@@ -60,6 +61,8 @@ function fileHandle(value, groupid, split) {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 if (xhr.responseText == "success") {
                     console.log("file saved");
+                } else {
+                    console.log(xhr.responseText);
                 }
             }
         };

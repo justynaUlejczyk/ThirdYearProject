@@ -7,12 +7,17 @@ if (!isset ($_SESSION["username"])) {
     header('Location: ' . "./login.php");
 }
 $username = $_SESSION["username"];
-session_write_close();
 //session_id("groupSession");
 //session_start();
 $groupid = $_SESSION["groupid"];
 $groupname = $_SESSION["groupname"];
 session_write_close();
+
+if(!isset ($_GET["split"])){
+    header("location: " . "./group-page-file.php?split=0");
+}
+
+$split = $_GET["split"];
 ?>
 <!DOCTYPE html>
 <html class="dimmed">
@@ -296,7 +301,7 @@ session_write_close();
             <section class="container-file">
                 <section class="files-options">
 
-                    <a href="group-editor.php">
+                    <a href='group-editor.php?split=<?php echo "$split";?>'>
                         <button class="new-file option-button">
                             New File
                         </button>
