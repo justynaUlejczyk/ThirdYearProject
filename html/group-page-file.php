@@ -309,6 +309,9 @@ session_write_close();
                     <button class="canvas-file option-button" onclick="newCanvas()">
                         New Canvas File
                     </button>
+                    <button class="canvas-file option-button" onclick="split()">
+                        Create Split
+                    </button>
 
                     <br>
 

@@ -23,7 +23,6 @@ navigator.mediaDevices.getUserMedia({
         console.log('New User Connected: ' + userId)
     })
     console.log('test')
-
     myPeer.on('call', call => {
         call.answer(stream)
         const video = document.createElement('video')
@@ -32,7 +31,6 @@ navigator.mediaDevices.getUserMedia({
             addVideoStream(video, userVideoStream)
         })
     })
-
     addVideoStream(myVideo,stream)
 })
 
@@ -46,11 +44,7 @@ function connectToNewUser(userId, stream){
     call.on('close', () => {
         video.remove()
     })
-
-
-
 }
-
 
 function addVideoStream(video,stream){
     video.srcObject = stream 
