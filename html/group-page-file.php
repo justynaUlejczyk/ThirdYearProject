@@ -315,10 +315,18 @@ $split = $_GET["split"];
                         New Canvas File
                     </button>
 
+                    <button class="canvas-file option-button" onclick="split()">
+                        Create Split
+                    </button>
+
                     <br>
 
                 </section>
 
+                <section id ="splitOptions">
+                    <button class= "canvas-file option-button">Original</button>
+                    <button class= "canvas-file option-button">Split</button>
+                </section>
 
                 <section id="newCanvasContent">
                     <form id="newCanvas" action="group-canvas.php">
