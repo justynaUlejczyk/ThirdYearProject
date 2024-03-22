@@ -283,7 +283,7 @@ $split = $_GET["split"];
                 <a>
                     <li>Files</li>
                 </a>
-                <a href="http://localhost:8010">
+                <a href="http://localhost:3000">
                     <li>Meetings</li>
                 </a>
                 <a href="group-settings.php">
@@ -313,6 +313,9 @@ $split = $_GET["split"];
 
                     <button class="canvas-file option-button" onclick="newCanvas()">
                         New Canvas File
+                    </button>
+                    <button class="canvas-file option-button" onclick="split()">
+                        Create Split
                     </button>
 
                     <form method="post" action="../php/create_group_split.php">
