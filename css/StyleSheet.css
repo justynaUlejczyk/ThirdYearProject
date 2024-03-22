@@ -914,7 +914,21 @@ prepost {
 @media only screen and (min-width: 550px) and (max-width: 800px) {
     prepost .close {
         top: auto;
-        right: 125px;
+        right: 200px;
+    }
+}
+
+@media only screen and (min-width: 550px) and (max-width: 780px) {
+    prepost .close {
+        top: auto;
+        right: 150px;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    prepost .close {
+        top: auto;
+        right: 50px;
     }
 }
 
@@ -962,9 +976,6 @@ prepost {
         height: auto;
     }
 
-    prepost .choices {
-    }
-
     .caption {
         display: none;
     }
@@ -972,10 +983,15 @@ prepost {
     .comments-column {
         border: none;
         overflow-y: scroll;
+
         overflow-x: none;
         border-radius: 0;
         max-width: 100%;
         max-height: 700px;
+    }
+
+    .comments-column::-webkit-scrollbar {
+        display: none;
     }
 
     nav {

@@ -299,7 +299,7 @@ $username = $_SESSION["username"];
                     $groupname = $row['groupname'];
                     echo "<div>
                     <a href='group-page.php?id=$groupid'>
-                        <img class='nav-profile' id='profile-img_$groupid' onclick='toggleDropdownProfile()' src='../group_pic/group_pic_$groupname.png'></img>
+                        <img class='nav-profile' id='profile-img_$groupid'  src='../group_pic/group_pic_$groupname.png'></img>
                         <h1 class='groupName'>$groupname</h1>
                     </a>
                 </div>";
