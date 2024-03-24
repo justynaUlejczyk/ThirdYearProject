@@ -3,8 +3,8 @@ require_once "connect_db.php";
 $groupid = $_POST["groupid"];
 $groupname = $_POST["groupname"];
 
-$folderPathA = "../groups/" . $groupname; 
-$folderPathB = "../splits/" . $groupname;
+$folderPathA = "../groups/" . $groupid; 
+$folderPathB = "../splits/" . $groupid;
 
 $merge = $_POST["merge"];
 
@@ -53,7 +53,7 @@ if (deleteFolder($folderPathB)) {
             RETURNING a.*
         )
         INSERT INTO files
-        SELECT [DISTINCT] * FROM moved_rows;"
+        SELECT DISTINCT * FROM moved_rows;"
         );
         pg_execute($conn, "replace_split", array($groupid));
             
@@ -62,4 +62,6 @@ if (deleteFolder($folderPathB)) {
     }
 }
 
-header("location: " . "../html/group_page.php");
+pg_query($conn, "UPDATE groups SET hassplit = 0 WHERE groupid=$groupid");
+
+header("location: " . "../html/group-page-file.php");

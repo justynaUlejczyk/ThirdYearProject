@@ -18,6 +18,9 @@ if (!isset ($_GET["split"])) {
 }
 
 $split = $_GET["split"];
+$checkSplitSTMT = pg_prepare($conn, "checkSplit", "SELECT * FROM groups WHERE groupid=$1");
+$checkSplitRESULT = pg_execute($conn, "checkSplit", array($groupid));
+$checkSplitRow = pg_fetch_assoc($checkSplitRESULT);
 ?>
 <!DOCTYPE html>
 <html class="dimmed">
@@ -314,6 +317,7 @@ $split = $_GET["split"];
                     <button class="canvas-file option-button" onclick="newCanvas()">
                         New Canvas File
                     </button>
+<<<<<<< HEAD
                     <button class="canvas-file option-button" onclick="split()">
                         Create Split
                     </button>
@@ -323,15 +327,52 @@ $split = $_GET["split"];
                         <input type="hidden" name="groupid" value="<?php echo "$groupid" ?>">
                         <input type="submit" value="Create Split" class="canvas-file option-button" onclick="split()">
                     </form>
+=======
+                    <?php
+                    if($checkSplitRow["hassplit"]==0){
+                    echo "<form method='post' action='../php/create_group_split.php'>
+                        <input type='hidden' name='groupname' value='$groupname'>
+                        <input type='hidden' name='groupid' value='$groupid'>
+                    <input type='submit' value='Create Split' class='canvas-file option-button' onclick='split()'>
+                    </form>";
+                    } else{
+                        echo "<form method='post' action='../php/merge_group_split.php'>
+                        <input type='hidden' name='groupname' value='$groupname'>
+                        <input type='hidden' name='groupid' value='$groupid'>
+                        <label>
+                        <input type='radio' name='merge' value='A' required>
+                        Keep original
+                        </label>
+                        <br>
+                        <label>
+                        <input type='radio' name='merge' value='B' required>
+                        Keep split
+                        </label>
+                        <input type='submit' value='Merge Split' class='canvas-file option-button' onclick='split()'>
+                        </form>";
+                    }
+                    ?>
+>>>>>>> 20faffd3bb679c8bea7c81b359a6c770ede4ca53
 
                     <br>
 
                 </section>
 
+<<<<<<< HEAD
                 <section id="splitOptions">
                     <button class="canvas-file option-button">Original</button>
                     <button class="canvas-file option-button">Split</button>
                 </section>
+=======
+                <?php
+                if($checkSplitRow["hassplit"]==1){
+                echo "<section id ='splitOptions'>
+                    <a href='group-page-file.php?split=0'><button class= 'canvas-file option-button'>Original</button></a>
+                    <a href='group-page-file.php?split=1'><button class= 'canvas-file option-button'>Split</button></a>
+                </section>";
+                }
+                ?>
+>>>>>>> 20faffd3bb679c8bea7c81b359a6c770ede4ca53
 
                 <section id="newCanvasContent">
                     <form id="newCanvas" action="group-canvas.php">
