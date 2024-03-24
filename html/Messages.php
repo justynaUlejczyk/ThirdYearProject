@@ -321,7 +321,6 @@ function fetchUpdates() {
     xhr.onload = function() {
         if (xhr.status == 200) {
             // Parse JSON response
-            console.log(xhr.responseText);
             var data = JSON.parse(xhr.responseText);
             
             // Update dynamic content
