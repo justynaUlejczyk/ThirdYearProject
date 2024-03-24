@@ -324,10 +324,13 @@ function fetchUpdates() {
             var data = JSON.parse(xhr.responseText);
             
             // Update dynamic content
+            if(document.getElementById('chatter-chat')!= null){
+                scrollPos = document.getElementById('chatter-chat').scrollTop;
+            }
             document.getElementById('chatter-box').innerHTML = data;
             
             // Scroll to the bottom of the chat container
-            document.getElementById('chatter-chat').scrollTop = document.getElementById('chatter-chat').scrollHeight;
+            document.getElementById('chatter-chat').scrollTop = scrollPos;
         } else {
             console.log(xhr.responseText);
         }
