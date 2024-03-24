@@ -317,25 +317,14 @@ $checkSplitRow = pg_fetch_assoc($checkSplitRESULT);
                     <button class="canvas-file option-button" onclick="newCanvas()">
                         New Canvas File
                     </button>
-<<<<<<< HEAD
-                    <button class="canvas-file option-button" onclick="split()">
-                        Create Split
-                    </button>
-
-                    <form class="create-split" method="post" action="../php/create_group_split.php">
-                        <input type="hidden" name="groupname" value="<?php echo "$groupname" ?>">
-                        <input type="hidden" name="groupid" value="<?php echo "$groupid" ?>">
-                        <input type="submit" value="Create Split" class="canvas-file option-button" onclick="split()">
-                    </form>
-=======
                     <?php
-                    if($checkSplitRow["hassplit"]==0){
-                    echo "<form method='post' action='../php/create_group_split.php'>
+                    if ($checkSplitRow["hassplit"] == 0) {
+                        echo "<form method='post' action='../php/create_group_split.php'>
                         <input type='hidden' name='groupname' value='$groupname'>
                         <input type='hidden' name='groupid' value='$groupid'>
                     <input type='submit' value='Create Split' class='canvas-file option-button' onclick='split()'>
                     </form>";
-                    } else{
+                    } else {
                         echo "<form method='post' action='../php/merge_group_split.php'>
                         <input type='hidden' name='groupname' value='$groupname'>
                         <input type='hidden' name='groupid' value='$groupid'>
@@ -352,27 +341,19 @@ $checkSplitRow = pg_fetch_assoc($checkSplitRESULT);
                         </form>";
                     }
                     ?>
->>>>>>> 20faffd3bb679c8bea7c81b359a6c770ede4ca53
 
                     <br>
 
                 </section>
 
-<<<<<<< HEAD
-                <section id="splitOptions">
-                    <button class="canvas-file option-button">Original</button>
-                    <button class="canvas-file option-button">Split</button>
-                </section>
-=======
                 <?php
-                if($checkSplitRow["hassplit"]==1){
-                echo "<section id ='splitOptions'>
+                if ($checkSplitRow["hassplit"] == 1) {
+                    echo "<section id ='splitOptions'>
                     <a href='group-page-file.php?split=0'><button class= 'canvas-file option-button'>Original</button></a>
                     <a href='group-page-file.php?split=1'><button class= 'canvas-file option-button'>Split</button></a>
                 </section>";
                 }
                 ?>
->>>>>>> 20faffd3bb679c8bea7c81b359a6c770ede4ca53
 
                 <section id="newCanvasContent">
                     <form id="newCanvas" action="group-canvas.php">
