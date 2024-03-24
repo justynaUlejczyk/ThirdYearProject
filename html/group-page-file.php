@@ -319,7 +319,7 @@ $checkSplitRow = pg_fetch_assoc($checkSplitRESULT);
                     </button>
                     <?php
                     if ($checkSplitRow["hassplit"] == 0) {
-                        echo "<form method='post' action='../php/create_group_split.php'>
+                        echo "<form class='create-split' method='post' action='../php/create_group_split.php'>
                         <input type='hidden' name='groupname' value='$groupname'>
                         <input type='hidden' name='groupid' value='$groupid'>
                     <input type='submit' value='Create Split' class='canvas-file option-button' onclick='split()'>
