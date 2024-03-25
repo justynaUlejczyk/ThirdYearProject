@@ -47,8 +47,8 @@ if ($password==$confirm_password){
 
         header('Location: '."../html/Home.php");
     } else {
-        echo $$account_type; 
-       // echo "Error: " . pg_last_error($conn);
+         
+       echo "Error: " . pg_last_error($conn);
     }}
    
     else { echo "<script>alert('Password not matching');</script>";
