@@ -68,10 +68,25 @@
 
     </section>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     <section id="registerSection">
-        <div class='title'>
-            <span>ShareSync</span>
-            <span>Register</span>
+        <div class='sharesync'>
+            <img src="../images/logos/LogoBlack.png" alt="">
+            <div class='title'>
+                <p>Sharesync Register</p>
+            </div>
         </div>
         <div class="terms">
             <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
@@ -79,18 +94,36 @@
         </div>
         <form action="../php/register.php" method="post" id="registrationForm">
             <div class='enter-info'>
-                <label for="name">Full name:</label>
-                <input id="name" name="fullname" type="text" required/>
-                <label for="username">Username:</label>
-                <input id="username" name="username" required="" type="text"
-                    oninput="checkUsernameAvailability(this.value)" />
-                <span id="usernameAvailability"></span><br>
+                <div class='display-flex'>
+                    <div>
+
+                        <input id="name" name="fullname" type="text" required />
+                    </div>
+                    <div>
+
+                        <input id="username" name="username" required="" type="text"
+                            oninput="checkUsernameAvailability(this.value)" />
+                        <span id="usernameAvailability"></span><br>
+                    </div>
+                </div>
+                <div class='display-flex'>
+                    <div>
+
+                        <input id="password" name="password" required="" type="password" />
+                    </div>
+                    <div>
+
+                        <input id="confirmpassword" name="confirmpassword" required="" type="password" />
+                    </div>
+
+                </div>
                 <label for="email">Email:</label>
-                <input id="email" name="email" required="" type="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required/>
-                <label for="password">Password:</label>
-                <input id="password" name="password" required="" type="password" />
-                <p>Account type:</p>
+                <input id="email" name="email" required="" type="email"
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required />
+
+
                 <div class='account-type-options'>
+                    <p>Account type:</p>
                     <input type="radio" id="student" name="account_type" value="student">
                     <label for="student">Student</label><br>
                     <input type="radio" id="artist" name="account_type" value="artist">
