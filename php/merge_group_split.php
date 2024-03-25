@@ -44,6 +44,7 @@ if (deleteFolder($folderPathB)) {
     if (deleteFolder($folderPathA)) {
         echo "Folder '$folderPathA' deleted successfully.";
         rename($folderPathB, $folderPathA);
+        pg_query($conn, "DELETE FROM files WHERE groupid=$groupid");
         pg_prepare(
             $conn,
             "replace_split",
