@@ -15,14 +15,14 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
-document.getElementById('photoInput').addEventListener('change', function(event) {
+document.getElementById('photoInput').addEventListener('change', function (event) {
     const [file] = event.target.files;
     if (file) {
-      const preview = document.getElementById('preview');
-      preview.src = URL.createObjectURL(file);
-      preview.style.display = 'block';
+        const preview = document.getElementById('preview');
+        preview.src = URL.createObjectURL(file);
+        preview.style.display = 'block';
     }
-  });
+});
 function finishPost() {
     var dimmedElement = document.querySelector('.dimmed');
     var createPost = document.querySelector('.feed-create-post-container')
@@ -111,7 +111,7 @@ function postComment(postid, username) {
                 newCommentBottom.innerHTML = `<div>
                 <div class='comment-text'>${text}</div>
                 <div class='comment-options'>
-                    <span>1 Like</span>
+                    
                     <a><button>Delete</button></a>
                 </div>
             </div>`
