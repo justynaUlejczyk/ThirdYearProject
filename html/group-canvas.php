@@ -29,7 +29,10 @@ session_write_close();
 <html class="dimmed">
 
 <head>
-    <title>Groups</title>
+<title>
+        <?php echo "$groupname"; ?>
+    </title>
+    <link rel="icon" href="../images/logos/LogoBlack.png">
     <link rel="stylesheet" href="../css/Group.css">
     <link rel="stylesheet" href="../css/StyleSheet.css">
     <link rel="stylesheet" href="../css/Group-page.css">

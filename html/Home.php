@@ -19,7 +19,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
 <html class="dimmed">
 
 <head>
-    <title>Feed</title>
+    <title> ShareSync Home</title>
     <link rel="icon" href="../images/logos/LogoBlack.png">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/Home.css">

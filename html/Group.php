@@ -13,7 +13,8 @@ $username = $_SESSION["username"];
 <html class="dimmed">
 
 <head>
-    <title>Groups</title>
+    <title> ShareSync Collabs</title>
+    <link rel="icon" href="../images/logos/LogoBlack.png">
     <link rel="stylesheet" href="../css/Group.css">
     <link rel="stylesheet" href="../css/StyleSheet.css">
     <link rel="stylesheet" href="../css/Group-create.css">
