@@ -213,7 +213,7 @@ if (pg_num_rows($userDataRESULT) == 0) {
                 <li>
                     <div class="dropdown">
                         <img class="nav-profile" onclick="toggleDropdownProfile()"
-                            src="../images/icons/Unknown_person.jpg">
+                            src="<?php echo "../profile_pic/profile_pic_$username.png"; ?>">
                         </img>
                         <div class="dropdown-content-profile" id="dropdownContentProfile">
                             <div class="dropdown-profile-icon">
@@ -339,14 +339,15 @@ if (pg_num_rows($userDataRESULT) == 0) {
         <!-- Profile Display For Bio and Posts-->
         <section class="profile-info-display">
             <aside class="profile-bio">
-                <h3>Bio</h3>
-                <bio>
-                    <?php echo "$bio" ?>
-                </bio>
-                <div>
-                    <span>IMG</span>
-                    <span>Studies at Heriot Watt</span>
-                </div>
+                <a href="../html/Home.php">
+                    <div>Home</div>
+                </a>
+                <a href="../html/Group.php">
+                    <div>Collabs</div>
+                </a>
+                <a href="../html/Messages.php">
+                    <div>Messages</div>
+                </a>
             </aside>
             <div class="profile-post-column">
 
@@ -384,7 +385,7 @@ if (pg_num_rows($userDataRESULT) == 0) {
                         <div class='post-info'>
                             <div class=' comment-header'>
                                 <div class='user-container'>
-                                    <a href='Profile.php'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
+                                    <a href='Profile.php'><img src='../profile_pic/profile_pic_$username.png' class='post-avatar' /></a>
                                     <div class='user-post-name'>
                                         <span>$name</span>
                                         <span>@$username</span>
@@ -441,7 +442,7 @@ if (pg_num_rows($userDataRESULT) == 0) {
 
                     <div class='comment-user-comment'>
                         <div class='user-container'>
-                            <a href='Profile.php?id=$username'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
+                            <a href='Profile.php?id=$username'><img src='../profile_pic/profile_pic_$commenting_user.png' class='post-avatar' /></a>
                             <div class='user-post-name'>
                                 <span>$commenting_user</span>
                                 <span>Comment - $date</span>
@@ -484,7 +485,7 @@ if (pg_num_rows($userDataRESULT) == 0) {
                     </prepost>
                     <?php echo "<div class='feed-post'>";
                     echo "<div class='user-container'>";
-                    echo "<a href='Profile.php'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>";
+                    echo "<a href='Profile.php'><img src='../profile_pic/profile_pic_$username.png' class='post-avatar' /></a>";
                     echo "<div class='user-post-name'>";
                     echo "<span>$name</span>";
                     echo "<span>@$username</span>";
@@ -549,7 +550,11 @@ if (pg_num_rows($userDataRESULT) == 0) {
         <!-- Displaying About -->
         <section class="profile-info-about">
 
-
+            <?php
+            $details = pg_prepare($conn, "details", "SELECT * FROM accounts Where username = $1 ");
+            $detailsResult = pg_execute($conn, "details", array($account_username));
+            $row = pg_fetch_assoc($detailsResult);
+            ?>
             <div class="aboutContainer">
                 <div id="leftMainHeading">
                     <h1>About</h1>
@@ -559,19 +564,19 @@ if (pg_num_rows($userDataRESULT) == 0) {
                 </div>
                 <div id="rightInfo">
                     <div id="overview">
-                        <p>University: </p>
+                        <p>University: <?php  echo $row['university'];?> </p>
                         <div class="divider"></div>
-                        <p>Works at:</p>
+                        <p>Works at: <?php  echo $row['worksat'];?> </p>
                         <div class="divider"></div>
-                        <p>From:</p>
+                        <p>From: <?php  echo $row['location'];?></p>
                         <div class="divider"></div>
-                        <p>Gender:</p>
+                        <p>Gender: <?php  echo $row['gender'];?></p>
                         <div class="divider"></div>
-                        <p>Birthday:</p>
+                        <p>Birthday: <?php  echo $row['dob'];?></p>
                     </div>
 
                     <div id="contact">
-                        <p>Phone Number:</p>
+                        <p>Phone Number: <?php  echo $row['phonenum'];?></p>
                         <div class="divider"></div>
                         <p>Email: </p>
                         <p></p>

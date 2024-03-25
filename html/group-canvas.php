@@ -20,6 +20,8 @@ $get_groupnameRESULT = pg_execute($conn, "get_groupname", array($groupid));
 $row = pg_fetch_assoc($get_groupnameRESULT);
 $_SESSION["groupname"] = $row["groupname"];
 $groupname = $_SESSION["groupname"];
+$filename = $_GET["fileName"];
+$split = $_GET["split"];
 session_write_close();
 ?>
 
@@ -207,12 +209,12 @@ session_write_close();
                 <li>
                     <div class="dropdown">
                         <img class="nav-profile" onclick="toggleDropdownProfile()"
-                            src=<?php echo "../profile_pic/profile_pic_$username.png";?>>
+                            src=<?php echo "../profile_pic/profile_pic_$login_username.png";?>>
                         </img>
                         <div class="dropdown-content-profile" id="dropdownContentProfile">
                             <div class="dropdown-profile-icon">
                                 <a href="">
-                                <img src="<?php echo "../profile_pic/profile_pic_$username.png";?>" alt="">
+                                <img src="<?php echo "../profile_pic/profile_pic_$login_username.png";?>" alt="">
                                     <p>
                                         <?php echo "$login_username" ?>
                                     </p>
@@ -303,7 +305,7 @@ session_write_close();
         <!-- Feed -->
         <feed>
         <div id="toolbar">
-            <h1>FileName</h1>
+            <h1><?php echo "$filename"?></h1>
             <label for="stroke">Stroke</label>
             <input id="stroke" name='stroke' type="color">
             <label for="lineWidth">Line Width</label>
@@ -311,7 +313,8 @@ session_write_close();
             <button id="clear">Clear</button>
             <button id="undo">Undo</button>
             <button id="redo">Redo</button>
-            <button id="save">Save</button>
+            <button id="save" split="<?php echo"$split"?>" filename="<?php echo"$filename"?>" groupid="<?php echo"$groupid"?>">Save</button>
+            <button id="export">Export</button>
             <input type="file" id="imageLoader" accept="image/*" />
         </div>
             <div class="drawing-board">

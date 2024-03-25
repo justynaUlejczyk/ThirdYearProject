@@ -80,6 +80,31 @@ document.getElementById('export').addEventListener('click', () => {
     document.body.removeChild(link);
 });
 
+document.getElementById('save').addEventListener('click', function() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "../php/save_canvas.php", true);
+    var split = this.getAttribute("split");
+    var groupid = this.getAttribute("groupid");
+    var filename = this.getAttribute("filename");
+    const image = canvas.toDataURL('image/png');
+    var formData = new FormData();
+    formData.append('image', image);
+    formData.append("filename", filename);
+    formData.append("groupid", groupid);
+    formData.append("split", split);
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            if (xhr.responseText == "success") {
+                console.log("file saved");
+            } else {
+                console.log(xhr.responseText);
+            }
+        }
+    };
+    xhr.send(formData);
+});
+
 imageLoader.addEventListener('change', handleImage, false);
 
 function handleImage(e) {
