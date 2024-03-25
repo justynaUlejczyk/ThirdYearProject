@@ -51,8 +51,9 @@ if ($password==$confirm_password){
        // echo "Error: " . pg_last_error($conn);
     }}
    
-    else {echo "password not matching";}
-
+    else { echo "<script>alert('Password not matching');</script>";
+    }
+    header('Location: ../html/Login.php');
     // Close the connection
     pg_close($conn);
 }
