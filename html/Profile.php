@@ -621,10 +621,12 @@ if (pg_num_rows($userDataRESULT) == 0) {
                         echo "<p>$account_username has $numRows2 followers: </p>";
                         while ($row = pg_fetch_assoc($followersEx)) {
                             $foll = $row['username'];
-                            echo '<div class="profile"><img src="../images/icons/Unknown_person.jpg" alt="friend profile pic">
-                                   <p id="friendName">';
+                            echo '<div class="profile">
+                                    <img src="../images/icons/Unknown_person.jpg" alt="friend profile pic">
+                                    <p id="friendName">';
                             echo "<a href ='../html/Profile.php?id=$foll'><p>$foll</p><a>";
-                            echo '</p></div>';
+                            echo '</p>;
+                            </div>';
                         }
                     } else {
                         echo 'No followers yet... ';

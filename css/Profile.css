@@ -491,5 +491,5 @@ img.profile-info-groups-group {
     width: 20px;
     position: absolute;
     float: right;
-    color: var(--foreground);
+    background-color: var(--foreground);
 }
