@@ -361,6 +361,7 @@ $checkSplitRow = pg_fetch_assoc($checkSplitRESULT);
                         <div>
                             <label for="fileName">File Name: </label>
                             <input type="text" name="fileName" required>
+                            <input type="hidden" name="split" value=<?php echo"$split"?>>
                         </div>
                         <br>
                         <div>
