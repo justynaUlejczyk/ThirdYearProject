@@ -29,7 +29,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <script src="../js/Home.js"></script>
     <script src="../js/darkmode.js"></script>
-
+    <script src="../js/navbar.js"></script>
 </head>
 
 <!-- test commit -->
@@ -438,7 +438,8 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                                         <span>$commenting_user</span>
                                         <span>Comment - $date</span>
                                     </div>
-                               
+
+                                </div>
                             </div>
                             <div>
                                 <div class='comment-text'>$comment</div>
@@ -466,8 +467,8 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                             required>
                         <input type="hidden" id='comment-create-postid-<?php echo "$postid" ?>' name="postid"
                             value="<?php echo $postid; ?>">
-                        <button name="commentSubmit" onclick='postComment(<?php echo "$postid, \"$username\"" ?>);'>
-                            Send</button>
+                        <button name="commentSubmit"
+                            onclick='postComment(<?php echo "$postid, \"$username\"" ?>);'>Comment</button>
                     </div>
 
                     <?php echo "
