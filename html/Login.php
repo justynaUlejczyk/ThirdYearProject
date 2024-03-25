@@ -15,9 +15,11 @@
 
     <section id="loginSection">
         <!-- Title/Logo -->
-        <div>
-            <h1>ShareSync</h1>
-            <h1>Login</h1>
+        <div class='sharesync'>
+            <img src="../images/logos/LogoBlack.png" alt="">
+            <div class='title'>
+                <p>Sharesync Login</p>
+            </div>
         </div>
 
         <!-- Login Part -->
