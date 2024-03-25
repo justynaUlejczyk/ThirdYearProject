@@ -476,6 +476,10 @@ textarea#text {
     .feed-create-post-button {
         display: none;
     }
+
+    .feed-create-post-container {
+        padding: 0;
+    }
 }
 
 .fyp-filter {
