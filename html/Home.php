@@ -44,7 +44,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
         <ul>
             <li>
                 <a href="Profile.php">
-                    <img src="../images/icons/Unknown_person.jpg" class="nav-profile">
+                    <img src="<?php echo "../profile_pic/profile_pic_$username.png"; ?>" alt="" class="nav-profile">
                 </a>
             </li>
 
@@ -436,7 +436,10 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                             echo "
                             <div class='comment-user-comment'>
                                 <div class='user-container'>
-                                    <a href='Profile.php?id=$username'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
+                                    <a href='Profile.php?id=$username'>
+                                    
+                                    <img src='../profile_pic/profile_pic_$username.png' class='post-avatar' />
+                                    </a>
                                     <div class='user-post-name'>
                                         <span>$commenting_user</span>
                                         <span>Comment - $date</span>
