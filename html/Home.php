@@ -166,7 +166,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                             // Load initial notifications
                             include_once "../php/load_notifications.php";
                             ?>
-    <a href="Notifications.php" id="seeMoreLink">See More</a> <!-- Added id="seeMoreLink" -->
+                            <a href="Notifications.php" id="seeMoreLink">See More</a> <!-- Added id="seeMoreLink" -->
                         </div>
 
 
@@ -318,8 +318,8 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                 <div class="feed-create-post-container">
                     <a href="#" class="close" onclick="exitButton(this)"></a>
                     <form action="../php/create_post.php" method="post" enctype="multipart/form-data">
-                        <input type="file" id="photoInput" class="feed-create-post-img" name="post_image" accept=".png, .jpg, .jpeg, image/*;" capture
-                            required>
+                        <input type="file" id="photoInput" class="feed-create-post-img" name="post_image"
+                            accept=".png, .jpg, .jpeg, image/*;" capture required>
 
                         <div class="caption-container">
                             <h3>Caption</h3>
@@ -370,7 +370,6 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                     $commentResult = pg_execute($conn, "comment", array($postid));
                     $commentNumb = pg_num_rows($commentResult);
 
-
                     echo "<post class='posts' id=$postid>";
                     echo " <prepost>
             <div class='post-column'>
@@ -378,6 +377,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                     <img src=$post_image_path>
                 </div>
             </div>
+
 
             <div class='comments-column'>
                 <div class='post-info'>
@@ -429,7 +429,6 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                             $date = $row['timestamp'];
                             $comment_id = $row['commentid'];
 
-                            echo "<form action='../php/deleteComments.php' method='post'>";
                             echo "
                             <div class='comment-user-comment'>
                                 <div class='user-container'>
@@ -451,7 +450,6 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                                 <div class='comment-text'>$comment</div>
                                 <div class='comment-options'>";
 
-                            // Corrected form part
                             if ($commenting_user == $username) {
                                 echo "<form action='../php/deleteComments.php' method='post'>";
                                 echo "<input type='hidden' name='comment_id' value='$comment_id'>";
@@ -459,7 +457,6 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                                 echo "</form>";
                             }
 
-                            // Close the HTML structure
                             echo "</div>
                             </div>
                         </form>";
@@ -495,6 +492,9 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                     echo "</button>";
                     echo "<div class='choices'>";
                     echo "<div class='post-options'>";
+
+
+
                     echo "<!-- Likes -->";
                     if ($postLikedByUser) {
                         echo "<button class='like icons active post-$postid' onclick='toggleHeart($postid);handleLikeButtonClick($postid);'>";
@@ -509,7 +509,14 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                     echo "</svg>";
                     echo "</button>";
                     echo "<p class='likeCounter $postid'>$likesCount</p>";
+
                     echo "</div>";
+                    if ($poster_username == $username) {
+                        echo "<form action='../php/delete_post.php' method='post'>";
+                        echo "<input type='hidden' name='post_id' value='$postid'>";
+                        echo "<button type='submit' name='delete_post'>Delete</button>";
+                        echo "</form>";
+                    }
                     echo "</div>";
                     echo "</div>";
 
