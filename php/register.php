@@ -27,8 +27,8 @@ if ($password==$confirm_password){
 
     // Check the result
     if ($result) {
-        echo "New account created successfully!";
-        $username = pg_fetch_result($result, 0, 'username');
+        header('Location: ../html/Home.php');
+         $username = pg_fetch_result($result, 0, 'username');
         
         session_start();
         $_SESSION['username'] = $username;
