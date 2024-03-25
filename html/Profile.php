@@ -564,19 +564,19 @@ if (pg_num_rows($userDataRESULT) == 0) {
                 </div>
                 <div id="rightInfo">
                     <div id="overview">
-                        <p>University: </p>
+                        <p>University: <?php  echo $row['university'];?> </p>
                         <div class="divider"></div>
-                        <p>Works at:</p>
+                        <p>Works at: <?php  echo $row['worksat'];?> </p>
                         <div class="divider"></div>
-                        <p>From:</p>
+                        <p>From: <?php  echo $row['location'];?></p>
                         <div class="divider"></div>
-                        <p>Gender:</p>
+                        <p>Gender: <?php  echo $row['gender'];?></p>
                         <div class="divider"></div>
-                        <p>Birthday:</p>
+                        <p>Birthday: <?php  echo $row['dob'];?></p>
                     </div>
 
                     <div id="contact">
-                        <p>Phone Number:</p>
+                        <p>Phone Number: <?php  echo $row['phonenum'];?></p>
                         <div class="divider"></div>
                         <p>Email: </p>
                         <p></p>
