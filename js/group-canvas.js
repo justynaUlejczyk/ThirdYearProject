@@ -70,7 +70,6 @@ canvas.addEventListener('mouseup', () => {
     isPainting = false;
 });
 
-
 document.getElementById('export').addEventListener('click', () => {
     const dataURL = canvas.toDataURL('image/png');
     const link = document.createElement('a');

@@ -310,11 +310,7 @@ $checkSplitRow = pg_fetch_assoc($checkSplitRESULT);
                         </button>
                     </a>
 
-                    <button class="delete-file option-button">
-                        Delete File
-                    </button>
-
-                    <button class="canvas-file option-button" onclick="newCanvas()">
+                    <button class="new-file option-button" onclick="newCanvas()">
                         New Canvas File
                     </button>
                     <?php
