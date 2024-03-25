@@ -321,6 +321,7 @@ session_write_close();
             <button id="clear">Clear</button>
             <button id="save" split="<?php echo"$split"?>" filename="<?php echo"$filename"?>" groupid="<?php echo"$groupid"?>">Save</button>
             <button id="export">Export</button>
+            <button id="delete"split="<?php echo"$split"?>" filename="<?php echo"$filename"?>" groupid="<?php echo"$groupid"?>">Delete</button>
             </div>
             <label for="imageLoader" class="custom-file-upload">
                 <svg width="800px" height="800px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
