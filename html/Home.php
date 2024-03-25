@@ -438,8 +438,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                                         <span>$commenting_user</span>
                                         <span>Comment - $date</span>
                                     </div>
-                                </div>
-                                
+                               
                             </div>
                             <div>
                                 <div class='comment-text'>$comment</div>
