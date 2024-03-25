@@ -66,9 +66,9 @@ function fileHandle(value, groupid, split) {
                 }
             }
         };
-        xhr.send("filename=" + filename.value + "&content=" + content.textContent + "&groupid=" + groupid + "&split=" + split);
+        xhr.send("filename=" + filename.value + "&content=" + content.innerHTML + "&groupid=" + groupid + "&split=" + split);
     } else if (value === 'export') {
-        const blob = new Blob([content.textContent], { type: 'application/rtf' });
+        const blob = new Blob([content.innerHTML], { type: 'application/rtf' });
 
         // Create a link element
         const link = document.createElement('a');
