@@ -59,13 +59,6 @@ function openPost(clickedElement) {
 
 
 
-document.addEventListener("DOMContentLoaded", function () {
-    // Close postPreElement when clicking outside
-    document.addEventListener("click", closePostPreElementOnClickOutside);
-});
-
-
-
 function toggleMore() {
     var dots = document.getElementById("dots");
     var moreText = document.getElementById("more");
