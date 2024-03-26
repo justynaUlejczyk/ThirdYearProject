@@ -19,7 +19,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
 <html class="dimmed">
 
 <head>
-    <title>Feed</title>
+    <title> ShareSync Home</title>
     <link rel="icon" href="../images/logos/LogoBlack.png">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/Home.css">
@@ -30,6 +30,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
     <script src="../js/Home.js"></script>
     <script src="../js/darkmode.js"></script>
     <script src="../js/navbar.js"></script>
+    <script src="../js/main.js"></script>
 </head>
 
 <!-- test commit -->
@@ -43,7 +44,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
         <ul>
             <li>
                 <a href="Profile.php">
-                    <img src="../images/icons/Unknown_person.jpg" class="nav-profile">
+                    <img src="<?php echo "../profile_pic/profile_pic_$username.png"; ?>" alt="" class="nav-profile">
                 </a>
             </li>
 
@@ -81,7 +82,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
         <section>
             <ul class="linksBar">
                 <li class="active">
-                    <a href="../html/Home.php" class="active">
+                    <a href="../html/Home.php">
                         <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -102,6 +103,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                     </a>
                 </li>
                 <li>
+
                     <button onclick="createPost()">
                         <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -167,9 +169,8 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                             // Load initial notifications
                             include_once "../php/load_notifications.php";
                             ?>
-                            <a href="Notifications.php" id="seeMoreLink">See More</a> <!-- Added id="seeMoreLink" -->
+                            <a href="../html/Notifications.php">See More</a>
                         </div>
-
 
                         <script>
                             // Function to load more notifications
@@ -206,7 +207,9 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                             <div class="dropdown-profile-icon">
                                 <a href="">
                                     <img src="<?php echo "../profile_pic/profile_pic_$username.png"; ?>" alt="">
-                                    <?php echo "<p>$username</p>" ?>
+                                    <p>
+                                        <?php echo "$username" ?>
+                                    </p>
                                 </a>
                             </div>
                             <a href="../html/Profile.php">
@@ -221,7 +224,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                                     <span>My Profile</span>
                                 </button>
                             </a>
-                            <a href="../html/Settings.php">
+                            <a href="Settings.php">
                                 <button class="settings">
                                     <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -314,13 +317,20 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                 <a href='Home.php?id=following'><button>Following</button></a>
             </div>
             <!-- End of Create Post Button-->
+
+
             <!-- Start of Create Post Options -->
             <div>
                 <div class="feed-create-post-container">
-                    <a href="#" class="close" onclick="exitButton(this)"></a>
+
                     <form action="../php/create_post.php" method="post" enctype="multipart/form-data">
+                        <label for="photoInput" class="file-upload">
+                            <span class="icon"><i class="fas fa-upload"></i></span>
+                            <span class="text">Choose a file</span>
+                        </label>
                         <input type="file" id="photoInput" class="feed-create-post-img" name="post_image"
-                            accept=".png, .jpg, .jpeg, image/*;" capture required>
+                            accept=".png, .jpg, .jpeg, image/*;" capture required style="display: none;">
+
 
                         <div class="caption-container">
                             <h3>Caption</h3>
@@ -331,12 +341,19 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                             <h3>Tags (please seperate with commas)</h3>
                             <input type="text" id="tags" name="tags">
                         </div>
-                        <input value="Post" type="submit" name="submit_post" class="feed-create-post-submit"
-                            onclick="finishPost()">
+                        <div class='final-decision'>
+                            <button onclick="exitButton(this)">Cancel</button>
+                            <input value="Post" type="submit" name="submit_post" class="feed-create-post-submit"
+                                onclick="finishPost()">
+
+                        </div>
                     </form>
                 </div>
             </div>
             <!-- End of Create Post Options -->
+
+
+
             <!-- Start Post -->
             <!-- Start Post 1 -->
             <?php
@@ -433,7 +450,10 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                             echo "
                             <div class='comment-user-comment'>
                                 <div class='user-container'>
-                                    <a href='Profile.php?id=$username'><img src='../images/icons/Unknown_person.jpg' class='post-avatar' /></a>
+                                    <a href='Profile.php?id=$username'>
+                                    
+                                    <img src='../profile_pic/profile_pic_$username.png' class='post-avatar' />
+                                    </a>
                                     <div class='user-post-name'>
                                         <span>$commenting_user</span>
                                         <span>Comment - $date</span>
@@ -532,7 +552,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
 
     </main>
 
-    <script src="../js/main.js"></script>
+
 </body>
 <?php pg_close($conn); ?>
 

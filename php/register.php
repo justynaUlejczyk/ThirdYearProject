@@ -12,20 +12,19 @@ if (isset($_POST['register'])) {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
     $account_type = $_POST['typeofaccount'];
-
+if ($password==$confirm_password){
+    
     // Hash the password
-    $password = password_hash($password, PASSWORD_BCRYPT);
-
-    // Execute the SQL statement
-    $result = pg_execute($conn, "insert_account", 
-    array($name, $username, $email, $password, $account_type));
-
-    // Check the result
+    $password1 = password_hash($password, PASSWORD_BCRYPT);
+    $result = pg_execute($conn, "insert_account", array($name, $username, $email, $password1, $account_type));}
+    else { echo "<script>alert('Password not matching');</script>";
+    }
+  // Check the result
     if ($result) {
-        echo "New account created successfully!";
-        $username = pg_fetch_result($result, 0, 'username');
         
+        $username = pg_fetch_result($result, 0, 'username');
         session_start();
         $_SESSION['username'] = $username;
 
@@ -43,9 +42,12 @@ if (isset($_POST['register'])) {
 
         header('Location: '."../html/Home.php");
     } else {
-        echo "Error: " . pg_last_error($conn);
-    }
+         
+       echo "Error: " . pg_last_error($conn);
+       header('Location: ../html/Login.php');
+    }}
 
+    
     // Close the connection
     pg_close($conn);
-}
+
