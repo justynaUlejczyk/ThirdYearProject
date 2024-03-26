@@ -54,6 +54,7 @@ if (pg_num_rows($userDataRESULT) == 0) {
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <script src="../js/main.js"></script>
+    <script src="../js/Home.js"></script>
     <script src="../js/Profile.js"></script>
     <script src="../js/darkmode.js"></script>
 
