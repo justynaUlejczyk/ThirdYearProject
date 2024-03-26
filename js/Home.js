@@ -87,9 +87,9 @@ function postComment(postid, username) {
     xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
+                commentid = xhr.responseText
                 var commentContainer = document.getElementsByClassName("comment-container id-" + postid)[0];
                 if (commentContainer.textContent.trim() == "No comments") {
-                    console.log("found it");
                     commentContainer.textContent = "";
                 }
                 var newCommentTop = document.createElement("div");
@@ -107,7 +107,10 @@ function postComment(postid, username) {
                 <div class='comment-text'>${text}</div>
                 <div class='comment-options'>
        
-                    <a><button>Delete</button></a>
+                <form action='../php/deleteComments.php' method='post'>
+                <input type='hidden' name='comment_id' value='${commentid}'>
+                <button type='submit' name='delete_comment'>Delete</button>
+                </form>
                 </div>
             </div>`
                 commentContainer.appendChild(newCommentTop);
