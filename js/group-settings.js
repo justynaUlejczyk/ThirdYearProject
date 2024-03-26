@@ -32,7 +32,7 @@ function updateGroupName(event) {
                 } else {
                     document.getElementById('namechangestatus').innerHTML = "Success!"
                 }
-            } 
+            }
         }
     };
 
@@ -42,3 +42,20 @@ function updateGroupName(event) {
 
     xhr.send(new URLSearchParams(formData));
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const menuButton = document.querySelector(".dropbtn");
+    const toolOptions = document.querySelector(".dropdown-content-settings");
+
+    menuButton.addEventListener("click", function (event) {
+        // Check if the click event originated from within the $('[name=tab]') elements
+        if (!$(event.target).closest('[name=tab]').length) {
+            toolOptions.classList.toggle("active");
+        }
+    });
+
+    // Close dropdown content settings if anything within $('[name=tab]') is clicked
+    $('[name=tab]').on('click', function () {
+        toolOptions.classList.remove("active");
+    });
+});
