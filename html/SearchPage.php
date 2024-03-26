@@ -80,7 +80,7 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
             <script>
                 document.getElementsByClass("fa fa-search").addEventListener("click", function(event) {
                      document.getElementById("searchForm").submit(); 
-                }
+                })
                 document.getElementById("searchQuery").addEventListener("keyup", function(event) {
                     if (event.keyCode === 13) {
                         event.preventDefault();
