@@ -325,12 +325,12 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                 $groupSearchListQuery = "SELECT groups.groupid, managerid, groupname, description FROM groups INNER JOIN accounttogroup ON accounttogroup.groupid = groups.groupid WHERE groupname = '$search_query' AND accounttogroup.username = '$username' ORDER BY groupId DESC";
                 
                 // like matches
-                $postsLikeListQuery = "SELECT postid, text, post.username, name  FROM post INNER JOIN accounts ON accounts.username = post.username WHERE text LIKE '%$search_query%' AND text != '$search_query' ORDER BY postid DESC";
-                $profileLikeSearchListQuery = "SELECT username, name FROM accounts WHERE name LIKE '%$search_query%'AND name != '$search_query'";
-                $groupLikeSearchListQuery = "SELECT groups.groupid, managerid, groupname, description FROM groups INNER JOIN accounttogroup ON accounttogroup.groupid = groups.groupid WHERE groupname LIKE '$search_query' AND groupname != '$search_query' AND username = '$username' ORDER BY groupId DESC";
+                $postsLikeListQuery = "SELECT postid, text, post.username, name  FROM post INNER JOIN accounts ON accounts.username = post.username WHERE text ILIKE '%$search_query%' AND text != '$search_query' ORDER BY postid DESC";
+                $profileLikeSearchListQuery = "SELECT username, name FROM accounts WHERE name ILIKE '%$search_query%'AND name != '$search_query'";
+                $groupLikeSearchListQuery = "SELECT groups.groupid, managerid, groupname, description FROM groups INNER JOIN accounttogroup ON accounttogroup.groupid = groups.groupid WHERE groupname ILIKE '$search_query' AND groupname != '$search_query' AND username = '$username' ORDER BY groupId DESC";
                                 
                 // tags match
-                $postsTagsListQuery = "SELECT post.postid, text, post.username, name  FROM post INNER JOIN accounts ON accounts.username = post.username INNER JOIN tags ON post.postid = tags.postid WHERE tagname LIKE '%$search_query%' AND text != '$search_query' ORDER BY post.postid DESC";  
+                $postsTagsListQuery = "SELECT post.postid, text, post.username, name  FROM post INNER JOIN accounts ON accounts.username = post.username INNER JOIN tags ON post.postid = tags.postid WHERE tagname ILIKE '%$search_query%' AND text != '$search_query' ORDER BY post.postid DESC";  
 
                 $profileListQuery = "SELECT usename, ";
 
