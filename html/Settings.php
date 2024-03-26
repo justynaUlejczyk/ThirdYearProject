@@ -313,14 +313,7 @@ $visibility = $row["accountvisibility"];
 
         <div id="general">
             <h1 class="updateTitle">General Settings</h1>
-            <div class="banner" style="background-image: url(../images/default-background.png);">
-                <div class="banner-edit">
-                    <input type='file' id="bannerUpload" accept=".png, .jpg, .jpeg" />
-                    <label for="bannerUpload"></label>
-                </div>
 
-                <div class="banner-preview"></div>
-            </div>
             <div class="avatar-upload">
                 <form action="../php/upload_avatar.php" method="POST" enctype="multipart/form-data">
                     <div class="avatar-edit">
@@ -452,10 +445,10 @@ $visibility = $row["accountvisibility"];
             </form>
         </div>
 
-        <!-- <div id="overview">
+         <div id="overview">
             <span class="updateTitle">Overview</span>
             <div class='divider'></div>
-            <form action="../php/profile_details.php" method="post">
+            <!-- <form action="../php/profile_details.php" method="post">
                 <div class="info-display">
                     <p class="info-cat">University </p>
                     <p>
@@ -516,17 +509,17 @@ $visibility = $row["accountvisibility"];
                 <p>Update:</p>
                 <input type="text" id="dob" name="dob" required />
                 <button class="confirmButton">Comfirm Update</button>
-            </form>
+            </form> -->
 
         </div>
 
         <div id="contactinfo">
             <span class="updateTitle">Contact Methods</span>
             <div class='divider'></div>
-            
-        
 
-        </div> -->
+
+
+        </div> 
 
 
         <div id="privacyPolicy">
