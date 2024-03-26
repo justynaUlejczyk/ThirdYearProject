@@ -38,7 +38,6 @@ if (deleteFolder($folderPathB)) {
     pg_execute($conn, "delete_split", array($groupid));
         
 } else {
-    echo "Failed to delete folder '$folderPathB'.";
 }
 } else{
     if (deleteFolder($folderPathA)) {
@@ -59,7 +58,6 @@ if (deleteFolder($folderPathB)) {
         pg_execute($conn, "replace_split", array($groupid));
             
     } else {
-        echo "Failed to delete folder '$folderPathB'.";
     }
 }
 
