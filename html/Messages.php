@@ -275,7 +275,7 @@ if (isset ($_GET['id'])) {
                 <?php
 
                 // displaying list of users ordered by last message received so the user who last sent a message to the logged in user is at the top of the list.
-                $usersListQuery = "SELECT subquery2.username, COALESCE(MAX(subquery1.max_messageid), -1) AS last_messageid, messageread
+                $usersListQuery = "SELECT subquery2.username, COALESCE(MAX(subquery1.max_messageid), -1) AS last_messageid, MIN(messageread) AS minmessageread
 FROM
     (SELECT username, MAX(messageid) AS max_messageid, messageread
      FROM messages
@@ -287,7 +287,7 @@ RIGHT JOIN
      FROM accounts
     ) AS subquery2
 ON subquery1.username = subquery2.username
-GROUP BY subquery2.username, messageread
+GROUP BY subquery2.username
 ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
                 $usersListRESULT = pg_query($conn, $usersListQuery);
                 if ($usersListRESULT) {
@@ -298,7 +298,7 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
                             onclick="changeChat(this)" userid=' . $row['username'] . '>';
                             echo "<img src='../profile_pic/profile_pic_$user.png'>";
                             echo ' <p><a href="Messages.php?id=' . $row['username'] . '" role="button">' . $row['username'];
-                            if ($row["messageread"] == 0 && $row["last_messageid"] != -1)
+                            if ($row["minmessageread"] == 0 && $row["last_messageid"] != -1)
                                 echo '***';
                             echo '</a></p></button>';
                         }
@@ -336,8 +336,8 @@ function fetchUpdates() {
 
     xhr.send();
 
-    // Fetch updates every 5 seconds (adjust as needed)
-    setTimeout(fetchUpdates, 2000);
+    // Fetch updates every 1 second (adjust as needed)
+    setTimeout(fetchUpdates, 1000);
 }
 
 // Start fetching updates
