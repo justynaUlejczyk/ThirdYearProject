@@ -82,12 +82,27 @@ session_write_close();
 
     <!-- Start of Nav -->
     <nav>
-        <section>
-            <form id="searchForm" action="">
-                <input id="searchInput" type="search" required>
+    <section>
+            <form id="searchForm" action="searchPage.php" method="POST">
+                <input id="searchInput" type="search" name="searchWord" required>
                 <i class="fa fa-search"></i>
             </form>
-
+            <script>
+                function submitForm(event) {
+                    var searchWord = document.getElementById("searchInput").value;
+                    var regex = /[;'"\]/;
+                    if (regex.test(searchWord)) {
+                        alert("Invalid characters detected. Please remove special characters.");
+                        event.preventDefault();
+                    }
+                }
+                document.getElementById("searchForm").addEventListener("keyup", function(event) {
+                    if (event.keyCode === 13) {
+                        submitForm(event);
+                    }
+                })
+                ;
+            </script>
         </section>
         <section>
             <ul class="linksBar">
@@ -412,6 +427,21 @@ if (isset($_GET["image"]) && $split==1){
     $base64Image = base64_encode($imageData);
 }
 
-
+echo "<script>
+var imageData = '$base64Image';
+console.log(imageData);
+var img = new Image();
+img.src = 'data:image/jpeg;base64,' + imageData;
+img.onload = function() {
+    // Clear any existing content
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Draw the new image
+    const scale = Math.min(canvas.width / img.width, canvas.height / img.height);
+    const x = (canvas.width / 2) - (img.width / 2) * scale;
+    const y = (canvas.height / 2) - (img.height / 2) * scale;
+    ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
+    // Now the image is the background, any new drawing will be on top
+}
+</script>";
 
 ?>

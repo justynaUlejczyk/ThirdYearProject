@@ -68,11 +68,26 @@ $username = $_SESSION["username"];
     <!-- Start of Nav -->
     <nav>
         <section>
-            <form id="searchForm" action="">
-                <input id="searchInput" type="search" required>
+            <form id="searchForm" action="searchPage.php" method="POST">
+                <input id="searchInput" type="search" name="searchWord" required>
                 <i class="fa fa-search"></i>
             </form>
-
+            <script>
+                function submitForm(event) {
+                    var searchWord = document.getElementById("searchInput").value;
+                    var regex = /[;'"\]/;
+                    if (regex.test(searchWord)) {
+                        alert("Invalid characters detected. Please remove special characters.");
+                        event.preventDefault();
+                    }
+                }
+                document.getElementById("searchForm").addEventListener("keyup", function (event) {
+                    if (event.keyCode === 13) {
+                        submitForm(event);
+                    }
+                })
+                    ;
+            </script>
         </section>
         <section>
             <ul class="linksBar">
@@ -404,14 +419,16 @@ $username = $_SESSION["username"];
                         }
                     }
                 }
-            } ?>
-        <a href="../html/friends.php">
-            <h4 class="viewMore">View All</h4>
-        </a>
-        </bside>
+            
+               echo '</bside>
+                <a href="../html/friends.php">
+                    <h4 class="viewMore">View All</h4>
+                </a>
+                </section>
+                </bside>';
+                } ?>
+
         
-        </section>
-        </bside>
 
 
 

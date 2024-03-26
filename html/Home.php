@@ -73,12 +73,26 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
     <!-- Start of Nav -->
     <nav>
         <section>
-            <form id="searchForm" action="">
+            <form id="searchForm" action="searchPage.php" method="POST">
+                <input id="searchInput" type="search" name="searchWord" required>
                 <i class="fa fa-search"></i>
-                <input id="searchInput" type="search" required>
-
             </form>
-
+            <script>
+                function submitForm(event) {
+                    var searchWord = document.getElementById("searchInput").value;
+                    var regex = /[;'"\]/;
+                    if (regex.test(searchWord)) {
+                        alert("Invalid characters detected. Please remove special characters.");
+                        event.preventDefault();
+                    }
+                }
+                document.getElementById("searchForm").addEventListener("keyup", function (event) {
+                    if (event.keyCode === 13) {
+                        submitForm(event);
+                    }
+                })
+                    ;
+            </script>
         </section>
         <section>
             <ul class="linksBar">
@@ -268,7 +282,6 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
             </ul>
         </section>
     </nav>
-    <!-- End of Nav -->
 
 
 

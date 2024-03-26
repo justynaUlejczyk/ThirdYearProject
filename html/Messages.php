@@ -78,11 +78,26 @@ if (isset ($_GET['id'])) {
     <!-- Start of Nav -->
     <nav>
         <section>
-            <form id="searchForm" action="">
-                <input id="searchInput" type="search" required>
+            <form id="searchForm" action="searchPage.php" method="POST">
+                <input id="searchInput" type="search" name="searchWord" required>
                 <i class="fa fa-search"></i>
             </form>
-
+            <script>
+                function submitForm(event) {
+                    var searchWord = document.getElementById("searchInput").value;
+                    var regex = /[;'"\]/;
+                    if (regex.test(searchWord)) {
+                        alert("Invalid characters detected. Please remove special characters.");
+                        event.preventDefault();
+                    }
+                }
+                document.getElementById("searchForm").addEventListener("keyup", function (event) {
+                    if (event.keyCode === 13) {
+                        submitForm(event);
+                    }
+                })
+                    ;
+            </script>
         </section>
         <section>
             <ul class="linksBar">
@@ -326,16 +341,16 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
 
                                         // Update dynamic content
                                         if (document.getElementById('chatter-chat') != null) {
-                                            scrollPos = document.getElementById('chatter-chat').scrollTop; 
+                                            scrollPos = document.getElementById('chatter-chat').scrollTop;
                                         }
                                         document.getElementById('chatter-box').innerHTML = data;
-                                        if(iterator==0){
-                                                document.getElementById('chatter-chat').scrollTop = document.getElementById('chatter-chat').scrollHeight;
-                                                iterator++;
-                                            } else{
-                                                document.getElementById('chatter-chat').scrollTop = scrollPos;
-                                            }
-                                            
+                                        if (iterator == 0) {
+                                            document.getElementById('chatter-chat').scrollTop = document.getElementById('chatter-chat').scrollHeight;
+                                            iterator++;
+                                        } else {
+                                            document.getElementById('chatter-chat').scrollTop = scrollPos;
+                                        }
+
                                     } else {
                                         console.log(xhr.responseText);
                                     }
@@ -343,31 +358,33 @@ ORDER BY COALESCE(MAX(subquery1.max_messageid), -1) DESC";
 
                                 xhr.send();
 
-    // Fetch updates every 2 seconds
-    setTimeout(fetchUpdates, 4000);
-}
+                                // Fetch updates every 2 seconds
+                                setTimeout(fetchUpdates, 4000);
+                            }
 
                             // Start fetching updates
                             var iterator = 0;
                             fetchUpdates();
                         </script>
                     </div>
+                    <?php if (isset ($_GET["id"])) {
+                        echo "<form class='chatter-send-message' id='messages' action='../php/send_message.php' method='post'>
 
-                    <form class="chatter-send-message" id="messages" action="../php/send_message.php" method="post">
 
+                        <input type='text' id='recipient' name='recipient' value='$id' hidden
+                            style='display:none;'>
 
-                        <input type="text" id="recipient" name="recipient" value="<?php echo $id; ?>" hidden
-                            style="display:none;">
-
-                        <div id="msgInput">
-                            <input type="text" id="text" name="text" maxlength="2499" required="">
+                        <div id='msgInput'>
+                            <input type='text' id='text' name='text' maxlength='2499' required=''>
                         </div>
 
-                        <input type="text" class="username" name="username" value="<?php echo $login_username; ?>"
-                            hidden style="display:none; ">
-                        <button type="submit" style="margin-bottom: 20px;"><i
-                                class="fab fa-telegram-plane"></i></button>
-                    </form>
+                        <input type='text' class='username' name='username' value='$login_username'
+                            hidden style='display:none; '>
+                        <button type='submit' style='margin-bottom: 20px;'><i
+                                class='fab fa-telegram-plane'></i></button>
+                    </form>";
+                    }
+                    ?>
                 </div>
             </div>
         </div>
