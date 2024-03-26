@@ -74,8 +74,9 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
     <nav>
         <section>
             <form id="searchForm" action="">
-                <input id="searchInput" type="search" required>
                 <i class="fa fa-search"></i>
+                <input id="searchInput" type="search" required>
+
             </form>
 
         </section>
@@ -338,12 +339,12 @@ $name = pg_fetch_result($userDataRESULT, 0, "name");
                                 class="feed-create-post-captions"></textarea>
                         </div>
                         <script>
-                        var textarea = document.getElementById("text");
-                        textarea.addEventListener("input", function() {
-                            if (this.value.length > this.maxLength) {
-                                this.value = this.value.slice(0, this.maxLength);
-                            }
-                        });
+                            var textarea = document.getElementById("text");
+                            textarea.addEventListener("input", function () {
+                                if (this.value.length > this.maxLength) {
+                                    this.value = this.value.slice(0, this.maxLength);
+                                }
+                            });
                         </script>
                         <div class="tags-container">
                             <h3>Tags (please seperate with commas)</h3>
