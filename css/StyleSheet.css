@@ -196,6 +196,7 @@ nav form {
 }
 
 nav input {
+    margin-left: 50px;
     width: calc(100% - 50px); /* Adjusted width to accommodate icon */
     height: 42.5px;
     line-height: 30px;
@@ -231,11 +232,6 @@ form:valid {
 nav form:hover input,
 form:valid input {
     display: block;
-}
-
-nav form:hover .fa,
-form:valid .fa {
-    color: var(--foreground);
 }
 
 .nav-profile {
