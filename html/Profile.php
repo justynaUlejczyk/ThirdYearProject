@@ -552,6 +552,7 @@ if (pg_num_rows($userDataRESULT) == 0) {
             $details = pg_prepare($conn, "details", "SELECT * FROM accounts Where username = $1 ");
             $detailsResult = pg_execute($conn, "details", array($account_username));
             $row = pg_fetch_assoc($detailsResult);
+            $studentArtist = $row['typeofaccount'];
             ?>
             <div class="aboutContainer">
                 <div id="leftMainHeading">
