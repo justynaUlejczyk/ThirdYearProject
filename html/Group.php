@@ -405,11 +405,11 @@ $username = $_SESSION["username"];
                     }
                 }
             } ?>
-
-        </bside>
         <a href="../html/friends.php">
             <h4 class="viewMore">View All</h4>
         </a>
+        </bside>
+        
         </section>
         </bside>
 
