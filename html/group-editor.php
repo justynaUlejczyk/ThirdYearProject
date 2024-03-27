@@ -1,6 +1,4 @@
 <?php
-
-
 require_once "../php/connect_db.php";
 
 //session_id("userSession");
@@ -11,9 +9,6 @@ if (!isset ($_SESSION["username"])) {
 }
 $login_username = $_SESSION["username"];
 $username = $_SESSION["username"];
-session_write_close();
-//session_id("groupSession");
-//session_start();
 $groupid = $_SESSION["groupid"];
 $groupname = $_SESSION["groupname"];
 session_write_close();
@@ -21,25 +16,37 @@ session_write_close();
 
 $split = $_GET["split"];
 
-if (isset ($_GET['id'])) {
+if (isset($_GET['id'])) {
     $id = $_GET['id'];
+    $groupid = $_SESSION["groupid"];
+
     if ($split == 1) {
         $filePath = "../splits/$groupid/$id";
     } else {
         $filePath = "../groups/$groupid/$id";
     }
-    $idFile = fopen($filePath, "r");
-    $fileContents = fread($idFile, filesize($filePath));
-    fclose($idFile);
+
+    if (file_exists($filePath)) {
+        $idFile = fopen($filePath, "r");
+
+        if ($idFile) {
+            $fileContents = fread($idFile, filesize($filePath));
+            fclose($idFile);
+        } else {
+            echo "Failed to open file.";
+        }
+    } else {
+        echo "File does not exist.";
+    }
 }
 
-$groupid = $_SESSION["groupid"];
 $get_groupnameSTMT = pg_prepare($conn, "get_groupname", "SELECT groupname FROM groups where groupid=$1");
 $get_groupnameRESULT = pg_execute($conn, "get_groupname", array($groupid));
 $row = pg_fetch_assoc($get_groupnameRESULT);
 $_SESSION["groupname"] = $row["groupname"];
 $groupname = $_SESSION["groupname"];
 session_write_close();
+
 ?>
 
 <!DOCTYPE html>
@@ -349,11 +356,11 @@ session_write_close();
             <div class="container">
                 <div class="toolbar">
                     <div class="head">
-                        <input type="text" placeholder="Filename" value=<?php if (isset ($id)) {
+                        <input type="text" placeholder="Filename" value='<?php if (isset ($id)) {
                             echo substr($id, 0, -4);
                         } else {
                             echo "untitled";
-                        } ?> id="filename">
+                        } ?> ' id="filename">
                         <select onchange='fileHandle(this.value,<?php echo "$groupid,$split" ?> ); this.selectedIndex=0'>
                             <option value="" selected="" hidden="" disabled="">File</option>
                             <option value="new">New file</option>

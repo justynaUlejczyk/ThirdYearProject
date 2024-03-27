@@ -45,8 +45,11 @@ function copyFolder($source, $destination, $conn) {
 }
 
 if (copyFolder($folderPathA, $folderPathB, $conn)) {
+    
     //echo "Contents of '$folderPathA' copied to '$folderPathB' successfully.";
-    header("location: " . "sharesyncbitbybit.azurewebsites.net/html/group-page-file.php?split=0");
+header("location: " . "../html/group-page-file.php?split=0");
 } else {
 }
 
+header("location: " . "../html/group-page-file.php?split=0");
+?>
