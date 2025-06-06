@@ -1,4 +1,4 @@
-This repository contains the code for our 3rd-year group project.
+This repository contains the code for our *3rd-year group project*.
 
 I played a significant role in both the development and management of the project, including:
 
